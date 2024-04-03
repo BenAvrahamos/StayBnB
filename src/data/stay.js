@@ -1,4 +1,4 @@
-const stay = {
+export const stays = [{
   _id: "s101",
   name: "Ribeira Charming Duplex",
   type: "House",
@@ -46,10 +46,10 @@ const stay = {
     }
   ],
   likedByUsers: ['mini-user']
-}
+}]
 
 
-const orders = [
+export const orders = [
   {
     _id: "o1225",
     hostId: "u102",
@@ -74,7 +74,7 @@ const orders = [
   }
 ]
 
-const users = [
+export const users = [
   {
     _id: "u101",
     fullName: "User 1",
