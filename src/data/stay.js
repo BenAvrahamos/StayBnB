@@ -161,6 +161,12 @@ export const users = [
     password: "secret",
   }
 ]
+
+export const amenities = ['Wifi', 'Washer', 'Air conditioning', 'Dedicated workspace', 'Hair dryer',
+ 'Kitchen', 'Dryer', 'Heating', 'Tv', 'Iron', 'Pool', 'Free parking',
+'Crib', 'Gym', 'Breakfast', 'Smoking allowed', 'Hot tub', 'Ev charger', 'King bed', 'BBQ grill',
+ 'Indoor fireplace', 'Beachfront', 'Ski-on/Ski-out', 'Waterfront',
+'Smoke alarm', 'Carbon monoxide alarm']
 // Homepage: TOP categories: Best Rate / Houses / Kitchen  - show all - link to Explore
 // Renders a <StayList> with <StayPreview> with Link to <StayDetails>   url: /stay/123
 // See More => /explore?topRate=true
