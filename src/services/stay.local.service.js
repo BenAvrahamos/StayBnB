@@ -30,7 +30,7 @@ async function query() {
 
 async function getById(stayId) {
     try {
-        const stay = await storageService.get(STORAGE_KEY, stayId)
+        const stay = await storageService.get(STAY_DB, stayId)
         return stay
     } catch (err) {
         console.log(err)
@@ -39,7 +39,7 @@ async function getById(stayId) {
 
 async function remove(stayId) {
     try {
-        await storageService.remove(STORAGE_KEY, stayId)
+        await storageService.remove(STAY_DB, stayId)
     } catch (err) {
         console.log(err)
     }
@@ -48,10 +48,10 @@ async function remove(stayId) {
 async function save(stay) {
     try {
         if (stay._id) {
-            const updatedStay = await storageService.put(STORAGE_KEY, stay)
+            const updatedStay = await storageService.put(STAY_DB, stay)
             return updatedStay
         } else {
-            const stayToAdd = await storageService.post(STORAGE_KEY, stay)
+            const stayToAdd = await storageService.post(STAY_DB, stay)
             return stayToAdd
         }
     } catch (err) {
