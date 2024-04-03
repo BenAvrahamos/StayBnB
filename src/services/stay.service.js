@@ -6,6 +6,8 @@ export const stayService = {
     remove,
     save,
     addStayMsg,
+    getNumberOfNights,
+    getFilterFromParams,
     getEmptyStay,
     getDefaultFilter,
     getEmptyOrder,
@@ -14,11 +16,11 @@ export const stayService = {
 
 const BASE_URL = 'stay/'
 
-const amenityLabels = ['wifi', 'kitchen', 'washer', 'dryer', 'air conditioning', 'refrigerator','heating', 'dedicated workspace', 'TV', 'hair dryer', 'iron', 'pool', 'hot tub', 'free parking', 'ev charger', 'crib', 'king bed', 'gym', 'BBQ grill', 'breakfast', 'indoor fireplace', 'smoking allowed']
+const amenityLabels = ['wifi', 'kitchen', 'washer', 'dryer', 'air conditioning', 'refrigerator', 'heating', 'dedicated workspace', 'TV', 'hair dryer', 'iron', 'pool', 'hot tub', 'free parking', 'ev charger', 'crib', 'king bed', 'gym', 'BBQ grill', 'breakfast', 'indoor fireplace', 'smoking allowed']
 const filterLabels = ['iconic cities', 'new', 'off-the-grid', 'rooms', 'creative spaces', 'boats', 'grand pianos', 'vineyards', 'historical homes', 'mansions', 'lake', 'treehouses', 'farms', 'skiing', 'earth homes', 'countryside', 'amazing views', 'beach', 'desert', 'a-frames',
     'design', 'beachfront', 'caves', 'national parks', 'castles', 'lakefront', 'island', 'tropical', 'cabin', 'camper', 'camping', 'tiny homes', 'surfing', 'bed & breakfasts']
 
-function query(filterBy = {}) {
+function query(filterBy = getDefaultFilter()) {
     return httpService.get(BASE_URL, filterBy)
 }
 
@@ -41,6 +43,31 @@ function save(stay) {
 
 function addStayMsg(stay, msg) {
     return httpService.post(BASE_URL + stay._id + '/msg', { txt: msg.txt })
+}
+
+function getNumberOfNights({ entryDate, exitDate }) {
+    const entryTimestamp = new Date(entryDate).getTime()
+    const exitTimestamp = new Date(exitDate).getTime()
+
+    const difference = exitTimestamp - entryTimestamp
+    const stayLength = Math.ceil(difference / 1000 * 60 * 60 * 24)
+    return stayLength
+}
+
+function getFilterFromParams(searchParams) {
+    const defaultFilter = getDefaultFilter()
+    return {
+        loc: searchParams.get('loc') || defaultFilter.loc,
+        availability: searchParams.get('availability') || defaultFilter.availability,
+        guestCount: searchParams.get('guestCount') || defaultFilter.guestCount,
+        labels: searchParams.get('labels') || defaultFilter.labels,
+        placeType: searchParams.get('placeType') || defaultFilter.placeType,
+        priceRange: searchParams.get('priceRange') || defaultFilter.priceRange,
+        BBB: searchParams.get('BBB') || defaultFilter.BBB,
+        propType: searchParams.get('propType') || defaultFilter.propType,
+        amenities: searchParams.get('amenities') || defaultFilter.amenities,
+        bookingOpts: searchParams.get('bookingOpts') || defaultFilter.bookingOpts,
+    }
 }
 
 function getEmptyStay() {
@@ -72,12 +99,10 @@ function getDefaultFilter() {
         loc: {
             country: '',
             countryCode: '',
-            city: '',
-            address: '',
-            lat: 0,
-            lng: 0
+            city: ''
         },
-        availability: [],            // dates
+        entryDate: '',
+        exitDate: '',
         guestCount: '',                // number of guests
         labels: [],
         placeType: 'any type',       // any type / room / entire home
