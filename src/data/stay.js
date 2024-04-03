@@ -1,6 +1,67 @@
-const stay = {
+export const stays = [{
   _id: "s101",
-  name: "Ribeira Charming Duplex",
+  name: "A House",
+  type: "House",
+  imgUrls: ["https://e26e9b.jpg", "otherImg.jpg"],
+  price: 80.00,
+  summary: "Fantastic duplex apartment...",
+  capacity: 8,
+  amenities: [
+    "TV",
+    "Wifi",
+    "Smoking allowed",
+    "Pets allowed",
+    "Cooking basics"
+  ],
+  labels: [
+    "Top of the world",
+    "Trending"
+  ],
+  host: {},
+  loc: {
+    country: "Portugal",
+    countryCode: "PT",
+    city: "Lisbon",
+    address: "17 Kombo st",
+    lat: -8.61308,
+    lng: 41.1413
+  },
+  reviews: [],
+  likedByUsers: []
+},
+{
+  _id: "s102",
+  name: "Bed and breakfast",
+  type: "House",
+  imgUrls: ["https://e26e9b.jpg", "otherImg.jpg"],
+  price: 90.00,
+  summary: "Fantastic duplex apartment...",
+  capacity: 8,
+  amenities: [
+    "TV",
+    "Wifi",
+    "Kitchen",
+    "Cooking basics"
+  ],
+  labels: [
+    "Play",
+    "Tropical"
+  ],
+  host: {},
+  loc: {
+    country: "Portugal",
+    countryCode: "PT",
+    city: "Lisbon",
+    address: "17 Kombo st",
+    lat: -8.61308,
+    lng: 41.1413
+  },
+  reviews: [],
+  likedByUsers: []
+},
+{
+  _id: "s103",
+  name: "Cabana",
   type: "House",
   imgUrls: ["https://e26e9b.jpg", "otherImg.jpg"],
   price: 80.00,
@@ -10,21 +71,14 @@ const stay = {
     "TV",
     "Wifi",
     "Kitchen",
-    "Smoking allowed",
-    "Pets allowed",
     "Cooking basics"
   ],
   labels: [
     "Top of the world",
     "Trending",
-    "Play",
     "Tropical"
   ],
-  host: {
-    _id: "u101",
-    fullname: "Davit Pok",
-    imgUrl: "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small",
-  },
+  host: {},
   loc: {
     country: "Portugal",
     countryCode: "PT",
@@ -33,23 +87,12 @@ const stay = {
     lat: -8.61308,
     lng: 41.1413
   },
-  reviews: [
-    {
-      id: "madeId",
-      txt: "Very helpful hosts. Cooked traditional...",
-      rate: 4,
-      by: {
-        _id: "u102",
-        fullname: "user2",
-        imgUrl: "/img/img2.jpg"
-      }
-    }
-  ],
-  likedByUsers: ['mini-user']
-}
+  reviews: [],
+  likedByUsers: []
+}]
 
 
-const orders = [
+export const orders = [
   {
     _id: "o1225",
     hostId: "u102",
@@ -58,8 +101,8 @@ const orders = [
       fullName: "User 1"
     },
     totalPrice: 160,
-    entryDate: "2025/10/15",
-    exitDate: "2025/10/17",
+    entryDate: "15-10-2025",
+    exitDate: "17-10-2025",
     guests: {
       adults: 1,
       kids: 2
@@ -74,7 +117,7 @@ const orders = [
   }
 ]
 
-const users = [
+export const users = [
   {
     _id: "u101",
     fullName: "User 1",

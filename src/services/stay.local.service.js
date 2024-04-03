@@ -1,48 +1,62 @@
-import { httpService } from './http.service.js'
+
+import { storageService } from './async-storage.service.js'
+import { utilService } from './util.service.js'
+// import { userService } from './user.service.js'
+import { stays } from '../data/stay.js'
+const STAY_DB = 'stay_db'
+
+_createDemoStay(stays)
 
 export const stayService = {
     query,
     getById,
-    remove,
     save,
-    addStayMsg,
+    remove,
     getNumberOfNights,
     getFilterFromParams,
-    getEmptyStay,
-    getDefaultFilter,
     getEmptyOrder,
-    getLabels
+    getEmptyStay,
+    getDefaultFilter
 }
 
-const BASE_URL = 'stay/'
-
-const amenityLabels = ['wifi', 'kitchen', 'washer', 'dryer', 'air conditioning', 'refrigerator', 'heating', 'dedicated workspace', 'TV', 'hair dryer', 'iron', 'pool', 'hot tub', 'free parking', 'ev charger', 'crib', 'king bed', 'gym', 'BBQ grill', 'breakfast', 'indoor fireplace', 'smoking allowed']
-const filterLabels = ['iconic cities', 'new', 'off-the-grid', 'rooms', 'creative spaces', 'boats', 'grand pianos', 'vineyards', 'historical homes', 'mansions', 'lake', 'treehouses', 'farms', 'skiing', 'earth homes', 'countryside', 'amazing views', 'beach', 'desert', 'a-frames',
-    'design', 'beachfront', 'caves', 'national parks', 'castles', 'lakefront', 'island', 'tropical', 'cabin', 'camper', 'camping', 'tiny homes', 'surfing', 'bed & breakfasts']
-
-function query(filterBy = getDefaultFilter()) {
-    return httpService.get(BASE_URL, filterBy)
+async function query() {
+    try {
+        const stayArr = await storageService.query(STAY_DB)
+        return stayArr
+    } catch (err) {
+        console.log(err)
+    }
 }
 
-function getById(stayId) {
-    return httpService.get(BASE_URL + stayId)
+async function getById(stayId) {
+    try {
+        const stay = await storageService.get(STORAGE_KEY, stayId)
+        return stay
+    } catch (err) {
+        console.log(err)
+    }
 }
 
-function getLabels(stay) {
-    return stay.labels
+async function remove(stayId) {
+    try {
+        await storageService.remove(STORAGE_KEY, stayId)
+    } catch (err) {
+        console.log(err)
+    }
 }
 
-function remove(stayId) {
-    return httpService.delete(BASE_URL + stayId)
-}
-
-function save(stay) {
-    if (stay._id) return httpService.put(BASE_URL, stay)
-    else return httpService.post(BASE_URL, stay)
-}
-
-function addStayMsg(stay, msg) {
-    return httpService.post(BASE_URL + stay._id + '/msg', { txt: msg.txt })
+async function save(stay) {
+    try {
+        if (stay._id) {
+            const updatedStay = await storageService.put(STORAGE_KEY, stay)
+            return updatedStay
+        } else {
+            const stayToAdd = await storageService.post(STORAGE_KEY, stay)
+            return stayToAdd
+        }
+    } catch (err) {
+        console.log(err)
+    }
 }
 
 function getNumberOfNights({ entryDate, exitDate }) {
@@ -99,10 +113,13 @@ function getDefaultFilter() {
         loc: {
             country: '',
             countryCode: '',
-            city: ''
+            city: '',
+            address: '',
+            lat: 0,
+            lng: 0
         },
         entryDate: '',
-        exitDate: '',
+        exitDate: '',            // dates
         guestCount: '',                // number of guests
         labels: [],
         placeType: 'any type',       // any type / room / entire home
@@ -150,3 +167,10 @@ function getEmptyOrder() {
         status: "pending"           // approved / rejected
     }
 }
+
+function _createDemoStay(stays) {
+    utilService.saveToStorage(STAY_DB, stays)
+}
+
+// TEST DATA
+// storageService.post(STORAGE_KEY, {vendor: 'Subali Rahok 6', price: 980}).then(x => console.log(x))
