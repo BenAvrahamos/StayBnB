@@ -9,14 +9,10 @@ export const stays = [{
   bedrooms: 2,
   beds: 2,
   baths: 2,
-  amenities: [
-    "TV",
-    "Wifi",
-    "Smoking allowed",
-    "Pets allowed",
-    "Cooking basics",
-    "Carbon monoxide alarm"
-  ],
+  amenities: ['Heating', 'Tv', 'Iron', 'Pool', 'Free parking',
+  'Crib', 'Gym', 'Breakfast', 'Smoking allowed', 'Hot tub', 'Ev charger', 'King bed', 'BBQ grill',
+   'Indoor fireplace', 'Beachfront', 'Ski-on/Ski-out', 'Waterfront',
+  'Smoke alarm'],
   labels: [
     "Top of the world",
     "Trending"
@@ -51,11 +47,10 @@ export const stays = [{
   beds: 2,
   baths: 2,
   amenities: [
-    "TV",
-    "Wifi",
-    "Kitchen",
-    "Cooking basics"
-  ],
+    'Tv', 'Iron', 'Pool', 'Free parking',
+'Crib', 'Gym', 'Breakfast', 'Smoking allowed', 'Hot tub', 'Ev charger', 'King bed', 'BBQ grill',
+ 'Indoor fireplace', 'Beachfront', 'Ski-on/Ski-out', 'Waterfront',
+'Smoke alarm', 'Carbon monoxide alarm'],
   labels: [
     "Play",
     "Tropical"
@@ -90,10 +85,9 @@ export const stays = [{
   beds: 2,
   baths: 2,
   amenities: [
-    "TV",
-    "Wifi",
-    "Kitchen",
-    "Cooking basics"
+    'Wifi', 'Washer', 'Air conditioning', 'Dedicated workspace', 'Hair dryer',
+    'Kitchen', 'Dryer', 'Heating', 'Tv', 'Iron', 'Pool', 'Free parking',
+   'Crib', 'Gym', 'Breakfast', 'Smoking allowed'
   ],
   labels: [
     "Top of the world",
