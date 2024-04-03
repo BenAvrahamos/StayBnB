@@ -142,7 +142,7 @@ function getEmptyOrder() {
 }
 
 function _createDemoStay() {
-    utilService.saveToStorage(STAY_DB, stay)
+    utilService.saveToStorage(STAY_DB, stays)
 }
 
 // TEST DATA
