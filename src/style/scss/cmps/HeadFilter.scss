@@ -1,0 +1,36 @@
+.header-filter {
+    width: 55.375em;
+    height: 4.125em;
+    border-radius: 2em;
+    box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.18);
+    margin-bottom: 1em;
+    display: flex;
+    column-gap: 0.4em;
+
+    & .destination,
+    & .dates,
+    & .guests {
+        height: 4.125em;
+        display: flex;
+        flex-direction: column;
+        padding-left: 1.5em;
+        justify-content: center;
+        border-radius: 2em;
+
+        &:hover {
+            background-color: rgba(#71717123, 0.25);
+        }
+    }
+
+    & .destination {
+        width: 17.75em;
+    }
+
+    & .dates {
+        width: 8.75em;
+    }
+
+    & .guests {
+        width: 19.25em;
+    }
+}
