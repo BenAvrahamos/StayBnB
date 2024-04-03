@@ -101,11 +101,20 @@ export const stays = [{
   price: 80.00,
   summary: "Fantastic duplex apartment...",
   capacity: 8,
-  bedrooms: {
-    count: 2,
-
-  }
-  beds: 2,
+  bedrooms: [
+    {
+      name: 'Living Room',
+      beds: ['couch']
+    },
+    {
+      name: 'Bedroom 1',
+      beds: ['double bed', 'double bed', 'sofa bed']
+    },
+    {
+      name: 'Bedroom 2',
+      beds: ['single bed', 'sofa bed', 'king size bed']
+    }
+  ],
   baths: 2,
   amenities: [
     'Wifi', 'Washer', 'Air conditioning', 'Dedicated workspace', 'Hair dryer',
