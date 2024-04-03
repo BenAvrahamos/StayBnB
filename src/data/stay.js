@@ -6,13 +6,21 @@ export const stays = [{
   price: 80.00,
   summary: "Fantastic duplex apartment...",
   capacity: 8,
-  bedrooms: 2,
-  beds: 2,
+  bedrooms: [
+    {
+      name: 'Living Room',
+      beds: ['couch']
+    },
+    {
+      name: 'Bedroom 1',
+      beds: ['double bed', 'double bed', 'sofa bed']
+    }
+  ],
   baths: 2,
   amenities: ['Heating', 'Tv', 'Iron', 'Pool', 'Free parking',
-  'Crib', 'Gym', 'Breakfast', 'Smoking allowed', 'Hot tub', 'Ev charger', 'King bed', 'BBQ grill',
-   'Indoor fireplace', 'Beachfront', 'Ski-on/Ski-out', 'Waterfront',
-  'Smoke alarm'],
+    'Crib', 'Gym', 'Breakfast', 'Smoking allowed', 'Hot tub', 'Ev charger', 'King bed', 'BBQ grill',
+    'Indoor fireplace', 'Beachfront', 'Ski-on/Ski-out', 'Waterfront',
+    'Smoke alarm'],
   labels: [
     "Top of the world",
     "Trending"
@@ -43,14 +51,26 @@ export const stays = [{
   price: 90.00,
   summary: "Fantastic duplex apartment...",
   capacity: 8,
-  bedrooms: 2,
-  beds: 2,
+  bedrooms: [
+    {
+      name: 'Living Room',
+      beds: ['couch']
+    },
+    {
+      name: 'Bedroom 1',
+      beds: ['double bed', 'double bed', 'sofa bed']
+    },
+    {
+      name: 'Bedroom 2',
+      beds: ['single bed', 'sofa bed', 'king size bed']
+    }
+  ],
   baths: 2,
   amenities: [
     'Tv', 'Iron', 'Pool', 'Free parking',
-'Crib', 'Gym', 'Breakfast', 'Smoking allowed', 'Hot tub', 'Ev charger', 'King bed', 'BBQ grill',
- 'Indoor fireplace', 'Beachfront', 'Ski-on/Ski-out', 'Waterfront',
-'Smoke alarm', 'Carbon monoxide alarm'],
+    'Crib', 'Gym', 'Breakfast', 'Smoking allowed', 'Hot tub', 'Ev charger', 'King bed', 'BBQ grill',
+    'Indoor fireplace', 'Beachfront', 'Ski-on/Ski-out', 'Waterfront',
+    'Smoke alarm', 'Carbon monoxide alarm'],
   labels: [
     "Play",
     "Tropical"
@@ -81,13 +101,16 @@ export const stays = [{
   price: 80.00,
   summary: "Fantastic duplex apartment...",
   capacity: 8,
-  bedrooms: 2,
+  bedrooms: {
+    count: 2,
+
+  }
   beds: 2,
   baths: 2,
   amenities: [
     'Wifi', 'Washer', 'Air conditioning', 'Dedicated workspace', 'Hair dryer',
     'Kitchen', 'Dryer', 'Heating', 'Tv', 'Iron', 'Pool', 'Free parking',
-   'Crib', 'Gym', 'Breakfast', 'Smoking allowed'
+    'Crib', 'Gym', 'Breakfast', 'Smoking allowed'
   ],
   labels: [
     "Top of the world",
@@ -157,10 +180,10 @@ export const users = [
 ]
 
 export const amenities = ['Wifi', 'Washer', 'Air conditioning', 'Dedicated workspace', 'Hair dryer',
- 'Kitchen', 'Dryer', 'Heating', 'Tv', 'Iron', 'Pool', 'Free parking',
-'Crib', 'Gym', 'Breakfast', 'Smoking allowed', 'Hot tub', 'Ev charger', 'King bed', 'BBQ grill',
- 'Indoor fireplace', 'Beachfront', 'Ski-on/Ski-out', 'Waterfront',
-'Smoke alarm', 'Carbon monoxide alarm']
+  'Kitchen', 'Dryer', 'Heating', 'Tv', 'Iron', 'Pool', 'Free parking',
+  'Crib', 'Gym', 'Breakfast', 'Smoking allowed', 'Hot tub', 'Ev charger', 'King bed', 'BBQ grill',
+  'Indoor fireplace', 'Beachfront', 'Ski-on/Ski-out', 'Waterfront',
+  'Smoke alarm', 'Carbon monoxide alarm']
 // Homepage: TOP categories: Best Rate / Houses / Kitchen  - show all - link to Explore
 // Renders a <StayList> with <StayPreview> with Link to <StayDetails>   url: /stay/123
 // See More => /explore?topRate=true
