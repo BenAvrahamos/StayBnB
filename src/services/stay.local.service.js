@@ -2,7 +2,7 @@
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 // import { userService } from './user.service.js'
-import { stay } from '../data/stay.js'
+import { stays } from '../data/stay.js'
 const STAY_DB = 'stay_db'
 
 _createDemoStay()
