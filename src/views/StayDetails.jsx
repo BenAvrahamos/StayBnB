@@ -36,37 +36,38 @@ export function StayDetails() {
     }
 
     return (
-        <section className='stay-details'>
-            <div className="stay-details-header">
-                <h1>{stay.summary}</h1>
-                <span></span><button>Share</button>
-                <span></span><button>Save</button>
-            </div>
-            <StayGalleryPreview />
-            <h1>Entire {stay.type} in {stay.city}, {stay.country}</h1>
-            <p>{stay.capacity} guests ・ {stay.bedrooms}・bedrooms ・ {stay.beds} ・ {stay.baths} baths</p>
-            <p>★ No reviews yet</p>
-            <hr />
-            <div className="hoted-by">
-                <img src={host.imgUrl} />
-                <div className="hosted-by-txt">
-                    <h3>Hosted by {hostName}</h3>
-            //superhost, two years hosting
-                </div>
-        //if there is a special policy to stay - add policy cmp. now we do not have it in data
-                <hr />
-                <div className="amenities-of-stay"> // grid with two columns. first col - 5 first amenities, sec col - 5 others.
-                    <h1>What this place offers:</h1>
-                    <ul className="first-col-amenity-ul">
-                        {stay.amenities.slice(0, 3).map(amenity => <li key={amenity}>{amenity}</li>)}
-                        <li className={stay.amenities.includes(safetyAmenities[0]) ? '' : 'no-safety-amenity'}>{safetyAmenities[0]}</li>
-                    </ul>
-                    <ul>
-                        {stay.amenities.slice(4, 9).map(amenity => <li key={amenity}>{amenity}</li>)}
-                        <li className={stay.amenities.includes(safetyAmenities[1]) ? '' : 'no-safety-amenity'}>{safetyAmenities[1]}</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+        <div>Hi</div>
+        // <section className='stay-details'>
+        //     <div className="stay-details-header">
+        //         <h1>{stay.summary}</h1>
+        //         <span></span><button>Share</button>
+        //         <span></span><button>Save</button>
+        //     </div>
+        //     <StayGalleryPreview />
+        //     <h1>Entire {stay.type} in {stay.city}, {stay.country}</h1>
+        //     <p>{stay.capacity} guests ・ {stay.bedrooms}・bedrooms ・ {stay.beds} ・ {stay.baths} baths</p>
+        //     <p>★ No reviews yet</p>
+        //     <hr />
+        //     <div className="hoted-by">
+        //         <img src={host.imgUrl} />
+        //         <div className="hosted-by-txt">
+        //             <h3>Hosted by {hostName}</h3>
+        //     //superhost, two years hosting
+        //         </div>
+        // //if there is a special policy to stay - add policy cmp. now we do not have it in data
+        //         <hr />
+        //         <div className="amenities-of-stay"> // grid with two columns. first col - 5 first amenities, sec col - 5 others.
+        //             <h1>What this place offers:</h1>
+        //             <ul className="first-col-amenity-ul">
+        //                 {stay.amenities.slice(0, 3).map(amenity => <li key={amenity}>{amenity}</li>)}
+        //                 <li className={stay.amenities.includes(safetyAmenities[0]) ? '' : 'no-safety-amenity'}>{safetyAmenities[0]}</li>
+        //             </ul>
+        //             <ul>
+        //                 {stay.amenities.slice(4, 9).map(amenity => <li key={amenity}>{amenity}</li>)}
+        //                 <li className={stay.amenities.includes(safetyAmenities[1]) ? '' : 'no-safety-amenity'}>{safetyAmenities[1]}</li>
+        //             </ul>
+        //         </div>
+        //     </div>
+        // </section>
     )
 }
