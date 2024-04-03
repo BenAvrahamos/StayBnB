@@ -1,0 +1,96 @@
+
+.app-header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.expanded-header {
+    height: max-content;
+    height: 80px;
+    padding-inline: 80px;
+    width: 100vw;
+    display: flex;
+  
+    justify-content: space-between;
+    align-items: center;
+
+    box-shadow: rgb(0 0 0/8%) 0 1px 0;
+
+    & .nav-section {
+        width: 25em;
+        justify-content: center;
+        display: flex;
+
+        & .nav {
+            width: 22em;
+            justify-content: space-between;
+            display: flex;
+            font-size: 1em;
+
+            & a {
+                margin: 10px 16px;
+            }
+
+
+        }
+
+    }
+
+    & .logo-section {
+        width: 22em;
+
+        & .logo {
+            width: 7.375em;
+            height: 4em;
+            display: flex;
+            align-items: center;
+            font-size: 1.5em;
+            gap: 0.2em;
+
+
+
+            & img {
+                height: 30px;
+
+            }
+        }
+
+    }
+
+    & .user-section {
+        width: 22em;
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        gap: 1em;
+
+        & button {
+            display: flex;
+            padding: 8px 8px 8px 14px;
+            border-radius: 2em;
+            gap: 1em;
+            font-weight: bold;
+            align-items: center;
+            box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.18);
+            border: none;
+            transition: 0.2s;
+            background-color: white;
+
+            & .profile {
+                width: 2.4em;
+                height: 2.4em;
+                background-color: black;
+                border-radius: 50%;
+            }
+        }
+
+        & button:hover {
+            box-shadow: -1px 2px 3px 2px rgba(0, 0, 0, 0.18);
+
+        }
+
+    }
+}
