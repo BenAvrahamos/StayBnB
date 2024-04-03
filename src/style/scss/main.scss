@@ -1,7 +1,19 @@
-//basics
-@import "basics/base";
 
-// Components
-@import "cmps/HeadFilter";
-@import "cmps/AppHeader";
-@import  '../scss/setup/_typography.scss'
+/* SETUP */
+@import 'setup/_typography.scss';
+@import 'setup/_functions.scss';
+@import 'setup/_variables.scss';
+@import 'setup/_mixins.scss';
+
+/* BASICS */
+@import 'basics/_base.scss';
+@import 'basics/_helpers.scss';
+@import 'basics/_layout.scss';
+
+/* VIEWS */
+@import 'pages/StayIndex.scss';
+
+/* CMPS */
+@import 'cmps/AppHeader.scss';
+@import 'cmps/HeadFilter.scss';
+@import 'cmps/StayPreview.scss';
