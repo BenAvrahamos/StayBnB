@@ -7,13 +7,13 @@ import { StayIndex } from './views/StayIndex'
 import { StayDetails } from './views/StayDetails'
 
 export function RootCmp() {
-  return <Provider>
+  return 
+  // <Provider>
     <Router>
       <Routes>
         <Route path='/' element={<StayIndex/>}/>
         <Route path='/:stayId' element={<StayDetails/>}/>
       </Routes>
     </Router>
-  </Provider>
-
+  // </Provider>
 }
