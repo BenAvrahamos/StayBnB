@@ -14,7 +14,8 @@ export const stays = [{
     "Wifi",
     "Smoking allowed",
     "Pets allowed",
-    "Cooking basics"
+    "Cooking basics",
+    "Carbon monoxide alarm"
   ],
   labels: [
     "Top of the world",
