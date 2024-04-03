@@ -1,4 +1,3 @@
-import { Provider } from 'react-redux'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 import './style/main.css'
@@ -7,6 +6,12 @@ import './style/main.css'
 // import { StayDetails } from './views/StayDetails'
 
 export function RootCmp() {
+  return <Router>
+      <Routes>
+        <Route path='/' element={<StayIndex/>}/>
+        <Route path='/:stayId' element={<StayDetails/>}/>
+      </Routes>
+    </Router>
   return 
     
 //     <Router>
