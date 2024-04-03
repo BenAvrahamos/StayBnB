@@ -18,27 +18,43 @@ export const stayService = {
 }
 
 async function query() {
-    const stayArr = await storageService.query(STAY_DB)
-    return stayArr
+    try {
+        const stayArr = await storageService.query(STAY_DB)
+        return stayArr
+    } catch (err) {
+        console.log(err)
+    }
 }
 
 async function getById(stayId) {
-    const stay = await storageService.get(STORAGE_KEY, stayId)
-    return stay
+    try {
+        const stay = await storageService.get(STORAGE_KEY, stayId)
+        return stay
+    } catch (err) {
+        console.log(err)
+    }
 }
 
 async function remove(stayId) {
-    await storageService.remove(STORAGE_KEY, stayId)
+    try {
+        await storageService.remove(STORAGE_KEY, stayId)
+    } catch (err) {
+        console.log(err)
+    }
 }
 
 
 async function save(stay) {
-    if (stay._id) {
-        const updatedStay = await storageService.put(STORAGE_KEY, stay)
-        return updatedStay
-    } else {
-        const stayToAdd = await storageService.post(STORAGE_KEY, stay)
-        return stayToAdd
+    try {
+        if (stay._id) {
+            const updatedStay = await storageService.put(STORAGE_KEY, stay)
+            return updatedStay
+        } else {
+            const stayToAdd = await storageService.post(STORAGE_KEY, stay)
+            return stayToAdd
+        }
+    } catch (err) {
+        console.log(err)
     }
 }
 
