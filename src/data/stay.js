@@ -6,6 +6,9 @@ export const stays = [{
   price: 80.00,
   summary: "Fantastic duplex apartment...",
   capacity: 8,
+  bedrooms: 2,
+  beds: 2,
+  baths: 2,
   amenities: [
     "TV",
     "Wifi",
@@ -37,6 +40,9 @@ export const stays = [{
   price: 90.00,
   summary: "Fantastic duplex apartment...",
   capacity: 8,
+  bedrooms: 2,
+  beds: 2,
+  baths: 2,
   amenities: [
     "TV",
     "Wifi",
@@ -67,6 +73,9 @@ export const stays = [{
   price: 80.00,
   summary: "Fantastic duplex apartment...",
   capacity: 8,
+  bedrooms: 2,
+  beds: 2,
+  baths: 2,
   amenities: [
     "TV",
     "Wifi",
