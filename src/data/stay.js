@@ -21,7 +21,13 @@ export const stays = [{
     "Top of the world",
     "Trending"
   ],
-  host: {},
+  host: {
+    _id: "u101",
+    fullName: "User 1",
+    imgUrl: "/img/img1.jpg",
+    userName: "user1",
+    password: "secret"
+  },
   loc: {
     country: "Portugal",
     countryCode: "PT",
@@ -54,7 +60,13 @@ export const stays = [{
     "Play",
     "Tropical"
   ],
-  host: {},
+  host: {
+    _id: "u101",
+    fullName: "User 1",
+    imgUrl: "/img/img1.jpg",
+    userName: "user1",
+    password: "secret"
+  },
   loc: {
     country: "Portugal",
     countryCode: "PT",
@@ -88,7 +100,13 @@ export const stays = [{
     "Trending",
     "Tropical"
   ],
-  host: {},
+  host: {
+    _id: "u101",
+    fullName: "User 1",
+    imgUrl: "/img/img1.jpg",
+    userName: "user1",
+    password: "secret"
+  },
   loc: {
     country: "Portugal",
     countryCode: "PT",
