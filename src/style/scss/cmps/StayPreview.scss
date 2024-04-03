@@ -1,6 +1,23 @@
 .stay-preview {
     img {
         width: 100%;
-        border-radius: 20px;
+        border-radius: 1.25rem;
+    }
+
+    h1 {
+        margin: 0;
+        font-size: 1rem;
+    }
+
+    div {
+        margin-block-start: 0.5em;
+    }
+
+    p.grayTxt {
+        color: gray;
+    }
+
+    p.underline {
+        text-decoration: underline;
     }
 }
