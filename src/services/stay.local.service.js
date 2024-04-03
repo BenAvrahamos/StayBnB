@@ -5,16 +5,18 @@ import { utilService } from './util.service.js'
 import { stays } from '../data/stay.js'
 const STAY_DB = 'stay_db'
 
-_createDemoStay()
+_createDemoStay(stays)
 
 export const stayService = {
     query,
     getById,
     save,
     remove,
+    getNumberOfNights,
+    getFilterFromParams,
     getEmptyOrder,
     getEmptyStay,
-    getDefaultFilter,
+    getDefaultFilter
 }
 
 async function query() {
@@ -43,7 +45,6 @@ async function remove(stayId) {
     }
 }
 
-
 async function save(stay) {
     try {
         if (stay._id) {
@@ -55,6 +56,31 @@ async function save(stay) {
         }
     } catch (err) {
         console.log(err)
+    }
+}
+
+function getNumberOfNights({ entryDate, exitDate }) {
+    const entryTimestamp = new Date(entryDate).getTime()
+    const exitTimestamp = new Date(exitDate).getTime()
+
+    const difference = exitTimestamp - entryTimestamp
+    const stayLength = Math.ceil(difference / 1000 * 60 * 60 * 24)
+    return stayLength
+}
+
+function getFilterFromParams(searchParams) {
+    const defaultFilter = getDefaultFilter()
+    return {
+        loc: searchParams.get('loc') || defaultFilter.loc,
+        availability: searchParams.get('availability') || defaultFilter.availability,
+        guestCount: searchParams.get('guestCount') || defaultFilter.guestCount,
+        labels: searchParams.get('labels') || defaultFilter.labels,
+        placeType: searchParams.get('placeType') || defaultFilter.placeType,
+        priceRange: searchParams.get('priceRange') || defaultFilter.priceRange,
+        BBB: searchParams.get('BBB') || defaultFilter.BBB,
+        propType: searchParams.get('propType') || defaultFilter.propType,
+        amenities: searchParams.get('amenities') || defaultFilter.amenities,
+        bookingOpts: searchParams.get('bookingOpts') || defaultFilter.bookingOpts,
     }
 }
 
@@ -92,7 +118,8 @@ function getDefaultFilter() {
             lat: 0,
             lng: 0
         },
-        availability: [],            // dates
+        entryDate: '',
+        exitDate: '',            // dates
         guestCount: '',                // number of guests
         labels: [],
         placeType: 'any type',       // any type / room / entire home
@@ -141,7 +168,7 @@ function getEmptyOrder() {
     }
 }
 
-function _createDemoStay() {
+function _createDemoStay(stays) {
     utilService.saveToStorage(STAY_DB, stays)
 }
 

@@ -101,8 +101,8 @@ export const orders = [
       fullName: "User 1"
     },
     totalPrice: 160,
-    entryDate: "2025/10/15",
-    exitDate: "2025/10/17",
+    entryDate: "15-10-2025",
+    exitDate: "17-10-2025",
     guests: {
       adults: 1,
       kids: 2
