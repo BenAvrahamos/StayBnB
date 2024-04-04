@@ -12,9 +12,8 @@ export function StayPreview({ stay, filterBy }) {
         {filterBy.loc.city && <p className="grayTxt">{stay.summary}</p>}
 
         {!filterBy.entryDate && <p className="grayTxt">Apr 7-9</p>}
-        <div>
-            <p>${stay.price} night</p>
-            {filterBy.entryDate && <p className="grayTxt underline"> • {stayService.getNumberOfNights() * stay.price} total</p>}
-        </div>
+
+            {!filterBy.entryDate && <p><span className="boldTxt"><span className="moneySgn">₪</span>{stay.price}</span> night</p>}
+            {filterBy.entryDate && <p><span className="boldTxt"><span className="moneySgn">₪</span>{stay.price}</span> night<span className="grayTxt underline"> • {stayService.getNumberOfNights() * stay.price} total</span></p>}
     </article>
 }

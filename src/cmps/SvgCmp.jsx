@@ -1,21 +1,22 @@
-export function SvgCmp({ svgNames }) {
+export function SvgCmp({ svgNames, handleChange }) {
 
-    function doesFileExist(filePath) {
-        try {
-            return fs.existsSync(filePath)
-        } catch (error) {
-            return false;
-        }
-    }
+    // function doesFileExist(filePath) {
+    //     try {
+    //         return fs.existsSync(filePath)
+    //     } catch (error) {
+    //         return false;
+    //     }
+    // }
 
     function renderSvg(name) {
-        const svg = `./src/assets/svg/${name}.svg`
+        const svg = `./src/assets/svg/labels/${name}.svg`
         const nameCaps = name[0].toUpperCase() + name.slice(1)
 
-            return <div key={name} className={`${name.replace(/_/g, ' ')} flex column center`}>
-                {doesFileExist(svg) && <img src={svg} alt={name} />}
-                <p>{nameCaps.replace(/_/g, ' ')}</p>
-            </div>
+        return <div key={name} onClick={() => handleChange(name)}
+            className={`${name.replace(/_/g, ' ')}`}>
+            <img src={svg} alt={name} />
+            <p>{nameCaps.replace(/_/g, ' ')}</p>
+        </div>
     }
 
     return <>

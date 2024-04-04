@@ -1,4 +1,6 @@
 .index-section {
+    color: $darkGray;
+
     .stay-list {
         margin-block: 1rem;
         padding-inline: 2.5rem;
@@ -7,4 +9,34 @@
         grid-auto-rows: minmax(min-content, max-content);
         grid-gap: 2.5rem 1.5rem;
     }
+
+    .index-end-section {
+        margin-block: 3.5rem 2rem;
+
+        gap: 1rem;
+        letter-spacing: -0.06rem;
+
+        h1 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin: 0;
+            color: $darkGray;
+        }
+
+        button {
+            height: auto;
+            padding: 1rem 1.7rem;
+            border-radius: 0.6rem;
+            color: white;
+            background-color: $darkGray;
+
+            font-weight: 600;
+
+            &:active {
+                scale: 0.85;
+                transition: scale 1s;
+            }
+        }
+    }
+
 }

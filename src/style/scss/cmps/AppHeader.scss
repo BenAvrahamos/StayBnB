@@ -1,7 +1,6 @@
 .expanded-header {
     height: 5em;
-    width: 100vw;
-    padding-inline: 2.5rem;
+    width: calc(100vw - 5rem);
 
     box-shadow: rgba(122, 122, 122, 0.08) 0 1px 0;
 
@@ -65,7 +64,7 @@
                 &::before {
                     content: '\f2bd';
                     font-family: fa-solid;
-                    color: white;
+                    color: $gray1;
                 }
             }
         }
