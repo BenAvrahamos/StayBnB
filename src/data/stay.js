@@ -6,22 +6,32 @@ export const stays = [{
   price: 80.00,
   summary: "Fantastic duplex apartment...",
   capacity: 8,
-  bedrooms: 2,
-  beds: 2,
-  baths: 2,
-  amenities: [
-    "TV",
-    "Wifi",
-    "Smoking allowed",
-    "Pets allowed",
-    "Cooking basics",
-    "Carbon monoxide alarm"
+  bedrooms: [
+    {
+      name: 'Living Room',
+      beds: ['couch']
+    },
+    {
+      name: 'Bedroom 1',
+      beds: ['double bed', 'double bed', 'sofa bed']
+    }
   ],
+  baths: 2,
+  amenities: ['Heating', 'Tv', 'Iron', 'Pool', 'Free parking',
+    'Crib', 'Gym', 'Breakfast', 'Smoking allowed', 'Hot tub', 'Ev charger', 'King bed', 'BBQ grill',
+    'Indoor fireplace', 'Beachfront', 'Ski-on/Ski-out', 'Waterfront',
+    'Smoke alarm'],
   labels: [
     "Top of the world",
     "Trending"
   ],
-  host: {},
+  host: {
+    _id: "u101",
+    fullName: "User 1",
+    imgUrl: "/img/img1.jpg",
+    userName: "user1",
+    password: "secret"
+  },
   loc: {
     country: "Portugal",
     countryCode: "PT",
@@ -41,20 +51,37 @@ export const stays = [{
   price: 90.00,
   summary: "Fantastic duplex apartment...",
   capacity: 8,
-  bedrooms: 2,
-  beds: 2,
+  bedrooms: [
+    {
+      name: 'Living Room',
+      beds: ['couch']
+    },
+    {
+      name: 'Bedroom 1',
+      beds: ['double bed', 'double bed', 'sofa bed']
+    },
+    {
+      name: 'Bedroom 2',
+      beds: ['single bed', 'sofa bed', 'king size bed']
+    }
+  ],
   baths: 2,
   amenities: [
-    "TV",
-    "Wifi",
-    "Kitchen",
-    "Cooking basics"
-  ],
+    'Tv', 'Iron', 'Pool', 'Free parking',
+    'Crib', 'Gym', 'Breakfast', 'Smoking allowed', 'Hot tub', 'Ev charger', 'King bed', 'BBQ grill',
+    'Indoor fireplace', 'Beachfront', 'Ski-on/Ski-out', 'Waterfront',
+    'Smoke alarm', 'Carbon monoxide alarm'],
   labels: [
     "Play",
     "Tropical"
   ],
-  host: {},
+  host: {
+    _id: "u101",
+    fullName: "User 1",
+    imgUrl: "/img/img1.jpg",
+    userName: "user1",
+    password: "secret"
+  },
   loc: {
     country: "Portugal",
     countryCode: "PT",
@@ -74,21 +101,38 @@ export const stays = [{
   price: 80.00,
   summary: "Fantastic duplex apartment...",
   capacity: 8,
-  bedrooms: 2,
-  beds: 2,
+  bedrooms: [
+    {
+      name: 'Living Room',
+      beds: ['couch']
+    },
+    {
+      name: 'Bedroom 1',
+      beds: ['double bed', 'double bed', 'sofa bed']
+    },
+    {
+      name: 'Bedroom 2',
+      beds: ['single bed', 'sofa bed', 'king size bed']
+    }
+  ],
   baths: 2,
   amenities: [
-    "TV",
-    "Wifi",
-    "Kitchen",
-    "Cooking basics"
+    'Wifi', 'Washer', 'Air conditioning', 'Dedicated workspace', 'Hair dryer',
+    'Kitchen', 'Dryer', 'Heating', 'Tv', 'Iron', 'Pool', 'Free parking',
+    'Crib', 'Gym', 'Breakfast', 'Smoking allowed'
   ],
   labels: [
     "Top of the world",
     "Trending",
     "Tropical"
   ],
-  host: {},
+  host: {
+    _id: "u101",
+    fullName: "User 1",
+    imgUrl: "/img/img1.jpg",
+    userName: "user1",
+    password: "secret"
+  },
   loc: {
     country: "Portugal",
     countryCode: "PT",
@@ -143,6 +187,12 @@ export const users = [
     password: "secret",
   }
 ]
+
+export const amenities = ['Wifi', 'Washer', 'Air conditioning', 'Dedicated workspace', 'Hair dryer',
+  'Kitchen', 'Dryer', 'Heating', 'Tv', 'Iron', 'Pool', 'Free parking',
+  'Crib', 'Gym', 'Breakfast', 'Smoking allowed', 'Hot tub', 'Ev charger', 'King bed', 'BBQ grill',
+  'Indoor fireplace', 'Beachfront', 'Ski-on/Ski-out', 'Waterfront',
+  'Smoke alarm', 'Carbon monoxide alarm']
 // Homepage: TOP categories: Best Rate / Houses / Kitchen  - show all - link to Explore
 // Renders a <StayList> with <StayPreview> with Link to <StayDetails>   url: /stay/123
 // See More => /explore?topRate=true

@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
-
 import { stayService } from '../services/stay.local.service.js'
-
 import { StayList } from '../cmps/StayList.jsx'
 import { LabelFilter } from '../cmps/LabelFilter.jsx'
 
