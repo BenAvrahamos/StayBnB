@@ -34,7 +34,7 @@ export const stays = [{
   host: {
     _id: "u101",
     fullName: "User 1",
-    imgUrl: "/img/img1.jpg",
+    imgUrl: "https://robohash.org/doodi",
     userName: "user1",
     password: "secret",
     experience: {
@@ -94,7 +94,7 @@ export const stays = [{
   host: {
     _id: "u101",
     fullName: "User 1",
-    imgUrl: "/img/img1.jpg",
+    imgUrl: "https://robohash.org/doodi",
     userName: "user1",
     password: "secret",
     experience: {
@@ -155,7 +155,7 @@ export const stays = [{
   host: {
     _id: "u101",
     fullName: "User 1",
-    imgUrl: "/img/img1.jpg",
+    imgUrl: "https://robohash.org/doodi",
     userName: "user1",
     password: "secret",
     experience: {
@@ -216,9 +216,13 @@ export const stays = [{
   host: {
     _id: "u101",
     fullName: "User 1",
-    imgUrl: "/img/img1.jpg",
+    imgUrl: "https://robohash.org/doodi",
     userName: "user1",
-    password: "secret"
+    password: "secret",
+    experience: {
+      isSuper: false,
+      hostingTime: 5
+    }
   },
   loc: {
     country: "Portugal",
@@ -273,7 +277,7 @@ export const stays = [{
   host: {
     _id: "u101",
     fullName: "User 1",
-    imgUrl: "/img/img1.jpg",
+    imgUrl: "https://robohash.org/doodi",
     userName: "user1",
     password: "secret",
     experience: {
@@ -334,7 +338,7 @@ export const stays = [{
   host: {
     _id: "u101",
     fullName: "User 1",
-    imgUrl: "/img/img1.jpg",
+    imgUrl: "https://robohash.org/doodi",
     userName: "user1",
     password: "secret",
     experience: {
@@ -384,7 +388,7 @@ export const users = [
   {
     _id: "u101",
     fullName: "User 1",
-    imgUrl: "/img/img1.jpg",
+    imgUrl: "https://robohash.org/doodi",
     userName: "user1",
     password: "secret",
     experience: {

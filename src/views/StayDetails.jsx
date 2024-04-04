@@ -71,7 +71,7 @@ export function StayDetails() {
                             <hr />
                         </div>
                         <div className="hosted-by">
-                            {/* <img src={stay.host.imgUrl} /> */}
+                            <img src={stay.host.imgUrl} className="host-img"/>
                             <div className="hosted-by-txt">
                                 <h3>Hosted by {_findHostName()}</h3>
                                 {/* <p>{stay.host.experience.isSuper ? 'Superhost' : '0'} ・ {stay.host.experience.hostingTime > 1 ? 'years' : 'year'} hosting</p> */}
