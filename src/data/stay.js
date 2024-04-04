@@ -34,7 +34,7 @@ export const stays = [{
     experience: {
       isSuper: false,
       hostingTime: 5
-     }
+    }
   },
   loc: {
     country: "Portugal",
@@ -88,7 +88,7 @@ export const stays = [{
     experience: {
       isSuper: false,
       hostingTime: 5
-     }
+    }
   },
   loc: {
     country: "Portugal",
@@ -143,7 +143,7 @@ export const stays = [{
     experience: {
       isSuper: false,
       hostingTime: 5
-     }
+    }
   },
   loc: {
     country: "Portugal",
@@ -155,7 +155,8 @@ export const stays = [{
   },
   reviews: [],
   likedByUsers: []
-},{
+},
+{
   _id: "s104",
   name: "Cabana",
   type: "House",
@@ -205,7 +206,8 @@ export const stays = [{
   },
   reviews: [],
   likedByUsers: []
-},{
+},
+{
   _id: "s105",
   name: "Cabana",
   type: "House",
@@ -247,7 +249,7 @@ export const stays = [{
     experience: {
       isSuper: false,
       hostingTime: 5
-     }
+    }
   },
   loc: {
     country: "Portugal",
@@ -259,7 +261,8 @@ export const stays = [{
   },
   reviews: [],
   likedByUsers: []
-},{
+},
+{
   _id: "s107",
   name: "Cabana",
   type: "House",
@@ -301,7 +304,7 @@ export const stays = [{
     experience: {
       isSuper: false,
       hostingTime: 5
-     }
+    }
   },
   loc: {
     country: "Portugal",
@@ -349,8 +352,8 @@ export const users = [
     userName: "user1",
     password: "secret",
     experience: {
-     isSuper: false,
-     hostingTime: 5
+      isSuper: false,
+      hostingTime: 5
     }
   },
   {
