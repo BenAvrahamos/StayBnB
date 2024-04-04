@@ -1,10 +1,15 @@
 export const UPDATE_RESERVATION = 'UPDATE_RESERVATION'
 
+// DEMO DATA FOR NOW
+const checkout = new Date()
+const checkIn = new Date(checkout)
+checkIn.setDate(new Date(checkIn.getDate() - 1))
+
 const initialState = {
     reservation: {
-        checkIn: new Date(),
-        checkout: newDate(),
-        guests: 1,
+        checkIn: checkIn,
+        checkout: checkout,
+        guests: {adults: 1, children: 0, infants: 0, pets: 0, sum: 1},
         isClickedForBooking: false
     }
 }
