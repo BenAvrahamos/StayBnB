@@ -2,4 +2,28 @@
     .no-safety-amenity {
         text-decoration: line-through;
     }
+
+    .content {
+        grid-column: 1;
+    }
+
+    .reserve-modal {
+        grid-column: 2;
+
+        .selectors-container label {
+            text-transform: uppercase;
+        }
+
+        .arrow-down::before {
+            content: '\f107';
+            font-family: fa-solid;
+        }
+
+        .arrow-up::before {
+            content: '\f106';
+            font-family: fa-solid;
+        }
+    }
+
+
 }
