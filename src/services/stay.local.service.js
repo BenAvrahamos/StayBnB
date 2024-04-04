@@ -170,7 +170,7 @@ function getEmptyOrder() {
 }
 
 function _createDemoStay(stays) {
-    if (utilService.loadFromStorage(STAY_DB).length) return utilService.loadFromStorage(STAY_DB)
+    if (utilService.loadFromStorage(STAY_DB)) return utilService.loadFromStorage(STAY_DB)
     else return utilService.saveToStorage(STAY_DB, stays)
 }
 
