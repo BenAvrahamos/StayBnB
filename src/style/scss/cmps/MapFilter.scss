@@ -6,4 +6,21 @@
     height: 25.5625rem;
     border-radius: 1.5em;
     background-color: white;
+
+    & .regions {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        padding: 32px 24px 24px 24px;
+        row-gap: 1em;
+
+        & .region {
+            padding: 0.5rem;
+        }
+
+    }
+
+    & img {
+        width: 6.8rem;
+        height: 6.8rem;
+    }
 }
