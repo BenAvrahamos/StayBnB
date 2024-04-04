@@ -10,15 +10,15 @@ export function AppHeader() {
             <div className="logo-section">
                 <div className="logo flex align-center">
                     <img src="src\assets\img\airbnb-logo.png" alt="" />
-                    StayBnb
+                    Staybnb
                 </div>
             </div>
 
             <div className="nav-section flex justify-center">
-                <nav className="nav flex space-between">
+                <nav className="nav flex space-evenly">
                     <NavLink to="/">Stays</NavLink>
                     <NavLink to="/" className='grayTxt'>Experiences</NavLink>
-                    <NavLink to="/" className='grayTxt'>Online Experiences</NavLink>
+                    {/* <NavLink to="/" className='grayTxt'>Online Experiences</NavLink> */}
                 </nav>
             </div>
 
