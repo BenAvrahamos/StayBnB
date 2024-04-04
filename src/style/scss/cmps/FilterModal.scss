@@ -1,0 +1,143 @@
+.overlay {
+    position: fixed;
+    inset: 0 0 0 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 3;
+}
+
+.filter-modal {
+    position: fixed;
+    inset: 2.5rem 0 0 0;
+    z-index: 4;
+    
+    border-radius: 0.8rem;
+    background-color: white;
+    color: $darkGray;
+    letter-spacing: -0.8px;
+    
+    header,
+    footer {
+        background-color: white;
+        position: absolute;
+        
+        &>* {
+            font-size: 1rem;
+        }
+    }
+    
+    header {
+        height: 4rem;
+        inset: 0 0 auto;
+        padding: 1rem 1.5rem;
+        border-block-end: 0.667px solid $lightGray;
+        border-radius: 0.8rem 0.8rem 0 0;
+    }
+
+    footer {
+        height: 5rem;
+        inset: auto 0 0;
+        padding: 1rem 1.5rem 1rem 0.9rem;
+        border-block-start: 0.667px solid $lightGray;
+    }
+    
+    .exit-btn,
+    .clear-btn {
+        background-color: white;
+        transition: 0s;
+        letter-spacing: -0.8px;
+        
+        &:hover {
+            background-color: $btnHover;
+        }
+    }
+    
+    .exit-btn {
+        position: absolute;
+        inset: 1rem auto auto 1rem;
+        border-radius: 50%;
+        height: 2rem;
+        width: 2rem;
+    }
+    
+    .clear-btn {
+        font-weight: 550;
+        border-radius: 0.6rem;
+    }
+    
+    .submit-btn {
+        height: auto;
+        padding: 0.9rem 1.7rem;
+        border-radius: 0.6rem;
+        color: white;
+        background-color: $darkGray;
+        
+        font-size: 0.92rem;
+        letter-spacing: -0.8px;
+        font-weight: 600;
+    }
+
+    button:active {
+        scale: 0.85;
+        transition: scale 1s;
+    }
+    
+    main {
+        height: calc(100% - 9rem);
+        overflow-y: auto;
+        margin-block-start: 4rem;
+        padding-inline: 1.5rem;
+        
+        h2 {
+            font-size: 1.36rem;
+            letter-spacing: -1.2px;
+            font-weight: 550;
+            margin: 0;
+            padding-block-end: 1.5rem;
+        }
+        
+        h3 {
+            font-weight: 500;
+            font-size: 1rem;
+            margin: 0;
+            padding-block: 0.5rem 0.75rem;
+        }
+        
+        h4 {
+            font-size: 0.9rem;
+            letter-spacing: 0.05px;
+            font-weight: 500;
+            margin: 0;
+            padding: 0.25rem 0.125rem 1.25rem;
+        }
+        
+        p {
+            font-size: 0.85rem;
+            letter-spacing: -0.36 px;
+            padding-block-end: 1.5rem;
+        }
+        
+        div:not(:first-of-type) {
+            padding-block: 2rem;
+        }
+        
+        div:first-of-type {
+            padding-block: 1.5rem 2rem;
+        }
+        
+        div:not(:last-of-type) {
+            border-block-end: solid 0.667px $lightGray;
+        }
+    }
+}
+
+@media (width > 742px) {
+    .filter-modal {
+        margin: 2.5rem;
+        inset: 0 calc(50% - 24.375rem) 0;
+        max-width: 48.75rem;
+
+        footer {
+            border-radius: 0 0 0.8rem 0.8rem;
+        }
+    }
+}
