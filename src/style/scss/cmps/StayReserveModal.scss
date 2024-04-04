@@ -1,0 +1,63 @@
+$borderclr: #DEDEDE;
+
+.reserve-modal {
+    align-self: start;
+
+    container-price-selectors {
+        width: rem(322.33px);
+        height: rem(226px);
+    }
+
+    .price-logo {
+        h2 {
+            font-size: rem(22px);
+        }
+
+        span {
+            font-size: 1rem;
+        }
+
+    }
+
+    .selectors-container {
+
+        .check-in,
+        .checkout {
+            border: 1px solid $borderclr;
+            flex-grow: 1;
+            width: rem(160.66px);
+            height: rem(56px);
+        }
+
+        label {
+            font-size: em(11px);
+            font-weight: bold;
+        }
+
+        div.txt-date {
+            font-size: rem(14px);
+        }
+
+        .txt {
+            padding: 26px 12px 10px;
+            align-self: flex-end;
+        }
+
+        .guest-selector {
+            padding: 26px 36px 10px 12px;
+            border: 1px solid $borderclr;
+            height: rem(56px);
+            justify-content: flex-end;
+        }
+    }
+
+    .reserve-btn {
+        height: rem(48px);
+        // padding: 14px 0px;
+        background: radial-gradient(103.95% 1413.54% at -3.95% 100%, #D33753 0%, #D13660 52.83%, #C72D65 100%);
+        border-radius: rem(8px);
+        font-weight: 590;
+        line-height: 19px;
+        color: #ffffff;
+    }
+}
