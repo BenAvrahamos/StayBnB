@@ -5,6 +5,7 @@ import { GuestFilter } from '../cmps/GuestFilter';
 
 export function HeaderFilter() {
     const [modalType, setModalType] = useState()
+    console.log(modalType);
     const ref = useRef(null);
 
     useEffect(() => {
@@ -41,8 +42,8 @@ export function HeaderFilter() {
         </div>
 
 
+        {modalType === 'map' && <MapFilter setModalType={setModalType} />}
         {(modalType === 'check-in' || modalType === 'check-out') && <DateFilter />}
-        {modalType === 'map' && <MapFilter />}
         {modalType === 'guest' && <GuestFilter />}
 
 
