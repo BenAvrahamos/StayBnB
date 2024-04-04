@@ -2,4 +2,37 @@
     .no-safety-amenity {
         text-decoration: line-through;
     }
+
+    .header-btns button {
+        background-color: transparent;
+        text-decoration: underline;
+    }
+
+    .content {
+        grid-column: 1;
+    }
+
+    .reserve-modal {
+        grid-column: 2;
+        padding: 24px;
+        box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
+        border: 1px solid rgb(221, 221, 221);
+        border-radius: 12px;
+
+        .selectors-container label {
+            text-transform: uppercase;
+        }
+
+        .arrow-down::before {
+            content: '\f107';
+            font-family: fa-solid;
+        }
+
+        .arrow-up::before {
+            content: '\f106';
+            font-family: fa-solid;
+        }
+    }
+
+
 }
