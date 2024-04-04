@@ -2,35 +2,35 @@ import { NavLink } from "react-router-dom";
 import { HeaderFilter } from "./HeaderFilter";
 
 export function AppHeader() {
-    return <section className="app-header">
+    return <section className="app-header flex column center">
 
-    
-<section className="expanded-header">
 
-        <div className="logo-section">
-            <div className="logo">
-                <img src="src\assets\img\airbnb-logo.png" alt="" />
-                StayBnb
+        <section className="expanded-header flex space-between align-center">
+
+            <div className="logo-section">
+                <div className="logo flex align-center">
+                    <img src="src\assets\img\airbnb-logo.png" alt="" />
+                    StayBnb
+                </div>
             </div>
-        </div>
 
-        <div className="nav-section">
-            <nav className="nav">
-                <NavLink to="/">Stays</NavLink>
-                <NavLink to="/">Experiences</NavLink>
-                <NavLink to="/">Online Experiences</NavLink>
-            </nav>
-        </div>
+            <div className="nav-section flex justify-center">
+                <nav className="nav flex space-between">
+                    <NavLink to="/">Stays</NavLink>
+                    <NavLink to="/" className='grayTxt'>Experiences</NavLink>
+                    <NavLink to="/" className='grayTxt'>Online Experiences</NavLink>
+                </nav>
+            </div>
 
 
-        <div className="user-section">
-            Staybnb your home
+            <div className="user-section flex align-center">
+                Staybnb your home
 
-            <button>☰
-                <div className="profile"></div>
-            </button>
+                <button className="flex align-center space-between">☰
+                    <div className="profile"></div>
+                </button>
 
-        </div>
+            </div>
         </section>
 
         <HeaderFilter />

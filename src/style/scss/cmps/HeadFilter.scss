@@ -1,21 +1,29 @@
 .header-filter {
-    width: 55.375em;
-    height: 4.125em;
-    border-radius: 2em;
+    width: calc(100vw - 5rem);
+    max-width: 850px;
+    font-size: 12px;
+    border-radius: 3em;
     box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.18);
     margin-bottom: 1em;
-    display: flex;
+    margin-inline: 2.5rem;
+    padding-inline-end: 0.5rem;
+
     column-gap: 0.4em;
 
-    & .destination,
-    & .dates,
-    & .guests {
-        height: 4.125em;
+    span {
+        font-size: 14px;
+        color: $headerGray;
+    }
+
+    div {
+        height: 4rem;
+        flex-grow: 1;
+        border-radius: 3em;
+        padding: 0.875rem 1.5rem;
+
         display: flex;
         flex-direction: column;
-        padding-left: 1.5em;
         justify-content: center;
-        border-radius: 2em;
 
         &:hover {
             background-color: rgba(#71717123, 0.25);
@@ -33,4 +41,20 @@
     & .guests {
         width: 19.25em;
     }
+
+    button {
+        height: 3rem;
+        width: 3rem;
+        background-color: $siteColor;
+        border-radius: 50%;
+
+        align-self: center;
+
+        &:before {
+            content: '\f002';
+            font-family: fa-solid;
+            color: white;
+        }
+    }
+
 }

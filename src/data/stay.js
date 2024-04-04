@@ -143,6 +143,156 @@ export const stays = [{
   },
   reviews: [],
   likedByUsers: []
+},{
+  _id: "s104",
+  name: "Cabana",
+  type: "House",
+  imgUrls: ["https://e26e9b.jpg", "otherImg.jpg"],
+  price: 80.00,
+  summary: "Fantastic duplex apartment...",
+  capacity: 8,
+  bedrooms: [
+    {
+      name: 'Living Room',
+      beds: ['couch']
+    },
+    {
+      name: 'Bedroom 1',
+      beds: ['double bed', 'double bed', 'sofa bed']
+    },
+    {
+      name: 'Bedroom 2',
+      beds: ['single bed', 'sofa bed', 'king size bed']
+    }
+  ],
+  baths: 2,
+  amenities: [
+    'Wifi', 'Washer', 'Air conditioning', 'Dedicated workspace', 'Hair dryer',
+    'Kitchen', 'Dryer', 'Heating', 'Tv', 'Iron', 'Pool', 'Free parking',
+    'Crib', 'Gym', 'Breakfast', 'Smoking allowed'
+  ],
+  labels: [
+    "Top of the world",
+    "Trending",
+    "Tropical"
+  ],
+  host: {
+    _id: "u101",
+    fullName: "User 1",
+    imgUrl: "/img/img1.jpg",
+    userName: "user1",
+    password: "secret"
+  },
+  loc: {
+    country: "Portugal",
+    countryCode: "PT",
+    city: "Lisbon",
+    address: "17 Kombo st",
+    lat: -8.61308,
+    lng: 41.1413
+  },
+  reviews: [],
+  likedByUsers: []
+},{
+  _id: "s105",
+  name: "Cabana",
+  type: "House",
+  imgUrls: ["https://e26e9b.jpg", "otherImg.jpg"],
+  price: 80.00,
+  summary: "Fantastic duplex apartment...",
+  capacity: 8,
+  bedrooms: [
+    {
+      name: 'Living Room',
+      beds: ['couch']
+    },
+    {
+      name: 'Bedroom 1',
+      beds: ['double bed', 'double bed', 'sofa bed']
+    },
+    {
+      name: 'Bedroom 2',
+      beds: ['single bed', 'sofa bed', 'king size bed']
+    }
+  ],
+  baths: 2,
+  amenities: [
+    'Wifi', 'Washer', 'Air conditioning', 'Dedicated workspace', 'Hair dryer',
+    'Kitchen', 'Dryer', 'Heating', 'Tv', 'Iron', 'Pool', 'Free parking',
+    'Crib', 'Gym', 'Breakfast', 'Smoking allowed'
+  ],
+  labels: [
+    "Top of the world",
+    "Trending",
+    "Tropical"
+  ],
+  host: {
+    _id: "u101",
+    fullName: "User 1",
+    imgUrl: "/img/img1.jpg",
+    userName: "user1",
+    password: "secret"
+  },
+  loc: {
+    country: "Portugal",
+    countryCode: "PT",
+    city: "Lisbon",
+    address: "17 Kombo st",
+    lat: -8.61308,
+    lng: 41.1413
+  },
+  reviews: [],
+  likedByUsers: []
+},{
+  _id: "s107",
+  name: "Cabana",
+  type: "House",
+  imgUrls: ["https://e26e9b.jpg", "otherImg.jpg"],
+  price: 80.00,
+  summary: "Fantastic duplex apartment...",
+  capacity: 8,
+  bedrooms: [
+    {
+      name: 'Living Room',
+      beds: ['couch']
+    },
+    {
+      name: 'Bedroom 1',
+      beds: ['double bed', 'double bed', 'sofa bed']
+    },
+    {
+      name: 'Bedroom 2',
+      beds: ['single bed', 'sofa bed', 'king size bed']
+    }
+  ],
+  baths: 2,
+  amenities: [
+    'Wifi', 'Washer', 'Air conditioning', 'Dedicated workspace', 'Hair dryer',
+    'Kitchen', 'Dryer', 'Heating', 'Tv', 'Iron', 'Pool', 'Free parking',
+    'Crib', 'Gym', 'Breakfast', 'Smoking allowed'
+  ],
+  labels: [
+    "Top of the world",
+    "Trending",
+    "Tropical"
+  ],
+  host: {
+    _id: "u101",
+    fullName: "User 1",
+    imgUrl: "/img/img1.jpg",
+    userName: "user1",
+    password: "secret"
+  },
+  loc: {
+    country: "Portugal",
+    countryCode: "PT",
+    city: "Lisbon",
+    address: "17 Kombo st",
+    lat: -8.61308,
+    lng: 41.1413
+  },
+  reviews: [],
+  likedByUsers: []
 }]
 
 

@@ -58,7 +58,8 @@ function getFilterFromParams(searchParams) {
     const defaultFilter = getDefaultFilter()
     return {
         loc: searchParams.get('loc') || defaultFilter.loc,
-        availability: searchParams.get('availability') || defaultFilter.availability,
+        entryDate: searchParams.get('entryDate') || defaultFilter.entryDate,
+        exitDate: searchParams.get('exitDate') || defaultFilter.exitDate,
         guestCount: searchParams.get('guestCount') || defaultFilter.guestCount,
         labels: searchParams.get('labels') || defaultFilter.labels,
         placeType: searchParams.get('placeType') || defaultFilter.placeType,

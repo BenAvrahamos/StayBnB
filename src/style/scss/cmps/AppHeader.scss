@@ -1,42 +1,21 @@
-
-.app-header{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-
 .expanded-header {
-    height: max-content;
     height: 80px;
-    padding-inline: 80px;
     width: 100vw;
-    display: flex;
-  
-    justify-content: space-between;
-    align-items: center;
+    padding-inline: 2.5rem;
 
-    box-shadow: rgb(0 0 0/8%) 0 1px 0;
+    box-shadow: rgba(122, 122, 122, 0.08) 0 1px 0;
 
     & .nav-section {
         width: 25em;
-        justify-content: center;
-        display: flex;
 
         & .nav {
             width: 22em;
-            justify-content: space-between;
-            display: flex;
             font-size: 1em;
 
             & a {
                 margin: 10px 16px;
             }
-
-
         }
-
     }
 
     & .logo-section {
@@ -45,52 +24,64 @@
         & .logo {
             width: 7.375em;
             height: 4em;
-            display: flex;
-            align-items: center;
-            font-size: 1.5em;
+
+            font-size: 1.25em;
+            font-weight: bold;
+            color: $siteColor;
+
             gap: 0.2em;
-
-
 
             & img {
                 height: 30px;
-
             }
         }
-
     }
 
     & .user-section {
         width: 22em;
-        display: flex;
-        align-items: center;
+
         justify-content: end;
         gap: 1em;
 
         & button {
-            display: flex;
+            width: 5.33rem;
+            height: 3rem;
             padding: 8px 8px 8px 14px;
+            border: 0.667px solid $gray2;
             border-radius: 2em;
-            gap: 1em;
             font-weight: bold;
-            align-items: center;
-            box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.18);
-            border: none;
-            transition: 0.2s;
             background-color: white;
+
+            gap: 1em;
+
+            transition: 0.2s;
 
             & .profile {
                 width: 2.4em;
                 height: 2.4em;
-                background-color: black;
+                background-color: $gray1;
                 border-radius: 50%;
+
+                &::before {
+                    content: '\f2bd';
+                    font-family: fa-solid;
+                    color: white;
+                }
             }
         }
 
         & button:hover {
-            box-shadow: -1px 2px 3px 2px rgba(0, 0, 0, 0.18);
-
+            box-shadow: 1px 2px 2px 2px $gray2;
         }
-
     }
+
+    & .grayTxt:not(.grayTxt:hover) {
+        color: $headerGray;
+    }
+}
+
+.app-header {
+    padding-block-end: 1em;
+    margin-block-end: 1em;
+    border: solid 0.667px $gray2;
 }
