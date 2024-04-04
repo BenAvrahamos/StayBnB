@@ -2,9 +2,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 import './style/main.css'
 
-import { StayIndex } from './views/StayIndex'
-import { StayDetails } from './views/StayDetails'
-import { AppHeader } from './views/AppHeader'
+import { StayIndex } from './pages/StayIndex'
+import { StayDetails } from './pages/StayDetails'
+import { AppHeader } from './pages/AppHeader'
 
 export function RootCmp() {
   return <Router>
