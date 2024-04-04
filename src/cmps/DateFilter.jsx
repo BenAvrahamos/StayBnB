@@ -11,10 +11,11 @@ export function DateFilter() {
     })
     return <section className="date-filter">
 
-        <DateRangePicker
+        {/* <DateRangePicker
             ranges={[date]}
             onChange={()=>{}}
-        />
+        /> */}
+        
 
     </section>
 

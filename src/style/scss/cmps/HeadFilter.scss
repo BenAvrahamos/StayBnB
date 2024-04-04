@@ -6,7 +6,8 @@
     box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.18);
     margin-bottom: 1em;
     margin-inline: 2.5rem;
-    // padding-inline-end: 0.5rem;
+    position: relative;
+
 
     column-gap: 0.4em;
 
@@ -47,7 +48,7 @@
         padding-inline-end: 0.7em;
     }
 
-    &  .search-btn {
+    & .search-btn {
         height: 3rem;
         width: 3rem;
         background-color: $siteColor;
@@ -61,6 +62,17 @@
             font-family: fa-solid;
             color: white;
         }
+    }
+
+    & .selected {
+        box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.15);
+        border: 1px solid transparent;
+        z-index: 1;
+        background-color: white;
+    }
+
+    &.grey {
+        background-color: #ebebeb;
     }
 
 }
