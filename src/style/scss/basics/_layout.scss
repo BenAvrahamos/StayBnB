@@ -1,4 +1,15 @@
 .content-and-modal-container {
     display: grid;
     grid-template-columns: 1fr auto;
+    grid-template-areas: "col1 col2"
+}
+
+.gallery-stay-details {
+    display: grid;
+    grid-template-rows: repeaT(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas: 
+    "img1 img1 img2 img3"
+    "img1 img1 img4 img5";
+
 }

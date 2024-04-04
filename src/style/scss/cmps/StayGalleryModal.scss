@@ -1,0 +1,19 @@
+.reserve-modal {
+    .selectors-container {
+        .check-in, .checkout {
+            padding: 26px 12px 10px;
+        }
+
+        label {
+            font-size: em(11px);
+            font-weight: bold;
+        }
+        div.txt {
+            font-size: rem(14px);
+        }
+
+        .guest-selector {
+            padding: 26px 36px 10px 12px;
+        }
+    }
+}
