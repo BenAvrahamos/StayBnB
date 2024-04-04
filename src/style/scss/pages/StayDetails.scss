@@ -3,8 +3,32 @@
         margin-block-start: 2rem;
     }
 
-    width: rem(960px);
+    width: 70rem;
     margin-inline: auto;
+
+    .stay-details-header {
+        h1 {
+            margin: 0 0 1em;
+        }
+
+        .header-btns {
+            button {
+                padding: 0;
+            }
+            .save.flex {
+                gap: rem(8px);
+            }
+
+            .share.flex {
+                gap: rem(6.5px);
+            }
+
+            .first-btn {
+                margin-inline-end: rem(20px);
+            }
+        }
+
+    }
 
     .host-by {
         gap: rem(24px)
