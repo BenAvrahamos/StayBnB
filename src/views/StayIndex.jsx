@@ -39,5 +39,9 @@ export function StayIndex() {
             stays={stays}
             filterBy={filterBy}
         />
+        <section className='index-end-section flex column center'>
+        <h1>Continue exploring homes</h1>
+        <button>Show more</button>
+        </section>
     </section>
 }

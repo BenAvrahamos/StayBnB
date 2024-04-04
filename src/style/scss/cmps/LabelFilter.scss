@@ -1,11 +1,6 @@
 .label-filter-section {
-    margin-inline: 2.5rem;
-    height: 4.625rem;
-    width: calc(100vw - 6em);
-    z-index: 2;
-
     grid-auto-flow: column;
-    grid-gap: 0 1rem;
+    grid-gap: 0 1.8rem;
 
     align-items: center;
 
@@ -18,23 +13,26 @@
     }
 
     div {
-        width: 4rem;
-        font-size: 0.75rem;
-        color: $gray1;
+        font-size: 0.7rem;
+        font-weight: 600;
+        opacity: 0.6;
 
-        padding-block: 0.5rem;
-        // padding-block: 0.5rem 0.8rem;
-        margin-block: 0.5rem 0.8rem;
+        width: 4rem;
+        padding-block: 0.5rem 0.8rem;
+        margin-block: 0.2rem 0.8rem;
         border-block-end: 2px solid white;
 
-        gap: 0.25rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
 
         cursor: pointer;
 
         img {
-            width: 1.8rem;
-            height: 1.8rem;
-            color: inherit;
+            width: 1.5rem;
+            height: 1.5rem;
         }
 
         p {
@@ -42,15 +40,53 @@
         }
 
         &:hover {
+            opacity: 1;
             border-block-end: 2px solid $gray2;
         }
 
         &:active {
-            color: black;
+            color: $darkGray;
             border-block-end: 2px solid black;
 
             scale: 0.85;
             transition: scale 1s;
+        }
+    }
+}
+
+.index-filter-section {
+    margin-inline: 2.5rem;
+    height: 4.625rem;
+    width: calc(100vw - 6em);
+    z-index: 2;
+
+    grid-auto-flow: column;
+    grid-gap: 0 1rem;
+
+    button {
+        font-size: 0.7rem;
+        font-weight: 600;
+
+        align-self: center;
+
+        height: 2.9166875rem;
+        width: 5.7rem;
+        margin: 0 0.1rem 0.3rem 0;
+        background-color: transparent;
+        border: 0.667px solid $gray2;
+        border-radius: 0.75rem;
+        color: $darkGray;
+
+        transition: 0s;
+        
+        img {
+            height: 1rem;
+            width: 1rem;
+        }
+
+        &:hover {
+            background-color: #f7f7f7;
+            border: 1px solid $darkGray;
         }
     }
 }
