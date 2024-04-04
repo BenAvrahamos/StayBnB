@@ -4,7 +4,7 @@ import { useSearchParams } from 'react-router-dom'
 import { stayService } from '../services/stay.local.service.js'
 
 import { StayList } from '../cmps/StayList.jsx'
-// import { LabelFilter } from '../cmps/LabelFilter.jsx'
+import { LabelFilter } from '../cmps/LabelFilter.jsx'
 
 export function StayIndex() {
 
@@ -33,10 +33,10 @@ export function StayIndex() {
 
     if (!stays || !stays.length) return <p>loading</p>
     return <section className='index-section'>
-        {/* <LabelFilter
+        <LabelFilter
             onSetFilter={onSetFilter}
             filterBy={filterBy}
-        /> */}
+        />
         <StayList
             stays={stays}
             filterBy={filterBy}
