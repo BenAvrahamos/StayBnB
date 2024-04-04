@@ -3,11 +3,11 @@
     max-width: 850px;
     font-size: 12px;
     border-radius: 3em;
-    box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.18);
-    margin-bottom: 1em;
+    box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.08);
+    border: 1px solid #dddddd;
+    margin-bottom: 0.5em;
     margin-inline: 2.5rem;
-    padding-inline-end: 0.5rem;
-
+    position: relative;
     column-gap: 0.4em;
 
     span {
@@ -15,7 +15,7 @@
         color: $headerGray;
     }
 
-    div {
+    &>div {
         height: 4rem;
         flex-grow: 1;
         border-radius: 3em;
@@ -24,8 +24,9 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+        cursor: pointer;
 
-        &:hover {
+        &:not(.selected):hover {
             background-color: rgba(#71717123, 0.25);
         }
     }
@@ -40,13 +41,18 @@
 
     & .guests {
         width: 19.25em;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding-inline-end: 0.7em;
     }
 
-    button {
+    & .search-btn {
         height: 3rem;
         width: 3rem;
         background-color: $siteColor;
         border-radius: 50%;
+
 
         align-self: center;
 
@@ -55,6 +61,17 @@
             font-family: fa-solid;
             color: white;
         }
+    }
+
+    & .selected {
+        box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.15);
+        border: 1px solid transparent;
+        z-index: 1;
+        background-color: white;
+    }
+
+    &.grey {
+        background-color: #ebebeb;
     }
 
 }
