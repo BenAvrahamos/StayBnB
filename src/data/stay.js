@@ -30,7 +30,11 @@ export const stays = [{
     fullName: "User 1",
     imgUrl: "/img/img1.jpg",
     userName: "user1",
-    password: "secret"
+    password: "secret",
+    experience: {
+      isSuper: false,
+      hostingTime: 5
+     }
   },
   loc: {
     country: "Portugal",
@@ -80,7 +84,11 @@ export const stays = [{
     fullName: "User 1",
     imgUrl: "/img/img1.jpg",
     userName: "user1",
-    password: "secret"
+    password: "secret",
+    experience: {
+      isSuper: false,
+      hostingTime: 5
+     }
   },
   loc: {
     country: "Portugal",
@@ -131,7 +139,11 @@ export const stays = [{
     fullName: "User 1",
     imgUrl: "/img/img1.jpg",
     userName: "user1",
-    password: "secret"
+    password: "secret",
+    experience: {
+      isSuper: false,
+      hostingTime: 5
+     }
   },
   loc: {
     country: "Portugal",
@@ -231,7 +243,11 @@ export const stays = [{
     fullName: "User 1",
     imgUrl: "/img/img1.jpg",
     userName: "user1",
-    password: "secret"
+    password: "secret",
+    experience: {
+      isSuper: false,
+      hostingTime: 5
+     }
   },
   loc: {
     country: "Portugal",
@@ -281,7 +297,11 @@ export const stays = [{
     fullName: "User 1",
     imgUrl: "/img/img1.jpg",
     userName: "user1",
-    password: "secret"
+    password: "secret",
+    experience: {
+      isSuper: false,
+      hostingTime: 5
+     }
   },
   loc: {
     country: "Portugal",
@@ -327,7 +347,11 @@ export const users = [
     fullName: "User 1",
     imgUrl: "/img/img1.jpg",
     userName: "user1",
-    password: "secret"
+    password: "secret",
+    experience: {
+     isSuper: false,
+     hostingTime: 5
+    }
   },
   {
     _id: "u102",
@@ -335,6 +359,10 @@ export const users = [
     imgUrl: "/img/img2.jpg",
     username: "user2",
     password: "secret",
+    experience: {
+      isSuper: true,
+      hostingTime: 2
+    }
   }
 ]
 
