@@ -20,7 +20,7 @@ $borderclr: #DEDEDE;
     }
 
     .selectors-container {
-
+            cursor: pointer;
         .check-in,
         .checkout {
             border: 1px solid $borderclr;
@@ -32,6 +32,7 @@ $borderclr: #DEDEDE;
         label {
             font-size: em(11px);
             font-weight: bold;
+            cursor: pointer;
         }
 
         div.txt-date {
@@ -59,5 +60,22 @@ $borderclr: #DEDEDE;
         font-weight: 590;
         line-height: 19px;
         color: #ffffff;
+        margin-block: 1rem;
+        cursor: pointer;
+    }
+
+    .charged-p {
+        text-align: center;
+        margin-block-end: 1rem;
+    }
+
+    .price-calc, .fee-calc  {
+        margin-block-end: 1rem;
+    }
+
+    .sum-total {
+        color: #222222;
+        margin-block-start: 1rem;
+        font-weight: 600;
     }
 }
