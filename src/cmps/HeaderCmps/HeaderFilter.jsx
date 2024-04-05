@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux'
 
+
 import { DateFilter } from './DateFilter';
 import { MapFilter } from './MapFilter';
 import { GuestFilter } from './GuestFilter';
+import { loadStays, removeStay, saveStay, setStayFilter } from '../../store/actions/stay.actions'
 
 export function HeaderFilter() {
     const [modalType, setModalType] = useState()
@@ -46,6 +48,12 @@ export function HeaderFilter() {
         return parts.join(', ')
     }
 
+    function onLoadStays(ev){
+        ev.stopPropagation()
+        loadStays()
+
+    }
+
 
 
     return <section ref={ref} className={`header-filter flex ${modalType ? 'grey' : ''}`}>
@@ -62,7 +70,7 @@ export function HeaderFilter() {
 
         <div className={`guests ${modalType === 'guest' ? 'selected' : ''}`} onClick={() => setModalType(modalType === 'guest' ? null : 'guest')}>
             <div className="flex column justify-center">Who<span className='guest-count'>{guestCountString()}</span></div>
-            <button className='search-btn'></button>
+            <button onClick={onLoadStays} className='search-btn'></button>
         </div>
 
 
