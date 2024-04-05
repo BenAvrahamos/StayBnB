@@ -1,11 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useSelector } from 'react-redux'
+ 
 import { DateFilter } from './DateFilter';
 import { MapFilter } from './MapFilter';
 import { GuestFilter } from './GuestFilter';
 
 export function HeaderFilter() {
     const [modalType, setModalType] = useState()
-    console.log(modalType);
+    const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
+    console.log(filterBy);
+   
     const ref = useRef(null);
 
     useEffect(() => {
@@ -26,7 +30,7 @@ export function HeaderFilter() {
 
     return <section ref={ref} className={`header-filter flex ${modalType ? 'grey' : ''}`}>
         <div className={`destination ${modalType === 'map' ? 'selected' : ''}`} onClick={() => setModalType(modalType === 'map' ? null : 'map')}>
-            Where<span className='grayTxt'>Search destination</span>
+            Where<span className='grayTxt'>{filterBy.loc.region ? filterBy.loc.region : "search destinations"}</span>
         </div>
 
         <div className={`dates ${modalType === 'check-in' ? 'selected' : ''}`} onClick={() => setModalType(modalType === 'check-in' ? null : 'check-in')}>
@@ -42,9 +46,9 @@ export function HeaderFilter() {
         </div>
 
 
-        {modalType === 'map' && <MapFilter setModalType={setModalType} />}
-        {(modalType === 'check-in' || modalType === 'check-out') && <DateFilter modalType={modalType} />}
-        {modalType === 'guest' && <GuestFilter />}
+        {modalType === 'map' && <MapFilter setModalType={setModalType} filterBy={filterBy} />}
+        {(modalType === 'check-in' || modalType === 'check-out') && <DateFilter modalType={modalType} filterBy={filterBy} />}
+        {modalType === 'guest' && <GuestFilter  filterBy={filterBy}/>}
 
 
     </section>

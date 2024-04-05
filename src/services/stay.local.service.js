@@ -19,10 +19,9 @@ export const stayService = {
     getDefaultFilter
 }
 
-async function query(filterBy = getDefaultFilter()) {
+async function query(filterBy) {
     try {
-        const stayArr = await storageService.query(STAY_DB)
-
+        let stayArr = await storageService.query(STAY_DB)
         if (filterBy.loc.length) {
 
             if (filterBy.loc.region) {
@@ -60,9 +59,14 @@ async function query(filterBy = getDefaultFilter()) {
 
         if (filterBy.guestCount) {
 
-            if (filterBy.guestCount.guests) {
+            if (filterBy.guestCount.adults) {
 
-                stayArr = stayArr.filter(stay => stay.capacity <= filterBy.guestCount.guests)
+                stayArr = stayArr.filter(stay => stay.capacity <= filterBy.guestCount.adults)
+            }
+
+            if (filterBy.guestCount.children) {
+
+                stayArr = stayArr.filter(stay => stay.capacity <= filterBy.guestCount.children)
             }
 
             if (filterBy.guestCount.infants) {
@@ -101,19 +105,19 @@ async function query(filterBy = getDefaultFilter()) {
 
 
 
-            // if (filterBy.BBB.Bedrooms !== 'any') {
-            //     stayArr = stayArr.filter(stay => stay.bedrooms.length >= filterBy.BBB.Bedrooms)
-            // }
+        // if (filterBy.BBB.Bedrooms !== 'any') {
+        //     stayArr = stayArr.filter(stay => stay.bedrooms.length >= filterBy.BBB.Bedrooms)
+        // }
 
-            // if (filterBy.BBB.Beds !== 'any') {
-            //     stayArr = stayArr.filter(stay =>
-            //         stay.bedrooms.reduce((acc, room) => acc + room.beds.length, 0) >= filterBy.BBB.Beds
-            //     )
-            // }
+        // if (filterBy.BBB.Beds !== 'any') {
+        //     stayArr = stayArr.filter(stay =>
+        //         stay.bedrooms.reduce((acc, room) => acc + room.beds.length, 0) >= filterBy.BBB.Beds
+        //     )
+        // }
 
-            // if (filterBy.BBB.Bathrooms !== 'any') {
-            //     stayArr = stayArr.filter(stay => stay.baths >= filterBy.BBB.Bathrooms)
-            // }
+        // if (filterBy.BBB.Bathrooms !== 'any') {
+        //     stayArr = stayArr.filter(stay => stay.baths >= filterBy.BBB.Bathrooms)
+        // }
 
 
 
@@ -224,7 +228,7 @@ function getDefaultFilter() {
         },
         entryDate: '',
         exitDate: '',            // dates
-        guestCount: { guests: 0, infants: 0, pets: 0 },                // number of guests
+        guestCount: { adults: 0, children: 0, infants: 0, pets: 0 },                // number of guests
         labels: [],
         placeType: 'any type',       // any type / room / entire home
         priceRange: {
