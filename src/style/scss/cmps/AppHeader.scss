@@ -17,6 +17,7 @@
         }
     }
 
+
     & .logo-section {
         width: 22em;
 
@@ -84,5 +85,5 @@
     padding-block-end: 1em;
     margin-block-end: 1em;
     border: solid 0.667px $gray2;
+    z-index: 1;
 }
-

@@ -43,7 +43,7 @@ export function HeaderFilter() {
 
 
         {modalType === 'map' && <MapFilter setModalType={setModalType} />}
-        {(modalType === 'check-in' || modalType === 'check-out') && <DateFilter />}
+        {(modalType === 'check-in' || modalType === 'check-out') && <DateFilter modalType={modalType} />}
         {modalType === 'guest' && <GuestFilter />}
 
 
