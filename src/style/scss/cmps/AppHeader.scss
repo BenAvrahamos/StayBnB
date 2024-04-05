@@ -57,15 +57,21 @@
             transition: 0.2s;
 
             & .profile {
-                width: 2.4em;
-                height: 2.4em;
-                background-color: $gray1;
+                position: relative;
+                width: 2.4rem;
+                height: 2.4rem;
                 border-radius: 50%;
+                background-color: white;
 
                 &::before {
                     content: '\f2bd';
                     font-family: fa-solid;
-                    color: $gray1;
+
+                    position: absolute;
+                    inset: 0 0 0 0;
+                    scale: 2.6;
+                    transform-origin: top;
+                    color: $gray1; //switch to $gray1
                 }
             }
         }
@@ -86,4 +92,10 @@
     margin-block-end: 1em;
     border: solid 0.667px $gray2;
     z-index: 1;
+}
+
+@media (width < 740px) {
+    .expanded-header {
+        display: none;
+    }
 }

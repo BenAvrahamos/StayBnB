@@ -1,10 +1,57 @@
 .stay-details {
-    .host-img {
+    .content-and-modal-container {
+        margin-block-start: 2rem;
+    }
+
+    width: 70rem;
+    margin-inline: auto;
+
+    .stay-details-header {
+        h1 {
+            margin: 0 0 1em;
+        }
+
+        .header-btns {
+            button {
+                padding: 0;
+            }
+            .save.flex {
+                gap: rem(8px);
+            }
+
+            .share.flex {
+                gap: rem(6.5px);
+            }
+
+            .first-btn {
+                margin-inline-end: rem(20px);
+            }
+        }
 
     }
-    
-    width: rem(960px);
-    margin-inline: auto;
+
+    .host-by {
+        gap: rem(24px)
+    }
+
+    .host-img {
+        width: rem(40px);
+        border-radius: 50%;
+    }
+
+    .host-by-txt {
+        gap: rem(4px);
+
+        h3 {
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        p {
+            font-family: rem(14px);
+        }
+    }
+
     .no-safety-amenity {
         text-decoration: line-through;
     }
@@ -16,6 +63,7 @@
 
     .content {
         grid-area: col1;
+        padding-inline-end: rem(180px);
     }
 
     .reserve-modal {

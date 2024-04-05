@@ -1,23 +1,31 @@
 .gallery-stay-details {
-    .img0 {
-        grid-area: img1;
-    }
+    height: rem(610px);
+    // .img0 {
+    //     grid-area: img1;
+    //     border-start-start-radius: rem(8px);
+    //     border-end-start-radius: rem(8px);
+    // }
 
-    .img1 {
-        grid-area: img2;
-    }
+    // .img1 {
+    //     grid-area: img2;
+    // }
 
-    .img2 {
-        grid-area: img3;
-    }
+    // .img2 {
+    //     grid-area: img3;      
+    //     border-start-end-radius: rem(8px);
+    //     border-end-end-radius: rem(8px);
+    // }
 
-    .img3 {
-        grid-area: img4;
-    }
+    // .img3 {
+    //     grid-area: img4;
+ 
+    // }
 
-    .img4 {
-        grid-area: img5;
-    }
+    // .img4 {
+    //     grid-area: img5;
+    //     border-start-end-radius: rem(8px);
+    //     border-end-end-radius: rem(8px);
+    // }
 
     img {
          object-fit: cover;

@@ -87,7 +87,7 @@
         }
 
         &:hover {
-            background-color: #f7f7f7;
+            background-color: $btnHover;
             border: 1px solid $darkGray;
         }
     }
