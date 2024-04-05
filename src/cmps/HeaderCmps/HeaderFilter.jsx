@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { DateFilter } from '../cmps/DateFilter';
-import { MapFilter } from '../cmps/MapFilter';
-import { GuestFilter } from '../cmps/GuestFilter';
+import { DateFilter } from './DateFilter';
+import { MapFilter } from './MapFilter';
+import { GuestFilter } from './GuestFilter';
 
 export function HeaderFilter() {
     const [modalType, setModalType] = useState()

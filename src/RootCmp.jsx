@@ -6,7 +6,7 @@ import './style/main.css'
 
 import { StayIndex } from './pages/StayIndex'
 import { StayDetails } from './pages/StayDetails'
-import { AppHeader } from './pages/AppHeader'
+import { AppHeader } from './cmps/HeaderCmps/AppHeader'
 
 export function RootCmp() {
   return (
