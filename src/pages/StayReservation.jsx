@@ -1,3 +1,3 @@
-export function StayReservation({reservationData}) {
+export function StayReservation() {
     return <div></div>
 }
