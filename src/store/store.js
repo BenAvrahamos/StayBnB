@@ -7,11 +7,13 @@ import {
 import { reservationReducer } from "./reducers/reservation.reducer.js"
 import { userReducer } from "./reducers/user.reducer.js"
 import { reviewReducer } from './reducers/review.reducer.js'
+import { stayReducer } from './reducers/stay.reducer.js'
 
 const rootReducer = combineReducers({
     reservationModule: reservationReducer,
     userModule: userReducer,
-    reviewModule: reviewReducer
+    reviewModule: reviewReducer,
+    stayModule: stayReducer
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
