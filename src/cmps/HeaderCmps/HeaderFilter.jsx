@@ -33,12 +33,16 @@ export function HeaderFilter() {
         if (guestsCount > 0) {
             guests = guestsCount === 1 ? '1 guest' : `${guestsCount} guests`
         }
-
+    
         const infants = filterBy.guestCount.infants > 0 ? `${filterBy.guestCount.infants} infants` : ''
         const pets = filterBy.guestCount.pets > 0 ? `${filterBy.guestCount.pets} pets` : ''
-
+    
         const parts = [guests, infants, pets].filter(Boolean)
-
+    
+        if (parts.length === 0) {
+            return "Add guests"
+        }
+    
         return parts.join(', ')
     }
 
