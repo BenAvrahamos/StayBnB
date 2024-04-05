@@ -1,5 +1,5 @@
 import { stayDetailsSvgService } from '../../services/stay-details-svg'
-import { StringToSvg } from "../StringToSvg"
+import { StringToSvg } from "./StringToSvg"
 
 export function StayDetailsSvg({ bed }) {
     console.log(bed)
