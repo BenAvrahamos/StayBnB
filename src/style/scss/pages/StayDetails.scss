@@ -1,3 +1,5 @@
+$gray: #DDDDDC;
+
 .stay-details {
     .content-and-modal-container {
         margin-block-start: 2rem;
@@ -15,6 +17,7 @@
             button {
                 padding: 0;
             }
+
             .save.flex {
                 gap: rem(8px);
             }
@@ -70,7 +73,7 @@
         grid-area: col2;
         padding: 24px;
         box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
-        border: 1px solid rgb(221, 221, 221);
+        border: 1px solid $gray;
         border-radius: 12px;
 
         .selectors-container label {
@@ -85,6 +88,34 @@
         .arrow-up::before {
             content: '\f106';
             font-family: fa-solid;
+        }
+    }
+
+    .stay-rooms {
+        padding-block-start: rem(48px);
+        h2 {
+            padding-block-end: rem(24px);
+        }
+
+        .bedroom-div {
+            padding-inline: rem(24px);
+            padding-block-start: rem(24px);
+            width: rem(201.11px);
+            height: max-content;
+            border: 1px solid $gray;
+            border-radius: rem(12px);
+
+            .icons {
+                margin-block-end: 1rem;
+            }
+
+            h4 {
+                margin-block-end: rem(8px);
+            }
+
+            .bedroom-details p {
+                font-size: rem(14px);
+            }
         }
     }
 

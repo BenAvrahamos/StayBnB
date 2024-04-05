@@ -9,9 +9,9 @@
     gap: rem(8px);
     grid-template-columns: repeat(4, rem(274.5px));
     grid-template-rows: repeat(2, rem(241px));
-
 }
 
 .bedroom-container {
-    grid-template-columns: repeat(auto-fit, 185px);
+    grid-auto-flow: column;
+    gap: 1rem;
 }
