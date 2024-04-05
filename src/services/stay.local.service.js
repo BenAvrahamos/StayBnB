@@ -19,9 +19,114 @@ export const stayService = {
     getDefaultFilter
 }
 
-async function query() {
+async function query(filterBy) {
     try {
-        const stayArr = await storageService.query(STAY_DB)
+        let stayArr = await storageService.query(STAY_DB)
+        if (filterBy.loc.length) {
+
+            if (filterBy.loc.region) {
+
+                stayArr = stayArr.filter(stay => stay.loc.region === filterBy.loc.region)
+            }
+
+            if (filterBy.loc.country) {
+
+                stayArr = stayArr.filter(stay => stay.loc.country === filterBy.loc.country)
+            }
+
+            if (filterBy.loc.countryCode) {
+
+                stayArr = stayArr.filter(stay => stay.loc.countryCode === filterBy.loc.countryCode)
+            }
+
+            if (filterBy.loc.city) {
+
+                stayArr = stayArr.filter(stay => stay.loc.city === filterBy.loc.city)
+            }
+
+
+            if (filterBy.loc.address) {
+
+                stayArr = stayArr.filter(stay => stay.loc.address === filterBy.loc.address)
+            }
+
+        }
+
+
+        if (filterBy.entryDate) { //check availability between entry date and exit date :)
+
+        }
+
+        if (filterBy.guestCount) {
+
+            if (filterBy.guestCount.adults) {
+
+                stayArr = stayArr.filter(stay => stay.capacity <= filterBy.guestCount.adults)
+            }
+
+            if (filterBy.guestCount.children) {
+
+                stayArr = stayArr.filter(stay => stay.capacity <= filterBy.guestCount.children)
+            }
+
+            if (filterBy.guestCount.infants) {
+
+                stayArr = stayArr.filter(stay => stay.amenities.includes('crib'))
+            }
+
+            if (filterBy.guestCount.pets) {
+
+                stayArr = stayArr.filter(stay => stay.amenities.includes('pets_allowed'))
+            }
+        }
+
+        // if (filterBy.labels) {
+
+        //     stayArr = stayArr.filter(stay => stay.labels.includes(filterBy.labels))
+
+        // }
+
+        if (filterBy.amenities.length) {
+
+            stayArr = stayArr.filter(stay => filterBy.amenities.every(amenity => stay.amenities.includes(amenity)))
+
+        }
+
+        if (filterBy.placeType !== 'any type') {
+
+            stayArr = stayArr.filter(stay => stay.type === filterBy.placeType)
+
+        }
+
+        // if (filterBy.priceRange) {
+        //     stayArr = stayArr.filter(stay => stay.price >= filterBy.priceRange.min && stay.price <= filterBy.priceRange.max)
+
+        // }
+
+
+
+        // if (filterBy.BBB.Bedrooms !== 'any') {
+        //     stayArr = stayArr.filter(stay => stay.bedrooms.length >= filterBy.BBB.Bedrooms)
+        // }
+
+        // if (filterBy.BBB.Beds !== 'any') {
+        //     stayArr = stayArr.filter(stay =>
+        //         stay.bedrooms.reduce((acc, room) => acc + room.beds.length, 0) >= filterBy.BBB.Beds
+        //     )
+        // }
+
+        // if (filterBy.BBB.Bathrooms !== 'any') {
+        //     stayArr = stayArr.filter(stay => stay.baths >= filterBy.BBB.Bathrooms)
+        // }
+
+
+
+
+        if (filterBy.propType.length) {
+            stayArr = stayArr.filter(stay => filterBy.propType.includes(stay.propType))
+        }
+
+
         return stayArr
     } catch (err) {
         console.log(err)
@@ -97,6 +202,7 @@ function getEmptyStay() {
         labels: [],
         host: {},
         loc: {
+            region: '',
             country: '',
             countryCode: '',
             city: '',
@@ -112,16 +218,17 @@ function getEmptyStay() {
 function getDefaultFilter() {
     return {
         loc: {
-            country: '',
-            countryCode: '',
-            city: '',
-            address: '',
-            lat: 0,
-            lng: 0
+            // region : '',
+            // country: '',
+            // countryCode: '',
+            // city: '',
+            // address: '',
+            // lat: 0,
+            // lng: 0
         },
         entryDate: '',
         exitDate: '',            // dates
-        guestCount: '',                // number of guests
+        guestCount: { adults: 0, children: 0, infants: 0, pets: 0 },                // number of guests
         labels: [],
         placeType: 'any type',       // any type / room / entire home
         priceRange: {

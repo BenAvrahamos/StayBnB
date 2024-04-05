@@ -65,6 +65,13 @@
 
 
 
+
+                }
+                
+                & .disabled {
+                    opacity: 20%;
+
+                    cursor: not-allowed;
                 }
             }
         }

@@ -43,6 +43,7 @@ export const stays = [{
     }
   },
   loc: {
+    region: "Italy",
     country: "Portugal",
     countryCode: "PT",
     city: "Lisbon",
