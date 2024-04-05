@@ -21,7 +21,7 @@ export function StayIndex() {
 
     async function loadStays() {
         try {
-            const stays = await stayService.query()
+            const stays = await stayService.query(filterBy)
             setStays(stays)
         }
         catch (err) {
