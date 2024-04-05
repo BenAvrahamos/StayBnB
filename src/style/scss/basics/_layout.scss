@@ -11,3 +11,7 @@
     grid-template-rows: repeat(2, rem(241px));
 
 }
+
+.bedroom-container {
+    grid-template-columns: repeat(auto-fit, 185px);
+}
