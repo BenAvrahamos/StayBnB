@@ -62,15 +62,16 @@
                     padding: 0.7em;
                     color: $gray1;
 
-                    & .disabled {
-                        opacity: 20%;
-    
-                        cursor: not-allowed;
-                    }
 
 
 
 
+                }
+                
+                & .disabled {
+                    opacity: 20%;
+
+                    cursor: not-allowed;
                 }
             }
         }
