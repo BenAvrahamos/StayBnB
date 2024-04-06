@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { getDate, getMonth, getYear } from 'date-fns'
 
-export function StayReserveModal({ stay }) {
+export function StayReserveModal({stay}) {
     const [numOfDays, setNumOfDays] = useState(0)
     const [fee, setFee] = useState(0)
     const [currArrow, setCurrArrow] = useState('down')
@@ -10,7 +11,7 @@ export function StayReserveModal({ stay }) {
     const reservation = useSelector(storeState => storeState.reservationModule.reservation)
 
     useEffect(() => {
-        calcSumOfDaysAndFee()
+        calcSumOfDays()
     }, [])
 
     useEffect(() => {
@@ -18,17 +19,22 @@ export function StayReserveModal({ stay }) {
     }, [numOfDays])
 
     function validateAndMoveToPayment() {
+        if (reservation.checkIn && reservation.checkout &&
+            (reservation.guests.adults || reservation.guests.children || reservation.guests.infants)) {
+            navigate(`/${stay._id}/payment`)
+        }
+        return
     }
 
-    function calcSumOfDaysAndFee() {
+    function calcSumOfDays() {
         const date1 = reservation.checkIn
         const date2 = reservation.checkout
-        const differenceInMilliseconds = date2.getTime() - date1.getTime()
+        const differenceInMilliseconds = date2 - date1
         const differenceInDays = Math.ceil(differenceInMilliseconds / (24 * 60 * 60 * 1000))
         setNumOfDays(differenceInDays)
-
     }
 
+    console.log(reservation.checkIn, reservation.checkout)
     return (
         <div className="reserve-modal">
             <div className='container-price-selectors'>
@@ -40,13 +46,13 @@ export function StayReserveModal({ stay }) {
                         <div className='check-in flex'>
                             <div className='txt flex column'>
                                 <label>Check-in</label>
-                                <div className='txt-date'>{reservation.checkIn.getDate()}/{reservation.checkIn.getMonth() + 1}/{reservation.checkIn.getFullYear()}</div>
+                                <div className='txt-date'>{getDate(reservation.checkIn)}/{getMonth(reservation.checkIn) + 1}/{getYear(reservation.checkIn)}</div>
                             </div>
                         </div>
                         <div className='checkout flex'>
                             <div className='txt flex column'>
                                 <label>Checkout</label>
-                                <div className='txt-date'>{reservation.checkout.getDate()}/{reservation.checkout.getMonth() + 1}/{reservation.checkout.getFullYear()}</div>
+                                <div className='txt-date'>{getDate(reservation.checkout)}/{getMonth(reservation.checkout) + 1}/{getYear(reservation.checkout)}</div>
                             </div>
                         </div>
                     </div>
@@ -58,9 +64,7 @@ export function StayReserveModal({ stay }) {
                         </div>
                     </div>
                 </div>
-                <div className='reserve-btn-txt flex column' onClick={() => validateAndMoveToPayment()}>
-                    <div className='reserve-btn flex center'><span >Reserve</span></div>
-                </div>
+                <div className='reserve-btn flex center' onClick={() => validateAndMoveToPayment()}><span >Reserve</span></div>
                 {reservation.checkIn && reservation.checkout && <p className='charged-p'>You won't be charged yet.</p>}
             </div>
             <div className='price-calc flex space-between'>
