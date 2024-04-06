@@ -11,7 +11,7 @@ export function HeaderFilter() {
     const [modalType, setModalType] = useState()
     const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
 
-    // console.log(filterBy);
+    console.log(filterBy)
 
 
     const ref = useRef(null);
