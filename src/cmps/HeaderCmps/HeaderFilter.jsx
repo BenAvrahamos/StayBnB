@@ -11,6 +11,8 @@ export function HeaderFilter() {
     const [modalType, setModalType] = useState()
     const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
 
+    // console.log(filterBy);
+
 
     const ref = useRef(null);
 
@@ -54,6 +56,13 @@ export function HeaderFilter() {
 
     }
 
+    function formatDate(timestamp) {
+        const date = new Date(timestamp)
+        const month = date.toLocaleString('default', { month: 'short' })
+        const day = date.getDate()
+        return `${month} ${day}`
+    }
+
 
 
     return <section ref={ref} className={`header-filter flex ${modalType ? 'grey' : ''}`}>
@@ -62,10 +71,10 @@ export function HeaderFilter() {
         </div>
 
         <div className={`dates ${modalType === 'check-in' ? 'selected' : ''}`} onClick={() => setModalType(modalType === 'check-in' ? null : 'check-in')}>
-            Check in<span>Add dates</span>
+            Check in<span>{filterBy.entryDate ? formatDate(filterBy.entryDate) : 'add dates'}</span>
         </div>
         <div className={`dates ${modalType === 'check-out' ? 'selected' : ''}`} onClick={() => setModalType(modalType === 'check-out' ? null : 'check-out')}>
-            Check out<span>Add dates</span>
+            Check out<span>{filterBy.exitDate ? formatDate(filterBy.exitDate) : 'add dates'}</span>
         </div>
 
         <div className={`guests ${modalType === 'guest' ? 'selected' : ''}`} onClick={() => setModalType(modalType === 'guest' ? null : 'guest')}>
@@ -75,7 +84,7 @@ export function HeaderFilter() {
 
 
         {modalType === 'map' && <MapFilter setModalType={setModalType} filterBy={filterBy} />}
-        {(modalType === 'check-in' || modalType === 'check-out') && <DateFilter modalType={modalType} filterBy={filterBy} />}
+        {(modalType === 'check-in' || modalType === 'check-out') && <DateFilter setModalType={setModalType} filterBy={filterBy} />}
         {modalType === 'guest' && <GuestFilter filterBy={filterBy} />}
 
 

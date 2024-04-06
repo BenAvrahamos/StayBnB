@@ -7,4 +7,34 @@
     border-radius: 1.5em;
     background-color: white;
     z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.rdrDateRangePickerWrapper {
+    & span{
+        color: black;
+    }
+
+
+    & .rdrDefinedRangesWrapper {
+        position: absolute;
+        
+    }
+
+
+}
+
+.rdrMonths {
+   font-size: 1.2em;
+}
+
+
+.rdrDays {
+    font-size: 1.2em;
+ }
+
+ .rdrDateRange {
+   color: rebeccapurple;
 }
