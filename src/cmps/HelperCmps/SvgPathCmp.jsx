@@ -1,4 +1,4 @@
-import { staySvgService } from '../services/stay-svg.service'
+import { staySvgService } from '../../services/stay-svg.service'
 
 export function SvgPathCmp({ name }) {
 const svgString = staySvgService[name]
