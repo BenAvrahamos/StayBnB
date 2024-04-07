@@ -5,26 +5,27 @@ import { useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import { stayService } from '../../services/stay.local.service'
 
-export function Payment() {
+export function Payment( {stay} ) {
     const reservation = useSelector(storeState => storeState.reservationModule.reservation)
-    const [stay, setStay] = useState()
-    const stayId = useParams()
+    // const [stay, setStay] = useState()
 
-    useEffect(() => {
-        loadStay()
-    }, [])
+    // useEffect(() => {
+    //     if(s) loadStay()
+        
+    // }, [])
 
-    async function loadStay() {
-        try {
-            const stay = await stayService.getById(stayId)
-            setStay(stay)
-        } catch (err) {
-            console.log(err)
-        }
-    }
+    // async function loadStay() {
+    //     try {
+    //         const stay = await stayService.getById(stayId)
+    //         setStay(stay)
+    //     } catch (err) {
+    //         console.log(err)
+    //     }
+    // }
 
     function calcSumToPay() {
-        const diff = reservation.checkout - reservation.checkIn
+        let diff = reservation.checkout - reservation.checkIn
+         diff = diff / (1000 * 60 * 60 * 24)
         return diff * stay.price
     }
 
