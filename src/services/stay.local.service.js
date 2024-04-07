@@ -75,6 +75,7 @@ async function query(filterBy, headerFilterBy) {
 
                 const filterCapacity = filterBy.guestCount.adults + filterBy.guestCount.children
 
+
                 stayArr = stayArr.filter(stay => stay.capacity >= filterCapacity)
             }
 
