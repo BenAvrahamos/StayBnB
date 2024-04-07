@@ -5,8 +5,10 @@ import { StayGalleryPreview } from '../cmps/StayDetailsCmps/StayGalleryPreview'
 import { StayReserveModal } from '../cmps/StayDetailsCmps/StayReserveModal'
 import { StayDetailsSvg } from "../cmps/StayDetailsCmps/StayDetailsSvg"
 import { BedroomDetails } from '../cmps/StayDetailsCmps/BedroomDetails'
+import { useSelector } from 'react-redux'
 
 export function StayDetails() {
+    const reservation = useSelector(storeState => storeState.reservationModule.reservation)
     const safetyAmenities = ['Carbon monoxide alarm', 'Smoke alarm']
     const { stayId } = useParams()
     const [stay, setStay] = useState('')
@@ -21,28 +23,9 @@ export function StayDetails() {
 
     useEffect(() => {
         if (stay) {
-          calcLongestBedCount();
+            calcLongestBedCount();
         }
-      }, [stay])
-
-    function calcLongestBedCount() {
-        let maxBedCount = 0
-        stay.bedrooms.forEach((bedroom) => {
-          if (bedroom.beds.length > maxBedCount) {
-            maxBedCount = bedroom.beds.length
-          }
-        })
-        maxBedCount-- // two rows can contain up to 3 types of beds.
-        setLongestBedsArrCount(maxBedCount)
-      }
-
-    function countBedsInBedrooms() {
-        const numOfBeds = stay.bedrooms.reduce((acc, bedroomObj) => {
-            acc += bedroomObj.beds.length
-            return acc
-        }, 0)
-        return numOfBeds
-    }
+    }, [stay])
 
     async function loadStay() {
         try {
@@ -51,6 +34,25 @@ export function StayDetails() {
         } catch (err) {
             console.log(err)
         }
+    }
+
+    function calcLongestBedCount() {
+        let maxBedCount = 0
+        stay.bedrooms.forEach((bedroom) => {
+            if (bedroom.beds.length > maxBedCount) {
+                maxBedCount = bedroom.beds.length
+            }
+        })
+        maxBedCount-- // two rows can contain up to 3 types of beds.
+        setLongestBedsArrCount(maxBedCount)
+    }
+
+    function countBedsInBedrooms() {
+        const numOfBeds = stay.bedrooms.reduce((acc, bedroomObj) => {
+            acc += bedroomObj.beds.length
+            return acc
+        }, 0)
+        return numOfBeds
     }
 
     function _findHostName() {
@@ -86,7 +88,7 @@ export function StayDetails() {
                 </div>
                 <StayGalleryPreview stay={stay} />
                 <div className="content-and-modal-container">
-                    <StayReserveModal stay={stay} timestampDate={{ checkIn: Date.now(), checkOut: Date.now(), sum: 1 }} />
+                    <StayReserveModal stay={stay} />
                     <div className="content">
                         <div className="type-and-info">
                             <h1>Entire {stay.type} in {stay.loc.city}, {stay.loc.country}</h1>
@@ -107,8 +109,10 @@ export function StayDetails() {
                             <div className="bedroom-container grid">
                                 {stay.bedrooms.map(bedroom => {
                                     const bedsLength = bedroom.beds.length
-                                    return <div className="bedroom-div" key={bedroom.name} style={{paddingInline: '1rem', paddingBlockStart: '1rem',
-                                     paddingBlockEnd: bedsLength < longestBedsArrCount ? ((longestBedsArrCount - bedsLength ) * .875 ) + 1.5 + 'rem' : '1.5rem'}}>
+                                    return <div className="bedroom-div" key={bedroom.name} style={{
+                                        paddingInline: '1rem', paddingBlockStart: '1rem',
+                                        paddingBlockEnd: bedsLength < longestBedsArrCount ? ((longestBedsArrCount - bedsLength) * .875) + 1.5 + 'rem' : '1.5rem'
+                                    }}>
                                         <div className="icons flex align-center">
                                             {bedroom.beds.map((bed, idx) => <StayDetailsSvg bed={bed} key={`${bed}${idx}`} />)}
                                         </div>
