@@ -1,3 +1,4 @@
+
 export function SvgCmp({ svgNames, handleChange }) {
 
     // function doesFileExist(filePath) {
@@ -13,9 +14,10 @@ export function SvgCmp({ svgNames, handleChange }) {
         const nameCaps = name[0].toUpperCase() + name.slice(1)
 
         return <div key={name} onClick={() => handleChange(name)}
-            className={`${name.replace(/_/g, ' ')}`}>
+        className={`${name.replace(/_/g, ' ')}`}>
             <img src={svg} alt={name} />
             <p>{nameCaps.replace(/_/g, ' ')}</p>
+      
         </div>
     }
 
