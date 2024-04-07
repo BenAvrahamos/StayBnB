@@ -1,13 +1,28 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useSelector } from 'react-redux'
+
+import { setStayFilter } from '../../store/actions/stay.actions'
 import { HeaderFilter } from "./HeaderFilter";
+import { stayService } from "../../services/stay.local.service";
 
 export function AppHeader() {
+    const navigate = useNavigate()
+    const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
+
+function goHome(){
+    // setStayFilter(prevFilterBy => prevFilterBy = stayService.getDefaultFilter) 
+    navigate('/')
+
+}
+
     return <section className="app-header flex column center">
+
+
 
 
         <section className="expanded-header flex space-between align-center">
 
-            <div className="logo-section">
+            <div className="logo-section" onClick={goHome}>
                 <div className="logo flex align-center">
                     <img src="src\assets\img\airbnb-logo.png" alt="" />
                     Staybnb
@@ -23,7 +38,7 @@ export function AppHeader() {
             </div>
 
 
-            <div className="user-section flex align-center">
+            <div className="user-section flex align-center" >
                 Staybnb your home
 
                 <button className="flex align-center space-between">☰

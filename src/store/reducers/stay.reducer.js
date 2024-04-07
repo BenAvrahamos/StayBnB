@@ -5,12 +5,15 @@ export const REMOVE_STAY = 'REMOVE_STAY'
 export const ADD_STAY = 'ADD_STAY'
 export const UPDATE_STAY = 'UPDATE_STAY'
 
+
 export const SET_FILTER = 'SET_FILTER'
+export const SET_HEADER_FILTER = 'SET_HEADER_FILTER'
 export const SET_PAGE_IDX = 'SET_PAGE_IDX'
 
 const initialState = {
     stays: [],
-    filterBy: stayService.getDefaultFilter()
+    filterBy: stayService.getDefaultFilter(),
+    headerFilterBy: stayService.getDefaultHeaderFilter()
 }
 
 
@@ -40,6 +43,10 @@ export function stayReducer(state = initialState, action = {}) {
         //Filter
         case SET_FILTER:
             return { ...state, filterBy: action.filterBy }
+
+        case SET_HEADER_FILTER:
+            return { ...state, headerFilterBy: action.headerFilterBy }
+
         case SET_PAGE_IDX:
             return { ...state, filterBy: { ...state.filterBy, pageIdx: action.pageIdx } }
 
