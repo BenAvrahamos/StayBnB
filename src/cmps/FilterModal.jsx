@@ -1,33 +1,53 @@
 import { useState } from "react"
 
-export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
-    const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
+import { ButtonGroup } from './HelperCmps/ButtonGroup'
+import { stayService } from "../services/stay.local.service"
+import { PriceRangeChart } from "./PriceRangeChart"
 
-    function clearFilter() {
-        setFilterByToEdit(filterBy)
+export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
+    const [selected, setSelected] = useState(filterBy)
+    const [filteredCount, setFilteredCount] = useState(null)
+
+    async function getFilteredCount() {
+        try {
+            const stays = await stayService.query(selected)
+            setFilteredCount(stays.length)
+        } catch (err) { console.log('Error:', err) }
+    }
+
+    function clearFilter() {  //add rerender here
+        setSelected(filterBy)
     }
 
     function leaveFilter() {
         setShowFilter(false)
     }
 
-    function handleChange({ target }) {
-        let { value, name: field, type } = target
-        switch (type) {
-            case 'number':
-                value = +value
-                break
-            case 'checkbox':
-                target.checked
-                break
-        }
-        setFilterByToEdit((prevFilterBy) => ({ ...prevFilterBy, [field]: value }))
-    }
-
     function submitFilter() {
-        setStayFilter(filterByToEdit)
+        setStayFilter(selected)
         setShowFilter(false)
     }
+
+    function handleChange(field, value) {
+        setSelected(prevFilterBy => {
+            if (field !== 'propType') {
+                return { ...prevFilterBy, [field]: value };
+            } else {
+                const propTypeArray = prevFilterBy[field] || []
+                const updatedPropTypeArray = propTypeArray.includes(value) ?
+                    propTypeArray.filter(item => item !== value) : [...propTypeArray, value]
+                return { ...prevFilterBy, [field]: updatedPropTypeArray }
+            }
+        })
+    }
+
+    const placeTypeItems = [{ value: 'any', label: 'Any type' }, { value: 'room' }, { value: 'entire home' }]
+    const bbbItems = [{ value: 'any' }, { value: 1 }, { value: 2 }, { value: 3 }, { value: 4 }, { value: 5 }, { value: 6 }, { value: 7 }, { value: '8+' },]
+    const propTypeItems = [{ value: 'house' }, { value: 'apartment' }, { value: 'guesthouse' }, { value: 'hotel' }]
+    const amenityEssentials = ['wifi', 'kitchen', 'washer', 'dryer', 'air_conditioning', 'heating', 'dedicated_workspace', 'TV', 'hair_dryer', 'iron']
+    const amenityFeatures = ['pool', 'hot_tub', 'free_parking', 'ev_charger', 'crib', 'king_bed', 'gym', 'BBQ_grill', 'breakfast', 'indoor_fireplace', 'smoking_allowed']
+    const amenityLocation = ['beachfront', 'waterfront']
+    const amenitySafety = ['smoke_alarm', 'carbon_monoxide-alarm']
 
     return <>
         <div className="overlay" onClick={leaveFilter}></div>
@@ -39,31 +59,72 @@ export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
             </header>
 
             <main>
-                <div>
+                <div className="place-type">
                     <h2>Type of place</h2>
-                    <p>Search rooms, entire homes, or any type of place</p>
+                    {filterBy.placeType === 'any type' && <p>Search rooms, entire homes, or any type of place</p>}
+                    {filterBy.placeType === 'room' && <p>A room in a home, plus access to shared spaces.</p>}
+                    {filterBy.placeType === 'entire home' && <p>A home all to yourself.</p>}
+                    <ButtonGroup
+                        type={'placeType'}
+                        items={placeTypeItems}
+                        selectedValue={selected.placeType}
+                        handleChange={handleChange}
+                    />
                 </div>
-                <div>
+
+                <div className="price-range">
                     <h2>Price range</h2>
                     <p>Nightly prices including fees and taxes</p>
+                    <PriceRangeChart/>
                 </div>
-                <div>
+
+                <div className="rooms-beds">
                     <h2>Rooms and beds</h2>
+
                     <h4>Bedrooms</h4>
+                    <ButtonGroup
+                        type={'bedrooms'}
+                        items={bbbItems}
+                        selectedValue={selected.bedrooms}
+                        handleChange={handleChange}
+                    />
+
                     <h4>Beds</h4>
+                    <ButtonGroup
+                        type={'beds'}
+                        items={bbbItems}
+                        selectedValue={selected.beds}
+                        handleChange={handleChange}
+                    />
+
                     <h4>Bathrooms</h4>
+                    <ButtonGroup
+                        type={'bathrooms'}
+                        items={bbbItems}
+                        selectedValue={selected.bathrooms}
+                        handleChange={handleChange}
+                    />
                 </div>
-                <div>
+
+                <div className="prop-type">
                     <h2>Property type</h2>
+                    <ButtonGroup
+                        type={'propType'}
+                        items={propTypeItems}
+                        selectedValue={selected.propType}
+                        handleChange={handleChange}
+                    />
                 </div>
-                <div>
+
+                <div className="amenities">
                     <h2>Amenities</h2>
                     <h3>Essentials</h3>
                     <h3>Features</h3>
                     <h3>Location</h3>
                     <h3>Safety</h3>
                 </div>
-                <div>
+
+                <div className="booking-opts">
                     <h2>Booking options</h2>
                     <h4>Instant Book</h4>
                     <p>Listings you can book without waiting for Host approval</p>
@@ -72,21 +133,23 @@ export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
                     <h4>Allows pets</h4>
                     <p>Bringing a service animal?</p>
                 </div>
-                <div>
+
+                <div className="accessibility">
                     <h2>Accessibility features</h2>
                     <h3>Guest entrance and parking</h3>
                     <h3>Bedroom</h3>
                     <h3>Bathroom</h3>
                     <h3>Adaptive equipment</h3>
                 </div>
-                <div>
+
+                <div className="host-lng">
                     <h2>Host language</h2>
                 </div>
             </main>
 
             <footer className="flex align-center space-between">
                 <button className="clear-btn" onClick={clearFilter}>Clear all</button>
-                <button className="submit-btn" onClick={submitFilter}>Show ### places</button>
+                <button className="submit-btn" onClick={submitFilter}>Show {filteredCount !== null ? filteredCount : '###'} places</button>
             </footer>
         </section>
     </>
