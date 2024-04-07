@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux"
+
 export function StayReservationModal( {stay}) {
 
     const reservation = useSelector(storeState => storeState.reservationModule.reservation)
