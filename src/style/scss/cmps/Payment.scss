@@ -3,6 +3,11 @@
         .go-back-arr::before {
             content: "\f053";
             font-family: fa-solid;
+            padding-inline-end: rem(18px);
+        }
+        h1 {
+            font-size: rem(32px);
+            font-family: circular-reg;
         }
     }
     .payment {
