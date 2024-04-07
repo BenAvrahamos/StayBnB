@@ -6,6 +6,7 @@ import { StayReserveModal } from '../cmps/StayDetailsCmps/StayReserveModal'
 import { StayDetailsSvg } from "../cmps/StayDetailsCmps/StayDetailsSvg"
 import { BedroomDetails } from '../cmps/StayDetailsCmps/BedroomDetails'
 
+
 export function StayDetails() {
     const safetyAmenities = ['Carbon monoxide alarm', 'Smoke alarm']
     const { stayId } = useParams()
@@ -15,7 +16,7 @@ export function StayDetails() {
     // is guest favorite - if truthy - show a cmp of guest fav
     useEffect(() => {
         if (stayId) {
-            loadStay()
+            loadStay() 
         }
     }, [])
 
