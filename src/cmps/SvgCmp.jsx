@@ -1,4 +1,5 @@
-export function SvgCmp({ svgNames, handleChange }) {
+
+export function SvgCmp({ folder, svgNames, handleChange }) {
 
     // function doesFileExist(filePath) {
     //     try {
@@ -9,13 +10,14 @@ export function SvgCmp({ svgNames, handleChange }) {
     // }
 
     function renderSvg(name) {
-        const svg = `./src/assets/svg/labels/${name}.svg`
+        const svg = `./src/assets/svg/${folder}/${name}.svg`
         const nameCaps = name[0].toUpperCase() + name.slice(1)
 
         return <div key={name} onClick={() => handleChange(name)}
-            className={`${name.replace(/_/g, ' ')}`}>
+        className={`${name.replace(/_/g, ' ')}`}>
             <img src={svg} alt={name} />
             <p>{nameCaps.replace(/_/g, ' ')}</p>
+      
         </div>
     }
 
