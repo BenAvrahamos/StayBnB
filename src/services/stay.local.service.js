@@ -16,10 +16,14 @@ export const stayService = {
     getFilterFromParams,
     getEmptyOrder,
     getEmptyStay,
-    getDefaultFilter
+    getDefaultFilter,
+    getDefaultHeaderFilter
 }
 
-async function query(filterBy) {
+async function query(filterBy, headerFilterBy) {
+
+    filterBy = { ...filterBy, ...headerFilterBy }
+
     try {
         let stayArr = await storageService.query(STAY_DB)
         if (filterBy.loc.length) {
@@ -247,6 +251,16 @@ function getDefaultFilter() {
             selfCheckIn: false,
             allowsPets: false
         }
+    }
+}
+
+function getDefaultHeaderFilter() {
+    return {
+        loc: {
+        },
+        entryDate: '',
+        exitDate: '',            // dates
+        guestCount: { adults: 0, children: 0, infants: 0, pets: 0 },                // number of guests
     }
 }
 
