@@ -1,4 +1,10 @@
 .stay-payment-details {
+    .payment-details-header {
+        .go-back-arr::before {
+            content: "\f053";
+            font-family: fa-solid;
+        }
+    }
     .payment {
         .circle {
             border-radius: 50%;
