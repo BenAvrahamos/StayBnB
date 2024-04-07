@@ -30,7 +30,7 @@ export function LabelsFilter({ setStayFilter, filterBy }) {
 		</section>
 		{showFilterModal && <FilterModal
 			setShowFilter={setShowFilter}
-			onSetFilter={onSetFilter}
+			setStayFilter={setStayFilter}
 			filterBy={filterBy}
 		/>}
 	</>
