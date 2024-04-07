@@ -78,13 +78,13 @@ export function Payment({ stay }) {
                           <span className={isDownUpArrow}></span>  
                         </div>
                         <div className='card-details flex column'>
-                            <input type="text" placeholder="Card number" />
+                            <input className="card-number" type="text" placeholder="Card number" />
                             <div className='flex expiration-cvv'>
-                                <input type="text" placeholder="Expiration" />
-                                <input type="text" placeholder="CVV" />
+                                <input className="expiration" type="text" placeholder="Expiration" />
+                                <input cvv="cvv" type="text" placeholder="CVV" />
                             </div>
                         </div>
-                        <input type='text' placeholder="ZIP code" />
+                        <input className='zip' type='text' placeholder="ZIP code" />
                         <div className='country-region'>
                             <p>Country/region</p>
                             Inside is the value of the country.
