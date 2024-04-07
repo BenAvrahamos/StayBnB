@@ -23,55 +23,36 @@ export const stayService = {
 utilService.generateStaysArray()
 
 async function query(filterBy, headerFilterBy) {
-
     filterBy = { ...filterBy, ...headerFilterBy }
 
-
-
     try {
-
         let stayArr = await storageService.query(STAY_DB)
 
 
-
-
-
         if (filterBy.loc.region) {
-
             stayArr = stayArr.filter(stay => stay.loc.region === filterBy.loc.region)
         }
 
         if (filterBy.loc.country) {
-
             stayArr = stayArr.filter(stay => stay.loc.country === filterBy.loc.country)
         }
 
         if (filterBy.loc.countryCode) {
-
             stayArr = stayArr.filter(stay => stay.loc.countryCode === filterBy.loc.countryCode)
         }
 
         if (filterBy.loc.city) {
-
             stayArr = stayArr.filter(stay => stay.loc.city === filterBy.loc.city)
         }
 
-
         if (filterBy.loc.address) {
-
             stayArr = stayArr.filter(stay => stay.loc.address === filterBy.loc.address)
         }
 
-
-
         if (filterBy.entryDate) {
-
             stayArr = stayArr.filter(stay => {
                 return !stay.booked.some(booking => {
-
-
                     return (
-
                         (booking.entryDate >= filterBy.entryDate && booking.entryDate <= filterBy.exitDate) ||
                         (booking.exitDate >= filterBy.entryDate && booking.exitDate <= filterBy.exitDate) ||
                         (booking.entryDate <= filterBy.entryDate && booking.exitDate >= filterBy.exitDate)
@@ -80,83 +61,57 @@ async function query(filterBy, headerFilterBy) {
             })
         }
 
-
-
         if (filterBy.guestCount) {
-
             if (filterBy.guestCount.adults || filterBy.guestCount.children) {
-
                 const filterCapacity = filterBy.guestCount.adults + filterBy.guestCount.children
-
-
                 stayArr = stayArr.filter(stay => stay.capacity >= filterCapacity)
             }
 
-
             if (filterBy.guestCount.infants) {
-
-
                 stayArr = stayArr.filter(stay => stay.amenities.includes('crib'))
             }
 
             if (filterBy.guestCount.pets) {
-
                 stayArr = stayArr.filter(stay => stay.amenities.includes('pets_allowed'))
             }
         }
 
-        // if (filterBy.labels) {
-
-        //     stayArr = stayArr.filter(stay => stay.labels.includes(filterBy.labels))
-
-        // }
-
-        if (filterBy.amenities.length) {
-
-            stayArr = stayArr.filter(stay => filterBy.amenities.every(amenity => stay.amenities.includes(amenity)))
-
+        if (filterBy.label) {
+            stayArr = stayArr.filter(stay => stay.labels.includes(filterBy.label))
         }
 
-        if (filterBy.placeType !== 'any type') {
+        if (filterBy.amenities.length) {
+            stayArr = stayArr.filter(stay => filterBy.amenities.every(amenity => stay.amenities.includes(amenity)))
+        }
 
+        if (filterBy.placeType !== 'any') {
             stayArr = stayArr.filter(stay => stay.type === filterBy.placeType)
-
         }
 
         // if (filterBy.priceRange) {
         //     stayArr = stayArr.filter(stay => stay.price >= filterBy.priceRange.min && stay.price <= filterBy.priceRange.max)
-
         // }
 
+        if (filterBy.bedrooms !== 'any') {
+            stayArr = stayArr.filter(stay => stay.bedrooms.length >= filterBy.bedrooms)
+        }
 
+        if (filterBy.beds !== 'any') {
+            stayArr = stayArr.filter(stay => stay.bedrooms.reduce((acc, room) => acc + room.beds.length, 0) >= filterBy.beds)
+        }
 
-        // if (filterBy.bbb.bedrooms !== 'any') {
-        //     stayArr = stayArr.filter(stay => stay.bedrooms.length >= filterBy.BBB.Bedrooms)
-        // }
-
-        // if (filterBy.bbb.beds !== 'any') {
-        //     stayArr = stayArr.filter(stay =>
-        //         stay.bedrooms.reduce((acc, room) => acc + room.beds.length, 0) >= filterBy.BBB.Beds
-        //     )
-        // }
-
-        // if (filterBy.bbb.bathrooms !== 'any') {
-        //     stayArr = stayArr.filter(stay => stay.baths >= filterBy.BBB.Bathrooms)
-        // }
-
-
-
+        if (filterBy.bathrooms !== 'any') {
+            stayArr = stayArr.filter(stay => stay.baths >= filterBy.bathrooms)
+        }
 
         if (filterBy.propType.length) {
             stayArr = stayArr.filter(stay => filterBy.propType.includes(stay.propType))
         }
 
-        // console.log(stayArr);
-
         return stayArr
-    } catch (err) {
-        console.log(err)
     }
+
+    catch (err) { console.log(err) }
 }
 
 async function getById(stayId) {
@@ -206,10 +161,12 @@ function getFilterFromParams(searchParams) {
         entryDate: searchParams.get('entryDate') || defaultFilter.entryDate,
         exitDate: searchParams.get('exitDate') || defaultFilter.exitDate,
         guestCount: searchParams.get('guestCount') || defaultFilter.guestCount,
-        labels: searchParams.get('labels') || defaultFilter.labels,
+        label: searchParams.get('label') || defaultFilter.label,
         placeType: searchParams.get('placeType') || defaultFilter.placeType,
         priceRange: searchParams.get('priceRange') || defaultFilter.priceRange,
-        BBB: searchParams.get('BBB') || defaultFilter.BBB,
+        bedrooms: searchParams.get('bedrooms') || defaultFilter.bedrooms,
+        beds: searchParams.get('beds') || defaultFilter.beds,
+        bathrooms: searchParams.get('bathrooms') || defaultFilter.bathrooms,
         propType: searchParams.get('propType') || defaultFilter.propType,
         amenities: searchParams.get('amenities') || defaultFilter.amenities,
         bookingOpts: searchParams.get('bookingOpts') || defaultFilter.bookingOpts,
@@ -255,17 +212,15 @@ function getDefaultFilter() {
         entryDate: '',
         exitDate: '',            // dates
         guestCount: { adults: 0, children: 0, infants: 0, pets: 0 },                // number of guests
-        labels: [],
-        placeType: 'any type',       // any type / room / entire home
+        label: '',
+        placeType: 'any',       // any / room / entire home
         priceRange: {
             min: 0,
             max: Infinity
         },
-        bbb: {
-            bedrooms: 'any',
-            beds: 'any',
-            bathrooms: 'any'
-        },
+        bedrooms: 'any',
+        beds: 'any',
+        bathrooms: 'any',
         propType: [],                // house / apartment / guesthouse / hotel
         amenities: [],
         bookingOpts: {
