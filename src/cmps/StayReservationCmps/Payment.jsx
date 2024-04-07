@@ -7,21 +7,7 @@ import { stayService } from '../../services/stay.local.service'
 
 export function Payment( {stay} ) {
     const reservation = useSelector(storeState => storeState.reservationModule.reservation)
-    // const [stay, setStay] = useState()
-
-    // useEffect(() => {
-    //     if(s) loadStay()
-        
-    // }, [])
-
-    // async function loadStay() {
-    //     try {
-    //         const stay = await stayService.getById(stayId)
-    //         setStay(stay)
-    //     } catch (err) {
-    //         console.log(err)
-    //     }
-    // }
+    const [isPayNow, setIsPayNow] = useState(true)
 
     function calcSumToPay() {
         let diff = reservation.checkout - reservation.checkIn
@@ -37,6 +23,11 @@ export function Payment( {stay} ) {
         const dayOfDate = getDay(date)
         str += dayOfDate
         return str
+    }
+
+    function calcPricePercentage(percentage) {
+        const finalPrice = calcSumToPay()
+        return finalPrice * percentage
     }
 
     return <section className="stay-payment-details">
@@ -67,7 +58,10 @@ export function Payment( {stay} ) {
                     <h3>Pay ${calcSumToPay()} now</h3>
                     <span className='circle'></span>
                     </button>
-                <button></button>
+                <button>
+                    <h3>Pay part now, part later</h3>
+                    <p>{calcPricePercentage(56)} due today, {calcPricePercentage(44)} on {convertDays(calcDaysToPayment())}, 2024. No extra fees.</p>
+                </button>
             </div>}
         </div>
 
