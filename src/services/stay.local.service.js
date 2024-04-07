@@ -22,7 +22,7 @@ export const stayService = {
 
 utilService.generateStaysArray()
 
-async function query(filterBy, headerFilterBy) {
+async function query(filterBy, headerFilterBy = {}) {
     filterBy = { ...filterBy, ...headerFilterBy }
 
     try {
