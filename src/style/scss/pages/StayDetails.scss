@@ -1,5 +1,3 @@
-$gray: #DDDDDC;
-
 .stay-details {
     .content-and-modal-container {
         margin-block-start: 2rem;
@@ -73,7 +71,7 @@ $gray: #DDDDDC;
         grid-area: col2;
         padding: 24px;
         box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
-        border: 1px solid $gray;
+        border: 1px solid $gray3;
         border-radius: 12px;
 
         .selectors-container label {
@@ -102,7 +100,7 @@ $gray: #DDDDDC;
             padding-block-start: rem(24px);
             width: rem(201.11px);
             height: max-content;
-            border: 1px solid $gray;
+            border: 1px solid $gray3;
             border-radius: rem(12px);
 
             .icons {
