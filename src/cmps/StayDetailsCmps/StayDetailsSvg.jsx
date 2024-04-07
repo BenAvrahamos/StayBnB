@@ -2,7 +2,6 @@ import { stayDetailsSvgService } from '../../services/stay-details-svg'
 import { StringToSvg } from "./StringToSvg"
 
 export function StayDetailsSvg({ bed }) {
-    console.log(bed)
     if (bed === 'couch' || bed === 'sofa bed') {
         return <span className={`icon ${bed}`} key={bed}><StringToSvg svgString={stayDetailsSvgService.sofaBed} /></span>
     }

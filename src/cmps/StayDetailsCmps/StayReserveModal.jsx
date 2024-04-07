@@ -34,7 +34,6 @@ export function StayReserveModal({stay}) {
         setNumOfDays(differenceInDays)
     }
 
-    console.log(reservation.checkIn, reservation.checkout)
     return (
         <div className="reserve-modal">
             <div className='container-price-selectors'>
