@@ -20,6 +20,8 @@ export const stayService = {
     getDefaultHeaderFilter
 }
 
+utilService.generateStaysArray()
+
 async function query(filterBy, headerFilterBy) {
 
     filterBy = { ...filterBy, ...headerFilterBy }
@@ -31,40 +33,54 @@ async function query(filterBy, headerFilterBy) {
         let stayArr = await storageService.query(STAY_DB)
 
 
-        
-        
-        
+
+
+
         if (filterBy.loc.region) {
-              
-                stayArr = stayArr.filter(stay => stay.loc.region === filterBy.loc.region)
-            }
 
-            if (filterBy.loc.country) {
-
-                stayArr = stayArr.filter(stay => stay.loc.country === filterBy.loc.country)
-            }
-
-            if (filterBy.loc.countryCode) {
-
-                stayArr = stayArr.filter(stay => stay.loc.countryCode === filterBy.loc.countryCode)
-            }
-
-            if (filterBy.loc.city) {
-
-                stayArr = stayArr.filter(stay => stay.loc.city === filterBy.loc.city)
-            }
-
-
-            if (filterBy.loc.address) {
-
-                stayArr = stayArr.filter(stay => stay.loc.address === filterBy.loc.address)
-            }
-
-        
-
-        if (filterBy.entryDate) { //check availability between entry date and exit date :)
-
+            stayArr = stayArr.filter(stay => stay.loc.region === filterBy.loc.region)
         }
+
+        if (filterBy.loc.country) {
+
+            stayArr = stayArr.filter(stay => stay.loc.country === filterBy.loc.country)
+        }
+
+        if (filterBy.loc.countryCode) {
+
+            stayArr = stayArr.filter(stay => stay.loc.countryCode === filterBy.loc.countryCode)
+        }
+
+        if (filterBy.loc.city) {
+
+            stayArr = stayArr.filter(stay => stay.loc.city === filterBy.loc.city)
+        }
+
+
+        if (filterBy.loc.address) {
+
+            stayArr = stayArr.filter(stay => stay.loc.address === filterBy.loc.address)
+        }
+
+
+
+        if (filterBy.entryDate) {
+
+            stayArr = stayArr.filter(stay => {
+                return !stay.booked.some(booking => {
+
+
+                    return (
+
+                        (booking.entryDate >= filterBy.entryDate && booking.entryDate <= filterBy.exitDate) ||
+                        (booking.exitDate >= filterBy.entryDate && booking.exitDate <= filterBy.exitDate) ||
+                        (booking.entryDate <= filterBy.entryDate && booking.exitDate >= filterBy.exitDate)
+                    )
+                })
+            })
+        }
+
+
 
         if (filterBy.guestCount) {
 
