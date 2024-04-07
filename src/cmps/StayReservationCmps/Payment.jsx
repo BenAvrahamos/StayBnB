@@ -38,8 +38,8 @@ export function Payment({ stay }) {
     }
 
     return <section className="stay-payment-details">
-        <div className="payment-details-header">
-            <span>Arrow to go back</span>
+        <div className="payment-details-header flex align-center">
+            <span className='go-back-arr'></span>
             <h1>Request to book</h1>
         </div>
         <div className="reservation-details">
@@ -100,9 +100,35 @@ export function Payment({ stay }) {
                         Inside is the value of the country.
                     </div>
                     <hr />
-                    <div className='required-and-phone'></div>
+                </div>
+                <div className='required-and-phone'>
+                    <h1>Required for your trip</h1>
+                    <div className='required-phone-container'>
+                        <h4>Phone number</h4>
+                        <button>Add</button>
+                    </div>
+                    <p>Add and confirm your phone number to get trip updates.</p>
+                </div>
+                <hr />
+                <div className='policy'>
+                    <h1>Cancellation policy</h1>
+                    <p>This reservation is non-refundable. <span className='learn-policy'>Learn more</span></p>
+                </div>
+                <hr />
+                <div className='ground-rules'>
+                    <h1>Ground rules</h1>
+                    <pre>We ask every guest to remember a
+                        few simple things about what makes a great guest.</pre>
+                    <ul className='rules'>
+                        <li>Follow the house rules</li>
+                        <li>Treat your Host’s home like your own</li>
+                    </ul>
+                </div>
+                <div className='confirm-and-pay flex center'>
+                <span>Confirm and pay</span>
                 </div>
             </div>
+
             }
         </div>
     </section>

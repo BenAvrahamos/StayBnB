@@ -1,0 +1,45 @@
+.stay-reservation {
+    width: 70rem;
+    margin-inline: auto;
+    gap: rem(80px);
+
+    .stay-reservation-modal {
+        padding: rem(24px);
+        border: 1px solid $gray3;
+        height: max-content;
+        hr {
+            margin: 0;
+        }
+
+        .stay-details-part {
+            padding-block-end: rem(24px);
+
+            img {
+                object-fit: cover;
+                width: rem(104px);
+                height: rem(104px);
+                border-radius: rem(10px);
+            }
+
+            .text-details {
+                padding-inline-start: 1rem;
+
+                h2,
+                p {
+                    margin-block-end: rem(5px);
+                }
+            }
+        }
+
+        .price-details-part {
+            h1 {
+                padding-block: rem(24px);
+                margin: 0;
+            }
+            div:not(:last-child) {
+                padding-block-end: 1rem;
+            }
+        }
+    }
+
+}
