@@ -1,5 +1,6 @@
 import { useParams } from 'react-router'
 import { Payment } from '../cmps/StayReservationCmps/Payment'
+import { StayReservationModal } from '../cmps/StayReservationCmps/StayReservationModal'
 import { useEffect, useState } from 'react'
 import { stayService } from '../services/stay.local.service'
 
@@ -21,7 +22,12 @@ export function StayReservation() {
             console.log(err)
         }
     }
+
     return <section className="stay-reservation flex space-between">
-       {stay && <Payment stay={stay} />}
+        {stay &&
+            <>
+                <Payment stay={stay} />
+                <StayReservationModal stay={stay} />
+            </>}
     </section>
 }
