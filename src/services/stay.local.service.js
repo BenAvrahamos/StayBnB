@@ -16,16 +16,26 @@ export const stayService = {
     getFilterFromParams,
     getEmptyOrder,
     getEmptyStay,
-    getDefaultFilter
+    getDefaultFilter,
+    getDefaultHeaderFilter
 }
 
-async function query(filterBy) {
+async function query(filterBy, headerFilterBy) {
+
+    filterBy = { ...filterBy, ...headerFilterBy }
+
+
+
     try {
+
         let stayArr = await storageService.query(STAY_DB)
-        if (filterBy.loc.length) {
 
-            if (filterBy.loc.region) {
 
+        
+        
+        
+        if (filterBy.loc.region) {
+              
                 stayArr = stayArr.filter(stay => stay.loc.region === filterBy.loc.region)
             }
 
@@ -50,8 +60,7 @@ async function query(filterBy) {
                 stayArr = stayArr.filter(stay => stay.loc.address === filterBy.loc.address)
             }
 
-        }
-
+        
 
         if (filterBy.entryDate) { //check availability between entry date and exit date :)
 
@@ -59,17 +68,17 @@ async function query(filterBy) {
 
         if (filterBy.guestCount) {
 
-            if (filterBy.guestCount.adults) {
+            if (filterBy.guestCount.adults || filterBy.guestCount.children) {
 
-                stayArr = stayArr.filter(stay => stay.capacity <= filterBy.guestCount.adults)
+                const filterCapacity = filterBy.guestCount.adults + filterBy.guestCount.children
+
+
+                stayArr = stayArr.filter(stay => stay.capacity >= filterCapacity)
             }
 
-            if (filterBy.guestCount.children) {
-
-                stayArr = stayArr.filter(stay => stay.capacity <= filterBy.guestCount.children)
-            }
 
             if (filterBy.guestCount.infants) {
+
 
                 stayArr = stayArr.filter(stay => stay.amenities.includes('crib'))
             }
@@ -126,6 +135,7 @@ async function query(filterBy) {
             stayArr = stayArr.filter(stay => filterBy.propType.includes(stay.propType))
         }
 
+        // console.log(stayArr);
 
         return stayArr
     } catch (err) {
@@ -247,6 +257,16 @@ function getDefaultFilter() {
             selfCheckIn: false,
             allowsPets: false
         }
+    }
+}
+
+function getDefaultHeaderFilter() {
+    return {
+        loc: {
+        },
+        entryDate: '',
+        exitDate: '',            // dates
+        guestCount: { adults: 0, children: 0, infants: 0, pets: 0 },                // number of guests
     }
 }
 

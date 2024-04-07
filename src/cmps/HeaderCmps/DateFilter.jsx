@@ -3,9 +3,9 @@ import { DateRangePicker } from "react-date-range";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 
-import { loadStays, removeStay, saveStay, setStayFilter } from '../../store/actions/stay.actions'
+import { loadStays, removeStay, saveStay, setStayHeaderFilter } from '../../store/actions/stay.actions'
 
-export function DateFilter({ setModalType, filterBy }) {
+export function DateFilter({ setModalType, headerFilterBy }) {
     const [dateRange, setDateRange] = useState([
         {
             startDate: new Date(),
@@ -20,20 +20,20 @@ export function DateFilter({ setModalType, filterBy }) {
 
         // console.log("Start Date (Timestamp):", startDateTimestamp)
         // console.log("End Date (Timestamp):", endDateTimestamp)
-        
-        
-        if (!filterBy.entryDate && !filterBy.exitDate) {
-            
-            setStayFilter({ ...filterBy, entryDate: startDateTimestamp})
-            
-        } else if (filterBy.entryDate && !filterBy.exitDate) {
-            
-            setStayFilter({ ...filterBy, exitDate: endDateTimestamp })
+
+
+        if (!headerFilterBy.entryDate && !headerFilterBy.exitDate) {
+
+            setStayHeaderFilter({ ...headerFilterBy, entryDate: startDateTimestamp })
+
+        } else if (headerFilterBy.entryDate && !headerFilterBy.exitDate) {
+
+            setStayHeaderFilter({ ...headerFilterBy, exitDate: endDateTimestamp })
         } else {
-            
-            setStayFilter({ ...filterBy, entryDate: startDateTimestamp, exitDate: null })
+
+            setStayHeaderFilter({ ...headerFilterBy, entryDate: startDateTimestamp, exitDate: null })
         }
-        
+
         setDateRange([ranges.selection])
 
 

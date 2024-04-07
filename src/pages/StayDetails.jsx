@@ -5,11 +5,9 @@ import { StayGalleryPreview } from '../cmps/StayDetailsCmps/StayGalleryPreview'
 import { StayReserveModal } from '../cmps/StayDetailsCmps/StayReserveModal'
 import { StayDetailsSvg } from "../cmps/StayDetailsCmps/StayDetailsSvg"
 import { BedroomDetails } from '../cmps/StayDetailsCmps/BedroomDetails'
-import { useSelector } from 'react-redux'
 
 
 export function StayDetails() {
-    const reservation = useSelector(storeState => storeState.reservationModule.reservation)
     const safetyAmenities = ['Carbon monoxide alarm', 'Smoke alarm']
     const { stayId } = useParams()
     const [stay, setStay] = useState('')

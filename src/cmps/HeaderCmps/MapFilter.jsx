@@ -1,9 +1,9 @@
 
-import { loadStays, removeStay, saveStay, setStayFilter } from '../../store/actions/stay.actions'
+import { loadStays, removeStay, saveStay, setStayHeaderFilter } from '../../store/actions/stay.actions'
 import { store } from '../../store/store.js'
 
 
-export function MapFilter({ setModalType ,filterBy}) {
+export function MapFilter({ setModalType ,headerFilterBy}) {
 
 
     function switchToDatesFilter(ev) {
@@ -13,7 +13,7 @@ export function MapFilter({ setModalType ,filterBy}) {
 
 
     function onSelectRegion(region) {
-        setStayFilter({ ...filterBy, loc: { ...filterBy.loc, region } })
+        setStayHeaderFilter({ ...headerFilterBy, loc: { ...headerFilterBy.loc, region } })
     }
 
     return <section className="map-filter">
