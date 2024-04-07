@@ -1,26 +1,21 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { loadStays, removeStay, saveStay, setStayFilter } from '../store/actions/stay.actions.js'
 
-import { stayService } from '../services/stay.local.service.js'
 import { StayList } from '../cmps/StayList.jsx'
 import { LabelsFilter } from '../cmps/LabelsFilter.jsx'
 
 export function StayIndex() {
-
     const [searchParams, setSearchParams] = useSearchParams()
 
     const { stays } = useSelector(storeState => storeState.stayModule)
     const { filterBy } = useSelector(storeState => storeState.stayModule)
-    console.log(filterBy);
 
     useEffect(() => {
         setSearchParams(filterBy)
         loadStays()
     }, [filterBy])
-
-
 
     if (!stays || !stays.length) return <p>loading</p>
     return <section className='index-section'>

@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export function FilterModal({ setShowFilter, onSetFilter, filterBy }) {
+export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
     const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
 
     function clearFilter() {
@@ -25,7 +25,7 @@ export function FilterModal({ setShowFilter, onSetFilter, filterBy }) {
     }
 
     function submitFilter() {
-        onSetFilter(filterByToEdit)
+        setStayFilter(filterByToEdit)
         setShowFilter(false)
     }
 
