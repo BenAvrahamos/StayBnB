@@ -104,6 +104,7 @@ export const stays = [{
     }
   },
   loc: {
+    region: "Middle East",
     country: "Portugal",
     countryCode: "PT",
     city: "Lisbon",
@@ -165,6 +166,7 @@ export const stays = [{
     }
   },
   loc: {
+    region: "United States",
     country: "Portugal",
     countryCode: "PT",
     city: "Lisbon",
@@ -226,6 +228,7 @@ export const stays = [{
     }
   },
   loc: {
+    region: "Greece",
     country: "Portugal",
     countryCode: "PT",
     city: "Lisbon",
@@ -287,6 +290,7 @@ export const stays = [{
     }
   },
   loc: {
+    region: "South America",
     country: "Portugal",
     countryCode: "PT",
     city: "Lisbon",
@@ -348,6 +352,7 @@ export const stays = [{
     }
   },
   loc: {
+    region: "Greece",
     country: "Portugal",
     countryCode: "PT",
     city: "Lisbon",

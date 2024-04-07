@@ -31,13 +31,11 @@ async function query(filterBy, headerFilterBy) {
         let stayArr = await storageService.query(STAY_DB)
 
 
-
-
-        if (filterBy.loc.length) {
-
-            if (filterBy.loc.region) {
-
-
+        
+        
+        
+        if (filterBy.loc.region) {
+              
                 stayArr = stayArr.filter(stay => stay.loc.region === filterBy.loc.region)
             }
 
@@ -62,8 +60,7 @@ async function query(filterBy, headerFilterBy) {
                 stayArr = stayArr.filter(stay => stay.loc.address === filterBy.loc.address)
             }
 
-        }
-
+        
 
         if (filterBy.entryDate) { //check availability between entry date and exit date :)
 
