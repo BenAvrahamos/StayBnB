@@ -21,7 +21,7 @@ export function StayReserveModal({stay}) {
     function validateAndMoveToPayment() {
         if (reservation.checkIn && reservation.checkout &&
             (reservation.guests.adults || reservation.guests.children || reservation.guests.infants)) {
-            navigate(`/${stay._id}/payment`)
+            navigate(`/payment`)
         }
         return
     }
