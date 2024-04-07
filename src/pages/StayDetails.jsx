@@ -7,6 +7,7 @@ import { StayDetailsSvg } from "../cmps/StayDetailsCmps/StayDetailsSvg"
 import { BedroomDetails } from '../cmps/StayDetailsCmps/BedroomDetails'
 import { useSelector } from 'react-redux'
 
+
 export function StayDetails() {
     const reservation = useSelector(storeState => storeState.reservationModule.reservation)
     const safetyAmenities = ['Carbon monoxide alarm', 'Smoke alarm']
@@ -17,7 +18,7 @@ export function StayDetails() {
     // is guest favorite - if truthy - show a cmp of guest fav
     useEffect(() => {
         if (stayId) {
-            loadStay()
+            loadStay() 
         }
     }, [])
 
