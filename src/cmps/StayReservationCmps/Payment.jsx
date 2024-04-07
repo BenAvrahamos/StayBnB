@@ -63,7 +63,7 @@ export function Payment( {stay} ) {
             <hr />
             {stay && <div className='payment'>
                 <h1>Choose how to pay</h1>
-                <button className='flex space-between'>
+                <button className='btn flex space-between'>
                     <h3>Pay ${calcSumToPay()} now</h3>
                     <span className='circle'></span>
                     </button>
