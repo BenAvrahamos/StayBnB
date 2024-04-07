@@ -38,7 +38,7 @@ export function Payment({ stay }) {
     }
 
     return <section className="stay-payment-details">
-        <div className="payment-details-header">
+        <div className="payment-details-header flex align-center">
             <span className='go-back-arr'></span>
             <h1>Request to book</h1>
         </div>

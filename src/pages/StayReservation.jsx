@@ -23,7 +23,7 @@ export function StayReservation() {
         }
     }
 
-    return <section className="stay-reservation flex space-between">
+    return <section className="stay-reservation flex">
         {stay &&
             <>
                 <Payment stay={stay} />

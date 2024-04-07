@@ -16,8 +16,8 @@ export function StayReservationModal( {stay}) {
         return avgScore
     }
 
-    return <div className="stay-reservation-modal">
-        <div className="stay-details-part">
+    return <div className="stay-reservation-modal flex column">
+        <div className="stay-details-part flex align-center">
             <img src={stay.imgUrls[0]} />
             <div className="text-details">
                 <h2>{stay.name}</h2>
@@ -28,15 +28,15 @@ export function StayReservationModal( {stay}) {
     <hr />
     <div className="price-details-part">
         <h1>Price details</h1>
-        <div className="accommodation">
+        <div className="accommodation flex space-between">
             <p>Accommodation</p>
             <p>${calcSumToPay()}</p>
         </div>
-        <div className="fee">
+        <div className="fee flex space-between">
             <p>Staybnb service fee</p>
             <p>${calcSumToPay() * 0.14125}</p>
         </div>
-        <div className="total">
+        <div className="total flex space-between">
             <p>Total</p>
             <p>${calcSumToPay() + (calcSumToPay() * 0.14125)}</p>
         </div>
