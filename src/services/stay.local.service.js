@@ -105,17 +105,17 @@ async function query(filterBy) {
 
 
 
-        // if (filterBy.BBB.Bedrooms !== 'any') {
+        // if (filterBy.bbb.bedrooms !== 'any') {
         //     stayArr = stayArr.filter(stay => stay.bedrooms.length >= filterBy.BBB.Bedrooms)
         // }
 
-        // if (filterBy.BBB.Beds !== 'any') {
+        // if (filterBy.bbb.beds !== 'any') {
         //     stayArr = stayArr.filter(stay =>
         //         stay.bedrooms.reduce((acc, room) => acc + room.beds.length, 0) >= filterBy.BBB.Beds
         //     )
         // }
 
-        // if (filterBy.BBB.Bathrooms !== 'any') {
+        // if (filterBy.bbb.bathrooms !== 'any') {
         //     stayArr = stayArr.filter(stay => stay.baths >= filterBy.BBB.Bathrooms)
         // }
 
@@ -235,10 +235,10 @@ function getDefaultFilter() {
             min: 0,
             max: Infinity
         },
-        BBB: {
-            Bedrooms: 'any',
-            Beds: 'any',
-            Bathrooms: 'any'
+        bbb: {
+            bedrooms: 'any',
+            beds: 'any',
+            bathrooms: 'any'
         },
         propType: [],                // house / apartment / guesthouse / hotel
         amenities: [],

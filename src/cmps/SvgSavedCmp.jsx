@@ -1,5 +1,5 @@
 
-export function SvgCmp({ folder, svgNames, handleChange }) {
+export function SvgSavedCmp({ folder, svgNames, handleChange }) {
 
     // function doesFileExist(filePath) {
     //     try {
