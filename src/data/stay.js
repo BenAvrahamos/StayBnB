@@ -11,7 +11,7 @@ export const stays = [{
 ],
   price: 80.00,
   summary: "Fantastic duplex apartment...",
-  capacity: 8,
+  capacity: 5,
   bedrooms: [
     {
       name: 'Living Room',
@@ -67,7 +67,7 @@ export const stays = [{
 ],
   price: 90.00,
   summary: "Fantastic duplex apartment...",
-  capacity: 8,
+  capacity: 13,
   bedrooms: [
     {
       name: 'Living Room',
@@ -87,7 +87,7 @@ export const stays = [{
     'Tv', 'Iron', 'Pool', 'Free parking',
     'Crib', 'Gym', 'Breakfast', 'Smoking allowed', 'Hot tub', 'Ev charger', 'King bed', 'BBQ grill',
     'Indoor fireplace', 'Beachfront', 'Ski-on/Ski-out', 'Waterfront',
-    'Smoke alarm', 'Carbon monoxide alarm'],
+    'Smoke alarm', 'Carbon monoxide alarm','crib'],
   labels: [
     "Play",
     "Tropical"
@@ -104,6 +104,7 @@ export const stays = [{
     }
   },
   loc: {
+    region: "Middle East",
     country: "Portugal",
     countryCode: "PT",
     city: "Lisbon",
@@ -127,7 +128,7 @@ export const stays = [{
 ],
   price: 80.00,
   summary: "Fantastic duplex apartment...",
-  capacity: 8,
+  capacity: 4,
   bedrooms: [
     {
       name: 'Living Room',
@@ -165,6 +166,7 @@ export const stays = [{
     }
   },
   loc: {
+    region: "United States",
     country: "Portugal",
     countryCode: "PT",
     city: "Lisbon",
@@ -188,7 +190,7 @@ export const stays = [{
 ],
   price: 80.00,
   summary: "Fantastic duplex apartment...",
-  capacity: 8,
+  capacity: 2,
   bedrooms: [
     {
       name: 'Living Room',
@@ -226,6 +228,7 @@ export const stays = [{
     }
   },
   loc: {
+    region: "Greece",
     country: "Portugal",
     countryCode: "PT",
     city: "Lisbon",
@@ -287,6 +290,7 @@ export const stays = [{
     }
   },
   loc: {
+    region: "South America",
     country: "Portugal",
     countryCode: "PT",
     city: "Lisbon",
@@ -310,7 +314,7 @@ export const stays = [{
 ],
   price: 80.00,
   summary: "Fantastic duplex apartment...",
-  capacity: 8,
+  capacity: 6,
   bedrooms: [
     {
       name: 'Living Room',
@@ -348,6 +352,7 @@ export const stays = [{
     }
   },
   loc: {
+    region: "Greece",
     country: "Portugal",
     countryCode: "PT",
     city: "Lisbon",
