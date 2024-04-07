@@ -16,7 +16,7 @@ export function StayDetails() {
     // is guest favorite - if truthy - show a cmp of guest fav
     useEffect(() => {
         if (stayId) {
-            loadStay() 
+            loadStay()
         }
     }, [])
 
@@ -122,14 +122,16 @@ export function StayDetails() {
                             </div>
                             <div className="amenities-of-stay">
                                 <h1>What this place offers: </h1>
-                                <ul className="first-col-amenity-ul">
-                                    {stay.amenities.slice(0, 3).map(amenity => <li key={amenity}>{amenity}</li>)}
-                                    <li className={stay.amenities.includes(safetyAmenities[0]) ? '' : 'no-safety-amenity'}>{safetyAmenities[0]}</li>
-                                </ul>
-                                <ul> // grid with two columns. first col - 5 first amenities, sec col - 5 others.
-                                    {stay.amenities.slice(4, 9).map(amenity => <li key={amenity}>{amenity}</li>)}
-                                    <li className={stay.amenities.includes(safetyAmenities[1]) ? '' : 'no-safety-amenity'}>{safetyAmenities[1]}</li>
-                                </ul>
+                                <div className="amenities-preview-container flex space-between">
+                                    <ul className="first-col-amenity-ul">
+                                        {stay.amenities.slice(0, 4).map(amenity => <li key={amenity}>{amenity}</li>)}
+                                        <li className={stay.amenities.includes(safetyAmenities[0]) ? '' : 'no-safety-amenity'}>{safetyAmenities[0]}</li>
+                                    </ul>
+                                    <ul className="second-col-amenity-ul">
+                                        {stay.amenities.slice(4, 9).map(amenity => <li key={amenity}>{amenity}</li>)}
+                                        <li className={stay.amenities.includes(safetyAmenities[1]) ? '' : 'no-safety-amenity'}>{safetyAmenities[1]}</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>

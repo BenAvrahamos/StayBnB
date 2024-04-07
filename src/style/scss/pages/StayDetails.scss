@@ -90,6 +90,11 @@
         }
     }
 
+    .first-col-amenity-ul, .second-col-amenity-ul {
+        li {
+            padding-block-end: rem(16px);
+        }
+    }
     .stay-rooms {
         padding-block-start: rem(48px);
         h2 {
