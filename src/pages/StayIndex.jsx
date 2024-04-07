@@ -13,16 +13,19 @@ export function StayIndex() {
 
     const { stays } = useSelector(storeState => storeState.stayModule)
     const { filterBy } = useSelector(storeState => storeState.stayModule)
+    console.log(filterBy);
 
     useEffect(() => {
         setSearchParams(filterBy)
         loadStays()
     }, [filterBy])
 
+
+
     if (!stays || !stays.length) return <p>loading</p>
     return <section className='index-section'>
         <LabelsFilter
-            onSetFilter={setStayFilter}
+            setStayFilter={setStayFilter}
             filterBy={filterBy}
         />
         <StayList
