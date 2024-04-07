@@ -1,18 +1,23 @@
 .stay-payment-details {
-    .circle {
-        border-radius: 50%;
-        background-color: #fff;
-        border: 1px solid $gray3;
-        width: rem(22px);
-        height: rem(22px);
-    }
+    .payment {
+        .circle {
+            border-radius: 50%;
+            background-color: #fff;
+            border: 1px solid $gray3;
+            width: rem(22px);
+            height: rem(22px);
+        }
 
-    .btn {
-        max-width: rem(560px);
-    }
+        .btn {
+            max-width: rem(560px);
+            height: rem(56px);
+        }
 
-    .btn { 
-        max-width: rem(560px);
-        height: rem(56px);
+        .credit-card-imgs {
+            gap: rem(3px);
+            img {
+                height: rem(9px);
+            }
+        }
     }
 }
