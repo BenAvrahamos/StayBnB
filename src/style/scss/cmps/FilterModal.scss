@@ -202,6 +202,8 @@
                     height: 100%;
                     border-radius: 20px;
 
+                    text-transform: capitalize;
+
                     @include buttons1;
                 }
             }
