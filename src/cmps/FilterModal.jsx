@@ -1,19 +1,19 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
-import { ButtonGroup } from './HelperCmps/ButtonGroup'
 import { stayService } from "../services/stay.local.service"
+
 import { PriceRangeChart } from "./PriceRangeChart"
+import { ButtonGroup } from "./HelperCmps/ButtonGroup"
+import { CheckboxGroup } from "./HelperCmps/CheckboxGroup"
+import { Accordion } from "./HelperCmps/Accordion"
 
 export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
     const [selected, setSelected] = useState(filterBy)
-    const [filteredCount, setFilteredCount] = useState(null)
+    const [filteredStays, setFilteredStays] = useState(stayService.query(selected))
 
-    async function getFilteredCount() {
-        try {
-            const stays = await stayService.query(selected)
-            setFilteredCount(stays.length)
-        } catch (err) { console.log('Error:', err) }
-    }
+    useEffect(() => {
+        setFilteredStays(stayService.query(selected))
+    }, [selected])
 
     function clearFilter() {  //add rerender here
         setSelected(filterBy)
@@ -30,7 +30,7 @@ export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
 
     function handleChange(field, value) {
         setSelected(prevFilterBy => {
-            if (field !== 'propType') {
+            if (field !== 'propType' && field !== 'amenities') {
                 return { ...prevFilterBy, [field]: value };
             } else {
                 const propTypeArray = prevFilterBy[field] || []
@@ -44,10 +44,13 @@ export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
     const placeTypeItems = [{ value: 'any', label: 'Any type' }, { value: 'room' }, { value: 'entire home' }]
     const bbbItems = [{ value: 'any' }, { value: 1 }, { value: 2 }, { value: 3 }, { value: 4 }, { value: 5 }, { value: 6 }, { value: 7 }, { value: '8+' },]
     const propTypeItems = [{ value: 'house' }, { value: 'apartment' }, { value: 'guesthouse' }, { value: 'hotel' }]
-    const amenityEssentials = ['wifi', 'kitchen', 'washer', 'dryer', 'air_conditioning', 'heating', 'dedicated_workspace', 'TV', 'hair_dryer', 'iron']
-    const amenityFeatures = ['pool', 'hot_tub', 'free_parking', 'ev_charger', 'crib', 'king_bed', 'gym', 'BBQ_grill', 'breakfast', 'indoor_fireplace', 'smoking_allowed']
-    const amenityLocation = ['beachfront', 'waterfront']
-    const amenitySafety = ['smoke_alarm', 'carbon_monoxide-alarm']
+    const amenityEssentialsShown = [{ value: 'wifi' }, { value: 'kitchen' }, { value: 'washer' }, { value: 'dryer' }, { value: 'air_conditioning', label: 'air conditioning' }, { value: 'heating' }]
+    const amenityEssentialsHidden = [{ value: 'dedicated_workspace', label: 'dedicated workspace' }, { value: 'TV' }, { value: 'hair_dryer', label: 'hair dryer' }, { value: 'iron' }]
+    const amenityFeatures = [{ value: 'pool' }, { value: 'hot_tub', label: 'hot tub' }, { value: 'free_parking', label: 'free parking' }, { value: 'ev_charger', label: 'ev charger' }, { value: 'crib' }, { value: 'king_bed', label: 'king bed' }, { value: 'gym' }, { value: 'BBQ_grill', label: 'BBQ grill' }, { value: 'breakfast' }, { value: 'indoor_fireplace', label: 'indoor fireplace' }, { value: 'smoking_allowed', label: 'smoking allowed' }]
+    const amenityLocation = [{ value: 'beachfront' }, { value: 'waterfront' }]
+    const amenitySafety = [{ value: 'smoke_alarm', label: 'smoke alarm' }, { value: 'carbon_monoxide-alarm', label: 'carbon monoxide alarm' }]
+    const hostLngShown = [{ value: 'english' }, { value: 'french' }, { value: 'german' }, { value: 'japanese' }]
+    const hostLngHidden = [{ value: 'italian' }, { value: 'russian' }, { value: 'spanish' }, { value: 'chinese (Simplified)' }, { value: 'arabic' }, { value: 'hindi' }, { value: 'portuguese' }, { value: 'turkish' }, { value: 'dutch' }, { value: 'korean' }, { value: 'thai' }, { value: 'greek' }, { value: 'hebrew' }, { value: 'polish' }, { value: 'tagalog' }, { value: 'danish' }, { value: 'swedish' }, { value: 'norwegian' }, { value: 'finnish' }, { value: 'czech' }, { value: 'hungarian' }]
 
     return <>
         <div className="overlay" onClick={leaveFilter}></div>
@@ -75,7 +78,7 @@ export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
                 <div className="price-range">
                     <h2>Price range</h2>
                     <p>Nightly prices including fees and taxes</p>
-                    <PriceRangeChart/>
+                    <PriceRangeChart />
                 </div>
 
                 <div className="rooms-beds">
@@ -118,10 +121,46 @@ export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
 
                 <div className="amenities">
                     <h2>Amenities</h2>
+
                     <h3>Essentials</h3>
-                    <h3>Features</h3>
-                    <h3>Location</h3>
-                    <h3>Safety</h3>
+                    <CheckboxGroup
+                        type={'amenities'}
+                        items={amenityEssentialsShown}
+                        selectedValue={selected.amenities}
+                        handleChange={handleChange}
+                    />
+                    <Accordion>
+                        <CheckboxGroup
+                            type={'amenities'}
+                            items={amenityEssentialsHidden}
+                            selectedValue={selected.amenities}
+                            handleChange={handleChange}
+                        />
+
+                        <h3>Features</h3>
+                        <CheckboxGroup
+                            type={'amenities'}
+                            items={amenityFeatures}
+                            selectedValue={selected.amenities}
+                            handleChange={handleChange}
+                        />
+
+                        <h3>Location</h3>
+                        <CheckboxGroup
+                            type={'label'}
+                            items={amenityLocation}
+                            selectedValue={selected.label}
+                            handleChange={handleChange}
+                        />
+
+                        <h3>Safety</h3>
+                        <CheckboxGroup
+                            type={'amenities'}
+                            items={amenitySafety}
+                            selectedValue={selected.amenities}
+                            handleChange={handleChange}
+                        />
+                    </Accordion>
                 </div>
 
                 <div className="booking-opts">
@@ -144,12 +183,26 @@ export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
 
                 <div className="host-lng">
                     <h2>Host language</h2>
+                    <CheckboxGroup
+                        type={'hostLgn'}
+                        items={hostLngShown}
+                        // selectedValue={selected.hostLng}
+                        handleChange={handleChange}
+                    />
+                    <Accordion>
+                        <CheckboxGroup
+                            type={'hostLgn'}
+                            items={hostLngHidden}
+                            // selectedValue={selected.hostLng}
+                            handleChange={handleChange}
+                        />
+                    </Accordion>
                 </div>
             </main>
 
             <footer className="flex align-center space-between">
                 <button className="clear-btn" onClick={clearFilter}>Clear all</button>
-                <button className="submit-btn" onClick={submitFilter}>Show {filteredCount !== null ? filteredCount : '###'} places</button>
+                <button className="submit-btn" onClick={submitFilter}>Show {filteredStays.length ? filteredStays.length : '###'} places</button>
             </footer>
         </section>
     </>

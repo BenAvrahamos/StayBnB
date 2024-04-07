@@ -116,6 +116,20 @@
             border-block-end: solid 1px $lightGray;
         }
 
+        .checkbox-group {
+            grid-template-columns: minmax(0, 1fr);
+            row-gap: 1.5rem;
+            padding-block-end: 1.5rem;
+
+            label {
+                text-transform: capitalize;
+            }
+        }
+
+        .accordion-arrow {
+            text-decoration: underline;
+            font-weight: 600;
+        }
         /////////////////////////////////////////////////////////////
         .place-type {
             padding-block: 1.4rem 1.5rem;
@@ -245,23 +259,37 @@
         .amenities {
             padding-block: 1.9rem;
 
+            h3 {
+                padding-block: 2rem 1rem;
+            }
+
+            h3:not(:first-of-type) {
+                padding-block: 1rem 1rem;
+            }
+
+            .checkbox-group {
+                .checkbox-item {
+                    // font-size: 1.1rem;
+                }
+            }
         }
 
         .booking-opts {
             padding-block: 1.9rem;
-
         }
 
         .accessibility {
             padding-block: 1.9rem;
-
         }
 
         .host-lng {
-            padding-block: 1.9rem;
+            padding-block: 1.9rem 2.5rem;
+
+            h2 {
+                margin-block-end: 2.2rem;
+            }
 
         }
-
     }
 }
 
@@ -282,7 +310,9 @@
                 }
             }
 
+            .checkbox-group {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
         }
-
     }
 }
