@@ -28,7 +28,6 @@ async function query(filterBy, headerFilterBy = {}) {
     try {
         let stayArr = await storageService.query(STAY_DB)
 
-
         if (filterBy.loc.region) {
             stayArr = stayArr.filter(stay => stay.loc.region === filterBy.loc.region)
         }
@@ -108,6 +107,10 @@ async function query(filterBy, headerFilterBy = {}) {
             stayArr = stayArr.filter(stay => filterBy.propType.includes(stay.propType))
         }
 
+        if(filterBy.hostLngs.length) {
+            // stayArr = stayArr.filter(stay => filterBy.hostLngs.includes(stay.host.lng))
+        }
+
         return stayArr
     }
 
@@ -170,6 +173,7 @@ function getFilterFromParams(searchParams) {
         propType: searchParams.get('propType') || defaultFilter.propType,
         amenities: searchParams.get('amenities') || defaultFilter.amenities,
         bookingOpts: searchParams.get('bookingOpts') || defaultFilter.bookingOpts,
+        hostLngs: searchParams.get('hostLngs') || defaultFilter.hostLngs
     }
 }
 
@@ -227,7 +231,8 @@ function getDefaultFilter() {
             instant: false,
             selfCheckIn: false,
             allowsPets: false
-        }
+        },
+        hostLngs: []
     }
 }
 

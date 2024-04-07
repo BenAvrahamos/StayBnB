@@ -30,7 +30,7 @@ export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
 
     function handleChange(field, value) {
         setSelected(prevFilterBy => {
-            if (field !== 'propType' && field !== 'amenities') {
+            if (field !== 'propType' && field !== 'amenities' && field !=='hostLngs' && field !== 'label') {
                 return { ...prevFilterBy, [field]: value };
             } else {
                 const propTypeArray = prevFilterBy[field] || []
@@ -49,8 +49,8 @@ export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
     const amenityFeatures = [{ value: 'pool' }, { value: 'hot_tub', label: 'hot tub' }, { value: 'free_parking', label: 'free parking' }, { value: 'ev_charger', label: 'ev charger' }, { value: 'crib' }, { value: 'king_bed', label: 'king bed' }, { value: 'gym' }, { value: 'BBQ_grill', label: 'BBQ grill' }, { value: 'breakfast' }, { value: 'indoor_fireplace', label: 'indoor fireplace' }, { value: 'smoking_allowed', label: 'smoking allowed' }]
     const amenityLocation = [{ value: 'beachfront' }, { value: 'waterfront' }]
     const amenitySafety = [{ value: 'smoke_alarm', label: 'smoke alarm' }, { value: 'carbon_monoxide-alarm', label: 'carbon monoxide alarm' }]
-    const hostLngShown = [{ value: 'english' }, { value: 'french' }, { value: 'german' }, { value: 'japanese' }]
-    const hostLngHidden = [{ value: 'italian' }, { value: 'russian' }, { value: 'spanish' }, { value: 'chinese (Simplified)' }, { value: 'arabic' }, { value: 'hindi' }, { value: 'portuguese' }, { value: 'turkish' }, { value: 'dutch' }, { value: 'korean' }, { value: 'thai' }, { value: 'greek' }, { value: 'hebrew' }, { value: 'polish' }, { value: 'tagalog' }, { value: 'danish' }, { value: 'swedish' }, { value: 'norwegian' }, { value: 'finnish' }, { value: 'czech' }, { value: 'hungarian' }]
+    const hostLngsShown = [{ value: 'english' }, { value: 'french' }, { value: 'german' }, { value: 'japanese' }]
+    const hostLngsHidden = [{ value: 'italian' }, { value: 'russian' }, { value: 'spanish' }, { value: 'chinese (Simplified)' }, { value: 'arabic' }, { value: 'hindi' }, { value: 'portuguese' }, { value: 'turkish' }, { value: 'dutch' }, { value: 'korean' }, { value: 'thai' }, { value: 'greek' }, { value: 'hebrew' }, { value: 'polish' }, { value: 'tagalog' }, { value: 'danish' }, { value: 'swedish' }, { value: 'norwegian' }, { value: 'finnish' }, { value: 'czech' }, { value: 'hungarian' }]
 
     return <>
         <div className="overlay" onClick={leaveFilter}></div>
@@ -126,14 +126,14 @@ export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
                     <CheckboxGroup
                         type={'amenities'}
                         items={amenityEssentialsShown}
-                        selectedValue={selected.amenities}
+                        selectedValues={selected.amenities}
                         handleChange={handleChange}
                     />
                     <Accordion>
                         <CheckboxGroup
                             type={'amenities'}
                             items={amenityEssentialsHidden}
-                            selectedValue={selected.amenities}
+                            selectedValues={selected.amenities}
                             handleChange={handleChange}
                         />
 
@@ -141,7 +141,7 @@ export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
                         <CheckboxGroup
                             type={'amenities'}
                             items={amenityFeatures}
-                            selectedValue={selected.amenities}
+                            selectedValues={selected.amenities}
                             handleChange={handleChange}
                         />
 
@@ -149,7 +149,7 @@ export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
                         <CheckboxGroup
                             type={'label'}
                             items={amenityLocation}
-                            selectedValue={selected.label}
+                            selectedValues={selected.label}
                             handleChange={handleChange}
                         />
 
@@ -157,7 +157,7 @@ export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
                         <CheckboxGroup
                             type={'amenities'}
                             items={amenitySafety}
-                            selectedValue={selected.amenities}
+                            selectedValues={selected.amenities}
                             handleChange={handleChange}
                         />
                     </Accordion>
@@ -184,16 +184,16 @@ export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
                 <div className="host-lng">
                     <h2>Host language</h2>
                     <CheckboxGroup
-                        type={'hostLgn'}
-                        items={hostLngShown}
-                        // selectedValue={selected.hostLng}
+                        type={'hostLngs'}
+                        items={hostLngsShown}
+                        selectedValues={selected.hostLngs}
                         handleChange={handleChange}
                     />
                     <Accordion>
                         <CheckboxGroup
-                            type={'hostLgn'}
-                            items={hostLngHidden}
-                            // selectedValue={selected.hostLng}
+                            type={'hostLngs'}
+                            items={hostLngsHidden}
+                            selectedValues={selected.hostLngs}
                             handleChange={handleChange}
                         />
                     </Accordion>

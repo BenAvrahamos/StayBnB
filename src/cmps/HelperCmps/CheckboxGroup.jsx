@@ -1,4 +1,5 @@
 export function CheckboxGroup({ type, items, selectedValues = [], handleChange }) {
+    console.log(selectedValues)
     return (
         <div className="checkbox-group grid">
             {items.map((item) => (
