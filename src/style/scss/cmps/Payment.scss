@@ -46,6 +46,10 @@
 
     .payment {
 
+        .expiration-cvv {
+
+        }
+
         .credit-card-details,
         .required-and-phone,
         .policy,
@@ -121,6 +125,18 @@
                     color: #484848;
                 }
             }
+        }
+
+        .confirm-and-pay {
+            height: rem(48px);
+            // padding: 14px 0px;
+            background: radial-gradient(103.95% 1413.54% at -3.95% 100%, #D33753 0%, #D13660 52.83%, #C72D65 100%);
+            border-radius: rem(8px);
+            font-weight: 590;
+            line-height: 19px;
+            color: #ffffff;
+            margin-block: 1rem;
+            cursor: pointer;
         }
     }
 }
