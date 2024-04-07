@@ -26,6 +26,7 @@ export function LabelsFilter({ onSetFilter, filterBy }) {
 		<section className="index-filter-section grid align-center">
 			<section className="label-filter-section grid">
 				<SvgCmp
+					folder={'labels'}
 					svgNames={filterLabels}
 					handleChange={handleChange} />
 			</section>
