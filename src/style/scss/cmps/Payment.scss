@@ -48,6 +48,10 @@
             padding-block: 2rem rem(24px);
         }
 
+        .credit-card-details, .card-details {
+            gap: rem(8px);
+        }
+
         .credit-card-header {
             padding-block-end: rem(24px);
             h2 {
