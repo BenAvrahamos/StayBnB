@@ -37,23 +37,42 @@
             padding-block-end: 24px;
         }
 
-        .dates, .guests {
+        .dates,
+        .guests {
             padding-block-end: rem(24px);
             padding-block-start: .5rem;
         }
     }
 
     .payment {
-        .credit-card-details, .required-and-phone, .policy, .ground-rules {
+
+        .credit-card-details,
+        .required-and-phone,
+        .policy,
+        .ground-rules {
             padding-block: 2rem rem(24px);
         }
 
-        .credit-card-details, .card-details {
+        .credit-card-details,
+        .card-details {
             gap: rem(8px);
+        }
+
+        .card-details {
+            input {
+                padding: rem(16px);
+                flex-grow: 1;
+                border: 1px solid $gray3;
+            }
+
+            .card-number {
+                border-radius: rem(8px);
+            }
         }
 
         .credit-card-header {
             padding-block-end: rem(24px);
+
             h2 {
                 padding-block-end: 0;
             }
@@ -74,6 +93,7 @@
 
         .credit-card-imgs {
             gap: rem(3px);
+
             img {
                 height: rem(9px);
             }
@@ -88,7 +108,7 @@
                 content: '\f078';
                 font-family: fa-solid;
             }
-    
+
             .arrow-up::before {
                 content: '\f106';
                 font-family: fa-solid;
@@ -96,6 +116,7 @@
 
             .container {
                 gap: rem(16px);
+
                 p {
                     color: #484848;
                 }
