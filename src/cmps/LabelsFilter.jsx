@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-import { SvgCmp } from "./SvgCmp"
+import { SvgSavedCmp } from "./HelperCmps/SvgSavedCmp"
 import { FilterModal } from './FilterModal'
 
 export function LabelsFilter({ setStayFilter, filterBy }) {
@@ -20,7 +20,7 @@ export function LabelsFilter({ setStayFilter, filterBy }) {
 	return <>
 		<section className="index-filter-section grid align-center">
 			<section className="label-filter-section grid">
-				<SvgCmp
+				<SvgSavedCmp
 					folder={'labels'}
 					svgNames={filterLabels}
 					handleChange={handleChange} />

@@ -8,7 +8,7 @@ export function StayGalleryPreview({ stay }) {
 
     return (
         <section className="gallery-stay-details">
-            {/* {fivePicsPreview && fivePicsPreview.map((pic,idx) => <img key={idx} src={pic} className={`img${idx}`} />)} */}
+            {fivePicsPreview && fivePicsPreview.map((pic,idx) => <img key={idx} src={pic} className={`img${idx}`} />)}
         </section>
     )
 }

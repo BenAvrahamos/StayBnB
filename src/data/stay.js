@@ -1,14 +1,16 @@
+
+
 export const stays = [{
   _id: "s101",
   name: "A House",
   type: "House",
-  imgUrls: ["https://cdn.pixabay.com/photo/2020/01/04/20/27/holiday-4741595_1280.jpg",
-  "https://cdn.pixabay.com/photo/2021/02/21/04/24/mahrous-houses-6035253_1280.jpg",
- "https://cdn.pixabay.com/photo/2018/05/14/12/18/airbnb-3399753_1280.jpg",
-"https://cdn.pixabay.com/photo/2016/11/18/17/20/living-room-1835923_1280.jpg",
-"https://cdn.pixabay.com/photo/2021/11/08/00/30/bedroom-6778193_1280.jpg",
-"https://media.istockphoto.com/id/1461624555/photo/home-interior-background-cozy-green-with-orange-bedroom-white-mock-up-frame-natural-furniture.jpg?s=2048x2048&w=is&k=20&c=https://cdn.pixabay.com/photo/2020/12/16/00/10/home-5835289_1280.jpg"
-],
+  imgUrls: ["https://cdn.pixabay.com/photo/2014/07/31/21/41/apartment-406901_1280.jpg",
+    "https://cdn.pixabay.com/photo/2021/02/21/04/24/mahrous-houses-6035253_1280.jpg",
+    "https://cdn.pixabay.com/photo/2018/05/14/12/18/airbnb-3399753_1280.jpg",
+    "https://cdn.pixabay.com/photo/2016/11/18/17/20/living-room-1835923_1280.jpg",
+    "https://cdn.pixabay.com/photo/2021/11/08/00/30/bedroom-6778193_1280.jpg",
+    "https://media.istockphoto.com/id/1461624555/photo/home-interior-background-cozy-green-with-orange-bedroom-white-mock-up-frame-natural-furniture.jpg?s=2048x2048&w=is&k=20&c=https://cdn.pixabay.com/photo/2020/12/16/00/10/home-5835289_1280.jpg"
+  ],
   price: 80.00,
   summary: "Fantastic duplex apartment...",
   capacity: 5,
@@ -22,6 +24,13 @@ export const stays = [{
       beds: ['double bed', 'double bed', 'sofa bed']
     }
   ],
+  booked: [
+    { entryDate: 1722211200000, exitDate: 1722816000000 },
+    { entryDate: 1718668800000, exitDate: 1719273600000 },
+    { entryDate: 1717977600000, exitDate: 1718582400000 },
+    { entryDate: 1720051200000, exitDate: 1720656000000 },
+    { entryDate: 1727308800000, exitDate: 1727913600000 }
+],
   baths: 2,
   amenities: ['Heating', 'Tv', 'Iron', 'Pool', 'Free parking',
     'Crib', 'Gym', 'Breakfast', 'Smoking allowed', 'Hot tub', 'Ev charger', 'King bed', 'BBQ grill',
@@ -58,13 +67,13 @@ export const stays = [{
   _id: "s102",
   name: "Bed and breakfast",
   type: "House",
-  imgUrls: ["https://cdn.pixabay.com/photo/2020/01/04/20/27/holiday-4741595_1280.jpg",
-  "https://cdn.pixabay.com/photo/2021/02/21/04/24/mahrous-houses-6035253_1280.jpg",
- "https://cdn.pixabay.com/photo/2018/05/14/12/18/airbnb-3399753_1280.jpg",
-"https://cdn.pixabay.com/photo/2016/11/18/17/20/living-room-1835923_1280.jpg",
-"https://cdn.pixabay.com/photo/2021/11/08/00/30/bedroom-6778193_1280.jpg",
-"https://media.istockphoto.com/id/1461624555/photo/home-interior-background-cozy-green-with-orange-bedroom-white-mock-up-frame-natural-furniture.jpg?s=2048x2048&w=is&k=20&c=https://cdn.pixabay.com/photo/2020/12/16/00/10/home-5835289_1280.jpg"
-],
+  imgUrls: ["https://cdn.pixabay.com/photo/2014/07/31/21/41/apartment-406901_1280.jpg",
+    "https://cdn.pixabay.com/photo/2021/02/21/04/24/mahrous-houses-6035253_1280.jpg",
+    "https://cdn.pixabay.com/photo/2018/05/14/12/18/airbnb-3399753_1280.jpg",
+    "https://cdn.pixabay.com/photo/2016/11/18/17/20/living-room-1835923_1280.jpg",
+    "https://cdn.pixabay.com/photo/2021/11/08/00/30/bedroom-6778193_1280.jpg",
+    "https://media.istockphoto.com/id/1461624555/photo/home-interior-background-cozy-green-with-orange-bedroom-white-mock-up-frame-natural-furniture.jpg?s=2048x2048&w=is&k=20&c=https://cdn.pixabay.com/photo/2020/12/16/00/10/home-5835289_1280.jpg"
+  ],
   price: 90.00,
   summary: "Fantastic duplex apartment...",
   capacity: 13,
@@ -82,12 +91,19 @@ export const stays = [{
       beds: ['single bed', 'sofa bed', 'king size bed']
     }
   ],
+  booked: [
+    { entryDate: 1722211200000, exitDate: 1722816000000 },
+    { entryDate: 1718668800000, exitDate: 1719273600000 },
+    { entryDate: 1717977600000, exitDate: 1718582400000 },
+    { entryDate: 1720051200000, exitDate: 1720656000000 },
+    { entryDate: 1727308800000, exitDate: 1727913600000 }
+],
   baths: 2,
   amenities: [
     'Tv', 'Iron', 'Pool', 'Free parking',
     'Crib', 'Gym', 'Breakfast', 'Smoking allowed', 'Hot tub', 'Ev charger', 'King bed', 'BBQ grill',
     'Indoor fireplace', 'Beachfront', 'Ski-on/Ski-out', 'Waterfront',
-    'Smoke alarm', 'Carbon monoxide alarm','crib'],
+    'Smoke alarm', 'Carbon monoxide alarm', 'crib'],
   labels: [
     "Play",
     "Tropical"
@@ -119,13 +135,13 @@ export const stays = [{
   _id: "s103",
   name: "Cabana",
   type: "House",
-  imgUrls: ["https://cdn.pixabay.com/photo/2020/01/04/20/27/holiday-4741595_1280.jpg",
-  "https://cdn.pixabay.com/photo/2021/02/21/04/24/mahrous-houses-6035253_1280.jpg",
- "https://cdn.pixabay.com/photo/2018/05/14/12/18/airbnb-3399753_1280.jpg",
-"https://cdn.pixabay.com/photo/2016/11/18/17/20/living-room-1835923_1280.jpg",
-"https://cdn.pixabay.com/photo/2021/11/08/00/30/bedroom-6778193_1280.jpg",
-"https://media.istockphoto.com/id/1461624555/photo/home-interior-background-cozy-green-with-orange-bedroom-white-mock-up-frame-natural-furniture.jpg?s=2048x2048&w=is&k=20&c=https://cdn.pixabay.com/photo/2020/12/16/00/10/home-5835289_1280.jpg"
-],
+  imgUrls: ["https://cdn.pixabay.com/photo/2014/07/31/21/41/apartment-406901_1280.jpg",
+    "https://cdn.pixabay.com/photo/2021/02/21/04/24/mahrous-houses-6035253_1280.jpg",
+    "https://cdn.pixabay.com/photo/2018/05/14/12/18/airbnb-3399753_1280.jpg",
+    "https://cdn.pixabay.com/photo/2016/11/18/17/20/living-room-1835923_1280.jpg",
+    "https://cdn.pixabay.com/photo/2021/11/08/00/30/bedroom-6778193_1280.jpg",
+    "https://media.istockphoto.com/id/1461624555/photo/home-interior-background-cozy-green-with-orange-bedroom-white-mock-up-frame-natural-furniture.jpg?s=2048x2048&w=is&k=20&c=https://cdn.pixabay.com/photo/2020/12/16/00/10/home-5835289_1280.jpg"
+  ],
   price: 80.00,
   summary: "Fantastic duplex apartment...",
   capacity: 4,
@@ -143,6 +159,13 @@ export const stays = [{
       beds: ['single bed', 'sofa bed', 'king size bed']
     }
   ],
+  booked: [
+    { entryDate: 1720310400000, exitDate: 1720915200000 },
+    { entryDate: 1720742400000, exitDate: 1721347200000 },
+    { entryDate: 1723507200000, exitDate: 1724112000000 },
+    { entryDate: 1721347200000, exitDate: 1721952000000 },
+    { entryDate: 1720310400000, exitDate: 1720915200000 }
+],  
   baths: 2,
   amenities: [
     'Wifi', 'Washer', 'Air conditioning', 'Dedicated workspace', 'Hair dryer',
@@ -181,13 +204,13 @@ export const stays = [{
   _id: "s104",
   name: "Cabana",
   type: "House",
-  imgUrls: ["https://cdn.pixabay.com/photo/2020/01/04/20/27/holiday-4741595_1280.jpg",
-  "https://cdn.pixabay.com/photo/2021/02/21/04/24/mahrous-houses-6035253_1280.jpg",
- "https://cdn.pixabay.com/photo/2018/05/14/12/18/airbnb-3399753_1280.jpg",
-"https://cdn.pixabay.com/photo/2016/11/18/17/20/living-room-1835923_1280.jpg",
-"https://cdn.pixabay.com/photo/2021/11/08/00/30/bedroom-6778193_1280.jpg",
-"https://media.istockphoto.com/id/1461624555/photo/home-interior-background-cozy-green-with-orange-bedroom-white-mock-up-frame-natural-furniture.jpg?s=2048x2048&w=is&k=20&c=https://cdn.pixabay.com/photo/2020/12/16/00/10/home-5835289_1280.jpg"
-],
+  imgUrls: ["https://cdn.pixabay.com/photo/2014/07/31/21/41/apartment-406901_1280.jpg",
+    "https://cdn.pixabay.com/photo/2021/02/21/04/24/mahrous-houses-6035253_1280.jpg",
+    "https://cdn.pixabay.com/photo/2018/05/14/12/18/airbnb-3399753_1280.jpg",
+    "https://cdn.pixabay.com/photo/2016/11/18/17/20/living-room-1835923_1280.jpg",
+    "https://cdn.pixabay.com/photo/2021/11/08/00/30/bedroom-6778193_1280.jpg",
+    "https://media.istockphoto.com/id/1461624555/photo/home-interior-background-cozy-green-with-orange-bedroom-white-mock-up-frame-natural-furniture.jpg?s=2048x2048&w=is&k=20&c=https://cdn.pixabay.com/photo/2020/12/16/00/10/home-5835289_1280.jpg"
+  ],
   price: 80.00,
   summary: "Fantastic duplex apartment...",
   capacity: 2,
@@ -205,6 +228,13 @@ export const stays = [{
       beds: ['single bed', 'sofa bed', 'king size bed']
     }
   ],
+  booked:[
+    { entryDate: 1727568000000, exitDate: 1728172800000 },
+    { entryDate: 1726444800000, exitDate: 1727049600000 },
+    { entryDate: 1724889600000, exitDate: 1725494400000 },
+    { entryDate: 1717113600000, exitDate: 1717718400000 },
+    { entryDate: 1717718400000, exitDate: 1718323200000 }
+],
   baths: 2,
   amenities: [
     'Wifi', 'Washer', 'Air conditioning', 'Dedicated workspace', 'Hair dryer',
@@ -243,13 +273,13 @@ export const stays = [{
   _id: "s105",
   name: "Cabana",
   type: "House",
-  imgUrls: ["https://cdn.pixabay.com/photo/2020/01/04/20/27/holiday-4741595_1280.jpg",
-  "https://cdn.pixabay.com/photo/2021/02/21/04/24/mahrous-houses-6035253_1280.jpg",
- "https://cdn.pixabay.com/photo/2018/05/14/12/18/airbnb-3399753_1280.jpg",
-"https://cdn.pixabay.com/photo/2016/11/18/17/20/living-room-1835923_1280.jpg",
-"https://cdn.pixabay.com/photo/2021/11/08/00/30/bedroom-6778193_1280.jpg",
-"https://media.istockphoto.com/id/1461624555/photo/home-interior-background-cozy-green-with-orange-bedroom-white-mock-up-frame-natural-furniture.jpg?s=2048x2048&w=is&k=20&c=https://cdn.pixabay.com/photo/2020/12/16/00/10/home-5835289_1280.jpg"
-],
+  imgUrls: ["https://cdn.pixabay.com/photo/2014/07/31/21/41/apartment-406901_1280.jpg",
+    "https://cdn.pixabay.com/photo/2021/02/21/04/24/mahrous-houses-6035253_1280.jpg",
+    "https://cdn.pixabay.com/photo/2018/05/14/12/18/airbnb-3399753_1280.jpg",
+    "https://cdn.pixabay.com/photo/2016/11/18/17/20/living-room-1835923_1280.jpg",
+    "https://cdn.pixabay.com/photo/2021/11/08/00/30/bedroom-6778193_1280.jpg",
+    "https://media.istockphoto.com/id/1461624555/photo/home-interior-background-cozy-green-with-orange-bedroom-white-mock-up-frame-natural-furniture.jpg?s=2048x2048&w=is&k=20&c=https://cdn.pixabay.com/photo/2020/12/16/00/10/home-5835289_1280.jpg"
+  ],
   price: 80.00,
   summary: "Fantastic duplex apartment...",
   capacity: 8,
@@ -267,6 +297,14 @@ export const stays = [{
       beds: ['single bed', 'sofa bed', 'king size bed']
     }
   ],
+  booked: [
+    { entryDate: 1727136000000, exitDate: 1727740800000 },
+    { entryDate: 1726272000000, exitDate: 1726876800000 },
+    { entryDate: 1714867200000, exitDate: 1715472000000 },
+    { entryDate: 1726358400000, exitDate: 1726963200000 },
+    { entryDate: 1719100800000, exitDate: 1719705600000 }
+]
+,  
   baths: 2,
   amenities: [
     'Wifi', 'Washer', 'Air conditioning', 'Dedicated workspace', 'Hair dryer',
@@ -305,13 +343,13 @@ export const stays = [{
   _id: "s107",
   name: "Cabana",
   type: "House",
-  imgUrls: ["https://cdn.pixabay.com/photo/2020/01/04/20/27/holiday-4741595_1280.jpg",
-  "https://cdn.pixabay.com/photo/2021/02/21/04/24/mahrous-houses-6035253_1280.jpg",
- "https://cdn.pixabay.com/photo/2018/05/14/12/18/airbnb-3399753_1280.jpg",
-"https://cdn.pixabay.com/photo/2016/11/18/17/20/living-room-1835923_1280.jpg",
-"https://cdn.pixabay.com/photo/2021/11/08/00/30/bedroom-6778193_1280.jpg",
-"https://media.istockphoto.com/id/1461624555/photo/home-interior-background-cozy-green-with-orange-bedroom-white-mock-up-frame-natural-furniture.jpg?s=2048x2048&w=is&k=20&c=https://cdn.pixabay.com/photo/2020/12/16/00/10/home-5835289_1280.jpg"
-],
+  imgUrls: ["https://cdn.pixabay.com/photo/2014/07/31/21/41/apartment-406901_1280.jpg",
+    "https://cdn.pixabay.com/photo/2021/02/21/04/24/mahrous-houses-6035253_1280.jpg",
+    "https://cdn.pixabay.com/photo/2018/05/14/12/18/airbnb-3399753_1280.jpg",
+    "https://cdn.pixabay.com/photo/2016/11/18/17/20/living-room-1835923_1280.jpg",
+    "https://cdn.pixabay.com/photo/2021/11/08/00/30/bedroom-6778193_1280.jpg",
+    "https://media.istockphoto.com/id/1461624555/photo/home-interior-background-cozy-green-with-orange-bedroom-white-mock-up-frame-natural-furniture.jpg?s=2048x2048&w=is&k=20&c=https://cdn.pixabay.com/photo/2020/12/16/00/10/home-5835289_1280.jpg"
+  ],
   price: 80.00,
   summary: "Fantastic duplex apartment...",
   capacity: 6,
@@ -329,6 +367,13 @@ export const stays = [{
       beds: ['single bed', 'sofa bed', 'king size bed']
     }
   ],
+  booked: [
+    {entryDate: 1727568000000, exitDate: 1728172800000},
+    {entryDate: 1726444800000, exitDate: 1727049600000},
+    {entryDate: 1724889600000, exitDate: 1725494400000},
+    {entryDate: 1717113600000, exitDate: 1717718400000},
+    {entryDate: 1717718400000, exitDate: 1718323200000},
+],  
   baths: 2,
   amenities: [
     'Wifi', 'Washer', 'Air conditioning', 'Dedicated workspace', 'Hair dryer',

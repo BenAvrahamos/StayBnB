@@ -9,22 +9,22 @@
     position: fixed;
     inset: 2.5rem 0 0 0;
     z-index: 4;
-    
+
     border-radius: 0.8rem;
     background-color: white;
     color: $darkGray;
     letter-spacing: -0.8px;
-    
+
     header,
     footer {
         background-color: white;
         position: absolute;
-        
+
         &>* {
             font-size: 1rem;
         }
     }
-    
+
     header {
         height: 4rem;
         inset: 0 0 auto;
@@ -39,18 +39,18 @@
         padding: 1rem 1.5rem 1rem 0.9rem;
         border-block-start: 0.667px solid $lightGray;
     }
-    
+
     .exit-btn,
     .clear-btn {
         background-color: white;
         transition: 0s;
         letter-spacing: -0.8px;
-        
+
         &:hover {
             background-color: $btnHover;
         }
     }
-    
+
     .exit-btn {
         position: absolute;
         inset: 1rem auto auto 1rem;
@@ -58,19 +58,19 @@
         height: 2rem;
         width: 2rem;
     }
-    
+
     .clear-btn {
         font-weight: 550;
         border-radius: 0.6rem;
     }
-    
+
     .submit-btn {
         height: auto;
         padding: 0.9rem 1.7rem;
         border-radius: 0.6rem;
         color: white;
         background-color: $darkGray;
-        
+
         font-size: 0.92rem;
         letter-spacing: -0.8px;
         font-weight: 600;
@@ -80,64 +80,239 @@
         scale: 0.85;
         transition: scale 1s;
     }
-    
+
     main {
         height: calc(100% - 9rem);
         overflow-y: auto;
         margin-block-start: 4rem;
         padding-inline: 1.5rem;
-        
+
         h2 {
-            font-size: 1.36rem;
+            font-size: 1.41rem;
             letter-spacing: -1.2px;
             font-weight: 550;
             margin: 0;
-            padding-block-end: 1.5rem;
         }
-        
+
         h3 {
             font-weight: 500;
             font-size: 1rem;
             margin: 0;
-            padding-block: 0.5rem 0.75rem;
         }
-        
+
         h4 {
             font-size: 0.9rem;
             letter-spacing: 0.05px;
             font-weight: 500;
             margin: 0;
-            padding: 0.25rem 0.125rem 1.25rem;
         }
-        
+
         p {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             letter-spacing: -0.36 px;
+        }
+
+        &>div:not(:last-of-type) {
+            border-block-end: solid 1px $lightGray;
+        }
+
+        .checkbox-group {
+            grid-template-columns: minmax(0, 1fr);
+            row-gap: 1.5rem;
             padding-block-end: 1.5rem;
+
+            label {
+                text-transform: capitalize;
+            }
         }
-        
-        div:not(:first-of-type) {
-            padding-block: 2rem;
+
+        .accordion-arrow {
+            text-decoration: underline;
+            font-weight: 600;
         }
-        
-        div:first-of-type {
-            padding-block: 1.5rem 2rem;
+        /////////////////////////////////////////////////////////////
+        .place-type {
+            padding-block: 1.4rem 1.5rem;
+
+            h2 {
+                padding-block-end: 1rem;
+            }
+
+            p {
+                margin-block-end: 1.5rem;
+            }
+
+            .btns {
+                grid-template-columns: 2.5rem repeat(3, minmax(100px, 1fr)) 2.5rem;
+                grid-template-rows: 4.0625rem;
+                grid-template-areas: '. btn1 btn2 btn3 .';
+            }
+
+            .btn {
+                font-size: 1rem;
+                font-weight: 600;
+                letter-spacing: -1.1px;
+                padding: 1rem 0.5rem;
+                height: 4.0625rem;
+                width: 100%;
+                text-transform: capitalize;
+
+                @include buttons1;
+
+                &:active {
+                    scale: 1;
+                }
+
+                &:first-of-type {
+                    grid-area: btn1;
+                    border-radius: 10px 0 0 10px;
+                }
+
+                &:nth-of-type(2) {
+                    grid-area: btn2;
+                    border-radius: 0;
+                }
+
+                &:last-of-type {
+                    grid-area: btn3;
+                    border-radius: 0 10px 10px 0;
+                }
+            }
         }
-        
-        div:not(:last-of-type) {
-            border-block-end: solid 0.667px $lightGray;
+
+        .price-range {
+            padding-block: 1.9rem;
+
+            h2 {
+                letter-spacing: -1.5px;
+                margin-block-end: 0.5rem;
+            }
+
+            p {
+                letter-spacing: -0.85px;
+            }
+        }
+
+        .rooms-beds {
+            padding-block: 1.9rem 2.6rem;
+
+            h2 {
+                letter-spacing: -2px;
+                margin-block-end: 1.75rem;
+            }
+
+            h4 {
+                margin-block: 1.5rem 1.65rem;
+                padding-inline: 0.1rem;
+            }
+
+            .btns {
+                grid-template-columns: 4.95rem repeat(8, 3.7rem);
+                grid-template-rows: 2.45rem;
+                gap: 0.61rem;
+
+                .btn {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 20px;
+
+                    text-transform: capitalize;
+
+                    @include buttons1;
+                }
+            }
+        }
+
+        .prop-type {
+            padding-block: 1.9rem;
+
+            h2 {
+                margin-block-end: 1.55rem;
+            }
+
+            .btns {
+                grid-template-columns: repeat(2, minmax(8rem, 1fr));
+                grid-template-rows: 7.8rem;
+                gap: 1rem;
+            }
+
+            .btn {
+                height: 100%;
+                width: 100%;
+                padding: 1rem;
+                border-radius: 0.75rem;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                text-transform: capitalize;
+
+                @include buttons2;
+
+                svg {
+                    width: 2rem;
+                    height: 2rem;
+                }
+            }
+        }
+
+        .amenities {
+            padding-block: 1.9rem;
+
+            h3 {
+                padding-block: 2rem 1rem;
+            }
+
+            h3:not(:first-of-type) {
+                padding-block: 1rem 1rem;
+            }
+
+            .checkbox-group {
+                .checkbox-item {
+                    // font-size: 1.1rem;
+                }
+            }
+        }
+
+        .booking-opts {
+            padding-block: 1.9rem;
+        }
+
+        .accessibility {
+            padding-block: 1.9rem;
+        }
+
+        .host-lng {
+            padding-block: 1.9rem 2.5rem;
+
+            h2 {
+                margin-block-end: 2.2rem;
+            }
+
         }
     }
 }
 
 @media (width > 742px) {
     .filter-modal {
-        margin: 2.5rem;
-        inset: 0 calc(50% - 24.375rem) 0;
+        margin-block: 2.5rem 1.5rem;
+        inset: 0 calc(50% - 24.5rem);
         max-width: 48.75rem;
 
         footer {
             border-radius: 0 0 0.8rem 0.8rem;
+        }
+
+        main {
+            .prop-type {
+                .btns {
+                    grid-template-columns: repeat(4, minmax(8rem, 1fr));
+                }
+            }
+
+            .checkbox-group {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
         }
     }
 }

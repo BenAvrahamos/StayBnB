@@ -17,7 +17,13 @@ export function StayIndex() {
         loadStays()
     }, [filterBy])
 
-    if (!stays || !stays.length) return <p>loading</p>
+    if (!stays || !stays.length) return <>
+        <LabelsFilter
+            setStayFilter={setStayFilter}
+            filterBy={filterBy}
+        />
+        <p>loading</p>
+    </>
     return <section className='index-section'>
         <LabelsFilter
             setStayFilter={setStayFilter}
