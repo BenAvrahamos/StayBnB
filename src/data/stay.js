@@ -60,7 +60,33 @@ export const stays = [{
     lat: -8.61308,
     lng: 41.1413
   },
-  reviews: [],
+  reviews = [
+    {
+        'title': 'Amazing place!',
+        'txt': 'It has been such a pleasure to spend our precious time at this place',
+        'score': 4.89
+    },
+    {
+        'title': 'Lovely experience',
+        'txt': 'I had a wonderful time here. The ambiance was great and the staff were very friendly.',
+        'score': 4.75
+    },
+    {
+        'title': 'Disappointing',
+        'txt': 'I had high expectations but unfortunately, the experience fell short. The service was slow and the food was mediocre.',
+        'score': 2.5
+    },
+    {
+        'title': 'Highly recommended!',
+        'txt': 'This place exceeded my expectations. The food was delicious, the service was excellent, and the ambiance was delightful.',
+        'score': 4.95
+    },
+    {
+        'title': 'Not worth it',
+        'txt': 'I regret spending money here. The food was overpriced and not tasty at all.',
+        'score': 1.5
+    }
+],
   likedByUsers: []
 },
 {
@@ -128,7 +154,33 @@ export const stays = [{
     lat: -8.61308,
     lng: 41.1413
   },
-  reviews: [],
+  reviews = [
+    {
+        'title': 'Amazing place!',
+        'txt': 'It has been such a pleasure to spend our precious time at this place',
+        'score': 4.89
+    },
+    {
+        'title': 'Lovely experience',
+        'txt': 'I had a wonderful time here. The ambiance was great and the staff were very friendly.',
+        'score': 4.75
+    },
+    {
+        'title': 'Disappointing',
+        'txt': 'I had high expectations but unfortunately, the experience fell short. The service was slow and the food was mediocre.',
+        'score': 2.5
+    },
+    {
+        'title': 'Highly recommended!',
+        'txt': 'This place exceeded my expectations. The food was delicious, the service was excellent, and the ambiance was delightful.',
+        'score': 4.95
+    },
+    {
+        'title': 'Not worth it',
+        'txt': 'I regret spending money here. The food was overpriced and not tasty at all.',
+        'score': 1.5
+    }
+],
   likedByUsers: []
 },
 {
@@ -197,7 +249,33 @@ export const stays = [{
     lat: -8.61308,
     lng: 41.1413
   },
-  reviews: [],
+  reviews = [
+    {
+        'title': 'Amazing place!',
+        'txt': 'It has been such a pleasure to spend our precious time at this place',
+        'score': 4.89
+    },
+    {
+        'title': 'Lovely experience',
+        'txt': 'I had a wonderful time here. The ambiance was great and the staff were very friendly.',
+        'score': 4.75
+    },
+    {
+        'title': 'Disappointing',
+        'txt': 'I had high expectations but unfortunately, the experience fell short. The service was slow and the food was mediocre.',
+        'score': 2.5
+    },
+    {
+        'title': 'Highly recommended!',
+        'txt': 'This place exceeded my expectations. The food was delicious, the service was excellent, and the ambiance was delightful.',
+        'score': 4.95
+    },
+    {
+        'title': 'Not worth it',
+        'txt': 'I regret spending money here. The food was overpriced and not tasty at all.',
+        'score': 1.5
+    }
+],
   likedByUsers: []
 },
 {
@@ -266,7 +344,33 @@ export const stays = [{
     lat: -8.61308,
     lng: 41.1413
   },
-  reviews: [],
+  reviews = [
+    {
+        'title': 'Amazing place!',
+        'txt': 'It has been such a pleasure to spend our precious time at this place',
+        'score': 4.89
+    },
+    {
+        'title': 'Lovely experience',
+        'txt': 'I had a wonderful time here. The ambiance was great and the staff were very friendly.',
+        'score': 4.75
+    },
+    {
+        'title': 'Disappointing',
+        'txt': 'I had high expectations but unfortunately, the experience fell short. The service was slow and the food was mediocre.',
+        'score': 2.5
+    },
+    {
+        'title': 'Highly recommended!',
+        'txt': 'This place exceeded my expectations. The food was delicious, the service was excellent, and the ambiance was delightful.',
+        'score': 4.95
+    },
+    {
+        'title': 'Not worth it',
+        'txt': 'I regret spending money here. The food was overpriced and not tasty at all.',
+        'score': 1.5
+    }
+],
   likedByUsers: []
 },
 {
@@ -336,7 +440,33 @@ export const stays = [{
     lat: -8.61308,
     lng: 41.1413
   },
-  reviews: [],
+  reviews = [
+    {
+        'title': 'Amazing place!',
+        'txt': 'It has been such a pleasure to spend our precious time at this place',
+        'score': 4.89
+    },
+    {
+        'title': 'Lovely experience',
+        'txt': 'I had a wonderful time here. The ambiance was great and the staff were very friendly.',
+        'score': 4.75
+    },
+    {
+        'title': 'Disappointing',
+        'txt': 'I had high expectations but unfortunately, the experience fell short. The service was slow and the food was mediocre.',
+        'score': 2.5
+    },
+    {
+        'title': 'Highly recommended!',
+        'txt': 'This place exceeded my expectations. The food was delicious, the service was excellent, and the ambiance was delightful.',
+        'score': 4.95
+    },
+    {
+        'title': 'Not worth it',
+        'txt': 'I regret spending money here. The food was overpriced and not tasty at all.',
+        'score': 1.5
+    }
+],
   likedByUsers: []
 },
 {
@@ -405,7 +535,33 @@ export const stays = [{
     lat: -8.61308,
     lng: 41.1413
   },
-  reviews: [],
+  reviews = [
+    {
+        'title': 'Amazing place!',
+        'txt': 'It has been such a pleasure to spend our precious time at this place',
+        'score': 4.89
+    },
+    {
+        'title': 'Lovely experience',
+        'txt': 'I had a wonderful time here. The ambiance was great and the staff were very friendly.',
+        'score': 4.75
+    },
+    {
+        'title': 'Disappointing',
+        'txt': 'I had high expectations but unfortunately, the experience fell short. The service was slow and the food was mediocre.',
+        'score': 2.5
+    },
+    {
+        'title': 'Highly recommended!',
+        'txt': 'This place exceeded my expectations. The food was delicious, the service was excellent, and the ambiance was delightful.',
+        'score': 4.95
+    },
+    {
+        'title': 'Not worth it',
+        'txt': 'I regret spending money here. The food was overpriced and not tasty at all.',
+        'score': 1.5
+    }
+],
   likedByUsers: []
 }]
 
