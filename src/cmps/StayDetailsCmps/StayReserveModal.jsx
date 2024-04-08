@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { utilService } from '../../services/util.service'
 import { getDate, getMonth, getYear } from 'date-fns'
 import { GuestFilter } from '../HeaderCmps/GuestFilter'
 import { store } from '../../store/store'
@@ -21,7 +22,7 @@ export function StayReserveModal({ stay }) {
     const ref = useRef(null);
 
     useEffect(() => {
-        calcSumOfDays()
+        setNumOfDays(utilService.calcSumOfDays(reservation))
     }, [])
 
     useEffect(() => {
@@ -48,14 +49,6 @@ export function StayReserveModal({ stay }) {
             navigate(`/${stay._id}/payment`)
         }
         return
-    }
-
-    function calcSumOfDays() {
-        const date1 = reservation.checkIn
-        const date2 = reservation.checkout
-        const differenceInMilliseconds = date2 - date1
-        const differenceInDays = Math.ceil(differenceInMilliseconds / (24 * 60 * 60 * 1000))
-        setNumOfDays(differenceInDays)
     }
 
     return (

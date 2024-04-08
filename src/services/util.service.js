@@ -1,3 +1,4 @@
+
 export const utilService = {
     makeId,
     makeLorem,
@@ -7,7 +8,10 @@ export const utilService = {
     animateCSS,
     debounce,
     generateStay,
-    generateStaysArray
+    generateStaysArray,
+    calcSumToPay,
+    convertDates,
+    calcSumOfDays
 }
 
 function makeId(length = 6) {
@@ -104,4 +108,26 @@ function generateStaysArray() {
   
 }
 
+function calcSumToPay(reservation) {
+    let diff = reservation.checkout - reservation.checkIn
+    diff = diff / (1000 * 60 * 60 * 24)
+    return diff * stay.price
+}
 
+function convertDates(dateTimestamp) {
+    let str = ''
+    const date = new Date(dateTimestamp)
+    const monthName = format(date, 'MMMM')
+    str += monthName + ' '
+    const dayOfDate = getDay(date)
+    str += dayOfDate
+    return str
+}
+
+function calcSumOfDays(reservation) {
+    const date1 = reservation.checkIn
+    const date2 = reservation.checkout
+    const differenceInMilliseconds = date2 - date1
+    const differenceInDays = Math.ceil(differenceInMilliseconds / (24 * 60 * 60 * 1000))
+    return differenceInDays
+}

@@ -30,7 +30,7 @@ export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
 
     function handleChange(field, value) {
         setSelected(prevFilterBy => {
-            if (field !== 'propType' && field !== 'amenities' && field !=='hostLngs' && field !== 'label') {
+            if (field !== 'propType' && field !== 'amenities' && field !== 'hostLngs' && field !== 'label') {
                 return { ...prevFilterBy, [field]: value };
             } else {
                 const propTypeArray = prevFilterBy[field] || []
@@ -51,6 +51,10 @@ export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
     const amenitySafety = [{ value: 'smoke_alarm', label: 'smoke alarm' }, { value: 'carbon_monoxide-alarm', label: 'carbon monoxide alarm' }]
     const hostLngsShown = [{ value: 'english' }, { value: 'french' }, { value: 'german' }, { value: 'japanese' }]
     const hostLngsHidden = [{ value: 'italian' }, { value: 'russian' }, { value: 'spanish' }, { value: 'chinese (Simplified)' }, { value: 'arabic' }, { value: 'hindi' }, { value: 'portuguese' }, { value: 'turkish' }, { value: 'dutch' }, { value: 'korean' }, { value: 'thai' }, { value: 'greek' }, { value: 'hebrew' }, { value: 'polish' }, { value: 'tagalog' }, { value: 'danish' }, { value: 'swedish' }, { value: 'norwegian' }, { value: 'finnish' }, { value: 'czech' }, { value: 'hungarian' }]
+    const accessEntrance = [{ value: 'step-free-entrance', label: 'Step-free guest entrance' },{ value: 'wide-entrance', label: 'Guest entrance wider than 32 inches' },{ value: 'accessible-parking', label: 'Accessible parking spot' },{ value: 'step-free-path-to-entrance', label: 'Step-free path to the guest entrance' }]
+    const accessBedrooms = [{ value: 'step-free-bedroom', label: 'Step-free bedroom access' },{ value: 'wide-bedroom', label: 'Bedroom entrance wider than 32 inches' }]
+    const accessBathrooms = [{ value: 'step-free-bathroom', label: 'Step-free bathroom access' },{ value: 'wide-bathroom', label: 'Bathroom entrance wider than 32 inches' },{ value: 'Shower-bar', label: 'Shower grab bar' },{ value: 'Toilet-bar', label: 'Toilet grab bar' },{ value: 'Step-free-shower', label: 'Step-free shower' },{ value: 'bath-chair', label: 'Shower or bath chair' }]
+    const accessEquipment = [{ value: 'hoist', label: 'Ceiling or mobile hoist' }]
 
     return <>
         <div className="overlay" onClick={leaveFilter}></div>
@@ -64,7 +68,7 @@ export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
             <main>
                 <div className="place-type">
                     <h2>Type of place</h2>
-                    {filterBy.placeType === 'any type' && <p>Search rooms, entire homes, or any type of place</p>}
+                    {filterBy.placeType === 'any' && <p>Search rooms, entire homes, or any type of place</p>}
                     {filterBy.placeType === 'room' && <p>A room in a home, plus access to shared spaces.</p>}
                     {filterBy.placeType === 'entire home' && <p>A home all to yourself.</p>}
                     <ButtonGroup
@@ -176,9 +180,35 @@ export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
                 <div className="accessibility">
                     <h2>Accessibility features</h2>
                     <h3>Guest entrance and parking</h3>
-                    <h3>Bedroom</h3>
-                    <h3>Bathroom</h3>
-                    <h3>Adaptive equipment</h3>
+                    <CheckboxGroup
+                        type={'accessibility'}
+                        items={accessEntrance}
+                        selectedValues={selected.accessibility}
+                        handleChange={handleChange}
+                    />
+                    <Accordion>
+                        <h3>Bedroom</h3>
+                        <CheckboxGroup
+                            type={'accessibility'}
+                            items={accessBedrooms}
+                            selectedValues={selected.accessibility}
+                            handleChange={handleChange}
+                        />
+                        <h3>Bathroom</h3>
+                        <CheckboxGroup
+                            type={'accessibility'}
+                            items={accessBathrooms}
+                            selectedValues={selected.accessibility}
+                            handleChange={handleChange}
+                        />
+                        <h3>Adaptive equipment</h3>
+                        <CheckboxGroup
+                            type={'accessibility'}
+                            items={accessEquipment}
+                            selectedValues={selected.accessibility}
+                            handleChange={handleChange}
+                        />
+                    </Accordion>
                 </div>
 
                 <div className="host-lng">
