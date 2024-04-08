@@ -69,7 +69,7 @@ export const stays = [{
         },
         'title': 'Amazing place!',
         'txt': 'It has been such a pleasure to spend our precious time at this place',
-        'score': 4.89
+        'score': 4
     },
     {
       by: {
@@ -79,7 +79,7 @@ export const stays = [{
       },
         'title': 'Lovely experience',
         'txt': 'I had a wonderful time here. The ambiance was great and the staff were very friendly.',
-        'score': 4.75
+        'score': 4
     },
     {
       by: {
@@ -89,7 +89,7 @@ export const stays = [{
       },
         'title': 'Disappointing',
         'txt': 'I had high expectations but unfortunately, the experience fell short. The service was slow and the food was mediocre.',
-        'score': 2.5
+        'score': 2
     },
     {
       by: {
@@ -99,7 +99,7 @@ export const stays = [{
       },
         'title': 'Highly recommended!',
         'txt': 'This place exceeded my expectations. The food was delicious, the service was excellent, and the ambiance was delightful.',
-        'score': 4.95
+        'score': 4
     },
     {
       by: {
@@ -109,7 +109,7 @@ export const stays = [{
       },
         'title': 'Not worth it',
         'txt': 'I regret spending money here. The food was overpriced and not tasty at all.',
-        'score': 1.5
+        'score': 1
     }
 ],
   likedByUsers: []
@@ -181,14 +181,14 @@ export const stays = [{
   },
   reviews: [
     {
-      by: {
-        _id: "u101",
-        fullName: "User 1",
-        imgUrl: "https://robohash.org/doodi"
-      },
+        by: {
+          _id: "u101",
+          fullName: "User 1",
+          imgUrl: "https://robohash.org/doodi"
+        },
         'title': 'Amazing place!',
         'txt': 'It has been such a pleasure to spend our precious time at this place',
-        'score': 4.89
+        'score': 4
     },
     {
       by: {
@@ -198,7 +198,7 @@ export const stays = [{
       },
         'title': 'Lovely experience',
         'txt': 'I had a wonderful time here. The ambiance was great and the staff were very friendly.',
-        'score': 4.75
+        'score': 4
     },
     {
       by: {
@@ -208,7 +208,7 @@ export const stays = [{
       },
         'title': 'Disappointing',
         'txt': 'I had high expectations but unfortunately, the experience fell short. The service was slow and the food was mediocre.',
-        'score': 2.5
+        'score': 2
     },
     {
       by: {
@@ -218,7 +218,7 @@ export const stays = [{
       },
         'title': 'Highly recommended!',
         'txt': 'This place exceeded my expectations. The food was delicious, the service was excellent, and the ambiance was delightful.',
-        'score': 4.95
+        'score': 4
     },
     {
       by: {
@@ -228,7 +228,7 @@ export const stays = [{
       },
         'title': 'Not worth it',
         'txt': 'I regret spending money here. The food was overpriced and not tasty at all.',
-        'score': 1.5
+        'score': 1
     }
 ],
   likedByUsers: []
@@ -301,14 +301,14 @@ export const stays = [{
   },
   reviews: [
     {
-      by: {
-        _id: "u101",
-        fullName: "User 1",
-        imgUrl: "https://robohash.org/doodi"
-      },
+        by: {
+          _id: "u101",
+          fullName: "User 1",
+          imgUrl: "https://robohash.org/doodi"
+        },
         'title': 'Amazing place!',
         'txt': 'It has been such a pleasure to spend our precious time at this place',
-        'score': 4.89
+        'score': 4
     },
     {
       by: {
@@ -318,7 +318,7 @@ export const stays = [{
       },
         'title': 'Lovely experience',
         'txt': 'I had a wonderful time here. The ambiance was great and the staff were very friendly.',
-        'score': 4.75
+        'score': 4
     },
     {
       by: {
@@ -328,7 +328,7 @@ export const stays = [{
       },
         'title': 'Disappointing',
         'txt': 'I had high expectations but unfortunately, the experience fell short. The service was slow and the food was mediocre.',
-        'score': 2.5
+        'score': 2
     },
     {
       by: {
@@ -338,7 +338,7 @@ export const stays = [{
       },
         'title': 'Highly recommended!',
         'txt': 'This place exceeded my expectations. The food was delicious, the service was excellent, and the ambiance was delightful.',
-        'score': 4.95
+        'score': 4
     },
     {
       by: {
@@ -348,7 +348,7 @@ export const stays = [{
       },
         'title': 'Not worth it',
         'txt': 'I regret spending money here. The food was overpriced and not tasty at all.',
-        'score': 1.5
+        'score': 1
     }
 ],
   likedByUsers: []
@@ -421,14 +421,14 @@ export const stays = [{
   },
   reviews: [
     {
-      by: {
-        _id: "u101",
-        fullName: "User 1",
-        imgUrl: "https://robohash.org/doodi"
-      },
+        by: {
+          _id: "u101",
+          fullName: "User 1",
+          imgUrl: "https://robohash.org/doodi"
+        },
         'title': 'Amazing place!',
         'txt': 'It has been such a pleasure to spend our precious time at this place',
-        'score': 4.89
+        'score': 4
     },
     {
       by: {
@@ -438,7 +438,7 @@ export const stays = [{
       },
         'title': 'Lovely experience',
         'txt': 'I had a wonderful time here. The ambiance was great and the staff were very friendly.',
-        'score': 4.75
+        'score': 4
     },
     {
       by: {
@@ -448,7 +448,7 @@ export const stays = [{
       },
         'title': 'Disappointing',
         'txt': 'I had high expectations but unfortunately, the experience fell short. The service was slow and the food was mediocre.',
-        'score': 2.5
+        'score': 2
     },
     {
       by: {
@@ -458,7 +458,7 @@ export const stays = [{
       },
         'title': 'Highly recommended!',
         'txt': 'This place exceeded my expectations. The food was delicious, the service was excellent, and the ambiance was delightful.',
-        'score': 4.95
+        'score': 4
     },
     {
       by: {
@@ -468,7 +468,7 @@ export const stays = [{
       },
         'title': 'Not worth it',
         'txt': 'I regret spending money here. The food was overpriced and not tasty at all.',
-        'score': 1.5
+        'score': 1
     }
 ],
   likedByUsers: []
@@ -542,14 +542,14 @@ export const stays = [{
   },
   reviews: [
     {
-      by: {
-        _id: "u101",
-        fullName: "User 1",
-        imgUrl: "https://robohash.org/doodi"
-      },
+        by: {
+          _id: "u101",
+          fullName: "User 1",
+          imgUrl: "https://robohash.org/doodi"
+        },
         'title': 'Amazing place!',
         'txt': 'It has been such a pleasure to spend our precious time at this place',
-        'score': 4.89
+        'score': 4
     },
     {
       by: {
@@ -559,7 +559,7 @@ export const stays = [{
       },
         'title': 'Lovely experience',
         'txt': 'I had a wonderful time here. The ambiance was great and the staff were very friendly.',
-        'score': 4.75
+        'score': 4
     },
     {
       by: {
@@ -569,7 +569,7 @@ export const stays = [{
       },
         'title': 'Disappointing',
         'txt': 'I had high expectations but unfortunately, the experience fell short. The service was slow and the food was mediocre.',
-        'score': 2.5
+        'score': 2
     },
     {
       by: {
@@ -579,7 +579,7 @@ export const stays = [{
       },
         'title': 'Highly recommended!',
         'txt': 'This place exceeded my expectations. The food was delicious, the service was excellent, and the ambiance was delightful.',
-        'score': 4.95
+        'score': 4
     },
     {
       by: {
@@ -589,7 +589,7 @@ export const stays = [{
       },
         'title': 'Not worth it',
         'txt': 'I regret spending money here. The food was overpriced and not tasty at all.',
-        'score': 1.5
+        'score': 1
     }
 ],
   likedByUsers: []
@@ -662,14 +662,14 @@ export const stays = [{
   },
   reviews: [
     {
-      by: {
-        _id: "u101",
-        fullName: "User 1",
-        imgUrl: "https://robohash.org/doodi"
-      },
+        by: {
+          _id: "u101",
+          fullName: "User 1",
+          imgUrl: "https://robohash.org/doodi"
+        },
         'title': 'Amazing place!',
         'txt': 'It has been such a pleasure to spend our precious time at this place',
-        'score': 4.89
+        'score': 4
     },
     {
       by: {
@@ -679,7 +679,7 @@ export const stays = [{
       },
         'title': 'Lovely experience',
         'txt': 'I had a wonderful time here. The ambiance was great and the staff were very friendly.',
-        'score': 4.75
+        'score': 4
     },
     {
       by: {
@@ -689,7 +689,7 @@ export const stays = [{
       },
         'title': 'Disappointing',
         'txt': 'I had high expectations but unfortunately, the experience fell short. The service was slow and the food was mediocre.',
-        'score': 2.5
+        'score': 2
     },
     {
       by: {
@@ -699,7 +699,7 @@ export const stays = [{
       },
         'title': 'Highly recommended!',
         'txt': 'This place exceeded my expectations. The food was delicious, the service was excellent, and the ambiance was delightful.',
-        'score': 4.95
+        'score': 4
     },
     {
       by: {
@@ -709,7 +709,7 @@ export const stays = [{
       },
         'title': 'Not worth it',
         'txt': 'I regret spending money here. The food was overpriced and not tasty at all.',
-        'score': 1.5
+        'score': 1
     }
 ],
   likedByUsers: []
