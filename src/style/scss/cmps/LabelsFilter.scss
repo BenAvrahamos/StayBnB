@@ -1,6 +1,6 @@
 .label-filter-section {
     grid-auto-flow: column;
-    grid-gap: 0 1.8rem;
+    grid-gap: 0 2rem;
 
     align-items: center;
 
@@ -13,7 +13,7 @@
     }
 
     div {
-        font-size: 0.7rem;
+        font-size: 0.8rem;
         font-weight: 600;
         opacity: 0.6;
 
@@ -26,13 +26,13 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 0.5rem;
+        gap: 0.6rem;
 
         cursor: pointer;
 
         img {
-            width: 1.5rem;
-            height: 1.5rem;
+            width: 1.75rem;
+            height: 1.75rem;
         }
 
         p {
@@ -70,20 +70,21 @@
 @media (width > 724px) {
     .index-filter-section button {
         display: block;
-        font-size: 0.7rem;
+        font-size: 0.9rem;
         font-weight: 600;
 
         align-self: center;
 
-        height: 2.9166875rem;
-        width: 5.7rem;
-        margin: 0 0.1rem 0.3rem 0;
+        height: 3.3rem;
+        width: 6.4rem;
+        margin: 0.5rem 0.3rem 0 0;
         background-color: transparent;
         border: 0.667px solid $gray2;
         border-radius: 0.75rem;
         color: $darkGray;
 
         transition: 0s;
+
 
         img {
             height: 1rem;

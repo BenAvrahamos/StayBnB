@@ -26,7 +26,7 @@ export function LabelsFilter({ setStayFilter, filterBy }) {
 					handleChange={handleChange} />
 			</section>
 			<button className="flex align-center space-evenly" onClick={openFilterModal}>
-				<img src="./src/assets/svg/filter.svg" /> Filters</button>
+				<img src="./src/assets/svg/filter.svg" /> <span>Filters</span></button>
 		</section>
 		{showFilterModal && <FilterModal
 			setShowFilter={setShowFilter}
