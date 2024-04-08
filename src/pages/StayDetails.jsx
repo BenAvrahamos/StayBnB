@@ -8,6 +8,7 @@ import { StayReserveModal } from '../cmps/StayDetailsCmps/StayReserveModal'
 import { StayDetailsSvg } from "../cmps/StayDetailsCmps/StayDetailsSvg"
 import { BedroomDetails } from '../cmps/StayDetailsCmps/BedroomDetails'
 import { StayReviewsPreview } from "../cmps/StayDetailsCmps/StayReviewsPreview"
+import { utilService } from "../services/util.service";
 
 
 export function StayDetails() {
@@ -121,7 +122,7 @@ export function StayDetails() {
                         <div className="type-and-info">
                             <h1>Entire {stay.type} in {stay.loc.city}, {stay.loc.country}</h1>
                             <p>{stay.capacity} guests ・ {stay.bedrooms.length} bedrooms ・ {utilService.countBedsInBedrooms(stay)} beds ・ {stay.baths} baths</p>
-                            <p>★ No reviews yet</p>
+                            <p>{'★'.repeat(Math.ceil(utilService.calcScore(stay)))} {utilService.calcScore(stay)} ・ {stay.reviews.length} reviews</p>
                             <hr />
                         </div>
                         <div className="host-by flex">
