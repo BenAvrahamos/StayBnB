@@ -131,8 +131,9 @@
         }
 
         .accordion-arrow {
+            font-size: 0.9375rem;
+            font-weight: 550;
             text-decoration: underline;
-            font-weight: 600;
 
             cursor: pointer;
         }
@@ -210,7 +211,7 @@
 
             h4 {
                 margin-block: 1.5rem 1.65rem;
-                padding-inline: 0.1rem;
+                margin-inline: 0.1rem;
             }
 
             .btns {
@@ -270,16 +271,17 @@
             }
         }
 
-        .amenities {
+        .amenities,
+        .accessibility {
             padding-block: 1.9rem 2.5rem;
-            padding-inline: 0 0.8rem;
+            padding-inline: 0 0.75rem;
 
-            h3:first-of-type {
-                padding-block: 2rem 1.25rem;
+            h2 {
+                margin-block: 0.1rem 2rem
             }
-
-            h3:not(:first-of-type) {
-                padding-block: 1rem 1.25rem;
+            
+            h3 {
+                margin-block: 1.5rem 1.25rem;
             }
         }
 
@@ -288,23 +290,18 @@
 
             h2 {
                 letter-spacing: -1.8px;
-                margin-block-end: 2.4rem;
+                margin-block-end: 2.25rem;
             }
             
             h4 {
-                margin-block: 1.5rem 0.5rem;
-                padding-inline: 0.1rem;
+                margin-block: 1.5rem 0.4rem;
+                margin-inline: 0.1rem;
             }
-        }
-
-        .accessibility {
-            padding-block: 1.9rem;
         }
 
         .host-lng {
             padding-block: 1.9rem 2.5rem;
-            padding-inline: 0 0.8rem;
-
+            padding-inline: 0 0.75rem;
 
             h2 {
                 margin-block-end: 2.2rem;

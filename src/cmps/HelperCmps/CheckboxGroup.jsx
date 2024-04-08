@@ -12,7 +12,7 @@ export function CheckboxGroup({ type, items, selectedValues = [], handleChange }
                             checked={selectedValues.includes(item.value)}
                             onChange={() => handleChange(type, item.value)} 
                             sx={{ '& .MuiSvgIcon-root': { fontSize: 32 } }}
-                            style={{padding: 0, paddingInlineStart: 7, paddingInlineEnd: 14}}
+                            style={{padding: 0, paddingInlineStart: 7, paddingInlineEnd: 13}}
                             />}
                         label={item.label || item.value} />
                 </div>
