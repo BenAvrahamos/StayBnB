@@ -15,9 +15,6 @@ export function StayIndex() {
     const { filterBy } = useSelector(storeState => storeState.stayModule)
     const { headerFilterBy } = store.getState().stayModule
 
-
-
-
     useEffect(() => {
         setSearchParams(stayService.mergeFilters(filterBy,headerFilterBy))
         loadStays()

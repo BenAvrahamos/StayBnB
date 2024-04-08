@@ -2,11 +2,11 @@
     color: $darkGray;
 
     .stay-list {
-        margin-block: 1rem;
+        margin: 1.75rem 0.2rem 1rem;
 
-        grid-template-columns: repeat(auto-fit, minmax(rem(230px), 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(rem(270px), 1fr));
         grid-auto-rows: minmax(min-content, max-content);
-        grid-gap: 2.5rem 1.5rem;
+        grid-gap: 2.5rem 1.75rem;
     }
 
     .index-end-section {
