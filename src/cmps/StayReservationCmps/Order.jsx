@@ -38,17 +38,17 @@ export function Order({ stay }) {
                         <h3>Price details</h3>
                         <div className='price-details-txt flex space-between'>
                             <p>${stay.price} X {utilService.calcSumOfDays(reservation)}</p>
-                            <p>${utilService.calcSumToPay(reservation)}</p>
+                            <p>${utilService.calcSumToPay(reservation, stay)}</p>
                         </div>
                     </div>
                     <div className='fee-details flex space-between'>
                         <p>Service fee</p>
-                        <p>${utilService.calcSumToPay(reservation) * 0.14125}</p>
+                        <p>${utilService.calcSumToPay(reservation, stay) * 0.14125}</p>
                     </div>
                     <hr />
                     <div className='total-details flex space-between'>
                         <h3>Total</h3>
-                        <p>{utilService.calcSumToPay(reservation) + (utilService.calcSumToPay(reservation) * 0.14125)}</p>
+                        <p>{utilService.calcSumToPay(reservation, stay) + (utilService.calcSumToPay(reservation, stay) * 0.14125)}</p>
                     </div>
                 </div>
                 <div className='pic-and-desc flex column justify-center'>

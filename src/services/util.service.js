@@ -1,3 +1,4 @@
+import { format, getDay } from "date-fns"
 
 export const utilService = {
     makeId,
@@ -108,7 +109,7 @@ function generateStaysArray() {
   
 }
 
-function calcSumToPay(reservation) {
+function calcSumToPay(reservation, stay) {
     let diff = reservation.checkout - reservation.checkIn
     diff = diff / (1000 * 60 * 60 * 24)
     return diff * stay.price
