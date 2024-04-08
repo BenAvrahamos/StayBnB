@@ -65,7 +65,7 @@ export const stays = [{
         by: {
           _id: "u101",
           fullName: "User 1",
-          imgUrl: "https://xsgames.co/randomusers/assets/avatars/female/15.jpg"
+          imgUrl: "https://xsgames.co/randomusers/assets/avatars/female/1.jpg"
         },
         'title': 'Amazing place!',
         'txt': 'It has been such a pleasure to spend our precious time at this place',
@@ -304,7 +304,7 @@ export const stays = [{
         by: {
           _id: "u101",
           fullName: "User 1",
-          imgUrl: "https://robohash.org/doodi"
+          imgUrl: "https://xsgames.co/randomusers/assets/avatars/female/6.jpg"
         },
         'title': 'Amazing place!',
         'txt': 'It has been such a pleasure to spend our precious time at this place',
@@ -314,7 +314,7 @@ export const stays = [{
       by: {
         _id: "u101",
         fullName: "User 1",
-        imgUrl: "https://robohash.org/doodi"
+        imgUrl: "https://xsgames.co/randomusers/assets/avatars/male/6.jpg"
       },
         'title': 'Lovely experience',
         'txt': 'I had a wonderful time here. The ambiance was great and the staff were very friendly.',
@@ -324,7 +324,7 @@ export const stays = [{
       by: {
         _id: "u101",
         fullName: "User 1",
-        imgUrl: "https://robohash.org/doodi"
+        imgUrl: "https://xsgames.co/randomusers/assets/avatars/female/7.jpg"
       },
         'title': 'Disappointing',
         'txt': 'I had high expectations but unfortunately, the experience fell short. The service was slow and the food was mediocre.',
@@ -334,7 +334,7 @@ export const stays = [{
       by: {
         _id: "u101",
         fullName: "User 1",
-        imgUrl: "https://robohash.org/doodi"
+        imgUrl: "https://xsgames.co/randomusers/assets/avatars/male/7.jpg"
       },
         'title': 'Highly recommended!',
         'txt': 'This place exceeded my expectations. The food was delicious, the service was excellent, and the ambiance was delightful.',
@@ -344,7 +344,7 @@ export const stays = [{
       by: {
         _id: "u101",
         fullName: "User 1",
-        imgUrl: "https://robohash.org/doodi"
+        imgUrl: "https://xsgames.co/randomusers/assets/avatars/female/8.jpg"
       },
         'title': 'Not worth it',
         'txt': 'I regret spending money here. The food was overpriced and not tasty at all.',
@@ -424,7 +424,7 @@ export const stays = [{
         by: {
           _id: "u101",
           fullName: "User 1",
-          imgUrl: "https://robohash.org/doodi"
+          imgUrl: "https://xsgames.co/randomusers/assets/avatars/male/8.jpg"
         },
         'title': 'Amazing place!',
         'txt': 'It has been such a pleasure to spend our precious time at this place',
@@ -434,7 +434,7 @@ export const stays = [{
       by: {
         _id: "u101",
         fullName: "User 1",
-        imgUrl: "https://robohash.org/doodi"
+        imgUrl: "https://xsgames.co/randomusers/assets/avatars/female/9.jpg"
       },
         'title': 'Lovely experience',
         'txt': 'I had a wonderful time here. The ambiance was great and the staff were very friendly.',
@@ -444,7 +444,7 @@ export const stays = [{
       by: {
         _id: "u101",
         fullName: "User 1",
-        imgUrl: "https://robohash.org/doodi"
+        imgUrl: "https://xsgames.co/randomusers/assets/avatars/male/9.jpg"
       },
         'title': 'Disappointing',
         'txt': 'I had high expectations but unfortunately, the experience fell short. The service was slow and the food was mediocre.',
@@ -454,7 +454,7 @@ export const stays = [{
       by: {
         _id: "u101",
         fullName: "User 1",
-        imgUrl: "https://robohash.org/doodi"
+        imgUrl: "https://xsgames.co/randomusers/assets/avatars/male/10.jpg"
       },
         'title': 'Highly recommended!',
         'txt': 'This place exceeded my expectations. The food was delicious, the service was excellent, and the ambiance was delightful.',
@@ -464,7 +464,7 @@ export const stays = [{
       by: {
         _id: "u101",
         fullName: "User 1",
-        imgUrl: "https://robohash.org/doodi"
+        imgUrl: "https://xsgames.co/randomusers/assets/avatars/female/10.jpg"
       },
         'title': 'Not worth it',
         'txt': 'I regret spending money here. The food was overpriced and not tasty at all.',
@@ -545,7 +545,7 @@ export const stays = [{
         by: {
           _id: "u101",
           fullName: "User 1",
-          imgUrl: "https://robohash.org/doodi"
+          imgUrl: "https://xsgames.co/randomusers/assets/avatars/male/11.jpg"
         },
         'title': 'Amazing place!',
         'txt': 'It has been such a pleasure to spend our precious time at this place',
@@ -555,7 +555,7 @@ export const stays = [{
       by: {
         _id: "u101",
         fullName: "User 1",
-        imgUrl: "https://robohash.org/doodi"
+        imgUrl: "https://xsgames.co/randomusers/assets/avatars/female/11.jpg"
       },
         'title': 'Lovely experience',
         'txt': 'I had a wonderful time here. The ambiance was great and the staff were very friendly.',
@@ -565,7 +565,7 @@ export const stays = [{
       by: {
         _id: "u101",
         fullName: "User 1",
-        imgUrl: "https://robohash.org/doodi"
+        imgUrl: "https://xsgames.co/randomusers/assets/avatars/male/12.jpg"
       },
         'title': 'Disappointing',
         'txt': 'I had high expectations but unfortunately, the experience fell short. The service was slow and the food was mediocre.',
@@ -575,7 +575,7 @@ export const stays = [{
       by: {
         _id: "u101",
         fullName: "User 1",
-        imgUrl: "https://robohash.org/doodi"
+        imgUrl: "https://xsgames.co/randomusers/assets/avatars/female/12.jpg"
       },
         'title': 'Highly recommended!',
         'txt': 'This place exceeded my expectations. The food was delicious, the service was excellent, and the ambiance was delightful.',
@@ -585,7 +585,7 @@ export const stays = [{
       by: {
         _id: "u101",
         fullName: "User 1",
-        imgUrl: "https://robohash.org/doodi"
+        imgUrl: "https://xsgames.co/randomusers/assets/avatars/male/13.jpg"
       },
         'title': 'Not worth it',
         'txt': 'I regret spending money here. The food was overpriced and not tasty at all.',
@@ -665,7 +665,7 @@ export const stays = [{
         by: {
           _id: "u101",
           fullName: "User 1",
-          imgUrl: "https://robohash.org/doodi"
+          imgUrl: "https://xsgames.co/randomusers/assets/avatars/female/13.jpg"
         },
         'title': 'Amazing place!',
         'txt': 'It has been such a pleasure to spend our precious time at this place',
@@ -675,7 +675,7 @@ export const stays = [{
       by: {
         _id: "u101",
         fullName: "User 1",
-        imgUrl: "https://thispersondoesnotexist.com/"
+        imgUrl: "https://xsgames.co/randomusers/assets/avatars/male/14.jpg"
       },
         'title': 'Lovely experience',
         'txt': 'I had a wonderful time here. The ambiance was great and the staff were very friendly.',
@@ -685,7 +685,7 @@ export const stays = [{
       by: {
         _id: "u101",
         fullName: "User 1",
-        imgUrl: "https://thispersondoesnotexist.com/"
+        imgUrl: "https://xsgames.co/randomusers/assets/avatars/male/15.jpg"
       },
         'title': 'Disappointing',
         'txt': 'I had high expectations but unfortunately, the experience fell short. The service was slow and the food was mediocre.',
@@ -695,7 +695,7 @@ export const stays = [{
       by: {
         _id: "u101",
         fullName: "User 1",
-        imgUrl: "https://thispersondoesnotexist.com/"
+        imgUrl: "https://xsgames.co/randomusers/assets/avatars/female/15.jpg"
       },
         'title': 'Highly recommended!',
         'txt': 'This place exceeded my expectations. The food was delicious, the service was excellent, and the ambiance was delightful.',
@@ -705,7 +705,7 @@ export const stays = [{
       by: {
         _id: "u101",
         fullName: "User 1",
-        imgUrl: "https://thispersondoesnotexist.com/"
+        imgUrl: "https://xsgames.co/randomusers/assets/avatars/female/16.jpg"
       },
         'title': 'Not worth it',
         'txt': 'I regret spending money here. The food was overpriced and not tasty at all.',
