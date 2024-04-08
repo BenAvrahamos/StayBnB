@@ -35,7 +35,7 @@ export function Order({ stay }) {
 
                         <div className='stay-name flex column'>
                             <p>Property name:</p>
-                            <h5>ADD STAY NAME HERE</h5>
+                            <h5>{stay.summary} in {stay.loc.city}, {stay.loc.country}</h5>
                         </div>
 
                         <div className='booking-number flex column'>
