@@ -129,5 +129,5 @@ function calcSumOfDays(reservation) {
     const date2 = reservation.checkout
     const differenceInMilliseconds = date2 - date1
     const differenceInDays = Math.ceil(differenceInMilliseconds / (24 * 60 * 60 * 1000))
-    setNumOfDays(differenceInDays)
+    return differenceInDays
 }

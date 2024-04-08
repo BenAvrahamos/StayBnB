@@ -12,7 +12,7 @@ export function StayReserveModal({stay}) {
     const reservation = useSelector(storeState => storeState.reservationModule.reservation)
 
     useEffect(() => {
-        utilService.calcSumOfDays(reservation)
+        setNumOfDays(utilService.calcSumOfDays(reservation))
     }, [])
 
     useEffect(() => {
