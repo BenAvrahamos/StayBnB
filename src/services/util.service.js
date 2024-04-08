@@ -8,7 +8,9 @@ export const utilService = {
     saveToStorage,
     animateCSS,
     debounce,
-
+    countBedsInBedrooms,
+    calcScore,
+    generateStaysArray,
     calcSumToPay,
     timestampToDate,
     calcSumOfDays
@@ -138,4 +140,13 @@ function countBedsInBedrooms(stay) {
         return acc
     }, 0)
     return numOfBeds
+}
+
+function calcScore() {
+    const scores = stay.reviews.map(review => review.score)
+    const sumOfScores = scores.reduce((acc, score) => {
+        acc += score
+        return acc
+    }, 0)
+    return sumOfScores / stay.reviews.length
 }
