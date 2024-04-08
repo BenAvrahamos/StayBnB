@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import { stayService } from '../../services/stay.local.service'
 import { Order } from './Order'
+import { utilService } from '../../services/util.service'
 
 export function Payment({ stay }) {
     const reservation = useSelector(storeState => storeState.reservationModule.reservation)
@@ -14,22 +15,6 @@ export function Payment({ stay }) {
     const [userOrderDetails, setUserOrderDetails] = useState({ card: { cardNum: '', expDate: '', cvv: '', zip: '' }, phone: '' })
     const [isPhone, setIsPhone] = useState(false)
     const [isOrder, setIsOrder] = useState(false)
-
-    function calcSumToPay() {
-        let diff = reservation.checkout - reservation.checkIn
-        diff = diff / (1000 * 60 * 60 * 24)
-        return diff * stay.price
-    }
-
-    function convertDates(dateTimestamp) {
-        let str = ''
-        const date = new Date(dateTimestamp)
-        const monthName = format(date, 'MMMM')
-        str += monthName + ' '
-        const dayOfDate = getDay(date)
-        str += dayOfDate
-        return str
-    }
 
     function checkAndValidateOrder(e) {
         e.stopPropagation()
@@ -93,7 +78,7 @@ export function Payment({ stay }) {
                 <h4>Edit</h4>
             </div>
             <div className='dates'>
-                <p>{convertDates(reservation.checkIn)}-{convertDates(reservation.checkout)}</p>
+                <p>{utilService.convertDates(reservation.checkIn)}-{utilService.convertDates(reservation.checkout)}</p>
             </div>
             <div className='guests-container flex space-between'>
                 <h4>Guests</h4>
