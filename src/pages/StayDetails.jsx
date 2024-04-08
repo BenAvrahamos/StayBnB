@@ -3,12 +3,11 @@ import { useState, useEffect } from 'react'
 import { stayService } from "../services/stay.local.service"
 import { useLocation } from 'react-router-dom';
 import { useSearchParams } from 'react-router-dom'
-
-
 import { StayGalleryPreview } from '../cmps/StayDetailsCmps/StayGalleryPreview'
 import { StayReserveModal } from '../cmps/StayDetailsCmps/StayReserveModal'
 import { StayDetailsSvg } from "../cmps/StayDetailsCmps/StayDetailsSvg"
 import { BedroomDetails } from '../cmps/StayDetailsCmps/BedroomDetails'
+import { StayReviewsPreview } from "../cmps/StayDetailsCmps/StayReviewsPreview"
 
 
 export function StayDetails() {
@@ -101,7 +100,7 @@ export function StayDetails() {
 
     return (
         <>
-            {stay && <section className='stay-details'>
+            {stay && <section className="stay-details">
                 <div className="stay-details-header flex space-between align-center">
                     <h1>{stay.summary}</h1>
                     <div className="header-btns flex">
@@ -158,20 +157,21 @@ export function StayDetails() {
                                     </div>
                                 })}
                             </div>
-                            <div className="amenities-of-stay">
-                                <h1>What this place offers: </h1>
-                                <div className="amenities-preview-container flex space-between">
-                                    <ul className="first-col-amenity-ul">
-                                        {stay.amenities.slice(0, 4).map(amenity => <li key={amenity}>{amenity}</li>)}
-                                        <li className={stay.amenities.includes(safetyAmenities[0]) ? '' : 'no-safety-amenity'}>{safetyAmenities[0]}</li>
-                                    </ul>
-                                    <ul className="second-col-amenity-ul">
-                                        {stay.amenities.slice(4, 9).map(amenity => <li key={amenity}>{amenity}</li>)}
-                                        <li className={stay.amenities.includes(safetyAmenities[1]) ? '' : 'no-safety-amenity'}>{safetyAmenities[1]}</li>
-                                    </ul>
-                                </div>
+                        </div>
+                        <div className="amenities-of-stay">
+                            <h1>What this place offers: </h1>
+                            <div className="amenities-preview-container flex space-between">
+                                <ul className="first-col-amenity-ul">
+                                    {stay.amenities.slice(0, 4).map(amenity => <li key={amenity}>{amenity}</li>)}
+                                    <li className={stay.amenities.includes(safetyAmenities[0]) ? '' : 'no-safety-amenity'}>{safetyAmenities[0]}</li>
+                                </ul>
+                                <ul className="second-col-amenity-ul">
+                                    {stay.amenities.slice(4, 9).map(amenity => <li key={amenity}>{amenity}</li>)}
+                                    <li className={stay.amenities.includes(safetyAmenities[1]) ? '' : 'no-safety-amenity'}>{safetyAmenities[1]}</li>
+                                </ul>
                             </div>
                         </div>
+                        <StayReviewsPreview stay={stay} />
                     </div>
                 </div>
             </section>

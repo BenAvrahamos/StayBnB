@@ -1,18 +1,11 @@
-.overlay {
-    position: fixed;
-    inset: 0 0 0 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 3;
-}
-
 .filter-modal {
     position: fixed;
     inset: 2.5rem 0 0 0;
     z-index: 4;
 
-    border-radius: 0.8rem;
-    background-color: white;
     color: $darkGray;
+    background-color: white;
+    border-radius: 0.8rem;
     letter-spacing: -0.8px;
 
     header,

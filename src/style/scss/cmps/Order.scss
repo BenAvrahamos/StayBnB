@@ -1,31 +1,158 @@
-.order {
-    margin-inline: auto;
-    position: absolute;
-    padding: rem(24px);
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #ffffff;
-    border: 1px solid $gray3;
+.order-confirmation {
+    position: fixed;
+    inset: 2.5rem 0 0 0;
+    z-index: 4;
+
+    color: $darkGray;
+    background-color: white;
+    border-radius: 0.8rem 0.8rem 0 0;
+
+    header,
+    footer {
+        background-color: white;
+        position: absolute;
+    }
+
+    header {
+        height: 3rem;
+        inset: 0 0 auto;
+        padding: 1rem 1.5rem;
+        border-block-end: 0.667px solid $lightGray;
+        border-radius: 0.8rem 0.8rem 0 0;
+
+        .exit-btn {
+            position: absolute;
+            inset: 0.5rem auto auto 1rem;
+            border-radius: 50%;
+            height: 2rem;
+            width: 2rem;
+            background-color: transparent;
+            transition: 0s;
+            letter-spacing: -0.8px;
+            font-weight: 700;
+    
+            &:hover {
+                background-color: $btnHover;
+            }
+        }
+    }
+    
+    footer {
+        height: 3rem;
+        inset: auto 0 0;
+        border-block-start: 0.667px solid $lightGray;
+        
+        .close-btn {
+            height: 2.5rem;
+            color: white;
+            background: radial-gradient(103.95% 1413.54% at -3.95% 100%, #D33753 0%, #D13660 52.83%, #C72D65 100%);
+            font-weight: 600;
+            border-radius: rem(8px);
+            padding: 0 1.5rem;
+        }
+    }
 
     .order-details {
-        gap: rem(48px);
-        margin-block-start: rem(16px);
-    }
-    .close-btn {
-        height: rem(48px);
-        padding: rem(24px);
-        background: radial-gradient(103.95% 1413.54% at -3.95% 100%, #D33753 0%, #D13660 52.83%, #C72D65 100%);
-        border-radius: rem(8px);
-        font-weight: 590;
-        line-height: 19px;
-        color: #ffffff;
-        margin-block: 1rem;
-        cursor: pointer;
-    }
+        height: calc(100% - 6rem);
+        margin-block: 4rem 8rem;
+        padding-inline: 3rem 2rem;
 
-    img {
-        object-fit: contain;
-        width: rem(300px);
+        grid-template-columns: 57% 38%;
+        gap: 1.5rem;
+        overflow: auto;
+
+        h1 {
+            align-self: end;
+        }
+        
+        img {
+            opacity: 0;
+            grid-area: 1 / 2 / 5 / 2;
+            justify-self: end;
+            object-fit: cover;
+            aspect-ratio: 1/1;
+            max-width: 15rem;
+            border-radius: 0.626rem;
+        }
+
+        .user,
+        .stay-name,
+        .booking-number,
+        .rooms,
+        .guests,
+        .price {
+            gap: 0.5rem;
+        }
+
+        .dates {
+            grid-area: 5 / 1 / 6 / 3;
+        }
+
+        .guests-rooms {
+            grid-area: 6 / 1 / 7 / 3;
+        }
+
+        .dates,
+        .guests-rooms {
+            grid-template-columns: repeat(2, minmax(100px, 40%));
+            column-gap: 1.5rem;
+        }
+
+        .guests-container {
+            gap: 0.5rem;
+
+            ul {
+                padding-inline-start: 1.5rem;
+
+                li {
+                    list-style: disc;
+                    padding-inline-start: 0.5rem;
+                }
+            }
+        }
+
+        .price {
+            grid-area: 7 / 1 / 8 / 3;
+            width: 60%;
+            align-self: center;
+            justify-self: center;
+
+            padding: 1rem;
+            border: 0.667px solid $lightGray;
+            box-shadow: 5px 5px 5px $lightGray;
+            margin-block-end: 2rem;
+
+            hr {
+                border: none;
+                width: 100%;
+                height: 5px;
+                margin: 0;
+                border-top: 2px dotted $gray3;
+                line-height: 80%;
+            }
+
+            span {
+                font-weight: 600;
+            }
+        }
+    }
+}
+
+@media (width > 500px) {
+    .order-confirmation .order-details img {
+        opacity: 1;
+    }
+}
+
+@media (width > 742px) {
+    .order-confirmation {
+        inset: 2rem calc(50% - 24.5rem);
+        max-width: 48.75rem;
+        border-radius: 0.8rem;
+
+        footer {
+            border-radius: 0 0 0.8rem 0.8rem;
+
+        }
     }
 }

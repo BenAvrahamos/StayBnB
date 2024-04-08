@@ -1,4 +1,4 @@
-import { format, getDay } from "date-fns"
+import { format, getDate, getDay, getYear } from "date-fns"
 
 export const utilService = {
     makeId,
@@ -10,7 +10,7 @@ export const utilService = {
     debounce,
 
     calcSumToPay,
-    convertDates,
+    timestampToDate,
     calcSumOfDays
 }
 
@@ -78,7 +78,35 @@ function debounce(func, timeout = 300) {
     }
 }
 
+function generateStay() {
+    let currentDate = new Date()
 
+    let minDate = new Date(currentDate.getTime() + 7 * 24 * 60 * 60 * 1000)
+
+    let maxDate = new Date(currentDate.getTime() + 6 * 30 * 24 * 60 * 60 * 1000)
+
+    let rangeInDays = (maxDate.getTime() - minDate.getTime()) / (24 * 60 * 60 * 1000)
+
+    let randomDays = Math.floor(Math.random() * (rangeInDays + 1))
+
+    let entryDate = new Date(minDate.getTime() + randomDays * 24 * 60 * 60 * 1000)
+
+    let exitDate = new Date(entryDate.getTime() + 7 * 24 * 60 * 60 * 1000)
+
+    entryDate.setUTCHours(0, 0, 0, 0)
+
+    exitDate.setUTCHours(0, 0, 0, 0)
+
+    return { entryDate: entryDate.getTime(), exitDate: exitDate.getTime() }
+}
+
+function generateStaysArray() {
+    const staysArray = []
+    for (let i = 0; i < 5; i++) {
+        staysArray.push(generateStay())
+    }
+
+}
 
 function calcSumToPay(reservation, stay) {
     let diff = reservation.checkout - reservation.checkIn
@@ -86,14 +114,14 @@ function calcSumToPay(reservation, stay) {
     return diff * stay.price
 }
 
-function convertDates(dateTimestamp) {
-    let str = ''
-    const date = new Date(dateTimestamp)
-    const monthName = format(date, 'MMMM')
-    str += monthName + ' '
-    const dayOfDate = getDay(date)
-    str += dayOfDate
-    return str
+function timestampToDate(dateTimestamp) {
+    const date = new Date(dateTimestamp);
+    const dayOfDate = date.toLocaleString('en-US', { weekday: 'short' });
+    const dateOfDate = date.getDate();
+    const monthName = date.toLocaleString('en-US', { month: 'short' });
+    const yearOfDate = date.getFullYear();
+    let str = dayOfDate + ', ' + dateOfDate + ' ' + monthName + ' ' + yearOfDate;
+    return str;
 }
 
 function calcSumOfDays(reservation) {
