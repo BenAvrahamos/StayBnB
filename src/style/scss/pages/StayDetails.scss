@@ -34,7 +34,8 @@
     }
 
     .host-by {
-        gap: rem(24px)
+        gap: rem(24px);
+        padding: rem(24px);
     }
 
     .host-img {
@@ -66,7 +67,15 @@
 
     .content {
         grid-area: col1;
-
+        .type-and-info {
+            gap: rem(8px);
+            h1 {
+                margin: 0;
+            }
+            .reviews-p {
+                padding-block-end: rem(32px);
+            }
+        }
     }
 
     .reserve-modal {
