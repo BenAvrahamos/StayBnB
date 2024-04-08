@@ -1,0 +1,50 @@
+.stay-reviews {
+    grid-column: 1;
+    grid-template-columns: 1fr 1fr;
+    gap: rem(95px);
+
+    .review {
+        padding-block-end: 3rem;
+        .user {
+            gap: rem(14px);
+            padding-inline-end: rem(12px);
+            .user-details-txt {
+                h3 {
+                    font-size: rem(16px);
+                }
+                p {
+                    font-size: rem(14px);
+                }
+            }
+        }
+        .review-score {
+            p {
+                font-size: rem(10px);
+            }
+        }
+        .review-content {
+            h3 {
+                font-size: rem(16px);
+            }
+            p {
+                font-size: rem(14px);
+            }
+        }
+    }
+
+    .first-three-reviews-col {
+        grid-column: 1;
+    }
+
+    .last-three-reviews-col {
+        grid-column: 2;
+    }
+
+  img {
+        object-fit: cover;
+        width: rem(48px);
+        height: rem(48px);
+        border-radius: 50%;
+    }
+    
+}

@@ -1,25 +1,27 @@
-
+import { useState, useEffect } from 'react'
 import { loadStays, removeStay, saveStay, setStayHeaderFilter } from '../../store/actions/stay.actions.js'
 import { store } from '../../store/store.js'
 
-
-export function GuestCount({ headerFilterBy, openModalType }) {
+export function GuestCount({ openModalType, params, updateParams }) {
 
     function onCloseModal(ev) {
         ev.stopPropagation()
 
         openModalType('')
     }
-
+    
+    console.log(params);
 
     function updateGuestCounts(guestType, countChange) {
-        const newGuestCounts = { ...headerFilterBy.guestCount }
+        const newParams = { ...params }
 
-        newGuestCounts[guestType] += countChange
+        const currentCount = parseInt(newParams[guestType])
 
-        setStayHeaderFilter({ ...headerFilterBy, guestCount: newGuestCounts })
+        newParams[guestType] = Math.max(0, currentCount + countChange)
+        console.log(params.adults);
+
+        updateParams(newParams)
     }
-
 
     return <section className="details-guest-count">
 
@@ -32,22 +34,20 @@ export function GuestCount({ headerFilterBy, openModalType }) {
                 </div>
 
                 <div className="count">
-                    <button className={headerFilterBy.guestCount.adults === 0 ? 'disabled' : ''} onClick={() => {
-                        if (headerFilterBy.guestCount.adults > 0) {
+                    <button className={+params.adults === 0 ? 'disabled' : ''} onClick={() => {
+                        if (params.adults > 0) {
                             updateGuestCounts('adults', -1)
                         }
                     }}>-</button>
-                    {headerFilterBy.guestCount.adults}
-                    <button className={headerFilterBy.guestCount.adults + headerFilterBy.guestCount.children >= 16 ? 'disabled' : ''} onClick={() => {
-                        if (headerFilterBy.guestCount.adults + headerFilterBy.guestCount.children < 16) {
+                    {+params.adults}
+                    <button className={+params.adults + +params.children >= 16 ? 'disabled' : ''} onClick={() => {
+                        if (+params.adults + +params.children < 16) {
                             updateGuestCounts('adults', +1)
                         }
                     }}>+</button>
                 </div>
 
             </article>
-
-
 
             <article className="option">
                 <div className="description">
@@ -56,14 +56,14 @@ export function GuestCount({ headerFilterBy, openModalType }) {
                 </div>
 
                 <div className="count">
-                    <button className={headerFilterBy.guestCount.children === 0 ? 'disabled' : ''} onClick={() => {
-                        if (headerFilterBy.guestCount.children > 0) {
+                    <button className={+params.children === 0 ? 'disabled' : ''} onClick={() => {
+                        if (+params.children > 0) {
                             updateGuestCounts('children', -1)
                         }
                     }}>-</button>
-                    {headerFilterBy.guestCount.children}
-                    <button className={headerFilterBy.guestCount.adults + headerFilterBy.guestCount.children >= 16 ? 'disabled' : ''} onClick={() => {
-                        if (headerFilterBy.guestCount.adults + headerFilterBy.guestCount.children < 16) {
+                    {+params.children}
+                    <button className={+params.adults + +params.children >= 16 ? 'disabled' : ''} onClick={() => {
+                        if (+params.adults + +params.children < 16) {
                             updateGuestCounts('children', +1)
                         }
                     }}>+</button>
@@ -79,14 +79,14 @@ export function GuestCount({ headerFilterBy, openModalType }) {
                 </div>
 
                 <div className="count">
-                    <button className={headerFilterBy.guestCount.infants === 0 ? 'disabled' : ''} onClick={() => {
-                        if (headerFilterBy.guestCount.infants > 0) {
+                    <button className={+params.infants === 0 ? 'disabled' : ''} onClick={() => {
+                        if (+params.infants > 0) {
                             updateGuestCounts('infants', -1)
                         }
                     }}>-</button>
-                    {headerFilterBy.guestCount.infants}
-                    <button className={headerFilterBy.guestCount.infants === 5 ? 'disabled' : ''} onClick={() => {
-                        if (headerFilterBy.guestCount.infants < 5) {
+                    {+params.infants}
+                    <button className={+params.infants === 5 ? 'disabled' : ''} onClick={() => {
+                        if (+params.infants < 5) {
                             updateGuestCounts('infants', +1)
                         }
                     }}>+</button>
@@ -100,31 +100,26 @@ export function GuestCount({ headerFilterBy, openModalType }) {
                 </div>
 
                 <div className="count">
-                    <button className={headerFilterBy.guestCount.pets === 0 ? 'disabled' : ''} onClick={() => {
-                        if (headerFilterBy.guestCount.pets > 0) {
+                    <button className={+params.pets === 0 ? 'disabled' : ''} onClick={() => {
+                        if (+params.pets > 0) {
                             updateGuestCounts('pets', -1)
                         }
                     }}>-</button>
-                    {headerFilterBy.guestCount.pets}
-                    <button className={headerFilterBy.guestCount.pets === 5 ? 'disabled' : ''} onClick={() => {
-                        if (headerFilterBy.guestCount.pets < 5) {
+                    {+params.pets}
+                    <button className={+params.pets === 5 ? 'disabled' : ''} onClick={() => {
+                        if (+params.pets < 5) {
                             updateGuestCounts('pets', +1)
                         }
                     }}>+</button>
                 </div>
 
-
-
             </article>
-
-
 
             <article className="btn-container">
                 <div onClick={onCloseModal} className='close-btn'>Close</div>
             </article>
 
         </div>
-
 
     </section>
 }
