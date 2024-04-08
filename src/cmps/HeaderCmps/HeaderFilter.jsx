@@ -1,18 +1,27 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux'
+import { useNavigate, useSearchParams } from 'react-router-dom'
+
 
 
 import { DateFilter } from './DateFilter';
 import { MapFilter } from './MapFilter';
 import { GuestFilter } from './GuestFilter';
 import { loadStays } from '../../store/actions/stay.actions'
+import { stayService } from '../../services/stay.local.service';
+import { store } from '../../store/store';
 
 
 export function HeaderFilter() {
     const [modalType, setModalType] = useState()
+    const navigate = useNavigate()
     const headerFilterBy = useSelector(storeState => storeState.stayModule.headerFilterBy)
+    const { filterBy } = store.getState().stayModule
+    const [searchParams, setSearchParams] = useSearchParams()
 
-  
+
+
+
     const ref = useRef(null);
 
     useEffect(() => {
@@ -38,23 +47,24 @@ export function HeaderFilter() {
         if (guestsCount > 0) {
             guests = guestsCount === 1 ? '1 guest' : `${guestsCount} guests`
         }
-    
+
         const infants = headerFilterBy.guestCount.infants > 0 ? `${headerFilterBy.guestCount.infants} infants` : ''
         const pets = headerFilterBy.guestCount.pets > 0 ? `${headerFilterBy.guestCount.pets} pets` : ''
-    
+
         const parts = [guests, infants, pets].filter(Boolean)
-    
+
         if (parts.length === 0) {
             return "Add guests"
         }
-    
+
         return parts.join(', ')
     }
 
-    function onLoadStays(ev){
+    function onLoadStays(ev) {
         ev.stopPropagation()
+        setSearchParams(stayService.mergeFilters(filterBy, headerFilterBy))
+        // navigate('/')
         loadStays()
-
     }
 
     function formatDate(timestamp) {
@@ -81,7 +91,7 @@ export function HeaderFilter() {
             <button onClick={onLoadStays} className='search-btn'></button>
         </div>
 
-        {modalType === 'map' && <MapFilter setModalType={setModalType} headerFilterBy={headerFilterBy}  />}
+        {modalType === 'map' && <MapFilter setModalType={setModalType} headerFilterBy={headerFilterBy} />}
         {(modalType === 'check-in' || modalType === 'check-out') && <DateFilter setModalType={setModalType} headerFilterBy={headerFilterBy} />}
         {modalType === 'guest' && <GuestFilter headerFilterBy={headerFilterBy} />}
 
