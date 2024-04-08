@@ -3,17 +3,25 @@ import { useSelector } from 'react-redux'
 import { useSearchParams } from 'react-router-dom'
 
 import { HeaderFilter } from "./HeaderFilter";
+import { DemoDataService } from "../../services/demoData.service";
 
 export function AppHeader() {
-   
+
+    console.log(DemoDataService.randomStay());
+
+
+
+
     const [searchParams, setSearchParams] = useSearchParams()
     const navigate = useNavigate()
     const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
 
-function goHome(){
-    // setSearchParams('')
-    navigate('/')
-}
+    function goHome() {
+        // setSearchParams('')
+        navigate('/')
+    }
+
+
 
     return <section className="app-header flex column center">
         <section className="expanded-header flex space-between align-center">
