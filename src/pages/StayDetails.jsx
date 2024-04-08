@@ -119,12 +119,12 @@ export function StayDetails() {
                 <div className="content-and-modal-container">
                     <StayReserveModal stay={stay} params={params} updateParams={updateParams} />
                     <div className="content">
-                        <div className="type-and-info">
+                        <div className="type-and-info flex column">
                             <h1>Entire {stay.type} in {stay.loc.city}, {stay.loc.country}</h1>
                             <p>{stay.capacity} guests ・ {stay.bedrooms.length} bedrooms ・ {utilService.countBedsInBedrooms(stay)} beds ・ {stay.baths} baths</p>
-                            <p>{'★'.repeat(Math.ceil(utilService.calcScore(stay)))} {utilService.calcScore(stay)} ・ {stay.reviews.length} reviews</p>
-                            <hr />
+                            <p className="reviews-p">{'★'.repeat(Math.ceil(utilService.calcScore(stay)))} {utilService.calcScore(stay)} ・ {stay.reviews.length} reviews</p>
                         </div>
+                        <hr />
                         <div className="host-by flex">
                             <img src={stay.host.imgUrl} className="host-img" />
                             <div className="host-by-txt flex column">
