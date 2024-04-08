@@ -1,15 +1,17 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector } from 'react-redux'
+import { useSearchParams } from 'react-router-dom'
 
 import { HeaderFilter } from "./HeaderFilter";
 
 export function AppHeader() {
    
+    const [searchParams, setSearchParams] = useSearchParams()
     const navigate = useNavigate()
     const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
 
 function goHome(){
-    // setStayFilter(prevFilterBy => prevFilterBy = stayService.getDefaultFilter) 
+    // setSearchParams('')
     navigate('/')
 
 }

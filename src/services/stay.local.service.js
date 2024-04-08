@@ -17,7 +17,8 @@ export const stayService = {
     getEmptyOrder,
     getEmptyStay,
     getDefaultFilter,
-    getDefaultHeaderFilter
+    getDefaultHeaderFilter,
+    mergeFilters
 }
 
 utilService.generateStaysArray()
@@ -276,6 +277,16 @@ function _createDemoStay(stays) {
     if (utilService.loadFromStorage(STAY_DB)) return utilService.loadFromStorage(STAY_DB)
     else return utilService.saveToStorage(STAY_DB, stays)
 }
+
+
+function mergeFilters(mainFilter,headerFilter) {
+    const { loc, label } = mainFilter
+    const { guestCount, entryDate, exitDate } = headerFilter
+    const mergeFilter = { ...loc, ...label, ...guestCount, entryDate, exitDate }
+    return mergeFilter
+
+}
+
 
 // TEST DATA
 // storageService.post(STORAGE_KEY, {vendor: 'Subali Rahok 6', price: 980}).then(x => console.log(x))
