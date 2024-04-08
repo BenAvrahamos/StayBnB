@@ -52,7 +52,7 @@ export function StayDetails() {
 
     useEffect(() => {
         if (stay) {
-            calcLongestBedCount();
+            _calcLongestBedCount();
         }
     }, [stay])
 
@@ -72,7 +72,7 @@ export function StayDetails() {
         }
     }
 
-    function calcLongestBedCount() {
+    function _calcLongestBedCount() {
         let maxBedCount = 0
         stay.bedrooms.forEach((bedroom) => {
             if (bedroom.beds.length > maxBedCount) {
