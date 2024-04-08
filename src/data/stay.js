@@ -62,26 +62,51 @@ export const stays = [{
   },
   reviews: [
     {
+        by: {
+          _id: "u101",
+          fullName: "User 1",
+          imgUrl: "https://robohash.org/doodi"
+        },
         'title': 'Amazing place!',
         'txt': 'It has been such a pleasure to spend our precious time at this place',
         'score': 4.89
     },
     {
+      by: {
+        _id: "u101",
+        fullName: "User 1",
+        imgUrl: "https://robohash.org/doodi"
+      },
         'title': 'Lovely experience',
         'txt': 'I had a wonderful time here. The ambiance was great and the staff were very friendly.',
         'score': 4.75
     },
     {
+      by: {
+        _id: "u101",
+        fullName: "User 1",
+        imgUrl: "https://robohash.org/doodi"
+      },
         'title': 'Disappointing',
         'txt': 'I had high expectations but unfortunately, the experience fell short. The service was slow and the food was mediocre.',
         'score': 2.5
     },
     {
+      by: {
+        _id: "u101",
+        fullName: "User 1",
+        imgUrl: "https://robohash.org/doodi"
+      },
         'title': 'Highly recommended!',
         'txt': 'This place exceeded my expectations. The food was delicious, the service was excellent, and the ambiance was delightful.',
         'score': 4.95
     },
     {
+      by: {
+        _id: "u101",
+        fullName: "User 1",
+        imgUrl: "https://robohash.org/doodi"
+      },
         'title': 'Not worth it',
         'txt': 'I regret spending money here. The food was overpriced and not tasty at all.',
         'score': 1.5
@@ -156,26 +181,51 @@ export const stays = [{
   },
   reviews: [
     {
+      by: {
+        _id: "u101",
+        fullName: "User 1",
+        imgUrl: "https://robohash.org/doodi"
+      },
         'title': 'Amazing place!',
         'txt': 'It has been such a pleasure to spend our precious time at this place',
         'score': 4.89
     },
     {
+      by: {
+        _id: "u101",
+        fullName: "User 1",
+        imgUrl: "https://robohash.org/doodi"
+      },
         'title': 'Lovely experience',
         'txt': 'I had a wonderful time here. The ambiance was great and the staff were very friendly.',
         'score': 4.75
     },
     {
+      by: {
+        _id: "u101",
+        fullName: "User 1",
+        imgUrl: "https://robohash.org/doodi"
+      },
         'title': 'Disappointing',
         'txt': 'I had high expectations but unfortunately, the experience fell short. The service was slow and the food was mediocre.',
         'score': 2.5
     },
     {
+      by: {
+        _id: "u101",
+        fullName: "User 1",
+        imgUrl: "https://robohash.org/doodi"
+      },
         'title': 'Highly recommended!',
         'txt': 'This place exceeded my expectations. The food was delicious, the service was excellent, and the ambiance was delightful.',
         'score': 4.95
     },
     {
+      by: {
+        _id: "u101",
+        fullName: "User 1",
+        imgUrl: "https://robohash.org/doodi"
+      },
         'title': 'Not worth it',
         'txt': 'I regret spending money here. The food was overpriced and not tasty at all.',
         'score': 1.5
@@ -251,26 +301,51 @@ export const stays = [{
   },
   reviews: [
     {
+      by: {
+        _id: "u101",
+        fullName: "User 1",
+        imgUrl: "https://robohash.org/doodi"
+      },
         'title': 'Amazing place!',
         'txt': 'It has been such a pleasure to spend our precious time at this place',
         'score': 4.89
     },
     {
+      by: {
+        _id: "u101",
+        fullName: "User 1",
+        imgUrl: "https://robohash.org/doodi"
+      },
         'title': 'Lovely experience',
         'txt': 'I had a wonderful time here. The ambiance was great and the staff were very friendly.',
         'score': 4.75
     },
     {
+      by: {
+        _id: "u101",
+        fullName: "User 1",
+        imgUrl: "https://robohash.org/doodi"
+      },
         'title': 'Disappointing',
         'txt': 'I had high expectations but unfortunately, the experience fell short. The service was slow and the food was mediocre.',
         'score': 2.5
     },
     {
+      by: {
+        _id: "u101",
+        fullName: "User 1",
+        imgUrl: "https://robohash.org/doodi"
+      },
         'title': 'Highly recommended!',
         'txt': 'This place exceeded my expectations. The food was delicious, the service was excellent, and the ambiance was delightful.',
         'score': 4.95
     },
     {
+      by: {
+        _id: "u101",
+        fullName: "User 1",
+        imgUrl: "https://robohash.org/doodi"
+      },
         'title': 'Not worth it',
         'txt': 'I regret spending money here. The food was overpriced and not tasty at all.',
         'score': 1.5
@@ -346,26 +421,51 @@ export const stays = [{
   },
   reviews: [
     {
+      by: {
+        _id: "u101",
+        fullName: "User 1",
+        imgUrl: "https://robohash.org/doodi"
+      },
         'title': 'Amazing place!',
         'txt': 'It has been such a pleasure to spend our precious time at this place',
         'score': 4.89
     },
     {
+      by: {
+        _id: "u101",
+        fullName: "User 1",
+        imgUrl: "https://robohash.org/doodi"
+      },
         'title': 'Lovely experience',
         'txt': 'I had a wonderful time here. The ambiance was great and the staff were very friendly.',
         'score': 4.75
     },
     {
+      by: {
+        _id: "u101",
+        fullName: "User 1",
+        imgUrl: "https://robohash.org/doodi"
+      },
         'title': 'Disappointing',
         'txt': 'I had high expectations but unfortunately, the experience fell short. The service was slow and the food was mediocre.',
         'score': 2.5
     },
     {
+      by: {
+        _id: "u101",
+        fullName: "User 1",
+        imgUrl: "https://robohash.org/doodi"
+      },
         'title': 'Highly recommended!',
         'txt': 'This place exceeded my expectations. The food was delicious, the service was excellent, and the ambiance was delightful.',
         'score': 4.95
     },
     {
+      by: {
+        _id: "u101",
+        fullName: "User 1",
+        imgUrl: "https://robohash.org/doodi"
+      },
         'title': 'Not worth it',
         'txt': 'I regret spending money here. The food was overpriced and not tasty at all.',
         'score': 1.5
@@ -442,26 +542,51 @@ export const stays = [{
   },
   reviews: [
     {
+      by: {
+        _id: "u101",
+        fullName: "User 1",
+        imgUrl: "https://robohash.org/doodi"
+      },
         'title': 'Amazing place!',
         'txt': 'It has been such a pleasure to spend our precious time at this place',
         'score': 4.89
     },
     {
+      by: {
+        _id: "u101",
+        fullName: "User 1",
+        imgUrl: "https://robohash.org/doodi"
+      },
         'title': 'Lovely experience',
         'txt': 'I had a wonderful time here. The ambiance was great and the staff were very friendly.',
         'score': 4.75
     },
     {
+      by: {
+        _id: "u101",
+        fullName: "User 1",
+        imgUrl: "https://robohash.org/doodi"
+      },
         'title': 'Disappointing',
         'txt': 'I had high expectations but unfortunately, the experience fell short. The service was slow and the food was mediocre.',
         'score': 2.5
     },
     {
+      by: {
+        _id: "u101",
+        fullName: "User 1",
+        imgUrl: "https://robohash.org/doodi"
+      },
         'title': 'Highly recommended!',
         'txt': 'This place exceeded my expectations. The food was delicious, the service was excellent, and the ambiance was delightful.',
         'score': 4.95
     },
     {
+      by: {
+        _id: "u101",
+        fullName: "User 1",
+        imgUrl: "https://robohash.org/doodi"
+      },
         'title': 'Not worth it',
         'txt': 'I regret spending money here. The food was overpriced and not tasty at all.',
         'score': 1.5
@@ -537,26 +662,51 @@ export const stays = [{
   },
   reviews: [
     {
+      by: {
+        _id: "u101",
+        fullName: "User 1",
+        imgUrl: "https://robohash.org/doodi"
+      },
         'title': 'Amazing place!',
         'txt': 'It has been such a pleasure to spend our precious time at this place',
         'score': 4.89
     },
     {
+      by: {
+        _id: "u101",
+        fullName: "User 1",
+        imgUrl: "https://robohash.org/doodi"
+      },
         'title': 'Lovely experience',
         'txt': 'I had a wonderful time here. The ambiance was great and the staff were very friendly.',
         'score': 4.75
     },
     {
+      by: {
+        _id: "u101",
+        fullName: "User 1",
+        imgUrl: "https://robohash.org/doodi"
+      },
         'title': 'Disappointing',
         'txt': 'I had high expectations but unfortunately, the experience fell short. The service was slow and the food was mediocre.',
         'score': 2.5
     },
     {
+      by: {
+        _id: "u101",
+        fullName: "User 1",
+        imgUrl: "https://robohash.org/doodi"
+      },
         'title': 'Highly recommended!',
         'txt': 'This place exceeded my expectations. The food was delicious, the service was excellent, and the ambiance was delightful.',
         'score': 4.95
     },
     {
+      by: {
+        _id: "u101",
+        fullName: "User 1",
+        imgUrl: "https://robohash.org/doodi"
+      },
         'title': 'Not worth it',
         'txt': 'I regret spending money here. The food was overpriced and not tasty at all.',
         'score': 1.5
