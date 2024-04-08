@@ -6,7 +6,7 @@ import { FilterModal } from './FilterModal'
 export function LabelsFilter({ setStayFilter, filterBy }) {
 	const [showFilterModal, setShowFilter] = useState(false)
 
-	const filterLabels = ['new', 'off-the-grid', 'iconic_cities', 'rooms', 'creative_spaces', 'boats', 'grand_pianos', 'vineyards', 'historical_homes', 'mansions', 'lake', 'bed_&_breakfasts', 'treehouses', 'farms', 'skiing', 'earth_homes', 'countryside', 'amazing_views', 'beach', 'desert', 'a-frames',
+	const filterLabels = ['new', 'off-the-grid', 'iconic_cities', 'rooms', 'creative_spaces', 'boats', 'grand_pianos', 'vineyards', 'historical_homes', 'mansions', 'lake', 'bed_&_breakfasts', 'farms', 'treehouses', 'skiing', 'earth_homes', 'beach', 'amazing_views', 'countryside', 'a-frames', 'desert',
 		'design', 'beachfront', 'caves', 'national_parks', 'castles', 'lakefront', 'islands', 'trulli', 'tropical', 'cabins', 'campers', 'camping', 'arctic', 'tiny_homes', 'surfing', 'barns', 'cycladic_homes', 'hanoks', 'ryokans', 'domes', 'shepard_huts', 'yurts', 'minsus', 'casas_particulares']
 
 	function handleChange(label) {
