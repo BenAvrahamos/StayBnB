@@ -5,15 +5,20 @@ import { loadStays, removeStay, saveStay, setStayFilter } from '../store/actions
 
 import { StayList } from '../cmps/StayList.jsx'
 import { LabelsFilter } from '../cmps/LabelsFilter.jsx'
+import { store } from '../store/store.js'
+import { stayService } from '../services/stay.local.service.js'
 
 export function StayIndex() {
     const [searchParams, setSearchParams] = useSearchParams()
 
     const { stays } = useSelector(storeState => storeState.stayModule)
     const { filterBy } = useSelector(storeState => storeState.stayModule)
+    const { headerFilterBy } = store.getState().stayModule
+
+
 
     useEffect(() => {
-        setSearchParams(filterBy)
+        setSearchParams(stayService.mergeFilters(filterBy,headerFilterBy))
         loadStays()
     }, [filterBy])
 

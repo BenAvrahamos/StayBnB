@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { DateRangePicker } from "react-date-range";
+
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 
-import { loadStays, removeStay, saveStay, setStayHeaderFilter } from '../../store/actions/stay.actions'
+import { setStayHeaderFilter } from '../../store/actions/stay.actions'
 
 export function DateFilter({ setModalType, headerFilterBy }) {
     const [dateRange, setDateRange] = useState([
@@ -17,10 +18,6 @@ export function DateFilter({ setModalType, headerFilterBy }) {
     const handleSelect = (ranges) => {
         const startDateTimestamp = ranges.selection.startDate.getTime()
         const endDateTimestamp = ranges.selection.endDate.getTime()
-
-        // console.log("Start Date (Timestamp):", startDateTimestamp)
-        // console.log("End Date (Timestamp):", endDateTimestamp)
-
 
         if (!headerFilterBy.entryDate && !headerFilterBy.exitDate) {
 
@@ -54,7 +51,6 @@ export function DateFilter({ setModalType, headerFilterBy }) {
                 staticRanges={[]}
                 inputRanges={[]}
                 enableOutsideDays={true}
-
 
             />
         </section>
