@@ -1,10 +1,8 @@
 
-import { loadStays, removeStay, saveStay, setStayHeaderFilter } from '../../store/actions/stay.actions'
-import { store } from '../../store/store.js'
+import { setStayHeaderFilter } from '../../store/actions/stay.actions'
 
 
 export function GuestFilter({headerFilterBy}) {
-
 
     function updateGuestCounts(guestType, countChange) {
         const newGuestCounts = { ...headerFilterBy.guestCount }
@@ -13,7 +11,6 @@ export function GuestFilter({headerFilterBy}) {
 
         setStayHeaderFilter({ ...headerFilterBy, guestCount: newGuestCounts })
     }
-
 
     return <section className="guest-filter">
 
@@ -41,8 +38,6 @@ export function GuestFilter({headerFilterBy}) {
 
             </article>
 
-
-
             <article className="option">
                 <div className="description">
                     Children
@@ -62,7 +57,6 @@ export function GuestFilter({headerFilterBy}) {
                         }
                     }}>+</button>
                 </div>
-
 
             </article>
 
@@ -110,7 +104,6 @@ export function GuestFilter({headerFilterBy}) {
             </article>
 
         </div>
-
 
     </section>
 }

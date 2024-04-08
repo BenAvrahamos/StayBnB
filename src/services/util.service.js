@@ -97,11 +97,11 @@ function generateStay() {
 }
 
 function generateStaysArray() {
-    const staysArray = [];
+    const staysArray = []
     for (let i = 0; i < 5; i++) {
-        staysArray.push(generateStay());
+        staysArray.push(generateStay())
     }
-    console.log(staysArray);
+  
 }
 
 

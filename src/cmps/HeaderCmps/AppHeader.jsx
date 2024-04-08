@@ -1,15 +1,10 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector } from 'react-redux'
 
-import { setStayFilter } from '../../store/actions/stay.actions'
 import { HeaderFilter } from "./HeaderFilter";
-import { stayService } from "../../services/stay.local.service";
-import { utilService } from "../../services/util.service";
 
 export function AppHeader() {
    
-
-
     const navigate = useNavigate()
     const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
 
@@ -20,8 +15,6 @@ function goHome(){
 }
 
     return <section className="app-header flex column center">
-
-
 
 
         <section className="expanded-header flex space-between align-center">
@@ -40,7 +33,6 @@ function goHome(){
                     {/* <NavLink to="/" className='grayTxt'>Online Experiences</NavLink> */}
                 </nav>
             </div>
-
 
             <div className="user-section flex align-center" >
                 Staybnb your home

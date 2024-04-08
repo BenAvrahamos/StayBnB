@@ -5,9 +5,8 @@ import { useSelector } from 'react-redux'
 import { DateFilter } from './DateFilter';
 import { MapFilter } from './MapFilter';
 import { GuestFilter } from './GuestFilter';
-import { loadStays, removeStay, saveStay, setStayHeaderFilter } from '../../store/actions/stay.actions'
-import { stayService } from '../../services/stay.local.service';
-import { store } from '../../store/store';
+import { loadStays } from '../../store/actions/stay.actions'
+
 
 export function HeaderFilter() {
     const [modalType, setModalType] = useState()
@@ -65,8 +64,6 @@ export function HeaderFilter() {
         return `${month} ${day}`
     }
 
-
-
     return <section ref={ref} className={`header-filter flex ${modalType ? 'grey' : ''}`}>
         <div className={`destination ${modalType === 'map' ? 'selected' : ''}`} onClick={() => setModalType(modalType === 'map' ? null : 'map')}>
             Where<span className='grayTxt'>{headerFilterBy.loc.region ? headerFilterBy.loc.region : "search destinations"}</span>
@@ -84,11 +81,9 @@ export function HeaderFilter() {
             <button onClick={onLoadStays} className='search-btn'></button>
         </div>
 
-
         {modalType === 'map' && <MapFilter setModalType={setModalType} headerFilterBy={headerFilterBy}  />}
         {(modalType === 'check-in' || modalType === 'check-out') && <DateFilter setModalType={setModalType} headerFilterBy={headerFilterBy} />}
         {modalType === 'guest' && <GuestFilter headerFilterBy={headerFilterBy} />}
-
 
     </section>
 
