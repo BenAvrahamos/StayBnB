@@ -56,17 +56,20 @@
 }
 
 .index-filter-section {
-    margin-inline: 2.5rem;
     height: 4.625rem;
-    width: calc(100vw - 6em);
     z-index: 2;
 
     grid-auto-flow: column;
     grid-gap: 0 1rem;
 
-    
-
     button {
+        display: none;
+    }
+}
+
+@media (width > 724px) {
+    .index-filter-section button {
+        display: block;
         font-size: 0.7rem;
         font-weight: 600;
 
@@ -81,7 +84,7 @@
         color: $darkGray;
 
         transition: 0s;
-        
+
         img {
             height: 1rem;
             width: 1rem;

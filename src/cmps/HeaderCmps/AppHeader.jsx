@@ -11,12 +11,9 @@ export function AppHeader() {
 function goHome(){
     // setStayFilter(prevFilterBy => prevFilterBy = stayService.getDefaultFilter) 
     navigate('/')
-
 }
 
     return <section className="app-header flex column center">
-
-
         <section className="expanded-header flex space-between align-center">
 
             <div className="logo-section" onClick={goHome}>
@@ -45,6 +42,5 @@ function goHome(){
         </section>
 
         <HeaderFilter />
-
     </section>
 }

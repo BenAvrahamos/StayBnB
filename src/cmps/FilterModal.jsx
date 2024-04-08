@@ -64,7 +64,7 @@ export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
             <main>
                 <div className="place-type">
                     <h2>Type of place</h2>
-                    {filterBy.placeType === 'any type' && <p>Search rooms, entire homes, or any type of place</p>}
+                    {filterBy.placeType === 'any' && <p>Search rooms, entire homes, or any type of place</p>}
                     {filterBy.placeType === 'room' && <p>A room in a home, plus access to shared spaces.</p>}
                     {filterBy.placeType === 'entire home' && <p>A home all to yourself.</p>}
                     <ButtonGroup
