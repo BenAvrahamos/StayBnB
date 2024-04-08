@@ -118,8 +118,8 @@
 
         .checkbox-group {
             grid-template-columns: minmax(0, 1fr);
-            row-gap: 1.5rem;
-            padding-block-end: 1.5rem;
+            row-gap: 1rem;
+            padding-block-end: 1rem;
 
             label {
                 text-transform: capitalize;
@@ -129,6 +129,8 @@
         .accordion-arrow {
             text-decoration: underline;
             font-weight: 600;
+
+            cursor: pointer;
         }
         /////////////////////////////////////////////////////////////
         .place-type {
@@ -257,25 +259,30 @@
         }
 
         .amenities {
-            padding-block: 1.9rem;
+            padding-block: 1.9rem 2.5rem;
+            padding-inline: 0 0.8rem;
 
-            h3 {
-                padding-block: 2rem 1rem;
+            h3:first-of-type {
+                padding-block: 2rem 1.25rem;
             }
 
             h3:not(:first-of-type) {
-                padding-block: 1rem 1rem;
-            }
-
-            .checkbox-group {
-                .checkbox-item {
-                    // font-size: 1.1rem;
-                }
+                padding-block: 1rem 1.25rem;
             }
         }
 
         .booking-opts {
             padding-block: 1.9rem;
+
+            h2 {
+                letter-spacing: -1.8px;
+                margin-block-end: 2.4rem;
+            }
+            
+            h4 {
+                margin-block: 1.5rem 0.5rem;
+                padding-inline: 0.1rem;
+            }
         }
 
         .accessibility {
@@ -284,6 +291,8 @@
 
         .host-lng {
             padding-block: 1.9rem 2.5rem;
+            padding-inline: 0 0.8rem;
+
 
             h2 {
                 margin-block-end: 2.2rem;
@@ -295,7 +304,7 @@
 
 @media (width > 742px) {
     .filter-modal {
-        margin-block: 2.5rem 1.5rem;
+        margin-block: 2.5rem;
         inset: 0 calc(50% - 24.5rem);
         max-width: 48.75rem;
 
