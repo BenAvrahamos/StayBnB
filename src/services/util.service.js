@@ -142,7 +142,7 @@ function countBedsInBedrooms(stay) {
     return numOfBeds
 }
 
-function calcScore() {
+function calcScore(stay) {
     const scores = stay.reviews.map(review => review.score)
     const sumOfScores = scores.reduce((acc, score) => {
         acc += score
