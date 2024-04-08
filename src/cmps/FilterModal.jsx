@@ -6,6 +6,7 @@ import { PriceRangeChart } from "./PriceRangeChart"
 import { ButtonGroup } from "./HelperCmps/ButtonGroup"
 import { CheckboxGroup } from "./HelperCmps/CheckboxGroup"
 import { Accordion } from "./HelperCmps/Accordion"
+import { SwitchCmp } from "./HelperCmps/SwitchCmp"
 
 export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
     const [selected, setSelected] = useState(filterBy)
@@ -51,9 +52,9 @@ export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
     const amenitySafety = [{ value: 'smoke_alarm', label: 'smoke alarm' }, { value: 'carbon_monoxide-alarm', label: 'carbon monoxide alarm' }]
     const hostLngsShown = [{ value: 'english' }, { value: 'french' }, { value: 'german' }, { value: 'japanese' }]
     const hostLngsHidden = [{ value: 'italian' }, { value: 'russian' }, { value: 'spanish' }, { value: 'chinese (Simplified)' }, { value: 'arabic' }, { value: 'hindi' }, { value: 'portuguese' }, { value: 'turkish' }, { value: 'dutch' }, { value: 'korean' }, { value: 'thai' }, { value: 'greek' }, { value: 'hebrew' }, { value: 'polish' }, { value: 'tagalog' }, { value: 'danish' }, { value: 'swedish' }, { value: 'norwegian' }, { value: 'finnish' }, { value: 'czech' }, { value: 'hungarian' }]
-    const accessEntrance = [{ value: 'step-free-entrance', label: 'Step-free guest entrance' },{ value: 'wide-entrance', label: 'Guest entrance wider than 32 inches' },{ value: 'accessible-parking', label: 'Accessible parking spot' },{ value: 'step-free-path-to-entrance', label: 'Step-free path to the guest entrance' }]
-    const accessBedrooms = [{ value: 'step-free-bedroom', label: 'Step-free bedroom access' },{ value: 'wide-bedroom', label: 'Bedroom entrance wider than 32 inches' }]
-    const accessBathrooms = [{ value: 'step-free-bathroom', label: 'Step-free bathroom access' },{ value: 'wide-bathroom', label: 'Bathroom entrance wider than 32 inches' },{ value: 'Shower-bar', label: 'Shower grab bar' },{ value: 'Toilet-bar', label: 'Toilet grab bar' },{ value: 'Step-free-shower', label: 'Step-free shower' },{ value: 'bath-chair', label: 'Shower or bath chair' }]
+    const accessEntrance = [{ value: 'step-free-entrance', label: 'Step-free guest entrance' }, { value: 'wide-entrance', label: 'Guest entrance wider than 32 inches' }, { value: 'accessible-parking', label: 'Accessible parking spot' }, { value: 'step-free-path-to-entrance', label: 'Step-free path to the guest entrance' }]
+    const accessBedrooms = [{ value: 'step-free-bedroom', label: 'Step-free bedroom access' }, { value: 'wide-bedroom', label: 'Bedroom entrance wider than 32 inches' }]
+    const accessBathrooms = [{ value: 'step-free-bathroom', label: 'Step-free bathroom access' }, { value: 'wide-bathroom', label: 'Bathroom entrance wider than 32 inches' }, { value: 'Shower-bar', label: 'Shower grab bar' }, { value: 'Toilet-bar', label: 'Toilet grab bar' }, { value: 'Step-free-shower', label: 'Step-free shower' }, { value: 'bath-chair', label: 'Shower or bath chair' }]
     const accessEquipment = [{ value: 'hoist', label: 'Ceiling or mobile hoist' }]
 
     return <>
@@ -169,12 +170,27 @@ export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
 
                 <div className="booking-opts">
                     <h2>Booking options</h2>
-                    <h4>Instant Book</h4>
-                    <p>Listings you can book without waiting for Host approval</p>
-                    <h4>Self check-in</h4>
-                    <p>Easy access to the property once you arrive</p>
-                    <h4>Allows pets</h4>
-                    <p>Bringing a service animal?</p>
+                    <div className="flex align-center space-between">
+                        <div>
+                            <h4>Instant Book</h4>
+                            <p>Listings you can book without waiting for Host approval</p>
+                        </div>
+                        <SwitchCmp />
+                    </div>
+                    <div className="flex align-center space-between">
+                        <div>
+                            <h4>Self check-in</h4>
+                            <p>Easy access to the property once you arrive</p>
+                        </div>
+                        <SwitchCmp />
+                    </div>
+                    <div className="flex align-center space-between">
+                        <div>
+                            <h4>Allows pets</h4>
+                            <p>Bringing a service animal?</p>
+                        </div>
+                        <SwitchCmp />
+                    </div>
                 </div>
 
                 <div className="accessibility">
