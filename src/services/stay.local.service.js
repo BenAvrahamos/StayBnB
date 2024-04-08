@@ -18,7 +18,8 @@ export const stayService = {
     getEmptyStay,
     getDefaultFilter,
     getDefaultHeaderFilter,
-    mergeFilters
+    mergeFilters,
+    guestCountString
 }
 
 utilService.generateStaysArray()
@@ -285,6 +286,25 @@ function mergeFilters(mainFilter,headerFilter) {
     const mergeFilter = { ...loc, ...label, ...guestCount, entryDate, exitDate }
     return mergeFilter
 
+}
+
+function guestCountString(headerFilterBy) {
+    const guestsCount = headerFilterBy.guestCount.adults + headerFilterBy.guestCount.children
+    let guests = ''
+    if (guestsCount > 0) {
+        guests = guestsCount === 1 ? '1 guest' : `${guestsCount} guests`
+    }
+
+    const infants = headerFilterBy.guestCount.infants > 0 ? `${headerFilterBy.guestCount.infants} infants` : ''
+    const pets = headerFilterBy.guestCount.pets > 0 ? `${headerFilterBy.guestCount.pets} pets` : ''
+
+    const parts = [guests, infants, pets].filter(Boolean)
+
+    if (parts.length === 0) {
+        return "Add guests"
+    }
+
+    return parts.join(', ')
 }
 
 

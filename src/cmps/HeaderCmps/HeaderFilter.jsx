@@ -40,26 +40,6 @@ export function HeaderFilter() {
     }, [ref])
 
 
-
-    function guestCountString() {
-        const guestsCount = headerFilterBy.guestCount.adults + headerFilterBy.guestCount.children
-        let guests = ''
-        if (guestsCount > 0) {
-            guests = guestsCount === 1 ? '1 guest' : `${guestsCount} guests`
-        }
-
-        const infants = headerFilterBy.guestCount.infants > 0 ? `${headerFilterBy.guestCount.infants} infants` : ''
-        const pets = headerFilterBy.guestCount.pets > 0 ? `${headerFilterBy.guestCount.pets} pets` : ''
-
-        const parts = [guests, infants, pets].filter(Boolean)
-
-        if (parts.length === 0) {
-            return "Add guests"
-        }
-
-        return parts.join(', ')
-    }
-
     function onLoadStays(ev) {
         ev.stopPropagation()
         setSearchParams(stayService.mergeFilters(filterBy, headerFilterBy))
@@ -87,7 +67,7 @@ export function HeaderFilter() {
         </div>
 
         <div className={`guests ${modalType === 'guest' ? 'selected' : ''}`} onClick={() => setModalType(modalType === 'guest' ? null : 'guest')}>
-            <div className="flex column justify-center">Who<span className='guest-count'>{guestCountString()}</span></div>
+            <div className="flex column justify-center">Who<span className='guest-count'>{stayService.guestCountString(headerFilterBy)}</span></div>
             <button onClick={onLoadStays} className='search-btn'></button>
         </div>
 

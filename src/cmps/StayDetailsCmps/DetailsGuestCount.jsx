@@ -1,9 +1,15 @@
 
-import { loadStays, removeStay, saveStay, setStayHeaderFilter } from '../../store/actions/stay.actions'
+import { loadStays, removeStay, saveStay, setStayHeaderFilter } from '../../store/actions/stay.actions.js'
 import { store } from '../../store/store.js'
 
 
-export function GuestFilter({headerFilterBy}) {
+export function GuestCount({ headerFilterBy, openModalType }) {
+
+    function onCloseModal(ev) {
+        ev.stopPropagation()
+
+        openModalType('')
+    }
 
 
     function updateGuestCounts(guestType, countChange) {
@@ -15,7 +21,7 @@ export function GuestFilter({headerFilterBy}) {
     }
 
 
-    return <section className="guest-filter">
+    return <section className="details-guest-count">
 
         <div className="options">
 
@@ -100,13 +106,21 @@ export function GuestFilter({headerFilterBy}) {
                         }
                     }}>-</button>
                     {headerFilterBy.guestCount.pets}
-                    <button className={headerFilterBy.guestCount.pets === 5 ? 'disabled' : ''}  onClick={() => {
+                    <button className={headerFilterBy.guestCount.pets === 5 ? 'disabled' : ''} onClick={() => {
                         if (headerFilterBy.guestCount.pets < 5) {
                             updateGuestCounts('pets', +1)
                         }
                     }}>+</button>
                 </div>
 
+
+
+            </article>
+
+
+
+            <article className="btn-container">
+                <div onClick={onCloseModal} className='close-btn'>Close</div>
             </article>
 
         </div>
