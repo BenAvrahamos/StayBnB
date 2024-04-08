@@ -150,7 +150,7 @@ export function StayDetails() {
                                         paddingBlockEnd: bedsLength < longestBedsArrCount ? ((longestBedsArrCount - bedsLength) * .875) + 1.5 + 'rem' : '1.5rem'
                                     }}>
                                         <div className="icons flex align-center">
-                                            {bedroom.beds.map((bed, idx) => <StayDetailsSvg bed={bed} key={`${bed}${idx}`} />)}
+                                            {bedroom.beds.map((bed, idx) => <StayDetailsSvg icon={bed.replaceAll(' ', '').toLowerCase()} key={`${bed}${idx}`} />)}
                                         </div>
                                         <h4>{bedroom.name}</h4>
                                         <BedroomDetails beds={bedroom.beds} />
@@ -162,12 +162,24 @@ export function StayDetails() {
                             <h1>What this place offers: </h1>
                             <div className="amenities-preview-container flex space-between">
                                 <ul className="first-col-amenity-ul">
-                                    {stay.amenities.slice(0, 4).map(amenity => <li key={amenity}>{amenity}</li>)}
-                                    <li className={stay.amenities.includes(safetyAmenities[0]) ? '' : 'no-safety-amenity'}>{safetyAmenities[0]}</li>
+                                    {stay.amenities.slice(0, 4).map(amenity => <li key={amenity} className="flex align-center">
+                                        <StayDetailsSvg icon={amenity.replaceAll(' ', '').toLowerCase()} />
+                                        <p>{amenity}</p>
+                                    </li>)}
+                                    <li className={`${stay.amenities.includes(safetyAmenities[0]) ? '' : 'no-safety-amenity'} flex align-center`}>
+                                        <StayDetailsSvg icon={safetyAmenities[0].replaceAll(' ', '').toLowerCase()} />
+                                        <p>{safetyAmenities[0]}</p>
+                                    </li>
                                 </ul>
                                 <ul className="second-col-amenity-ul">
-                                    {stay.amenities.slice(4, 9).map(amenity => <li key={amenity}>{amenity}</li>)}
-                                    <li className={stay.amenities.includes(safetyAmenities[1]) ? '' : 'no-safety-amenity'}>{safetyAmenities[1]}</li>
+                                    {stay.amenities.slice(4, 9).map(amenity => <li key={amenity} className="flex align-center">
+                                        <StayDetailsSvg icon={amenity.replaceAll(' ', '').toLowerCase()} />
+                                        <p>{amenity}</p>
+                                    </li>)}
+                                    <li className={`${stay.amenities.includes(safetyAmenities[1]) ? '' : 'no-safety-amenity'} flex align-center`}>
+                                        <StayDetailsSvg icon={safetyAmenities[1].replaceAll(' ', '').toLowerCase()} />
+                                        <p>{safetyAmenities[1]}</p>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
