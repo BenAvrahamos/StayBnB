@@ -7,13 +7,13 @@ export function CheckboxGroup({ type, items, selectedValues = [], handleChange }
                 <div key={item.value} className="checkbox-item">
                     <FormControlLabel control={
                         <Checkbox
-                            color="default"
+                            className='checkbox'
                             value={item.value}
                             checked={selectedValues.includes(item.value)}
-                            onChange={() => handleChange(type, item.value)} 
+                            onChange={() => handleChange(type, item.value)}
                             sx={{ '& .MuiSvgIcon-root': { fontSize: 32 } }}
-                            style={{padding: 0, paddingInlineStart: 7, paddingInlineEnd: 13}}
-                            />}
+                            style={{ padding: 0, paddingInlineStart: 7, paddingInlineEnd: 13 }}
+                        />}
                         label={item.label || item.value} />
                 </div>
             ))}
