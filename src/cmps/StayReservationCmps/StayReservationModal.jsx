@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux"
 import { utilService } from "../../services/util.service"
 
-export function StayReservationModal( {stay}) {
+export function StayReservationModal({ stay }) {
 
     const reservation = useSelector(storeState => storeState.reservationModule.reservation)
 
@@ -20,22 +20,22 @@ export function StayReservationModal( {stay}) {
                 <p>{stay.type}</p>
                 <p>★ {calcScore(stay.reviews)} ({stay.reviews.length} reviews)・</p>
             </div>
-    </div>
-    <hr />
-    <div className="price-details-part">
-        <h1>Price details</h1>
-        <div className="accommodation flex space-between">
-            <p>Accommodation</p>
-            <p>${utilService.calcSumToPay(reservation, stay)}</p>
         </div>
-        <div className="fee flex space-between">
-            <p>Staybnb service fee</p>
-            <p>${utilService.calcSumToPay(reservation, stay) * 0.14125}</p>
+        <hr />
+        <div className="price-details-part">
+            <h1>Price details</h1>
+            <div className="accommodation flex space-between">
+                <p>Accommodation</p>
+                <p>${utilService.calcSumToPay(reservation, stay)}</p>
+            </div>
+            <div className="fee flex space-between">
+                <p>Staybnb service fee</p>
+                <p>${utilService.calcSumToPay(reservation, stay) * 0.14125}</p>
+            </div>
+            <div className="total flex space-between">
+                <p>Total</p>
+                <p>${utilService.calcSumToPay(reservation, stay) + (utilService.calcSumToPay(reservation, stay) * 0.14125)}</p>
+            </div>
         </div>
-        <div className="total flex space-between">
-            <p>Total</p>
-            <p>${utilService.calcSumToPay(reservation, stay) + (utilService.calcSumToPay(reservation, stay) * 0.14125)}</p>
-        </div>
-    </div>
     </div>
 }

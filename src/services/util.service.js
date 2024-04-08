@@ -1,4 +1,4 @@
-import { format, getDay } from "date-fns"
+import { format, getDate, getDay, getYear } from "date-fns"
 
 export const utilService = {
     makeId,
@@ -11,7 +11,7 @@ export const utilService = {
     generateStay,
     generateStaysArray,
     calcSumToPay,
-    convertDates,
+    timestampToDate,
     calcSumOfDays
 }
 
@@ -106,7 +106,7 @@ function generateStaysArray() {
     for (let i = 0; i < 5; i++) {
         staysArray.push(generateStay())
     }
-  
+
 }
 
 function calcSumToPay(reservation, stay) {
@@ -115,14 +115,14 @@ function calcSumToPay(reservation, stay) {
     return diff * stay.price
 }
 
-function convertDates(dateTimestamp) {
-    let str = ''
-    const date = new Date(dateTimestamp)
-    const monthName = format(date, 'MMMM')
-    str += monthName + ' '
-    const dayOfDate = getDay(date)
-    str += dayOfDate
-    return str
+function timestampToDate(dateTimestamp) {
+    const date = new Date(dateTimestamp);
+    const dayOfDate = date.toLocaleString('en-US', { weekday: 'short' });
+    const dateOfDate = date.getDate();
+    const monthName = date.toLocaleString('en-US', { month: 'short' });
+    const yearOfDate = date.getFullYear();
+    let str = dayOfDate + ', ' + dateOfDate + ' ' + monthName + ' ' + yearOfDate;
+    return str;
 }
 
 function calcSumOfDays(reservation) {

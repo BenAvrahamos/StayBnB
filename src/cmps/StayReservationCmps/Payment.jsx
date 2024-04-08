@@ -78,7 +78,7 @@ export function Payment({ stay }) {
                 <h4>Edit</h4>
             </div>
             <div className='dates'>
-                <p>{utilService.convertDates(reservation.checkIn)}-{utilService.convertDates(reservation.checkout)}</p>
+                <p>{utilService.timestampToDate(reservation.checkIn)}-{utilService.timestampToDate(reservation.checkout)}</p>
             </div>
             <div className='guests-container flex space-between'>
                 <h4>Guests</h4>
