@@ -8,8 +8,7 @@ export const utilService = {
     saveToStorage,
     animateCSS,
     debounce,
-    generateStay,
-    generateStaysArray,
+
     calcSumToPay,
     timestampToDate,
     calcSumOfDays

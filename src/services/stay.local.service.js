@@ -22,7 +22,6 @@ export const stayService = {
     guestCountString
 }
 
-utilService.generateStaysArray()
 
 async function query(filterBy, headerFilterBy = {}) {
     filterBy = { ...filterBy, ...headerFilterBy }
