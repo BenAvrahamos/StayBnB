@@ -60,7 +60,7 @@ export const stays = [{
     lat: -8.61308,
     lng: 41.1413
   },
-  reviews = [
+  reviews: [
     {
         'title': 'Amazing place!',
         'txt': 'It has been such a pleasure to spend our precious time at this place',
@@ -154,7 +154,7 @@ export const stays = [{
     lat: -8.61308,
     lng: 41.1413
   },
-  reviews = [
+  reviews: [
     {
         'title': 'Amazing place!',
         'txt': 'It has been such a pleasure to spend our precious time at this place',
@@ -249,7 +249,7 @@ export const stays = [{
     lat: -8.61308,
     lng: 41.1413
   },
-  reviews = [
+  reviews: [
     {
         'title': 'Amazing place!',
         'txt': 'It has been such a pleasure to spend our precious time at this place',
@@ -344,7 +344,7 @@ export const stays = [{
     lat: -8.61308,
     lng: 41.1413
   },
-  reviews = [
+  reviews: [
     {
         'title': 'Amazing place!',
         'txt': 'It has been such a pleasure to spend our precious time at this place',
@@ -440,7 +440,7 @@ export const stays = [{
     lat: -8.61308,
     lng: 41.1413
   },
-  reviews = [
+  reviews: [
     {
         'title': 'Amazing place!',
         'txt': 'It has been such a pleasure to spend our precious time at this place',
@@ -535,7 +535,7 @@ export const stays = [{
     lat: -8.61308,
     lng: 41.1413
   },
-  reviews = [
+  reviews: [
     {
         'title': 'Amazing place!',
         'txt': 'It has been such a pleasure to spend our precious time at this place',
