@@ -1,15 +1,25 @@
-import { useState, useEffect } from 'react'
+
+import { useState, useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { utilService } from '../../services/util.service'
 import { getDate, getMonth, getYear } from 'date-fns'
+import { GuestFilter } from '../HeaderCmps/GuestFilter'
+import { store } from '../../store/store'
+import { GuestCount } from './DetailsGuestCount'
+import { stayService } from '../../services/stay.local.service'
 
-export function StayReserveModal({stay}) {
+
+export function StayReserveModal({ stay }) {
+    const headerFilterBy = useSelector(storeState => storeState.stayModule.headerFilterBy)
     const [numOfDays, setNumOfDays] = useState(0)
     const [fee, setFee] = useState(0)
     const [currArrow, setCurrArrow] = useState('down')
     const navigate = useNavigate()
     const reservation = useSelector(storeState => storeState.reservationModule.reservation)
+    const [modalType, openModalType] = useState()
+
+    const ref = useRef(null);
 
     useEffect(() => {
         setNumOfDays(utilService.calcSumOfDays(reservation))
@@ -18,6 +28,20 @@ export function StayReserveModal({stay}) {
     useEffect(() => {
         setFee(parseInt((numOfDays * stay.price) * 0.14125))
     }, [numOfDays])
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (ref.current && !ref.current.contains(event.target)) {
+                openModalType('');
+            }
+        };
+    
+        document.addEventListener('click', handleClickOutside);
+    
+        return () => {
+            document.removeEventListener('click', handleClickOutside);
+        };
+    }, [ref])
 
     function validateAndMoveToPayment() {
         if (reservation.checkIn && reservation.checkout &&
@@ -48,12 +72,15 @@ export function StayReserveModal({stay}) {
                             </div>
                         </div>
                     </div>
-                    <div className='guest-selector flex column'>
+                    <div  ref={ref} className='guest-selector flex column' onClick={() => openModalType('guest')}>
                         <label className='guests'>Guests</label>
                         <div className='guest-container flex space-between'>
-                            {reservation.guests.sum === 1 ? `${reservation.guests.sum} guest` : `${reservation.guests.sum} guests`}
+                            {stayService.guestCountString(headerFilterBy)}
                             {currArrow && <span className={`arrow-${currArrow}`}></span>}
                         </div>
+                        
+                            {modalType === 'guest' && <GuestCount headerFilterBy={headerFilterBy} openModalType={openModalType} />}
+                      
                     </div>
                 </div>
                 <div className='reserve-btn flex center' onClick={() => validateAndMoveToPayment()}><span >Reserve</span></div>

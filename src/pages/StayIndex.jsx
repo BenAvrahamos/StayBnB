@@ -17,6 +17,7 @@ export function StayIndex() {
 
 
 
+
     useEffect(() => {
         setSearchParams(stayService.mergeFilters(filterBy,headerFilterBy))
         loadStays()
