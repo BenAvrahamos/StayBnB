@@ -131,3 +131,11 @@ function calcSumOfDays(reservation) {
     const differenceInDays = Math.ceil(differenceInMilliseconds / (24 * 60 * 60 * 1000))
     return differenceInDays
 }
+
+function countBedsInBedrooms(stay) {
+    const numOfBeds = stay.bedrooms.reduce((acc, bedroomObj) => {
+        acc += bedroomObj.beds.length
+        return acc
+    }, 0)
+    return numOfBeds
+}

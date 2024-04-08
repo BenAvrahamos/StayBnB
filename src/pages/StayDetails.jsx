@@ -83,14 +83,6 @@ export function StayDetails() {
         setLongestBedsArrCount(maxBedCount)
     }
 
-    function countBedsInBedrooms() {
-        const numOfBeds = stay.bedrooms.reduce((acc, bedroomObj) => {
-            acc += bedroomObj.beds.length
-            return acc
-        }, 0)
-        return numOfBeds
-    }
-
     function _findHostName() {
         const host = stay.host
         const spaceIdx = host.fullName.indexOf(' ')
@@ -128,7 +120,7 @@ export function StayDetails() {
                     <div className="content">
                         <div className="type-and-info">
                             <h1>Entire {stay.type} in {stay.loc.city}, {stay.loc.country}</h1>
-                            <p>{stay.capacity} guests ・ {stay.bedrooms.length} bedrooms ・ {countBedsInBedrooms()} beds ・ {stay.baths} baths</p>
+                            <p>{stay.capacity} guests ・ {stay.bedrooms.length} bedrooms ・ {utilService.countBedsInBedrooms(stay)} beds ・ {stay.baths} baths</p>
                             <p>★ No reviews yet</p>
                             <hr />
                         </div>
@@ -172,7 +164,7 @@ export function StayDetails() {
                                     </li>
                                 </ul>
                                 <ul className="second-col-amenity-ul">
-                                    {stay.amenities.slice(4, 9).map(amenity => <li key={amenity} className="flex align-center">
+                                    {stay.amenities.slice(4, 8).map(amenity => <li key={amenity} className="flex align-center">
                                         <StayDetailsSvg icon={amenity.replaceAll(' ', '').toLowerCase()} />
                                         <p>{amenity}</p>
                                     </li>)}
