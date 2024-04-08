@@ -111,6 +111,9 @@ async function query(filterBy, headerFilterBy = {}) {
             // stayArr = stayArr.filter(stay => filterBy.hostLngs.includes(stay.host.lng))
         }
 
+
+        // stays = stays.map({_id, title, price, imgUrl}) => ({})
+
         return stayArr
     }
 
