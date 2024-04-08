@@ -1,6 +1,10 @@
 import { useParams } from "react-router"
 import { useState, useEffect } from 'react'
 import { stayService } from "../services/stay.local.service"
+import { useLocation } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom'
+
+
 import { StayGalleryPreview } from '../cmps/StayDetailsCmps/StayGalleryPreview'
 import { StayReserveModal } from '../cmps/StayDetailsCmps/StayReserveModal'
 import { StayDetailsSvg } from "../cmps/StayDetailsCmps/StayDetailsSvg"
@@ -8,6 +12,33 @@ import { BedroomDetails } from '../cmps/StayDetailsCmps/BedroomDetails'
 
 
 export function StayDetails() {
+    const [searchParams, setSearchParams] = useSearchParams()
+
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
+
+    const {
+        region,
+        adults,
+        children,
+        infants,
+        pets,
+        entryDate,
+        exitDate
+    } = Object.fromEntries(queryParams.entries())
+
+    const paramsFromFilter = {
+        region,
+        adults,
+        children,
+        infants,
+        pets,
+        entryDate,
+        exitDate
+    }
+
+    const [params, updateParams] = useState(paramsFromFilter)
+
     const safetyAmenities = ['Carbon monoxide alarm', 'Smoke alarm']
     const { stayId } = useParams()
     const [stay, setStay] = useState('')
@@ -25,6 +56,13 @@ export function StayDetails() {
             calcLongestBedCount();
         }
     }, [stay])
+
+
+    useEffect(() => {
+        setSearchParams(params)
+    }, [params])
+
+
 
     async function loadStay() {
         try {
@@ -87,7 +125,7 @@ export function StayDetails() {
                 </div>
                 <StayGalleryPreview stay={stay} />
                 <div className="content-and-modal-container">
-                    <StayReserveModal stay={stay} />
+                    <StayReserveModal stay={stay} params={params} updateParams={updateParams} />
                     <div className="content">
                         <div className="type-and-info">
                             <h1>Entire {stay.type} in {stay.loc.city}, {stay.loc.country}</h1>

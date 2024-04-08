@@ -7,6 +7,7 @@ import "react-date-range/dist/theme/default.css"; // theme css file
 import { setStayHeaderFilter } from '../../store/actions/stay.actions'
 
 export function DateFilter({ setModalType, headerFilterBy }) {
+    
     const [dateRange, setDateRange] = useState([
         {
             startDate: new Date(),

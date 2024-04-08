@@ -10,7 +10,7 @@ import { GuestCount } from './DetailsGuestCount'
 import { stayService } from '../../services/stay.local.service'
 
 
-export function StayReserveModal({ stay }) {
+export function StayReserveModal({ stay,params, updateParams }) {
     const headerFilterBy = useSelector(storeState => storeState.stayModule.headerFilterBy)
     const [numOfDays, setNumOfDays] = useState(0)
     const [fee, setFee] = useState(0)
@@ -20,6 +20,7 @@ export function StayReserveModal({ stay }) {
     const [modalType, openModalType] = useState()
 
     const ref = useRef(null);
+
 
     useEffect(() => {
         setNumOfDays(utilService.calcSumOfDays(reservation))
@@ -42,6 +43,8 @@ export function StayReserveModal({ stay }) {
             document.removeEventListener('click', handleClickOutside);
         };
     }, [ref])
+
+
 
     function validateAndMoveToPayment() {
         if (reservation.checkIn && reservation.checkout &&
@@ -79,7 +82,7 @@ export function StayReserveModal({ stay }) {
                             {currArrow && <span className={`arrow-${currArrow}`}></span>}
                         </div>
                         
-                            {modalType === 'guest' && <GuestCount headerFilterBy={headerFilterBy} openModalType={openModalType} />}
+                            {modalType === 'guest'  && <GuestCount params={params} updateParams={updateParams} headerFilterBy={headerFilterBy} openModalType={openModalType} />}
                       
                     </div>
                 </div>
