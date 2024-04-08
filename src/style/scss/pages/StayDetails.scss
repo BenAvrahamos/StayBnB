@@ -1,6 +1,7 @@
 .stay-details {
     .content-and-modal-container {
         margin-block-start: 2rem;
+        gap: 7rem;
     }
 
     width: 70rem;
@@ -65,7 +66,7 @@
 
     .content {
         grid-area: col1;
-        padding-inline-end: rem(180px);
+
     }
 
     .reserve-modal {
