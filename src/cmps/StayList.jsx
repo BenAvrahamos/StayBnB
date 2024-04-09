@@ -3,11 +3,11 @@ import { StayPreview } from './StayPreview.jsx'
 import { store } from '../store/store.js'
 
 import { setStayHeaderFilter, setStayFilter} from '../store/actions/stay.actions.js'
-import { stayService } from '../services/stay.local.service.js';
+import { stayService } from '../services/stay.local.service.js'
 
 export function StayList({ stays, filterBy }) {
-    const { headerFilterBy } = store.getState().stayModule;
-    const { loc, guestCount, entryDate, exitDate } = headerFilterBy;
+    const { headerFilterBy } = store.getState().stayModule
+    const { loc, guestCount, entryDate, exitDate } = headerFilterBy
 
     const spreadLoc = loc ? { ...loc } : {}
     const spreadGuestCount = guestCount ? { ...guestCount } : {}
@@ -27,7 +27,7 @@ export function StayList({ stays, filterBy }) {
         ...spreadGuestCount,
         entryDate,
         exitDate
-    };
+    }
 
     const queryParams = Object.keys(searchParams)
         .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(searchParams[key])}`)
@@ -49,5 +49,5 @@ export function StayList({ stays, filterBy }) {
                 </li>
             ))}
         </ul>
-    );
+    )
 }

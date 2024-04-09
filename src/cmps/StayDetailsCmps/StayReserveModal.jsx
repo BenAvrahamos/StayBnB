@@ -19,7 +19,7 @@ export function StayReserveModal({ stay,params, updateParams }) {
     const reservation = useSelector(storeState => storeState.reservationModule.reservation)
     const [modalType, openModalType] = useState()
 
-    const ref = useRef(null);
+    const ref = useRef(null)
 
 
     useEffect(() => {
@@ -33,15 +33,15 @@ export function StayReserveModal({ stay,params, updateParams }) {
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (ref.current && !ref.current.contains(event.target)) {
-                openModalType('');
+                openModalType('')
             }
-        };
+        }
     
-        document.addEventListener('click', handleClickOutside);
+        document.addEventListener('click', handleClickOutside)
     
         return () => {
-            document.removeEventListener('click', handleClickOutside);
-        };
+            document.removeEventListener('click', handleClickOutside)
+        }
     }, [ref])
 
 
@@ -58,7 +58,7 @@ export function StayReserveModal({ stay,params, updateParams }) {
         <div className="reserve-modal">
             <div className='container-price-selectors'>
                 <div className="price-logo flex align-center">
-                    <h2>${stay.price} &nbsp;</h2><span>night</span>
+                    <h2>${stay.price} &nbsp</h2><span>night</span>
                 </div>
                 <div className='selectors-container flex column'>
                     <div className="date-selectors flex">

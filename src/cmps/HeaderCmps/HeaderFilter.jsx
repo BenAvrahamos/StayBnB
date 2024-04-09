@@ -1,15 +1,15 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 
 
 
-import { DateFilter } from './DateFilter';
-import { MapFilter } from './MapFilter';
-import { GuestFilter } from './GuestFilter';
+import { DateFilter } from './DateFilter'
+import { MapFilter } from './MapFilter'
+import { GuestFilter } from './GuestFilter'
 import { loadStays } from '../../store/actions/stay.actions'
-import { stayService } from '../../services/stay.local.service';
-import { store } from '../../store/store';
+import { stayService } from '../../services/stay.local.service'
+import { store } from '../../store/store'
 
 
 export function HeaderFilter() {
@@ -22,14 +22,14 @@ export function HeaderFilter() {
 
 
 
-    const ref = useRef(null);
+    const ref = useRef(null)
 
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (ref.current && !ref.current.contains(event.target)) {
                 setModalType('')
             }
-        };
+        }
 
         document.addEventListener('click', handleClickOutside)
 

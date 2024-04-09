@@ -1,12 +1,12 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom"
 import { useSelector } from 'react-redux'
 import { useSearchParams } from 'react-router-dom'
 
 
-import { HeaderFilter } from "./HeaderFilter";
-import { DemoDataService } from "../../services/demoData.service";
-import { stayService } from "../../services/stay.local.service";
-import { setStayFilter, setStayHeaderFilter } from "../../store/actions/stay.actions";
+import { HeaderFilter } from "./HeaderFilter"
+import { DemoDataService } from "../../services/demoData.service"
+import { stayService } from "../../services/stay.local.service"
+import { setStayFilter, setStayHeaderFilter } from "../../store/actions/stay.actions"
 
 export function AppHeader() {
 

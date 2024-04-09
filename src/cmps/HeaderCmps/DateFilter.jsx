@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { DateRangePicker } from "react-date-range";
+import React, { useState } from "react"
+import { DateRangePicker } from "react-date-range"
 
-import "react-date-range/dist/styles.css"; // main css file
-import "react-date-range/dist/theme/default.css"; // theme css file
+import "react-date-range/dist/styles.css" // main css file
+import "react-date-range/dist/theme/default.css" // theme css file
 
 import { setStayHeaderFilter } from '../../store/actions/stay.actions'
 
@@ -36,7 +36,7 @@ export function DateFilter({ setModalType, headerFilterBy }) {
 
 
         setModalType('check-out')
-    };
+    }
 
     return (
         <section className='date-filter'>
@@ -55,5 +55,5 @@ export function DateFilter({ setModalType, headerFilterBy }) {
 
             />
         </section>
-    );
+    )
 }

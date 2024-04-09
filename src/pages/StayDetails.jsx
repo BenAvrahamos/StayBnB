@@ -13,8 +13,8 @@ import { utilService } from "../services/util.service"
 export function StayDetails() {
     const [searchParams, setSearchParams] = useSearchParams()
 
-    const location = useLocation();
-    const queryParams = new URLSearchParams(location.search);
+    const location = useLocation()
+    const queryParams = new URLSearchParams(location.search)
 
     const {
         region,
@@ -52,7 +52,7 @@ export function StayDetails() {
 
     useEffect(() => {
         if (stay) {
-            _calcLongestBedCount();
+            _calcLongestBedCount()
         }
     }, [stay])
 

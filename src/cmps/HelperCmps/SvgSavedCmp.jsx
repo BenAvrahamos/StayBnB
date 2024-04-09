@@ -5,7 +5,7 @@ export function SvgSavedCmp({ folder, svgNames, handleChange }) {
     //     try {
     //         return fs.existsSync(filePath)
     //     } catch (error) {
-    //         return false;
+    //         return false
     //     }
     // }
     return <>

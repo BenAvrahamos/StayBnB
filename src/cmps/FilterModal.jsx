@@ -33,7 +33,7 @@ export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
     function handleChange(field, value) {
         setSelected(prevFilterBy => {
             if (field !== 'propType' && field !== 'amenities' && field !== 'hostLngs' && field !== 'label') {
-                return { ...prevFilterBy, [field]: value };
+                return { ...prevFilterBy, [field]: value }
             } else {
                 const propTypeArray = prevFilterBy[field] || []
                 const updatedPropTypeArray = propTypeArray.includes(value) ?
