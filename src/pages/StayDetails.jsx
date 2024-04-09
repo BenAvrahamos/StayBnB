@@ -9,7 +9,7 @@ import { StayDetailsSvg } from "../cmps/StayDetailsCmps/StayDetailsSvg"
 import { BedroomDetails } from '../cmps/StayDetailsCmps/BedroomDetails'
 import { StayReviewsPreview } from "../cmps/StayDetailsCmps/StayReviewsPreview"
 import { utilService } from "../services/util.service";
-
+import { PriceSliderFilter } from '../cmps/PriceSliderFilter'
 
 export function StayDetails() {
     const [searchParams, setSearchParams] = useSearchParams()
@@ -125,6 +125,7 @@ export function StayDetails() {
                             <p className="reviews-p">{'★'.repeat(Math.ceil(utilService.calcScore(stay)))} {utilService.calcScore(stay)} ・ {stay.reviews.length} reviews</p>
                         </div>
                         <hr />
+                        <PriceSliderFilter />
                         <div className="host-by flex">
                             <img src={stay.host.imgUrl} className="host-img" />
                             <div className="host-by-txt flex column">
