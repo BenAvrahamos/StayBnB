@@ -1,9 +1,10 @@
 import { stayService } from "../services/stay.local.service"
+import { utilService } from "../services/util.service"
 
 export function StayPreview({ stay, filterBy }) {
 
     return <article className="stay-preview">
-        <img src="http://unsplash.it/600/600" />
+        <img src={stay.previewImg}/>
         
         {!filterBy.loc.city && <h1>{stay.loc.city}, {stay.loc.country}</h1>}
         {filterBy.loc.city && <h1>{stay.name}</h1>}

@@ -9,6 +9,8 @@
     margin-inline: 2.5rem;
     position: relative;
     column-gap: 0.4em;
+    color: $darkGray;
+    font-weight: bold;
 
     .guest-count {
         width: 7.8em;
@@ -17,9 +19,11 @@
         text-overflow: ellipsis;
     }
 
-   span {
+    span {
         font-size: 14px;
         color: $headerGray;
+        font-weight: normal;
+        
     }
 
     &>div {
@@ -59,9 +63,28 @@
         width: 3rem;
         background-color: $siteColor;
         border-radius: 50%;
-
-
         align-self: center;
+        transition: 0.2s;
+    
+
+        & span{
+            display: none;
+            
+        }
+
+        &.expanded {
+            width: 7rem;
+            border-radius: 25px;
+            
+            & span{
+                display: inline;
+                color: white;
+                margin-left: 0.4em;
+                font-weight: bold;
+                
+            }
+        }
+        
 
         &:before {
             content: '\f002';
@@ -81,7 +104,7 @@
         background-color: #ebebeb;
     }
 
-  
+
 
 }
 

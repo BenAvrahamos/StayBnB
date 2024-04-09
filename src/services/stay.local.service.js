@@ -5,7 +5,7 @@ import { utilService } from './util.service.js'
 import { stays } from '../data/stay.js'
 const STAY_DB = 'stay_db'
 
-_createDemoStay(stays)
+// createDemoStay(stays)
 
 export const stayService = {
     query,
@@ -19,7 +19,8 @@ export const stayService = {
     getDefaultFilter,
     getDefaultHeaderFilter,
     mergeFilters,
-    guestCountString
+    guestCountString,
+    createDemoStay
 }
 
 
@@ -70,15 +71,19 @@ async function query(filterBy, headerFilterBy = {}) {
             if (filterBy.guestCount.infants) {
                 stayArr = stayArr.filter(stay => stay.amenities.includes('crib'))
             }
-
             if (filterBy.guestCount.pets) {
-                stayArr = stayArr.filter(stay => stay.amenities.includes('pets_allowed'))
+                stayArr = stayArr.filter(stay =>
+                    stay.amenities.includes('pets allowed') ||
+                    stay.amenities.includes('Pets are welcome') ||
+                    stay.amenities.includes('Allows pets on property') ||
+                    stay.amenities.includes('Allows pets as host')
+                )
             }
         }
 
-        if (filterBy.label) {
-            stayArr = stayArr.filter(stay => stay.labels.includes(filterBy.label))
-        }
+        // if (filterBy.label) {
+        //     stayArr = stayArr.filter(stay => stay.labels.includes(filterBy.label))
+        // }
 
         if (filterBy.amenities.length) {
             stayArr = stayArr.filter(stay => filterBy.amenities.every(amenity => stay.amenities.includes(amenity)))
@@ -108,7 +113,7 @@ async function query(filterBy, headerFilterBy = {}) {
             stayArr = stayArr.filter(stay => filterBy.propType.includes(stay.propType))
         }
 
-        if(filterBy.hostLngs.length) {
+        if (filterBy.hostLngs.length) {
             // stayArr = stayArr.filter(stay => filterBy.hostLngs.includes(stay.host.lng))
         }
 
@@ -276,13 +281,13 @@ function getEmptyOrder() {
     }
 }
 
-function _createDemoStay(stays) {
+function createDemoStay(stays) {
     if (utilService.loadFromStorage(STAY_DB)) return utilService.loadFromStorage(STAY_DB)
     else return utilService.saveToStorage(STAY_DB, stays)
 }
 
 
-function mergeFilters(mainFilter,headerFilter) {
+function mergeFilters(mainFilter, headerFilter) {
     const { loc, label } = mainFilter
     const { guestCount, entryDate, exitDate } = headerFilter
     const mergeFilter = { ...loc, ...label, ...guestCount, entryDate, exitDate }
