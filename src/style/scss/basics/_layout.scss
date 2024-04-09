@@ -4,11 +4,22 @@
     padding-inline: 1.5rem;
 }
 
+.stay-details {
+    padding-inline: 0;
+}
+
 @media (width > 742px) {
     .index-section .stay-list,
     .index-filter-section,
-    .app-header {
+    .app-header,
+    .stay-details {
         padding-inline: 2.5rem;
+    }
+}
+
+@media (width > 1200px) {
+.stay-details {
+        padding-inline: 5rem;
     }
 }
 
@@ -20,21 +31,8 @@
     }
 }
 
-//////
-.content-and-modal-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas: "col1 col2";
-}
-
-.gallery-stay-details {
-    display: grid;
-    gap: rem(8px);
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-}
-
-.bedroom-container {
-    grid-auto-flow: column;
-    gap: 1rem;
+@media (width > 2200px) {
+    .stay-details {
+        padding-inline: 10rem;
+    }
 }

@@ -1,142 +1,159 @@
 .stay-details {
-    .content-and-modal-container {
-        margin-block-start: 2rem;
-        gap: 7rem;
-    }
 
-    margin-inline: 12.6386%;
-    padding-inline: 4.6701%;
-    
-    .stay-details-header {
+    header {
+        margin-block: 0 1rem;
+
         h1 {
-            margin: 1em 0 1em;
+            margin-block: 0.5rem;
             font-family: circular-reg;
         }
 
         .header-btns {
             button {
-                padding: 0;
+                background-color: transparent;
+                text-decoration: underline;
             }
 
-            .save.flex {
-                gap: rem(8px);
+            .share-btn {
+                gap: 0.41rem;
+                margin-inline-end: 1.25rem;
             }
 
-            .share.flex {
-                gap: rem(6.5px);
-            }
-
-            .first-btn {
-                margin-inline-end: rem(20px);
+            .save-btn {
+                gap: 0.5rem;
             }
         }
-
     }
 
-    .host-by {
-        gap: rem(24px);
-        padding: rem(24px);
+    .gallery-stay-details {
+        margin-block: 1rem 2rem;
     }
 
-    .host-img {
-        width: rem(40px);
-        border-radius: 50%;
-    }
+    .content-and-modal-container {
+        margin-block-start: 2rem;
 
-    .host-by-txt {
-        gap: rem(4px);
+        grid-template-columns: minmax(1px, 1fr);
+        column-gap: 3.5rem;
 
-        h3 {
-            font-size: 1rem;
-            margin: 0;
+        .content {
+            grid-area: 1 / 1 / 2 / 2;
+            padding-inline: 1rem;
         }
 
-        p {
-            font-family: rem(14px);
+        .reserve-modal {
+            grid-column: 1 / 2 / 2 / 3;
+            align-self: start;
+
         }
-    }
 
-    .no-safety-amenity {
-        text-decoration: line-through;
-    }
+        .place-info {
+            margin-block-end: 1.75rem;
 
-    .header-btns button {
-        background-color: transparent;
-        text-decoration: underline;
-    }
-
-    .content {
-        grid-area: col1;
-        .type-and-info {
-            gap: rem(8px);
+            gap: 0.3rem;
+            
             h1 {
                 margin: 0;
             }
-            .reviews-p {
-                padding-block-end: rem(32px);
-            }
         }
-    }
-
-    .reserve-modal {
-        grid-area: col2;
-        padding: 24px;
-        box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
-        border: 1px solid $gray3;
-        border-radius: 12px;
-
-        .selectors-container label {
-            text-transform: uppercase;
-        }
-
-        .arrow-down::before {
-            content: '\f107';
-            font-family: fa-solid;
-        }
-
-        .arrow-up::before {
-            content: '\f106';
-            font-family: fa-solid;
-        }
-    }
-
-    .first-col-amenity-ul, .second-col-amenity-ul {
-        li {
-            padding-block-end: rem(16px);
-            gap: rem(8px);
-        }
-    }
-    .stay-rooms {
-        padding-block-start: rem(48px);
-        h2 {
-            padding-block-end: rem(24px);
-        }
-
-        .bedroom-div {
-            padding-inline: rem(24px);
-            padding-block-start: rem(24px);
-            width: rem(201.11px);
-            height: max-content;
-            border: 1px solid $gray3;
-            border-radius: rem(12px);
-
-            .icons {
-                margin-block-end: 1rem;
+        
+        .host-info {
+            margin-block: 1.25rem 1.75rem;
+            
+            gap: 1.5rem;
+            
+            .host-img {
+                object-fit: cover;
+                width: 2.5rem;
+                height: 2.5rem;
+                border-radius: 50%;
             }
 
-            h4 {
-                margin-block-end: rem(8px);
-            }
+            div {
+                gap: 0.25rem;
 
-            .bedroom-details p {
-                font-size: rem(14px);
+                h3 {
+                    font-size: 1rem;
+                    margin: 0;
+                }
+                
+                p {
+                    font-size: 0.875rem;
+                }
             }
         }
+        
+        .room-info {
+            margin-block: 3rem;
+
+            h2 {
+                font-size: 1.25rem;
+                font-weight: 600;
+                padding-block-end: 1rem;
+            }
+
+            .rooms-container {
+                grid-template-columns: repeat(auto-fit, minmax(12.57rem, 1fr));
+                gap: 1rem;
+
+                .bedroom {
+                    flex-grow: 1;
+                    padding: 1.5rem;
+                    border: 1px solid $gray3;
+                    border-radius: 0.75rem;
+
+                    .icons {
+                        margin-block-end: 1rem;
+                    }
+
+                    .bedroom-details {
+                        font-size: rem(14px);
+                    }
+                }
+            }
+        }
+
+        .amenity-info {
+            margin-block: 3rem;
+            
+            h1 {
+                margin-block: 3rem 1.75rem;
+            }
+            
+            .amenities-ul {
+                grid-template-columns: minmax(1px, 1fr);
+                gap: 0.8rem 2rem;
+
+                li {
+                    gap: 1rem;
+
+                    &.no-safety-amenity {
+                        text-decoration: line-through;
+                    }
+
+                    svg {
+                        width: rem(24px);
+                        height: rem(24px);
+                    }
+                }
+            }
+        }
+
     }
+}
 
+@media (width > 742px) {
+    .stay-details {
+        .content-and-modal-container {
+            grid-template-columns: minmax(1px, 2fr) minmax(1px, 1fr);
+            .content {
+                padding-inline-start: 0;
+            }
 
-    .icon svg {
-        width: rem(24px);
-        height: rem(24px);
+            .amenity-info {
+                .amenities-ul {
+                    grid-template-columns: repeat(2, minmax(1px, 1fr));
+                }
+            }
+        }
     }
 }
