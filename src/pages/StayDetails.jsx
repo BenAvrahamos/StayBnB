@@ -1,15 +1,14 @@
 import { useParams } from "react-router"
 import { useState, useEffect } from 'react'
 import { stayService } from "../services/stay.local.service"
-import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom'
 import { useSearchParams } from 'react-router-dom'
 import { StayGalleryPreview } from '../cmps/StayDetailsCmps/StayGalleryPreview'
 import { StayReserveModal } from '../cmps/StayDetailsCmps/StayReserveModal'
 import { StayDetailsSvg } from "../cmps/StayDetailsCmps/StayDetailsSvg"
 import { BedroomDetails } from '../cmps/StayDetailsCmps/BedroomDetails'
 import { StayReviewsPreview } from "../cmps/StayDetailsCmps/StayReviewsPreview"
-import { utilService } from "../services/util.service";
-
+import { utilService } from "../services/util.service"
 
 export function StayDetails() {
     const [searchParams, setSearchParams] = useSearchParams()
