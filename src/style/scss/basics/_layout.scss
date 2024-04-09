@@ -23,7 +23,7 @@
 //////
 .content-and-modal-container {
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr 1fr;
     grid-template-areas: "col1 col2";
 }
 
