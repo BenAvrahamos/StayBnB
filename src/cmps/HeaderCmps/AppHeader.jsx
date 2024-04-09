@@ -7,8 +7,7 @@ import { DemoDataService } from "../../services/demoData.service";
 
 export function AppHeader() {
 
-    console.log(DemoDataService.randomStay());
-
+ 
 
 
 

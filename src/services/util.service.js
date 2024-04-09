@@ -107,7 +107,7 @@ function generateStaysArray() {
     for (let i = 0; i < 5; i++) {
         staysArray.push(generateStay())
     }
-
+  
 }
 
 function calcSumToPay(reservation, stay) {
