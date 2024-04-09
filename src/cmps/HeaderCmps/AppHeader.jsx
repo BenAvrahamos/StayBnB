@@ -1,6 +1,11 @@
 import { NavLink, useNavigate } from "react-router-dom"
 import { useSelector } from 'react-redux'
 import { useSearchParams } from 'react-router-dom'
+import { useState, useEffect, useRef } from "react"
+
+
+
+
 
 
 import { HeaderFilter } from "./HeaderFilter"
@@ -9,15 +14,26 @@ import { stayService } from "../../services/stay.local.service"
 import { setStayFilter, setStayHeaderFilter } from "../../store/actions/stay.actions"
 
 export function AppHeader() {
-
-
-
-
-
-
+    const ref = useRef(null)
     const [searchParams, setSearchParams] = useSearchParams()
     const navigate = useNavigate()
     const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
+    const [modalType, setModalType] = useState()
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (ref.current && !ref.current.contains(event.target)) {
+                setModalType('')
+            }
+        }
+
+        document.addEventListener('click', handleClickOutside)
+
+        return () => {
+            document.removeEventListener('click', handleClickOutside)
+        }
+
+    }, [ref])
 
     function goHome() {
         const defaultHeaderFilter = stayService.getDefaultHeaderFilter()
@@ -31,7 +47,7 @@ export function AppHeader() {
 
 
 
-    return <section className="app-header flex column center">
+    return <section  className="app-header flex column center">
         <section className="expanded-header flex space-between align-center">
 
             <div className="logo-section" onClick={goHome}>
@@ -49,10 +65,10 @@ export function AppHeader() {
                 </nav>
             </div>
 
-            <div className="compact-header">
-                <div className="map">Anywhere</div>
-                <div className="calendar">Any week</div>
-                <div className="guests">Add guests <div className="search-btn"></div> </div>
+            <div ref={ref} className="compact-header">
+                <div onClick={() => setModalType(modalType === 'map' ? null : 'map')} className="map">Anywhere</div>
+                <div onClick={() => setModalType(modalType === 'check-in' ? null : 'check-in')} className="calendar">Any week</div>
+                <div onClick={() => setModalType(modalType === 'guest' ? null : 'guest')} className="guests">Add guests <div className="search-btn"></div> </div>
             </div>
 
             <div className="user-section flex align-center" >
@@ -65,6 +81,6 @@ export function AppHeader() {
             </div>
         </section>
 
-        <HeaderFilter />
+        <HeaderFilter ref={ref} modalType={modalType} setModalType={setModalType} />
     </section>
 }

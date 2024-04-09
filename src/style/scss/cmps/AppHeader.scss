@@ -10,7 +10,7 @@
     height: 5em;
     width: calc(100vw - 6rem);
 
-    box-shadow: rgba(122, 122, 122, 0.08) 0 1px 0;
+
 
     & .compact-header {
 
@@ -61,6 +61,16 @@
                 height: 2rem;
                 background-color: $siteColor;
                 margin-right: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                &:before {
+                    content: '\f002';
+                    font-family: fa-solid;
+                    color: white;
+                    font-size: 11px;
+                }
               
             }
         }

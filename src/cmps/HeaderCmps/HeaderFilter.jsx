@@ -12,8 +12,8 @@ import { stayService } from '../../services/stay.local.service'
 import { store } from '../../store/store'
 
 
-export function HeaderFilter() {
-    const [modalType, setModalType] = useState()
+export function HeaderFilter({modalType,setModalType,ref}) {
+
     const navigate = useNavigate()
     const headerFilterBy = useSelector(storeState => storeState.stayModule.headerFilterBy)
     const { filterBy } = store.getState().stayModule
@@ -22,22 +22,7 @@ export function HeaderFilter() {
 
 
 
-    const ref = useRef(null)
-
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (ref.current && !ref.current.contains(event.target)) {
-                setModalType('')
-            }
-        }
-
-        document.addEventListener('click', handleClickOutside)
-
-        return () => {
-            document.removeEventListener('click', handleClickOutside)
-        }
-
-    }, [ref])
+   
 
 
     function onLoadStays(ev) {
