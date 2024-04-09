@@ -5,14 +5,12 @@ import { utilService } from './util.service.js'
 import { orders } from '../data/stay.js'
 const ORDER_DB = 'order_db'
 
-_createDemoStay(orders)
-
 export const orderService = {
     query,
     getById,
     save,
     remove,
-    getEmptyOrder,
+    getOrder,
 }
 
 utilService.generateStaysArray()
@@ -59,7 +57,7 @@ async function save(order) {
     }
 }
 
-function getEmptyOrder(stay) {
+function getOrder(stay, reservation) {
     return {
             hostId: stay.host._id,
             buyer: {
@@ -83,7 +81,7 @@ function getEmptyOrder(stay) {
           }
 }
 
-function _createDemoStay(stays) {
+function _createDemoOrder() {
     if (utilService.loadFromStorage(ORDER_DB)) return utilService.loadFromStorage(ORDER_DB)
     return utilService.saveToStorage(ORDER_DB, orders)
 }
