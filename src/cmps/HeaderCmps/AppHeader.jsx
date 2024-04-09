@@ -2,12 +2,16 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector } from 'react-redux'
 import { useSearchParams } from 'react-router-dom'
 
+
 import { HeaderFilter } from "./HeaderFilter";
 import { DemoDataService } from "../../services/demoData.service";
+import { stayService } from "../../services/stay.local.service";
+import { setStayFilter, setStayHeaderFilter } from "../../store/actions/stay.actions";
 
 export function AppHeader() {
 
  
+  
 
 
 
@@ -16,7 +20,12 @@ export function AppHeader() {
     const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
 
     function goHome() {
-        // setSearchParams('')
+        const defaultHeaderFilter = stayService.getDefaultHeaderFilter()
+        const defaultMainFilter = stayService.getDefaultFilter()
+
+        setStayHeaderFilter(defaultHeaderFilter)
+        setStayFilter(defaultMainFilter)
+
         navigate('/')
     }
 
@@ -34,7 +43,7 @@ export function AppHeader() {
 
             <div className="nav-section flex justify-center">
                 <nav className="nav flex space-evenly">
-                    <NavLink to="/">Stays</NavLink>
+                    <NavLink onClick={goHome} to="/">Stays</NavLink>
                     <NavLink to="/" className='grayTxt'>Experiences</NavLink>
                     {/* <NavLink to="/" className='grayTxt'>Online Experiences</NavLink> */}
                 </nav>

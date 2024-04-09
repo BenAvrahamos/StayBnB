@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { StayPreview } from './StayPreview.jsx'
 import { store } from '../store/store.js'
 
-import { setStayHeaderFilter } from '../store/actions/stay.actions.js'
+import { setStayHeaderFilter, setStayFilter} from '../store/actions/stay.actions.js'
 import { stayService } from '../services/stay.local.service.js';
 
 export function StayList({ stays, filterBy }) {
@@ -14,9 +14,12 @@ export function StayList({ stays, filterBy }) {
 
 
 
-    function clearHeadFilter() {
+    function clearFilter() {
         const defaultHeaderFilter = stayService.getDefaultHeaderFilter()
+        const defaultMainFilter = stayService.getDefaultFilter()
+
         setStayHeaderFilter(defaultHeaderFilter)
+        setStayFilter(defaultMainFilter)
     }
 
     const searchParams = {
@@ -31,7 +34,7 @@ export function StayList({ stays, filterBy }) {
         .join('&')
 
     return (
-        <ul onClick={clearHeadFilter} className="stay-list grid">
+        <ul onClick={clearFilter} className="stay-list grid">
             {stays.map(stay => (
                 <li key={stay._id}>
                     <Link to={{

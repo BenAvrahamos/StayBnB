@@ -43,7 +43,7 @@ export function HeaderFilter() {
     function onLoadStays(ev) {
         ev.stopPropagation()
         setSearchParams(stayService.mergeFilters(filterBy, headerFilterBy))
-        // navigate('/')
+        navigate('/')
         loadStays()
     }
 

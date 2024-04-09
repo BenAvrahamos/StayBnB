@@ -133,7 +133,8 @@ function getAmenities() {
         "Grab bars in bathroom",
         "Free parking on the street",
         "Living room",
-        "Security camera at entrance"
+        "Security camera at entrance",
+        "crib"
     ]
 
 
@@ -155,31 +156,37 @@ function getRandomFilterLabels(amount) {
 function getRandomAmenities(amount) {
     const amenities = getAmenities();
     const selectedAmenities = [];
+    let cribIncluded = false;
 
     for (let i = 0; i < amount; i++) {
         let amenityToAdd;
         const randomIndex = Math.floor(Math.random() * amenities.length);
         const randomAmenity = amenities[randomIndex];
 
-        if (randomAmenity === "Pets are welcome" ||
-            randomAmenity === "Allows pets on property" ||
-            randomAmenity === "Allows pets as host") {
-            // If the randomly selected amenity is related to pets,
-            // check if any of the three exists in the selected amenities
-            const petsAmenities = ["Pets are welcome", "Allows pets on property", "Allows pets as host"];
-            let found = false;
-            for (const amenity of selectedAmenities) {
-                if (petsAmenities.includes(amenity)) {
-                    found = true;
-                    break;
+        if (!cribIncluded && i < amount / 2) {
+            amenityToAdd = "crib";
+            cribIncluded = true;
+        } else {
+            if (randomAmenity === "Pets are welcome" ||
+                randomAmenity === "Allows pets on property" ||
+                randomAmenity === "Allows pets as host") {
+                // If the randomly selected amenity is related to pets,
+                // check if any of the three exists in the selected amenities
+                const petsAmenities = ["Pets are welcome", "Allows pets on property", "Allows pets as host"];
+                let found = false;
+                for (const amenity of selectedAmenities) {
+                    if (petsAmenities.includes(amenity)) {
+                        found = true;
+                        break;
+                    }
                 }
-            }
-            // If none of the pet-related amenities exist, add the random one
-            if (!found) {
+                // If none of the pet-related amenities exist, add the random one
+                if (!found) {
+                    amenityToAdd = randomAmenity;
+                }
+            } else {
                 amenityToAdd = randomAmenity;
             }
-        } else {
-            amenityToAdd = randomAmenity;
         }
 
         if (amenityToAdd) {
@@ -189,6 +196,7 @@ function getRandomAmenities(amount) {
 
     return selectedAmenities;
 }
+
 
 function getRandomStayType() {
     const accommodationTypes = ['house', 'apartment', 'hotel', 'guesthouse'];
@@ -200,7 +208,7 @@ function getRandomPrice() {
     const minPrice = 50.00;
     const maxPrice = 200.00;
     const randomPrice = Math.random() * (maxPrice - minPrice) + minPrice;
-    return Math.floor(randomPrice * 100) / 100; // Round down to two decimal places
+    return (Math.floor(randomPrice * 100) / 100).toFixed(2); // Round down to two decimal places and ensure ".00"
 }
 
 function getRandomSummary() {
