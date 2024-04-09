@@ -74,7 +74,7 @@
             width: 7.375em;
             height: 4em;
             font-size: 1.25em;
-            font-weight: bold;
+         font-family: circular-bold;
             color: $siteColor;
 
             gap: 0.2em;
@@ -100,7 +100,7 @@
 
                 &.active {
                     color: $darkGray;
-                    font-weight: bold;
+                 font-family: circular-bold;
                 }
             }
         }
@@ -122,7 +122,7 @@
             padding: 8px 8px 8px 14px;
             border: 0.667px solid $gray2;
             border-radius: 2em;
-            font-weight: bold;
+         font-family: circular-bold;
             background-color: white;
 
             gap: 1em;
