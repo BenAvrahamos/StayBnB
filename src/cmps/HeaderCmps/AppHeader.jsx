@@ -10,8 +10,8 @@ import { setStayFilter, setStayHeaderFilter } from "../../store/actions/stay.act
 
 export function AppHeader() {
 
- 
-  
+
+
 
 
 
@@ -47,6 +47,12 @@ export function AppHeader() {
                     <NavLink to="/unActive" className='grayTxt'>Experiences</NavLink>
                     {/* <NavLink to="/" className='grayTxt'>Online Experiences</NavLink> */}
                 </nav>
+            </div>
+
+            <div className="compact-header">
+                <div className="map">Anywhere</div>
+                <div className="calendar">Any week</div>
+                <div className="guests">Add guests <div className="search-btn"></div> </div>
             </div>
 
             <div className="user-section flex align-center" >
