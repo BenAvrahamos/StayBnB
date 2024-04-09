@@ -43,6 +43,7 @@ export function HeaderFilter() {
     function onLoadStays(ev) {
         ev.stopPropagation()
         setSearchParams(stayService.mergeFilters(filterBy, headerFilterBy))
+        setModalType('')
         navigate('/')
         loadStays()
     }
@@ -68,7 +69,7 @@ export function HeaderFilter() {
 
         <div className={`guests ${modalType === 'guest' ? 'selected' : ''}`} onClick={() => setModalType(modalType === 'guest' ? null : 'guest')}>
             <div className="flex column justify-center">Who<span className='guest-count'>{stayService.guestCountString(headerFilterBy)}</span></div>
-            <button onClick={onLoadStays} className='search-btn'></button>
+            <button onClick={onLoadStays} className={`search-btn ${modalType !== '' ? 'expanded' : ''}`} ><span>Search</span></button>
         </div>
 
         {modalType === 'map' && <MapFilter setModalType={setModalType} headerFilterBy={headerFilterBy} />}
