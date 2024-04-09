@@ -10,7 +10,7 @@ export const utilService = {
     debounce,
     countBedsInBedrooms,
     calcScore,
-    generateStaysArray,
+    generateStays,
     calcSumToPay,
     timestampToDate,
     calcSumOfDays
@@ -102,10 +102,10 @@ function generateStay() {
     return { entryDate: entryDate.getTime(), exitDate: exitDate.getTime() }
 }
 
-function generateStaysArray() {
-    const staysArray = []
+function generateStays() {
+    const stays = []
     for (let i = 0; i < 5; i++) {
-        staysArray.push(generateStay())
+        stays.push(generateStay())
     }
   
 }

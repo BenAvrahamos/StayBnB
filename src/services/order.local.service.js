@@ -13,7 +13,7 @@ export const orderService = {
     getOrder,
 }
 
-utilService.generateStaysArray()
+utilService.generateStays()
 
 async function query() {
     try {

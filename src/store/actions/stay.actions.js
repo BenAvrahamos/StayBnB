@@ -6,7 +6,6 @@ import { store } from "../store"
 
 export async function loadStays() {
     // console.log('filterBy', filterBy)
-
     try {
         const { filterBy } = store.getState().stayModule
         const { headerFilterBy } = store.getState().stayModule

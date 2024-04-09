@@ -7,7 +7,7 @@ export const DemoDataService = {
     getRandomAmenities: getRandomFilterLabels,
     randomStay,
     generateStay,
-    generateStaysArray,
+    generateStays,
 
 }
 
@@ -288,12 +288,12 @@ function generateStay() {
 }
 
 
-function generateStaysArray() {
-    const staysArray = [];
+function generateStays() {
+    const stays = [];
     for (let i = 0; i < 10; i++) {
-        staysArray.push(generateStay());
+        stays.push(generateStay());
     }
-    return staysArray;
+    return stays;
 }
 
 function generateFullName() {
@@ -517,7 +517,7 @@ function randomStay() {
               beds: ['single bed', 'sofa bed', 'king size bed']
             }
           ],
-        booked: generateStaysArray(),
+        booked: generateStays(),
         baths: utilService.getRandomIntInclusive(1, 3),
         labels: getRandomFilterLabels(3),
         amenities: getRandomAmenities(10),
