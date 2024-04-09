@@ -58,7 +58,7 @@ export function StayReserveModal({ stay,params, updateParams }) {
         <div className="reserve-modal">
             <div className='container-price-selectors'>
                 <div className="price-logo flex align-center">
-                    <h2>${stay.price} &nbsp</h2><span>night</span>
+                    <h2>${stay.price} &nbsp;</h2><span>night</span>
                 </div>
                 <div className='selectors-container flex column'>
                     <div className="date-selectors flex">
