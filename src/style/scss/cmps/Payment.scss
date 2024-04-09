@@ -9,8 +9,6 @@
         margin: 0;
     }
 
-    font-family: circular-reg;
-
     .phone-add {
         align-items: flex-start;
 
@@ -43,7 +41,6 @@
 
         h1 {
             font-size: rem(32px);
-            font-family: circular-reg;
             margin: 0;
         }
     }
@@ -141,7 +138,7 @@
             padding-inline: rem(16px);
             background: radial-gradient(103.95% 1413.54% at -3.95% 100%, #D33753 0%, #D13660 52.83%, #C72D65 100%);
             border-radius: rem(8px);
-            font-weight: 590;
+            font-family: circular-bold;
             line-height: 19px;
             color: #ffffff;
             margin-block: 1rem;
