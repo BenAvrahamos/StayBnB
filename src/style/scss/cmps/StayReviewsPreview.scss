@@ -2,6 +2,7 @@
     grid-column: 1;
     grid-template-columns: 1fr 1fr;
     gap: rem(95px);
+    padding-block-start: rem(40px);
 
     .review {
         padding-block-end: 3rem;
