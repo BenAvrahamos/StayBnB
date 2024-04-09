@@ -172,13 +172,14 @@ export function StayDetails() {
 
                         <hr />
 
-                        <StayReviewsPreview stay={stay} />
 
                     </section>
 
                     <StayReserveModal stay={stay} params={params} updateParams={updateParams} />
 
                 </main>
+                
+                <StayReviewsPreview stay={stay} />
 
             </section>
             }
