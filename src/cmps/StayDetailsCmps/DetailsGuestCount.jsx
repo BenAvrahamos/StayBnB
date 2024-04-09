@@ -9,7 +9,7 @@ export function GuestCount({ openModalType, params, updateParams }) {
 
         openModalType('')
     }
-
+    
     function updateGuestCounts(guestType, countChange) {
         const newParams = { ...params }
 

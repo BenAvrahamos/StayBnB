@@ -9,7 +9,7 @@ export function StayReviewsPreview({ stay }) {
         setLastThreeReviews(stay.reviews.slice(3, 6))
     }, [stay.reviews])
     
-    console.log(stay.reviews)
+ 
 
     return <div className="stay-reviews grid">
         {firstThreeReviews.length > 0 &&
