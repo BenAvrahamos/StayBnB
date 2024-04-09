@@ -8,15 +8,8 @@ export function StayReviewsPreview({ stay }) {
         setFirstThreeReviews(stay.reviews.slice(0, 3))
         setLastThreeReviews(stay.reviews.slice(3, 6))
     }, [stay.reviews])
-
-    function calcScore() {
-        const scores = stay.reviews.map(review => review.score)
-        const sumOfScores = scores.reduce((acc, score) => {
-            acc += score
-            return acc
-        }, 0)
-        return sumOfScores / stay.reviews.length
-    }
+    
+    console.log(stay.reviews)
 
     return <div className="stay-reviews grid">
         {firstThreeReviews.length > 0 &&

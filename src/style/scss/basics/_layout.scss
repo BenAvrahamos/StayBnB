@@ -30,8 +30,8 @@
 .gallery-stay-details {
     display: grid;
     gap: rem(8px);
-    grid-template-columns: repeat(4, rem(274.5px));
-    grid-template-rows: repeat(2, rem(241px));
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
 }
 
 .bedroom-container {
