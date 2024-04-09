@@ -21,7 +21,7 @@ export function StayReservationModal({ stay }) {
                 <p>★ {calcScore(stay.reviews)} ({stay.reviews.length} reviews)・</p>
             </div>
         </div>
-        <hr />
+
         <div className="price-details-part">
             <h1>Price details</h1>
             <div className="accommodation flex space-between">

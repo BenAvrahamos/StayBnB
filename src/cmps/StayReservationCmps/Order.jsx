@@ -78,17 +78,16 @@ export function Order({ stay }) {
                         <div className='price flex column'>
                             <div className='flex space-between'>
                                 <p>Price:</p>
-                                <p>₪{stay.price} X {utilService.calcSumOfDays(reservation)} nights &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <span>₪{utilService.calcSumToPay(reservation, stay)}</span></p>
+                                <p>${stay.price} X {utilService.calcSumOfDays(reservation)} nights &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <span>${utilService.calcSumToPay(reservation, stay)}</span></p>
                             </div>
                             <div className='flex space-between'>
                                 <p>Service fee:</p>
-                                <p>₪{utilService.calcSumToPay(reservation, stay) * 0.14125}</p>
+                                <p>${utilService.calcSumToPay(reservation, stay) * 0.14125}</p>
                             </div>
-                            <hr />
                             <div className='flex space-between'>
                                 <h4>Total:</h4>
-                                <p><span>₪{utilService.calcSumToPay(reservation, stay) + (utilService.calcSumToPay(reservation, stay) * 0.14125)}</span></p>
+                                <p><span>${utilService.calcSumToPay(reservation, stay) + (utilService.calcSumToPay(reservation, stay) * 0.14125)}</span></p>
                             </div>
                         </div>
                     </div>

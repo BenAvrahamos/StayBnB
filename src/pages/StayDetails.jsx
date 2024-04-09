@@ -120,8 +120,6 @@ export function StayDetails() {
                             <p className="reviews-preview">{'★'.repeat(Math.ceil(utilService.calcScore(stay)))} {utilService.calcScore(stay)} ・ {stay.reviews.length} reviews</p>
                         </div>
 
-                        <hr />
-
                         <div className="host-info flex">
                             <img src={stay.host.imgUrl} className="host-img" />
                             <div className="flex column">
@@ -129,8 +127,6 @@ export function StayDetails() {
                                 <p>{stay.host.experience.isSuper ? 'Superhost ・' : ''}  {stay.host.experience.hostingTime > 1 ? `${stay.host.experience.hostingTime} years` : 'year'} hosting</p>
                             </div>
                         </div>
-
-                        <hr />
 
                         <div className="room-info">
                             <h2>Where you'll sleep</h2>
@@ -152,8 +148,6 @@ export function StayDetails() {
                             </div>
                         </div>
 
-                        <hr />
-
                         <div className="amenity-info">
                             <h1>What this place offers: </h1>
 
@@ -169,9 +163,6 @@ export function StayDetails() {
                                 </li>
                             </ul>
                         </div>
-
-                        <hr />
-
 
                     </section>
 
