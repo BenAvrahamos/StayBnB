@@ -44,7 +44,7 @@ export function AppHeader() {
             <div className="nav-section flex justify-center">
                 <nav className="nav flex space-evenly">
                     <NavLink onClick={goHome} to="/">Stays</NavLink>
-                    <NavLink to="/" className='grayTxt'>Experiences</NavLink>
+                    <NavLink to="/unActive" className='grayTxt'>Experiences</NavLink>
                     {/* <NavLink to="/" className='grayTxt'>Online Experiences</NavLink> */}
                 </nav>
             </div>

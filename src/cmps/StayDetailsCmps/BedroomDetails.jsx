@@ -26,11 +26,9 @@ export function BedroomDetails({ beds }) {
 
     return (
         bedsCount && (
-            <div className="bedroom-details">
-                <p>
-                    {getDescFromBedsCount()}
-                </p>
-            </div>
+            <p className="bedroom-details">
+                {getDescFromBedsCount()}
+            </p>
         )
     )
 }

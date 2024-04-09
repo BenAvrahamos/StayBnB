@@ -1,11 +1,33 @@
-$borderclr: #DEDEDE;
-
 .reserve-modal {
-    align-self: start;
+    display: none;
+    position: sticky;
+    z-index: 1;
 
-    container-price-selectors {
-        width: rem(322.33px);
-        height: rem(226px);
+    max-width: 23.25rem;
+
+    background-color: #ffffff;
+    padding: 24px;
+    border: 1px solid $gray3;
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
+
+    .selectors-container label {
+        text-transform: uppercase;
+    }
+
+    .arrow-down::before {
+        content: '\f107';
+        font-family: fa-solid;
+    }
+
+    .arrow-up::before {
+        content: '\f106';
+        font-family: fa-solid;
+    }
+
+    .container-price-selectors {
+        // width: rem(322.33px);
+        // height: rem(226px);
     }
 
     .price-logo {
@@ -78,5 +100,11 @@ $borderclr: #DEDEDE;
         color: #222222;
         margin-block-start: 1rem;
         font-weight: 600;
+    }
+}
+
+@media (width > 742px) {
+    .reserve-modal {
+        display: block;
     }
 }
