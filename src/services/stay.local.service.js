@@ -81,9 +81,9 @@ async function query(filterBy, headerFilterBy = {}) {
             }
         }
 
-        if (filterBy.label) {
-            stayArr = stayArr.filter(stay => stay.labels.includes(filterBy.label))
-        }
+        // if (filterBy.label) {
+        //     stayArr = stayArr.filter(stay => stay.labels.includes(filterBy.label))
+        // }
 
         if (filterBy.amenities.length) {
             stayArr = stayArr.filter(stay => filterBy.amenities.every(amenity => stay.amenities.includes(amenity)))
