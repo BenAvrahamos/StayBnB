@@ -8,9 +8,73 @@
 
 .expanded-header {
     height: 5em;
-    width: calc(100vw - 5rem);
+    width: calc(100vw - 6rem);
 
-    box-shadow: rgba(122, 122, 122, 0.08) 0 1px 0;
+
+
+    & .compact-header {
+
+        width: 22rem;
+        height: 2.875rem;
+        border-radius: 3em;
+        border: 1px solid #dddddd;
+        box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.08);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.875em;
+        color: $darkGray;
+        cursor: pointer;
+       
+
+        & .map {
+            width: 10.3rem;
+            text-align: center;
+
+        }
+
+
+
+        & .calendar {
+            width: 9.8125rem;
+            text-align: center;
+            box-shadow: 1px 0 0px 0px rgba(0, 0, 0, 0.1),-1px 0 0px 0px rgba(0, 0, 0, 0.1);
+       
+        }
+
+        & .guests {
+        
+            width: 14rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            color: $gray1;
+            font-weight: normal;
+            padding-left: 0;
+            
+          
+
+            & .search-btn{
+              border-radius: 50%    ;
+                width: 2rem;
+                height: 2rem;
+                background-color: $siteColor;
+                margin-right: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                &:before {
+                    content: '\f002';
+                    font-family: fa-solid;
+                    color: white;
+                    font-size: 11px;
+                }
+              
+            }
+        }
+    }
 
     .logo-section {
         width: 22em;
@@ -20,7 +84,7 @@
             width: 7.375em;
             height: 4em;
             font-size: 1.25em;
-            font-weight: bold;
+         font-family: circular-bold;
             color: $siteColor;
 
             gap: 0.2em;
@@ -29,10 +93,13 @@
                 height: 30px;
             }
         }
+
+
     }
 
     .nav-section {
         width: 25em;
+        display: none;
 
         nav {
             width: 22em;
@@ -43,11 +110,15 @@
 
                 &.active {
                     color: $darkGray;
-                    font-weight: bold;
+                 font-family: circular-bold;
                 }
             }
         }
+
+
     }
+
+
 
     .user-section {
         width: 22.5em;
@@ -61,7 +132,7 @@
             padding: 8px 8px 8px 14px;
             border: 0.667px solid $gray2;
             border-radius: 2em;
-            font-weight: bold;
+         font-family: circular-bold;
             background-color: white;
 
             gap: 1em;
