@@ -2,9 +2,7 @@
     display: none;
     position: sticky;
     z-index: 1;
-
     max-width: 23.25rem;
-
     background-color: #ffffff;
     padding: 24px;
     border: 1px solid $gray3;
@@ -53,7 +51,7 @@
 
         label {
             font-size: em(11px);
-         font-family: circular-bold;
+            font-family: circular-bold;
             cursor: pointer;
         }
 
@@ -80,7 +78,7 @@
         // padding: 14px 0px;
         background: radial-gradient(103.95% 1413.54% at -3.95% 100%, #D33753 0%, #D13660 52.83%, #C72D65 100%);
         border-radius: rem(8px);
-        font-weight: 590;
+        font-family: circular-bold;
         line-height: 19px;
         color: #ffffff;
         margin-block: 1rem;
@@ -99,7 +97,7 @@
     .sum-total {
         color: #222222;
         margin-block-start: 1rem;
-        font-weight: 600;
+        font-family: circular-bold;
     }
 }
 
