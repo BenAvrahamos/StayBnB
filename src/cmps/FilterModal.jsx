@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 
 import { stayService } from "../services/stay.local.service"
+import { filterLists } from "../services/filterLists.service"
 
 import { PriceRangeChart } from "./PriceRangeChart"
 import { ButtonGroup } from "./HelperCmps/ButtonGroup"
@@ -42,21 +43,6 @@ export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
         })
     }
 
-    const placeTypeItems = [{ value: 'any', label: 'Any type' }, { value: 'room' }, { value: 'entire home' }]
-    const bbbItems = [{ value: 'any' }, { value: 1 }, { value: 2 }, { value: 3 }, { value: 4 }, { value: 5 }, { value: 6 }, { value: 7 }, { value: '8+' },]
-    const propTypeItems = [{ value: 'house' }, { value: 'apartment' }, { value: 'guesthouse' }, { value: 'hotel' }]
-    const amenityEssentialsShown = [{ value: 'wifi' }, { value: 'kitchen' }, { value: 'washer' }, { value: 'dryer' }, { value: 'air_conditioning', label: 'air conditioning' }, { value: 'heating' }]
-    const amenityEssentialsHidden = [{ value: 'dedicated_workspace', label: 'dedicated workspace' }, { value: 'TV' }, { value: 'hair_dryer', label: 'hair dryer' }, { value: 'iron' }]
-    const amenityFeatures = [{ value: 'pool' }, { value: 'hot_tub', label: 'hot tub' }, { value: 'free_parking', label: 'free parking' }, { value: 'ev_charger', label: 'ev charger' }, { value: 'crib' }, { value: 'king_bed', label: 'king bed' }, { value: 'gym' }, { value: 'BBQ_grill', label: 'BBQ grill' }, { value: 'breakfast' }, { value: 'indoor_fireplace', label: 'indoor fireplace' }, { value: 'smoking_allowed', label: 'smoking allowed' }]
-    const amenityLocation = [{ value: 'beachfront' }, { value: 'waterfront' }]
-    const amenitySafety = [{ value: 'smoke_alarm', label: 'smoke alarm' }, { value: 'carbon_monoxide-alarm', label: 'carbon monoxide alarm' }]
-    const hostLngsShown = [{ value: 'english' }, { value: 'french' }, { value: 'german' }, { value: 'japanese' }]
-    const hostLngsHidden = [{ value: 'italian' }, { value: 'russian' }, { value: 'spanish' }, { value: 'chinese (Simplified)' }, { value: 'arabic' }, { value: 'hindi' }, { value: 'portuguese' }, { value: 'turkish' }, { value: 'dutch' }, { value: 'korean' }, { value: 'thai' }, { value: 'greek' }, { value: 'hebrew' }, { value: 'polish' }, { value: 'tagalog' }, { value: 'danish' }, { value: 'swedish' }, { value: 'norwegian' }, { value: 'finnish' }, { value: 'czech' }, { value: 'hungarian' }]
-    const accessEntrance = [{ value: 'step-free-entrance', label: 'Step-free guest entrance' }, { value: 'wide-entrance', label: 'Guest entrance wider than 32 inches' }, { value: 'accessible-parking', label: 'Accessible parking spot' }, { value: 'step-free-path-to-entrance', label: 'Step-free path to the guest entrance' }]
-    const accessBedrooms = [{ value: 'step-free-bedroom', label: 'Step-free bedroom access' }, { value: 'wide-bedroom', label: 'Bedroom entrance wider than 32 inches' }]
-    const accessBathrooms = [{ value: 'step-free-bathroom', label: 'Step-free bathroom access' }, { value: 'wide-bathroom', label: 'Bathroom entrance wider than 32 inches' }, { value: 'Shower-bar', label: 'Shower grab bar' }, { value: 'Toilet-bar', label: 'Toilet grab bar' }, { value: 'Step-free-shower', label: 'Step-free shower' }, { value: 'bath-chair', label: 'Shower or bath chair' }]
-    const accessEquipment = [{ value: 'hoist', label: 'Ceiling or mobile hoist' }]
-
     return <>
         <div className="overlay" onClick={leaveFilter}></div>
 
@@ -74,7 +60,7 @@ export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
                     {filterBy.placeType === 'entire home' && <p>A home all to yourself.</p>}
                     <ButtonGroup
                         type={'placeType'}
-                        items={placeTypeItems}
+                        items={filterLists.placeTypeItems}
                         selectedValue={selected.placeType}
                         handleChange={handleChange}
                     />
@@ -92,7 +78,7 @@ export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
                     <h4>Bedrooms</h4>
                     <ButtonGroup
                         type={'bedrooms'}
-                        items={bbbItems}
+                        items={filterLists.bbbItems}
                         selectedValue={selected.bedrooms}
                         handleChange={handleChange}
                     />
@@ -100,7 +86,7 @@ export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
                     <h4>Beds</h4>
                     <ButtonGroup
                         type={'beds'}
-                        items={bbbItems}
+                        items={filterLists.bbbItems}
                         selectedValue={selected.beds}
                         handleChange={handleChange}
                     />
@@ -108,7 +94,7 @@ export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
                     <h4>Bathrooms</h4>
                     <ButtonGroup
                         type={'bathrooms'}
-                        items={bbbItems}
+                        items={filterLists.bbbItems}
                         selectedValue={selected.bathrooms}
                         handleChange={handleChange}
                     />
@@ -118,7 +104,7 @@ export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
                     <h2>Property type</h2>
                     <ButtonGroup
                         type={'propType'}
-                        items={propTypeItems}
+                        items={filterLists.propTypeItems}
                         selectedValue={selected.propType}
                         handleChange={handleChange}
                     />
@@ -130,14 +116,14 @@ export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
                     <h3>Essentials</h3>
                     <CheckboxGroup
                         type={'amenities'}
-                        items={amenityEssentialsShown}
+                        items={filterLists.amenityEssentialsShown}
                         selectedValues={selected.amenities}
                         handleChange={handleChange}
                     />
                     <Accordion>
                         <CheckboxGroup
                             type={'amenities'}
-                            items={amenityEssentialsHidden}
+                            items={filterLists.amenityEssentialsHidden}
                             selectedValues={selected.amenities}
                             handleChange={handleChange}
                         />
@@ -145,7 +131,7 @@ export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
                         <h3>Features</h3>
                         <CheckboxGroup
                             type={'amenities'}
-                            items={amenityFeatures}
+                            items={filterLists.amenityFeatures}
                             selectedValues={selected.amenities}
                             handleChange={handleChange}
                         />
@@ -153,7 +139,7 @@ export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
                         <h3>Location</h3>
                         <CheckboxGroup
                             type={'label'}
-                            items={amenityLocation}
+                            items={filterLists.amenityLocation}
                             selectedValues={selected.label}
                             handleChange={handleChange}
                         />
@@ -161,7 +147,7 @@ export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
                         <h3>Safety</h3>
                         <CheckboxGroup
                             type={'amenities'}
-                            items={amenitySafety}
+                            items={filterLists.amenitySafety}
                             selectedValues={selected.amenities}
                             handleChange={handleChange}
                         />
@@ -198,7 +184,7 @@ export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
                     <h3>Guest entrance and parking</h3>
                     <CheckboxGroup
                         type={'accessibility'}
-                        items={accessEntrance}
+                        items={filterLists.accessEntrance}
                         selectedValues={selected.accessibility}
                         handleChange={handleChange}
                     />
@@ -206,21 +192,21 @@ export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
                         <h3>Bedroom</h3>
                         <CheckboxGroup
                             type={'accessibility'}
-                            items={accessBedrooms}
+                            items={filterLists.accessBedrooms}
                             selectedValues={selected.accessibility}
                             handleChange={handleChange}
                         />
                         <h3>Bathroom</h3>
                         <CheckboxGroup
                             type={'accessibility'}
-                            items={accessBathrooms}
+                            items={filterLists.accessBathrooms}
                             selectedValues={selected.accessibility}
                             handleChange={handleChange}
                         />
                         <h3>Adaptive equipment</h3>
                         <CheckboxGroup
                             type={'accessibility'}
-                            items={accessEquipment}
+                            items={filterLists.accessEquipment}
                             selectedValues={selected.accessibility}
                             handleChange={handleChange}
                         />
@@ -231,14 +217,14 @@ export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
                     <h2>Host language</h2>
                     <CheckboxGroup
                         type={'hostLngs'}
-                        items={hostLngsShown}
+                        items={filterLists.hostLngsShown}
                         selectedValues={selected.hostLngs}
                         handleChange={handleChange}
                     />
                     <Accordion>
                         <CheckboxGroup
                             type={'hostLngs'}
-                            items={hostLngsHidden}
+                            items={filterLists.hostLngsHidden}
                             selectedValues={selected.hostLngs}
                             handleChange={handleChange}
                         />
