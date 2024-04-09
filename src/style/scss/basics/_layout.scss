@@ -4,7 +4,8 @@
     padding-inline: 1.5rem;
 }
 
-.stay-details {
+.stay-details,
+.stay-reservation {
     padding-inline: 0;
 }
 
@@ -12,14 +13,17 @@
     .index-section .stay-list,
     .index-filter-section,
     .app-header,
-    .stay-details {
+    .stay-details,
+    .stay-reservation {
         padding-inline: 2.5rem;
     }
 }
 
-@media (width > 1200px) {
-.stay-details {
-        padding-inline: 5rem;
+@media (width > 1280px) {
+.stay-details,
+.stay-reservation,
+.app-header {
+        padding-inline: calc(50vw - 40rem);
     }
 }
 
@@ -31,8 +35,9 @@
     }
 }
 
-@media (width > 2200px) {
-    .stay-details {
-        padding-inline: 10rem;
-    }
-}
+// @media (width > 2200px) {
+//     .stay-details,
+//     .stay-reservation {
+//         padding-inline: 10rem;
+//     }
+// }
