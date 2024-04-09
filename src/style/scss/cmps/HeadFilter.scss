@@ -9,6 +9,8 @@
     margin-inline: 2.5rem;
     position: relative;
     column-gap: 0.4em;
+    color: $darkGray;
+    font-weight: bold;
 
     .guest-count {
         width: 7.8em;
@@ -20,6 +22,8 @@
     span {
         font-size: 14px;
         color: $headerGray;
+        font-weight: normal;
+        
     }
 
     &>div {
