@@ -13,27 +13,14 @@ import { DemoDataService } from "../../services/demoData.service"
 import { stayService } from "../../services/stay.local.service"
 import { setStayFilter, setStayHeaderFilter } from "../../store/actions/stay.actions"
 
-export function AppHeader() {
+export function AppHeader({ dynamicPageLayOut, SetDynamicPageLayOut }) {
     const ref = useRef(null)
     const [searchParams, setSearchParams] = useSearchParams()
     const navigate = useNavigate()
     const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
     const [modalType, setModalType] = useState()
 
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (ref.current && !ref.current.contains(event.target)) {
-                setModalType('')
-            }
-        }
 
-        document.addEventListener('click', handleClickOutside)
-
-        return () => {
-            document.removeEventListener('click', handleClickOutside)
-        }
-
-    }, [ref])
 
     function goHome() {
         const defaultHeaderFilter = stayService.getDefaultHeaderFilter()
@@ -47,7 +34,10 @@ export function AppHeader() {
 
 
 
-    return <section  className="app-header flex column center">
+    return <section className={`app-header-container flex column center 
+    ${dynamicPageLayOut.header.fixed ? 'fixed-header' : ''}
+    ${dynamicPageLayOut.header.expanded ? 'expanded' : ''}`}>
+
         <section className="expanded-header flex space-between align-center">
 
             <div className="logo-section" onClick={goHome}>
@@ -63,13 +53,16 @@ export function AppHeader() {
                     <NavLink to="/unActive" className='grayTxt'>Experiences</NavLink>
                     {/* <NavLink to="/" className='grayTxt'>Online Experiences</NavLink> */}
                 </nav>
+
+                <div className="compact-header">
+                    <div onClick={() => { setModalType(modalType === 'map' ? null : 'map')}} className="map">Anywhere</div>
+                    <div onClick={() => setModalType(modalType === 'check-in' ? null : 'check-in')} className="calendar">Any week</div>
+                    <div onClick={() => setModalType(modalType === 'guest' ? null : 'guest')} className="guests">Add guests <div className="search-btn"></div> </div>
+                </div>
+
             </div>
 
-            <div ref={ref} className="compact-header">
-                <div onClick={() => setModalType(modalType === 'map' ? null : 'map')} className="map">Anywhere</div>
-                <div onClick={() => setModalType(modalType === 'check-in' ? null : 'check-in')} className="calendar">Any week</div>
-                <div onClick={() => setModalType(modalType === 'guest' ? null : 'guest')} className="guests">Add guests <div className="search-btn"></div> </div>
-            </div>
+
 
             <div className="user-section flex align-center" >
                 Staybnb your home
@@ -81,6 +74,6 @@ export function AppHeader() {
             </div>
         </section>
 
-        <HeaderFilter ref={ref} modalType={modalType} setModalType={setModalType} />
+        <HeaderFilter modalType={modalType} setModalType={setModalType} />
     </section>
 }

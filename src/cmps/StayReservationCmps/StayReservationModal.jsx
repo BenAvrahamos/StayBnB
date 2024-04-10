@@ -11,14 +11,18 @@ export function StayReservationModal({ stay }) {
         const avgScore = totalSum / reviews.length
         return avgScore
     }
-
+    console.log(stay)
     return <div className="stay-reservation-modal flex column">
         <div className="stay-details-part flex align-center">
             <img src={stay.imgUrls[0]} />
             <div className="text-details">
                 <h2>{stay.name}</h2>
                 <p>{stay.type}</p>
-                <p>★ {calcScore(stay.reviews)} ({stay.reviews.length} reviews)・</p>
+                <p>★ {calcScore(stay.reviews)} ({stay.reviews.length} reviews) {stay.host.experience.isSuper &&
+                    <span>・
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true" role="presentation" focusable="false" style="display: block; height: 12px; width: 12px; fill: currentcolor;"><path d="m8.5 7.6 3.1-1.75 1.47-.82a.83.83 0 0 0 .43-.73V1.33a.83.83 0 0 0-.83-.83H3.33a.83.83 0 0 0-.83.83V4.3c0 .3.16.59.43.73l3 1.68 1.57.88c.35.2.65.2 1 0zm-.5.9a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7z"></path></svg>
+                        Superhost</span>}
+                </p>
             </div>
         </div>
 
@@ -26,15 +30,15 @@ export function StayReservationModal({ stay }) {
             <h1>Price details</h1>
             <div className="accommodation flex space-between">
                 <p>Accommodation</p>
-                <p>${utilService.calcSumToPay(reservation, stay)}</p>
+                <p>${Math.ceil(utilService.calcSumToPay(reservation, stay))}</p>
             </div>
             <div className="fee flex space-between">
                 <p>Staybnb service fee</p>
-                <p>${(utilService.calcSumToPay(reservation, stay) * 0.14125).toFixed(2)}</p>
+                <p>${(Math.ceil(utilService.calcSumToPay(reservation, stay) * 0.14125))}</p>
             </div>
             <div className="total flex space-between">
                 <p>Total</p>
-                <p>${(utilService.calcSumToPay(reservation, stay) + (utilService.calcSumToPay(reservation, stay) * 0.14125)).toFixed(2)}</p>
+                <p>${Math.ceil((utilService.calcSumToPay(reservation, stay) + (utilService.calcSumToPay(reservation, stay) * 0.14125)))}</p>
             </div>
         </div>
     </div>

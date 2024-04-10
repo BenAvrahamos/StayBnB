@@ -1,20 +1,28 @@
-.app-header {
+.app-header-container {
     padding-block-end: 1em;
     margin-block-end: 1em;
     border-bottom: solid 0.667px $gray2;
     z-index: 1;
+    background-color: white;
+    display: flex;
+    width: 100vw;
+
+
     // max-width: 1280px;
+
 }
 
 .expanded-header {
-    height: 5em;
+    height: 4.2em;
+    margin-top: 0.3em;
     width: calc(100vw - 6rem);
+    z-index: 10;
+    
+
 
 
 
     & .compact-header {
-
-        width: 22rem;
         height: 2.875rem;
         border-radius: 3em;
         border: 1px solid #dddddd;
@@ -25,7 +33,9 @@
         font-size: 0.875em;
         color: $darkGray;
         cursor: pointer;
-       
+        opacity: 0;
+        width: 0;
+
 
         & .map {
             width: 10.3rem;
@@ -33,17 +43,15 @@
 
         }
 
-
-
         & .calendar {
             width: 9.8125rem;
             text-align: center;
-            box-shadow: 1px 0 0px 0px rgba(0, 0, 0, 0.1),-1px 0 0px 0px rgba(0, 0, 0, 0.1);
-       
+            box-shadow: 1px 0 0px 0px rgba(0, 0, 0, 0.1), -1px 0 0px 0px rgba(0, 0, 0, 0.1);
+
         }
 
         & .guests {
-        
+
             width: 14rem;
             text-align: center;
             display: flex;
@@ -52,11 +60,9 @@
             color: $gray1;
             font-weight: normal;
             padding-left: 0;
-            
-          
 
-            & .search-btn{
-              border-radius: 50%    ;
+            & .search-btn {
+                border-radius: 50%;
                 width: 2rem;
                 height: 2rem;
                 background-color: $siteColor;
@@ -71,7 +77,7 @@
                     color: white;
                     font-size: 11px;
                 }
-              
+
             }
         }
     }
@@ -84,7 +90,7 @@
             width: 7.375em;
             height: 4em;
             font-size: 1.25em;
-         font-family: circular-bold;
+            font-family: circular-bold;
             color: $siteColor;
 
             gap: 0.2em;
@@ -99,7 +105,8 @@
 
     .nav-section {
         width: 25em;
-        display: none;
+
+
 
         nav {
             width: 22em;
@@ -110,7 +117,7 @@
 
                 &.active {
                     color: $darkGray;
-                 font-family: circular-bold;
+                    font-family: circular-bold;
                 }
             }
         }
@@ -132,7 +139,7 @@
             padding: 8px 8px 8px 14px;
             border: 0.667px solid $gray2;
             border-radius: 2em;
-         font-family: circular-bold;
+            font-family: circular-bold;
             background-color: white;
 
             gap: 1em;
@@ -170,8 +177,39 @@
     }
 }
 
+.fixed-header {
+    position: fixed;
+    top: 0;
+    padding-block-end: 0;
+    transition: 0.5s;
+
+    & .header-filter {
+        transform: translateY(-4.6rem) scale(0.4, 0.65);
+        opacity: 0;
+        transition: 0.3s;
+        height: 0;
+    }
+
+    & .compact-header {
+        display: inline;
+        opacity: 1;
+        transition: 0.3s;   
+        display: flex;
+        width: 22rem;
+    }
+
+    & nav {
+        display: none;
+     
+    }
+
+    
+}
+
 @media (width < 740px) {
     .expanded-header {
         display: none;
     }
 }
+
+.expanded{}

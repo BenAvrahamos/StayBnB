@@ -9,7 +9,10 @@
     margin-inline: 2.5rem;
     position: relative;
     column-gap: 0.4em;
- font-family: circular-bold;
+    font-family: circular-bold;
+
+    transition: transform 0.4s;
+
 
     .guest-count {
         width: 7.8em;
@@ -22,7 +25,7 @@
         font-size: 14px;
         color: $headerGray;
         font-weight: normal;
-        
+
     }
 
     &>div {
@@ -64,26 +67,26 @@
         border-radius: 50%;
         align-self: center;
         transition: 0.2s;
-    
 
-        & span{
+
+        & span {
             display: none;
-            
+
         }
 
-        &.expanded {
+        &.compact {
             width: 7rem;
             border-radius: 25px;
-            
-            & span{
+
+            & span {
                 display: inline;
                 color: white;
                 margin-left: 0.4em;
-             font-family: circular-bold;
-                
+                font-family: circular-bold;
+
             }
         }
-        
+
 
         &:before {
             content: '\f002';

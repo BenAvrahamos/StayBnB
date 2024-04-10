@@ -1,6 +1,7 @@
 import { HashRouter as Router, Routes, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { store } from './store/store'
+import { useEffect, useState } from 'react'
 
 import './style/main.css'
 
@@ -10,17 +11,52 @@ import { AppHeader } from './cmps/HeaderCmps/AppHeader'
 import { StayReservation } from './pages/StayReservation'
 
 export function RootCmp() {
-  return (
-<Provider store={store}>
-  <Router>
-    <AppHeader/>
 
-    <Routes>
-      <Route path='/' element={<StayIndex />} />
-      <Route path='/:stayId' element={<StayDetails />} />
-      <Route path='/:stayId/payment' element={<StayReservation /> } />
-    </Routes>
-  </Router>
-  </Provider>
+  const [dynamicPageLayOut, SetDynamicPageLayOut] = useState({
+    header: { compact: false, fixed:   false },
+    fixedFilterLabel: false,
+    listMargin: false
+  });
+
+
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY
+      if (offset > 0) {
+        SetDynamicPageLayOut({
+          header: { compact: true, fixed: true },
+          fixedFilterLabel: true,
+          listMargin: true
+        })
+      } else {
+        SetDynamicPageLayOut({
+          header: { compact: false, fixed: false },
+          fixedFilterLabel: false,
+          listMargin: false
+        })
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
+
+  return (
+    <Provider store={store}>
+      <Router>
+        <AppHeader dynamicPageLayOut={dynamicPageLayOut} SetDynamicPageLayOut={SetDynamicPageLayOut} />
+
+        <Routes>
+          <Route path='/' element={<StayIndex dynamicPageLayOut={dynamicPageLayOut} />} />
+          <Route path='/:stayId' element={<StayDetails />} />
+          <Route path='/:stayId/payment' element={<StayReservation />} />
+        </Routes>
+      </Router>
+    </Provider>
   )
 }

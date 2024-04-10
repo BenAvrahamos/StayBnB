@@ -6,11 +6,11 @@ import { FilterModal } from './FilterModal'
 import { filterLists } from "../services/filterLists.service"
 
 
-export function LabelsFilter({ setStayFilter, filterBy }) {
+export function LabelsFilter({ setStayFilter, filterBy, dynamicPageLayOut }) {
 	const [showFilterModal, setShowFilter] = useState(false)
 
 	function handleChange(label) {
-		setStayFilter({ ...filterBy, label : [label]})
+		setStayFilter({ ...filterBy, label: [label] })
 	}
 
 	const openFilterModal = () => {
