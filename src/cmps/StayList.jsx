@@ -5,7 +5,7 @@ import { store } from '../store/store.js'
 import { setStayHeaderFilter, setStayFilter } from '../store/actions/stay.actions.js'
 import { stayService } from '../services/stay.local.service.js'
 
-export function StayList({ stays, filterBy, isFixed }) {
+export function StayList({ stays, filterBy, dynamicPageLayOut }) {
     const { headerFilterBy } = store.getState().stayModule
     const { loc, guestCount, entryDate, exitDate } = headerFilterBy
 
@@ -34,7 +34,7 @@ export function StayList({ stays, filterBy, isFixed }) {
         .join('&')
 
     return (
-        <ul onClick={clearFilter} className={`stay-list grid ${isFixed ? 'fixed-list' : ''}`}>
+        <ul onClick={clearFilter} className={`stay-list grid ${dynamicPageLayOut.listMargin ? 'margined-list' : ''}`}>
             {stays.map(stay => (
                 <li key={stay._id}>
                     <Link to={{

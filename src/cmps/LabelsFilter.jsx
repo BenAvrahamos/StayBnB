@@ -6,7 +6,7 @@ import { FilterModal } from './FilterModal'
 import { filterLists } from "../services/filterLists.service"
 
 
-export function LabelsFilter({ setStayFilter, filterBy, isFixed }) {
+export function LabelsFilter({ setStayFilter, filterBy, dynamicPageLayOut }) {
 	const [showFilterModal, setShowFilter] = useState(false)
 
 	function handleChange(label) {
@@ -18,7 +18,7 @@ export function LabelsFilter({ setStayFilter, filterBy, isFixed }) {
 	}
 
 	return <>
-		<section className={`index-filter-section grid align-center ${isFixed ? 'fixed-label-filter' : ''}`}>
+		<section className={`index-filter-section grid align-center ${dynamicPageLayOut.fixedFilterLabel ? 'fixed-label-filter' : ''}`}>
 			<section className="label-filter-section grid">
 				<SvgSavedCmp
 					folder={'labels'}

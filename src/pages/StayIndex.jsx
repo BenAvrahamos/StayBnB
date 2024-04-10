@@ -8,7 +8,7 @@ import { LabelsFilter } from '../cmps/LabelsFilter.jsx'
 import { store } from '../store/store.js'
 import { stayService } from '../services/stay.local.service.js'
 
-export function StayIndex({isFixed}) {
+export function StayIndex({dynamicPageLayOut}) {
     const [searchParams, setSearchParams] = useSearchParams()
 
     const { stays } = useSelector(storeState => storeState.stayModule)
@@ -24,6 +24,7 @@ export function StayIndex({isFixed}) {
         <LabelsFilter
             setStayFilter={setStayFilter}
             filterBy={filterBy}
+            dynamicPageLayOut={dynamicPageLayOut}
         />
         <p>loading</p>
     </>
@@ -31,12 +32,12 @@ export function StayIndex({isFixed}) {
         <LabelsFilter
             setStayFilter={setStayFilter}
             filterBy={filterBy}
-            isFixed={isFixed}
+            dynamicPageLayOut={dynamicPageLayOut}
         />
         <StayList
             stays={stays}
             filterBy={filterBy}
-            isFixed={isFixed}
+            dynamicPageLayOut={dynamicPageLayOut}
         />
         <section className='index-end-section flex column center'>
             <h1>Continue exploring homes</h1>
