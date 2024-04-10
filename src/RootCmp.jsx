@@ -9,6 +9,7 @@ import { StayIndex } from './pages/StayIndex'
 import { StayDetails } from './pages/StayDetails'
 import { AppHeader } from './cmps/HeaderCmps/AppHeader'
 import { StayPayment } from './pages/StayPayment'
+import { OrderList } from './pages/OrderList'
 
 export function RootCmp() {
 
@@ -53,6 +54,7 @@ export function RootCmp() {
           <Route path='/' element={<StayIndex />} />
           <Route path='/:stayId' element={<StayDetails />} />
           <Route path='/:stayId/payment' element={<StayPayment />} />
+          <Route path='/order' element={<OrderList />} />
         </Routes>
       </Router>
     </Provider>

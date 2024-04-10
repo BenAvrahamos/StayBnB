@@ -317,7 +317,7 @@ function mergeFilters(mainFilter, headerFilter) {
         amenities, bathrooms, beds, ...bookingOpts, hostLngs,
         bedrooms, placeType, ...priceRange, propType, ...loc, label, ...guestCount, entryDate, exitDate
     }
-    console.log(mergeFilter);
+   
     return mergeFilter
 
 }

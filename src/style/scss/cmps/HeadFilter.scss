@@ -26,7 +26,7 @@
         height: 4rem;
         flex-grow: 1;
         border-radius: 3em;
-        padding: 1.075rem 1.5rem;
+        padding: 0.875rem 1.5rem;
 
         display: flex;
         flex-direction: column;
@@ -40,9 +40,11 @@
 
     & .destination {
         width: 17.75em;
+        font-size: 0.75rem;
+     
 
         & span {
-            font-size: 14px;
+            font-size: 0.875rem;
             color: $headerGray;
             font-weight: normal;
     
@@ -52,9 +54,10 @@
 
     & .dates {
         width: 8.75em;
+        font-size: 0.75rem;
 
         & span {
-            font-size: 14px;
+            font-size: 0.875rem;
             color: $headerGray;
             font-weight: normal;
     
@@ -67,11 +70,12 @@
         flex-direction: row;
         justify-content: space-between;
         padding-inline-end: 0.7em;
+        font-size: 0.75rem;
 
         & span {
-            font-size: 14px;
+            font-size: 0.875rem;
             color: $headerGray;
-            font-weight: normal;
+            
     
         }
 
@@ -115,7 +119,7 @@
 
     & .selected {
         box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.15);
-        border: 1px solid transparent;
+        // border: 1px solid transparent;
         z-index: 1;
         background-color: white;
     }

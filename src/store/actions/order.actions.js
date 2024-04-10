@@ -1,20 +1,21 @@
-import { SET_ORDERS, ADD_ORDER, REMOVE_ORDER, UPDATE_ORDER} from '../reducers/order.reducer'
+import { SET_ORDERS, ADD_ORDER, REMOVE_ORDER, UPDATE_ORDER } from '../reducers/order.reducer'
 import { orderService } from '../../services/order.local.service'
+import { store } from '../store'
 
 export async function addOrder(order) {
     try {
         const addedOrder = await orderService.save(order)
-        store.dispatch( {ADD_ORDER, order: addedOrder})
+        store.dispatch({ ADD_ORDER, order: addedOrder })
     } catch (err) {
         console.log(err)
-    }  
+    }
 }
 
 export async function loadOrders() {
     try {
         const orders = await orderService.query()
-        store.dispatch( { SET_ORDERS, orders })
-    } catch(err) {
+        store.dispatch({ type: SET_ORDERS, orders })
+    } catch (err) {
         console.log(err)
     }
 }
@@ -33,7 +34,7 @@ export async function updateOrder(order) {
     try {
         await orderService.save(order)
         store.dispatch({ type: UPDATE_ORDER, order })
-    } catch(err) {
+    } catch (err) {
         console.log(err)
     }
 }
