@@ -5,10 +5,12 @@ import { stayService } from '../../services/stay.local.service'
 import { Order } from './Order'
 import { utilService } from '../../services/util.service'
 import { useParams } from "react-router"
+import { useNavigate } from 'react-router'
 
 
 
 export function Payment({ stay, params }) {
+    const navigate = useNavigate()
     const reservation = useSelector(storeState => storeState.reservationModule.reservation)
     const [isDownUpArrow, setIsDownUpArrow] = useState('arrow-down')
     const [paymentMethod, changePaymentMethod] = useState(<><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-label="Credit card" role="img" focusable="false" style={{ display: 'block', height: '33px', width: '33px', fill: 'rgb(176, 176, 176)' }}><path d="M29 5a2 2 0 0 1 2 1.85V25a2 2 0 0 1-1.85 2H3a2 2 0 0 1-2-1.85V7a2 2 0 0 1 1.85-2H3zm0 6H3v14h26zm-3 10a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7-14H3v2h26z"></path></svg><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Credit or debit card</p></>)
@@ -69,10 +71,15 @@ export function Payment({ stay, params }) {
         setIsPhone(true)
     }
 
+    function onClose(e) {
+        e.stopPropagation()
+        navigate(`/${stay._id}`)
+    }
+
     return <section className="payment-details">
 
         <header className="flex">
-            <button className='back-btn'></button>
+            <button className='back-btn' onClick={onClose}></button>
             <h1>Request to book</h1>
         </header>
 
