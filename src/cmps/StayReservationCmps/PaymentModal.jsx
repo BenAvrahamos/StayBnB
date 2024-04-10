@@ -42,7 +42,7 @@ export function PaymentModal({ stay, params }) {
 
             <div className="total flex space-between">
                 <p>Total</p>
-                <p>${Math.round((utilService.calcSumToPay(params, stay) + (utilService.calcSumToPay(params, stay) * 0.14125)))}</p>
+                <p>${Math.round((utilService.calcSumToPay(params, stay)) + Math.round((utilService.calcSumToPay(params, stay) * 0.14125)))}</p>
             </div>
         </div>
     </div>
