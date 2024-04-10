@@ -7,13 +7,15 @@ export function StayList({ stays, filterBy }) {
 
     let { loc, guestCount, entryDate, exitDate } = headerFilterBy
     if (!entryDate && !exitDate) {
-        entryDate = +new Date() // 
-        exitDate = +new Date() // 
+        entryDate = +new Date()
+        exitDate = entryDate + (24 * 60 * 60 * 1000)
     } else if (!exitDate) {
         exitDate = entryDate + (24 * 60 * 60 * 1000)
     } else if (entryDate === exitDate) {
         exitDate = entryDate + (24 * 60 * 60 * 1000)
     }
+    if (!guestCount.adults) guestCount.adults = 1
+
     const spreadLoc = loc ? { ...loc } : {}
     const spreadGuestCount = guestCount ? { ...guestCount } : {}
 
