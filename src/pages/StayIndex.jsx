@@ -8,7 +8,7 @@ import { LabelsFilter } from '../cmps/LabelsFilter.jsx'
 import { store } from '../store/store.js'
 import { stayService } from '../services/stay.local.service.js'
 
-export function StayIndex() {
+export function StayIndex({isFixed}) {
     const [searchParams, setSearchParams] = useSearchParams()
 
     const { stays } = useSelector(storeState => storeState.stayModule)
@@ -31,10 +31,12 @@ export function StayIndex() {
         <LabelsFilter
             setStayFilter={setStayFilter}
             filterBy={filterBy}
+            isFixed={isFixed}
         />
         <StayList
             stays={stays}
             filterBy={filterBy}
+            isFixed={isFixed}
         />
         <section className='index-end-section flex column center'>
             <h1>Continue exploring homes</h1>
