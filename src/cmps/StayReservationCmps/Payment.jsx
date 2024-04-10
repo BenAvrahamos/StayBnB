@@ -1,8 +1,6 @@
 
-import { format, getDay, subDays } from 'date-fns'
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { useParams } from 'react-router'
 import { stayService } from '../../services/stay.local.service'
 import { Order } from './Order'
 import { utilService } from '../../services/util.service'
@@ -23,6 +21,7 @@ export function Payment({ stay }) {
             userOrderDetails.card.cvv &&
             userOrderDetails.card.zip &&
             userOrderDetails.phone) {
+            
             setIsOrder(true)
         }
         return
@@ -69,7 +68,7 @@ export function Payment({ stay }) {
     return <section className="stay-payment-details">
         <div className="payment-details-header flex align-center">
             <span className='go-back-arr'></span>
-            <h1>Request to book</h1>
+            <h1>Confirm and pay</h1>
         </div>
         <div className="reservation-details">
             <h2>Your trip</h2>
@@ -87,6 +86,7 @@ export function Payment({ stay }) {
             <div className='guests'>
                 <p>{reservation.guests.sum === 1 ? `${reservation.guests.sum} guest` : `${reservation.guests.sum} guests`}</p>
             </div>
+            <hr />
             {stay && <div className='payment'>
                 <div className='credit-card-details flex column'>
                     <div className='credit-card-header flex align-center space-between'>
@@ -130,7 +130,7 @@ export function Payment({ stay }) {
                             Israel
                         </div></>}
                 </div>
-
+                <hr />
                 <div className='required-and-phone'>
                     <h2>Required for your trip</h2>
                     <div className='required-phone-container'>
@@ -153,12 +153,12 @@ export function Payment({ stay }) {
                     </div>
 
                 </div>
-
+                <hr />
                 <div className='policy'>
                     <h2>Cancellation policy</h2>
                     <p>This reservation is non-refundable. <span className='learn-policy'>Learn more</span></p>
                 </div>
-
+                <hr />
                 <div className='ground-rules'>
                     <h2>Ground rules</h2>
                     <pre>We ask every guest to remember a
