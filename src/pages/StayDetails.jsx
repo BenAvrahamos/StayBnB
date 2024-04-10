@@ -103,17 +103,14 @@ export function StayDetails() {
                         </button>
                     </div>
                 </header>
-                    <StayGalleryPreview stay={stay} />
+                <StayGalleryPreview stay={stay} />
                 <main className="content-and-modal-container grid">
-
                     <section className="content">
-
                         <div className="place-info flex column">
                             <h1>Entire {stay.type} in {stay.loc.city}, {stay.loc.country}</h1>
                             <p>{stay.capacity} guests ・ {stay.bedrooms.length} bedrooms ・ {utilService.countBedsInBedrooms(stay)} beds ・ {stay.baths} baths</p>
-                            <p className="reviews-preview">{'★'.repeat(Math.ceil(utilService.calcScore(stay)))} {utilService.calcScore(stay)} ・ {stay.reviews.length} reviews</p>
+                            <p className="reviews-preview">{'★'.repeat(Math.round(utilService.calcScore(stay)))} {utilService.calcScore(stay)} ・ {stay.reviews.length} reviews</p>
                         </div>
-
                         <div className="host-info flex">
                             <img src={stay.host.imgUrl} className="host-img" />
                             <div className="flex column">
@@ -121,10 +118,8 @@ export function StayDetails() {
                                 <p>{stay.host.experience.isSuper ? 'Superhost ・' : ''}  {stay.host.experience.hostingTime > 1 ? `${stay.host.experience.hostingTime} years` : 'year'} hosting</p>
                             </div>
                         </div>
-
                         <div className="room-info">
                             <h2>Where you'll sleep</h2>
-
                             <div className="rooms-container grid">
                                 {stay.bedrooms.map(room => {
                                     const bedsLength = room.beds.length
@@ -141,7 +136,6 @@ export function StayDetails() {
                                 })}
                             </div>
                         </div>
-
                         <div className="amenity-info">
                             <h1>What this place offers: </h1>
 
@@ -157,13 +151,10 @@ export function StayDetails() {
                                 </li>
                             </ul>
                         </div>
-
                     </section>
-                        <ReservationModal stay={stay} params={params} updateParams={updateParams} />
+                    <ReservationModal stay={stay} params={params} updateParams={updateParams} />
                 </main>
-
                 <StayReviewsPreview stay={stay} />
-
             </section>
             }
         </>
