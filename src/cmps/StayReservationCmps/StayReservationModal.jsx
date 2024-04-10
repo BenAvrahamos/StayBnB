@@ -26,15 +26,15 @@ export function StayReservationModal({ stay }) {
             <h1>Price details</h1>
             <div className="accommodation flex space-between">
                 <p>Accommodation</p>
-                <p>${utilService.calcSumToPay(reservation, stay)}</p>
+                <p>${Math.ceil(utilService.calcSumToPay(reservation, stay))}</p>
             </div>
             <div className="fee flex space-between">
                 <p>Staybnb service fee</p>
-                <p>${(utilService.calcSumToPay(reservation, stay) * 0.14125).toFixed(2)}</p>
+                <p>${(Math.ceil(utilService.calcSumToPay(reservation, stay) * 0.14125))}</p>
             </div>
             <div className="total flex space-between">
                 <p>Total</p>
-                <p>${(utilService.calcSumToPay(reservation, stay) + (utilService.calcSumToPay(reservation, stay) * 0.14125)).toFixed(2)}</p>
+                <p>${Math.ceil((utilService.calcSumToPay(reservation, stay) + (utilService.calcSumToPay(reservation, stay) * 0.14125)))}</p>
             </div>
         </div>
     </div>
