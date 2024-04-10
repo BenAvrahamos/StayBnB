@@ -1,4 +1,4 @@
-export function DetailsNavWhenNoGallery() {
+export function DynamicLocalHeaderNav() {
     return <div className="dynamic-header-nav">
         <a href="#gallery">Photos</a>
         <a href="amenities">Amenities</a>
