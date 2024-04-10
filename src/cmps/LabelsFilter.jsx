@@ -18,14 +18,14 @@ export function LabelsFilter({ setStayFilter, filterBy }) {
 	}
 
 	return <>
-		<section className="index-filter-section grid align-center">
+		<section className="index-filter-section grid">
 			<section className="label-filter-section grid">
 				<SvgSavedCmp
 					folder={'labels'}
 					svgNames={filterLists.filterLabels}
 					handleChange={handleChange} />
 			</section>
-			<button className="flex align-center space-evenly" onClick={openFilterModal}>
+			<button className="flex align-center" onClick={openFilterModal}>
 				<img src="./src/assets/svg/filter.svg" /> <span>Filters</span></button>
 		</section>
 		{showFilterModal && <FilterModal

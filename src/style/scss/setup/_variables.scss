@@ -8,3 +8,29 @@ $gray4: #b0b0b0;
 $lightGray: #ebebeb;
 $btnHover: #f7f7f7;
 $siteColor: #ff385c;
+
+
+
+:root {
+    --grid-columns: 1;
+
+    @media (width > 550px) {
+        --grid-columns: 2;
+    }
+
+    @media (width > 950px) {
+        --grid-columns: 3;
+    }
+
+    @media (width > 1128px) {
+        --grid-columns: 4;
+    }
+
+    @media (width > 1640px) {
+        --grid-columns: 5;
+    }
+
+    @media (width > 1880px) {
+        --grid-columns: 6;
+    }
+}
