@@ -8,6 +8,7 @@ import { GuestFilter } from '../HeaderCmps/GuestFilter'
 import { store } from '../../store/store'
 import { GuestCount } from './DetailsGuestCount'
 import { stayService } from '../../services/stay.local.service'
+import { StayDetailsDateModal } from './StayDetailsDateModal'
 
 export function ReservationModal({ stay,params, updateParams }) {
 
@@ -20,7 +21,7 @@ export function ReservationModal({ stay,params, updateParams }) {
     const [modalType, openModalType] = useState()
 
     const ref = useRef(null)
-
+console.log(modalType);
 
     useEffect(() => {
         setNumOfDays(utilService.calcSumOfDays(params))
@@ -61,20 +62,20 @@ export function ReservationModal({ stay,params, updateParams }) {
         }
     }
     return (
-        <div className="reserve-modal">
+        <div className="reserve-modal" ref={ref}>
             <div className='container-price-selectors'>
                 <div className="price-logo flex align-center">
                     <h2>${stay.price} &nbsp;</h2><span>night</span>
                 </div>
                 <div className='selectors-container flex column'>
                     <div className="date-selectors flex">
-                        <div className='check-in flex'>
+                        <div className='check-in flex' onClick={() => openModalType('date')}>
                             <div className='txt flex column'>
                                 <label>Check-in</label>
                                 <div className='txt-date'>{getDate(+params.entryDate)}/{getMonth(+params.entryDate) + 1}/{getYear(+params.entryDate)}</div>
                             </div>
                         </div>
-                        <div className='checkout flex'>
+                        <div className='checkout flex' onClick={() => openModalType('date')}>
                             <div className='txt flex column'>
                                 <label>Checkout</label>
                                 <div className='txt-date'>{getDate(+params.exitDate)}/{getMonth(+params.exitDate) + 1}/{getYear(+params.exitDate)}</div>
@@ -89,6 +90,7 @@ export function ReservationModal({ stay,params, updateParams }) {
                         </div>
                         
                             {modalType === 'guest'  && <GuestCount params={params} updateParams={updateParams} headerFilterBy={headerFilterBy} openModalType={openModalType} />}
+                            {modalType === 'date'  && <StayDetailsDateModal params={params} updateParams={updateParams} headerFilterBy={headerFilterBy} openModalType={openModalType} />}
                       
                     </div>
                 </div>
