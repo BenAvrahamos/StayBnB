@@ -1,1 +1,3 @@
-export function Details
+export function DetailsNavWhenNoGallery() {
+    
+}
