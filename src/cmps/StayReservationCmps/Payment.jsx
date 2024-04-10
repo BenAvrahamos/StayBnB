@@ -11,7 +11,7 @@ import { useParams } from "react-router"
 export function Payment({ stay, params }) {
     const reservation = useSelector(storeState => storeState.reservationModule.reservation)
     const [isDownUpArrow, setIsDownUpArrow] = useState('arrow-down')
-    const [paymentMethod, changePaymentMethod] = useState(<><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-label="Credit card" role="img" focusable="false" style={{ display: 'block', height: '33px', width: '33px', fill: 'rgb(176, 176, 176)' }}><path d="M29 5a2 2 0 0 1 2 1.85V25a2 2 0 0 1-1.85 2H3a2 2 0 0 1-2-1.85V7a2 2 0 0 1 1.85-2H3zm0 6H3v14h26zm-3 10a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7-14H3v2h26z"></path></svg><p>Credit or debit card</p></>)
+    const [paymentMethod, changePaymentMethod] = useState(<><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-label="Credit card" role="img" focusable="false" style={{ display: 'block', height: '33px', width: '33px', fill: 'rgb(176, 176, 176)' }}><path d="M29 5a2 2 0 0 1 2 1.85V25a2 2 0 0 1-1.85 2H3a2 2 0 0 1-2-1.85V7a2 2 0 0 1 1.85-2H3zm0 6H3v14h26zm-3 10a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7-14H3v2h26z"></path></svg><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Credit or debit card</p></>)
     const [isCredit, setIsCredit] = useState(true)
     const [userOrderDetails, setUserOrderDetails] = useState({ card: { cardNum: '', expDate: '', cvv: '', zip: '' }, phone: '' })
     const [isPhone, setIsPhone] = useState(false)
@@ -69,45 +69,53 @@ export function Payment({ stay, params }) {
         setIsPhone(true)
     }
 
-    return <section className="stay-payment-details">
-        <div className="payment-details-header flex align-center">
-            <span className='go-back-arr'></span>
-            <h1>Confirm and pay</h1>
-        </div>
-        <div className="reservation-details">
+    return <section className="payment-details">
+
+        <header className="flex">
+            <button className='back-btn'></button>
+            <h1>Request to book</h1>
+        </header>
+
+
+        <article className="reservation-details">
             <h2>Your trip</h2>
-            <div className="dates-container flex space-between">
-                <h4>Dates</h4>
+
+            <div className='dates flex space-between'>
+                <div className="flex column">
+                    <h4>Dates</h4>
+                    <p>{utilService.timestampToDate(+params.entryDate)}-{utilService.timestampToDate(+params.exitDate)}</p>
+                </div>
                 <h4>Edit</h4>
             </div>
-            <div className='dates'>
-                <p>{utilService.timestampToDate(+params.entryDate)}-{utilService.timestampToDate(+params.exitDate)}</p>
-            </div>
-            <div className='guests-container flex space-between'>
-                <h4>Guests</h4>
+
+            <div className='guests flex space-between'>
+                <div className='flex column'>
+                    <h4>Guests</h4>
+                    <p>{stayService.guestCountStringForReservation(params)}</p>
+                </div>
                 <h4>Edit</h4>
             </div>
-            <div className='guests'>
-                <p>{stayService.guestCountStringForReservation(params)}</p>
-            </div>
-            <hr />
-            {stay && <div className='payment'>
-                <div className='credit-card-details flex column'>
-                    <div className='credit-card-header flex align-center space-between'>
-                        <h2>Pay with</h2>
-                        <div className='credit-card-imgs flex'>
-                            <img src="//a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_visa.0adea522bb26bd90821a8fade4911913.svg" alt="Visa Card" aria-hidden="true" />
-                            <img src="//a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_amex.84088b520ca1b3384cb71398095627da.svg" alt="American Express Card" aria-hidden="true" />
-                            <img src="//a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_mastercard.f18379cf1f27d22abd9e9cf44085d149.svg" alt="Mastercard" aria-hidden="true" />
-                            <img src="//a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_googlepay.3f786bc031b59575d24f504dfb859da0.svg" alt="Google Pay" aria-hidden="true" />
-                        </div>
+        </article>
+
+        {stay && <>
+            <article className='payment flex column'>
+
+                <div className='title flex align-center space-between'>
+                    <h2>Pay with</h2>
+                    <div className='credit-card-imgs flex'>
+                        <img src="//a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_visa.0adea522bb26bd90821a8fade4911913.svg" alt="Visa Card" aria-hidden="true" />
+                        <img src="//a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_amex.84088b520ca1b3384cb71398095627da.svg" alt="American Express Card" aria-hidden="true" />
+                        <img src="//a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_mastercard.f18379cf1f27d22abd9e9cf44085d149.svg" alt="Mastercard" aria-hidden="true" />
+                        <img src="//a0.muscache.com/airbnb/static/packages/assets/frontend/legacy-shared/svgs/payments/logo_googlepay.3f786bc031b59575d24f504dfb859da0.svg" alt="Google Pay" aria-hidden="true" />
                     </div>
-                    <div className='select-credit-debit flex space-between align-center' onClick={onChoosePaymentMethod}>
-                        <div className='container flex align-center'>
-                            {paymentMethod}
-                        </div>
+                </div>
+
+                <div className='payment-div flex column'>
+                    <button className='select-payment-method flex space-between align-center' onClick={onChoosePaymentMethod}>
+                        <div className='payment-method-container flex align-center'>{paymentMethod}</div>
                         <span className={isDownUpArrow}></span>
-                    </div>
+                    </button>
+
                     {isDownUpArrow === 'arrow-up' &&
                         <div className='choose-payment-method'>
                             <ul>
@@ -121,63 +129,65 @@ export function Payment({ stay, params }) {
                                 </li>
                             </ul>
                         </div>}
-                    {isCredit && <><div className='card-details flex column'>
-                        <input className="card-number" type="text" name="cardNum" pattern="[0-9]{16}" value={userOrderDetails.card.cardNum} placeholder="Card number" onChange={onUserOrderDetails} />
-                        <div className='flex expiration-cvv'>
+
+                    {isCredit && <>
+                        <div className='card-details grid'>
+                            <input className="card-number" type="text" name="cardNum" pattern="[0-9]{16}" value={userOrderDetails.card.cardNum} placeholder="Card number" onChange={onUserOrderDetails} />
                             <input className="expiration" pattern="\d{2}/\d{2}" name="expDate" type="text" value={userOrderDetails.card.expDate} placeholder="Expiration" onChange={onUserOrderDetails} />
                             <input className="cvv" type="text" pattern="\d{3,4}" name="cvv" placeholder="CVV" value={userOrderDetails.card.cvv} onChange={onUserOrderDetails} />
                         </div>
-                    </div>
-                        <input className='zip' name="zip" type='text' value={userOrderDetails.card.zip} placeholder="ZIP code" onChange={onUserOrderDetails} />
-                        <div className='country-region'>
-                            <p>Country/region</p>
-                            Israel
-                        </div></>}
-                </div>
-                <hr />
-                <div className='required-and-phone'>
-                    <h2>Required for your trip</h2>
-                    <div className='required-phone-container'>
-                        <div className='add-phone-header flex space-between'>
-                            <h4>Phone number</h4>
-                            <button onClick={onOpenAddPhone}>Add</button>
-                        </div>
-                        <p>Add and confirm your phone number to get trip updates.</p>
-                        {isPhone && <div className='phone-add flex column'>
-                            <div className='header-phone-add flex'>
-                                <span onClick={onCloseAddPhone}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false" style={{ display: 'block', fill: 'none', height: '16px', width: '16px', stroke: 'currentcolor', strokeWidth: '3', overflow: 'visible' }}><path d="m6 6 20 20M26 6 6 26"></path></svg></span>
-                                <h2>Add phone number</h2>
-                            </div>
-                            <div className='phone-modal-container flex column'>
-                                <p>We’ll send you trip updates and a text to verify this number.</p>
-                                <input type='tel' name="phone" value={userOrderDetails.phone} placeholder="Phone number" pattern="\d{3}-\d{3}-\d{4}" onChange={onUserOrderDetails} />
-                                <button className='add-phone' onClick={onCloseAddPhone}>Continue</button>
-                            </div>
-                        </div>}
-                    </div>
 
+                        <input className='zip' name="zip" type='text' value={userOrderDetails.card.zip} placeholder="ZIP code" onChange={onUserOrderDetails} />
+                        <input className='country' name="country" type='text' value={userOrderDetails.card.country || userOrderDetails.card.region} placeholder="Country/region" onChange={onUserOrderDetails} />
+                    </>}
                 </div>
-                <hr />
-                <div className='policy'>
-                    <h2>Cancellation policy</h2>
-                    <p>This reservation is non-refundable. <span className='learn-policy'>Learn more</span></p>
+            </article>
+
+            <article className='required-info'>
+                <h2>Required for your trip</h2>
+
+                <div className='flex space-between'>
+                    <div className='text flex column'>
+                        <h4>Phone number</h4>
+                        <p>Add and confirm your phone number to get trip updates.</p>
+                    </div>
+                    <button onClick={onOpenAddPhone}>Add</button>
                 </div>
-                <hr />
-                <div className='ground-rules'>
-                    <h2>Ground rules</h2>
-                    <pre>We ask every guest to remember a
-                        few simple things about what makes a great guest.</pre>
-                    <ul className='rules'>
-                        <li>Follow the house rules</li>
-                        <li>Treat your Host’s home like your own</li>
-                    </ul>
-                </div>
-                <div className='confirm-and-pay flex center' onClick={checkAndValidateOrder}>
-                    <span>Confirm and pay</span>
-                </div>
-            </div>
-            }
-        </div>
-        {stay && isOrder && <Order stay={stay} params={params} />}
+
+                {isPhone && <>
+                    <div className='overlay'></div>
+                    <div className='phone-modal flex column'>
+                        <button onClick={onCloseAddPhone}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false" style={{ display: 'block', fill: 'none', height: '16px', width: '16px', stroke: 'currentcolor', strokeWidth: '3', overflow: 'visible' }}><path d="m6 6 20 20M26 6 6 26"></path></svg></button>
+                        <h2>Add phone number</h2>
+                        <p>We’ll send you trip updates and a text to verify this number.</p>
+                        <input type='tel' name="phone" value={userOrderDetails.phone} placeholder="Phone number" pattern="\d{3}-\d{3}-\d{4}" onChange={onUserOrderDetails} />
+                        <button className='add-phone' onClick={onCloseAddPhone}>Continue</button>
+                        <p>We'll text you a code to confirm your number. Standard message and data rates apply.</p>
+                    </div>
+                </>}
+            </article>
+
+            <article className='cancellation-policy flex column'>
+                <h2>Cancellation policy</h2>
+                <p>This reservation is non-refundable. <span className='learn-policy'>Learn more</span></p>
+            </article>
+
+            <article className='ground-rules'>
+                <h2>Ground rules</h2>
+                <p>We ask every guest to remember a few simple things about what makes a great guest.</p>
+                <ul className='rules'>
+                    <li>Follow the house rules</li>
+                    <li>Treat your Host’s home like your own</li>
+                </ul>
+            </article>
+
+            <article className='confirmation flex column'>
+                <p>By selecting the button below, I agree to the <span>Host's House Rules</span>, <span>Ground rules for guests</span>, <span>Airbnb's Rebooking and Refund Policy</span>, and that Airbnb can <span>charge my payment method</span> if I’m responsible for damage.</p>
+                <button className='confirm-btn' onClick={checkAndValidateOrder}>Confirm and pay</button>
+            </article>
+
+            {stay && isOrder && <Order stay={stay} params={params} />}
+        </>}
+
     </section>
 }
