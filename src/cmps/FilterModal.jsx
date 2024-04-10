@@ -9,9 +9,12 @@ import { CheckboxGroup } from "./HelperCmps/CheckboxGroup"
 import { Accordion } from "./HelperCmps/Accordion"
 import { SwitchCmp } from "./HelperCmps/SwitchCmp"
 
+
 export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
     const [selected, setSelected] = useState(filterBy)
     const [filteredStays, setFilteredStays] = useState(stayService.query(selected))
+
+
 
     useEffect(() => {
         setFilteredStays(stayService.query(selected))
