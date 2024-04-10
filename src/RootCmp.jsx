@@ -50,7 +50,7 @@ export function RootCmp() {
         <AppHeader dynamicPageLayOut={dynamicPageLayOut} SetDynamicPageLayOut={SetDynamicPageLayOut} />
 
         <Routes>
-          <Route path='/' element={<StayIndex dynamicPageLayOut={dynamicPageLayOut} />} />
+          <Route path='/' element={<StayIndex />} />
           <Route path='/:stayId' element={<StayDetails />} />
           <Route path='/:stayId/payment' element={<StayPayment />} />
         </Routes>
