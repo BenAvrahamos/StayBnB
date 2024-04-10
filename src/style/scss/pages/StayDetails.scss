@@ -1,4 +1,6 @@
 .stay-details {
+    margin-block-end: 4rem;
+
     header {
         margin-block: 0 1rem;
 
@@ -150,6 +152,8 @@
 
 @media (width > 742px) {
     .stay-details {
+        margin-block-end: 2rem;
+
         .content-and-modal-container {
             grid-template-columns: minmax(1px, 2fr) minmax(1px, 1fr);
             .content {

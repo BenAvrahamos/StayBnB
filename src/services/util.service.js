@@ -13,6 +13,7 @@ export const utilService = {
     generateStays,
     calcSumToPay,
     timestampToDate,
+    timestampsToShortDates,
     calcSumOfDays
 }
 
@@ -82,21 +83,14 @@ function debounce(func, timeout = 300) {
 
 function generateStay() {
     let currentDate = new Date()
-
     let minDate = new Date(currentDate.getTime() + 7 * 24 * 60 * 60 * 1000)
-
     let maxDate = new Date(currentDate.getTime() + 6 * 30 * 24 * 60 * 60 * 1000)
-
     let rangeInDays = (maxDate.getTime() - minDate.getTime()) / (24 * 60 * 60 * 1000)
-
     let randomDays = Math.floor(Math.random() * (rangeInDays + 1))
-
     let entryDate = new Date(minDate.getTime() + randomDays * 24 * 60 * 60 * 1000)
-
     let exitDate = new Date(entryDate.getTime() + 7 * 24 * 60 * 60 * 1000)
 
     entryDate.setUTCHours(0, 0, 0, 0)
-
     exitDate.setUTCHours(0, 0, 0, 0)
 
     return { entryDate: entryDate.getTime(), exitDate: exitDate.getTime() }
@@ -107,7 +101,7 @@ function generateStays() {
     for (let i = 0; i < 5; i++) {
         stays.push(generateStay())
     }
-  
+
 }
 
 function calcSumToPay(params, stay) {
@@ -118,13 +112,31 @@ function calcSumToPay(params, stay) {
 }
 
 function timestampToDate(dateTimestamp) {
-    const date = new Date(dateTimestamp);
-    const dayOfDate = date.toLocaleString('en-US', { weekday: 'short' });
-    const dateOfDate = date.getDate();
-    const monthName = date.toLocaleString('en-US', { month: 'short' });
-    const yearOfDate = date.getFullYear();
-    let str = dayOfDate + ', ' + dateOfDate + ' ' + monthName + ' ' + yearOfDate;
-    return str;
+    const date = new Date(dateTimestamp)
+    const dayOfDate = date.toLocaleString('en-US', { weekday: 'short' })
+    const dateOfDate = date.getDate()
+    const monthName = date.toLocaleString('en-US', { month: 'short' })
+    const yearOfDate = date.getFullYear()
+    let str = dayOfDate + ', ' + dateOfDate + ' ' + monthName + ' ' + yearOfDate
+    return str
+}
+
+function timestampsToShortDates(entryTimestamp, exitTimestamp) {
+    const entry = new Date(entryTimestamp)
+    const exit = new Date(exitTimestamp)
+
+    const entryDate = entry.getDate()
+    const exitDate = exit.getDate()
+    const entryMonth = entry.toLocaleString('en-US', { month: 'short' })
+    const exitMonth = exit.toLocaleString('en-US', { month: 'short' })
+    const entryYear = entry.getFullYear()
+    const exitYear = exit.getFullYear()
+
+    var str = ''
+    if (entryYear !== exitYear) str = entryDate + ' ' + entryMonth + ' ' + entryYear + '-' + exitDate + ' ' + exitMonth + ' ' + exitYear
+    else if (entryMonth === exitMonth) str = entryMonth + ' ' + entryDate + '-' + exitDate
+    else str = entryDate + ' ' + entryMonth + '-' + exitDate + ' ' + exitMonth
+    return str
 }
 
 function calcSumOfDays(params) {
