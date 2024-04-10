@@ -9,8 +9,7 @@ import { store } from '../../store/store'
 import { GuestCount } from './DetailsGuestCount'
 import { stayService } from '../../services/stay.local.service'
 
-
-export function StayReserveModal({ stay,params, updateParams }) {
+export function ReservationModal({ stay,params, updateParams }) {
 
     const headerFilterBy = useSelector(storeState => storeState.stayModule.headerFilterBy)
     const [numOfDays, setNumOfDays] = useState(0)
@@ -57,7 +56,8 @@ export function StayReserveModal({ stay,params, updateParams }) {
                 infants: params.infants || ''
             }).toString();
     
-            navigate(`/${stay._id}/payment?${queryParams}`)
+            navigate(`/${stay._id}/payment`)
+            // navigate(`/${stay._id}/payment?${queryParams}`)  // goes into query params instead of search params (and then no navigation occurs)
         }
     }
     return (

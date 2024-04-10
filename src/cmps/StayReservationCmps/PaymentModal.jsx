@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux"
 import { utilService } from "../../services/util.service"
 
-export function StayReservationModal({ stay, params }) {
+export function PaymentModal({ stay, params }) {
 
     const reservation = useSelector(storeState => storeState.reservationModule.reservation)
 
@@ -12,7 +12,7 @@ export function StayReservationModal({ stay, params }) {
         return avgScore
     }
 
-    return <div className="stay-reservation-modal flex column">
+    return <div className="stay-payment-modal flex column">
         <div className="stay-details-part flex align-center">
             <img src={stay.imgUrls[0]} />
             <div className="text-details">
