@@ -4,11 +4,9 @@ import { format, getDay } from 'date-fns'
 import { useState } from 'react'
 import { utilService } from '../../services/util.service'
 
-export function OrderConfirmation({ stay,params }) {
+export function OrderConfirmation({ stay, params }) {
     const [isShownModal, setIsShownModal] = useState(true)
     const reservation = useSelector(storeState => storeState.reservationModule.reservation)
-
- 
 
     function onCloseModal(e) {
         e.stopPropagation()
@@ -73,7 +71,7 @@ export function OrderConfirmation({ stay,params }) {
 
                             <div className='rooms flex column'>
                                 <p>Total Rooms:</p>
-                                <h5>ADD NUMBER OF ROOMS HERE</h5>
+                                <h5>{stay.bedrooms.length}</h5>
                             </div>
                         </div>
 
