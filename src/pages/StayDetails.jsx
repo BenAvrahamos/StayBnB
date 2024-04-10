@@ -1,5 +1,5 @@
 import { useParams } from "react-router"
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { stayService } from "../services/stay.local.service"
 import { useLocation } from 'react-router-dom'
 import { useSearchParams } from 'react-router-dom'
@@ -12,7 +12,6 @@ import { utilService } from "../services/util.service"
 
 export function StayDetails() {
     const [searchParams, setSearchParams] = useSearchParams()
-
     const location = useLocation()
     const queryParams = new URLSearchParams(location.search)
 
@@ -61,8 +60,6 @@ export function StayDetails() {
         setSearchParams(params)
     }, [params])
 
-
-
     async function loadStay() {
         try {
             const stay = await stayService.getById(stayId)
@@ -93,7 +90,6 @@ export function StayDetails() {
     return (
         <>
             {stay && <section className="stay-details">
-
                 <header className="flex space-between align-center">
                     <h1>{stay.summary}</h1>
                     <div className="header-btns flex">
@@ -107,9 +103,9 @@ export function StayDetails() {
                         </button>
                     </div>
                 </header>
-
-                <StayGalleryPreview stay={stay} />
-
+                <div className="gallery-cmp-container" ref={gallery}>
+                    <StayGalleryPreview stay={stay} />
+                </div>
                 <main className="content-and-modal-container grid">
 
                     <section className="content">
@@ -165,11 +161,11 @@ export function StayDetails() {
                         </div>
 
                     </section>
-
-                    <ReservationModal stay={stay} params={params} updateParams={updateParams} />
-
+                    <div className="modal-of-details" ref={modal}>
+                        <ReservationModal stay={stay} params={params} updateParams={updateParams} />
+                    </div>
                 </main>
-                
+
                 <StayReviewsPreview stay={stay} />
 
             </section>
