@@ -8,7 +8,7 @@ import './style/main.css'
 import { StayIndex } from './pages/StayIndex'
 import { StayDetails } from './pages/StayDetails'
 import { AppHeader } from './cmps/HeaderCmps/AppHeader'
-import { StayReservation } from './pages/StayReservation'
+import { StayPayment } from './pages/StayPayment'
 
 export function RootCmp() {
 
@@ -16,9 +16,7 @@ export function RootCmp() {
     header: { compact: false, fixed:   false },
     fixedFilterLabel: false,
     listMargin: false
-  });
-
-
+  })
 
   // useEffect(() => {
   //   const handleScroll = () => {
@@ -54,7 +52,7 @@ export function RootCmp() {
         <Routes>
           <Route path='/' element={<StayIndex dynamicPageLayOut={dynamicPageLayOut} />} />
           <Route path='/:stayId' element={<StayDetails />} />
-          <Route path='/:stayId/payment' element={<StayReservation />} />
+          <Route path='/:stayId/payment' element={<StayPayment />} />
         </Routes>
       </Router>
     </Provider>
