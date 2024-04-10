@@ -32,17 +32,17 @@ export function PaymentModal({ stay, params }) {
 
             <div className="accommodation flex space-between">
                 <p>Accommodation</p>
-                <p>${Math.ceil(utilService.calcSumToPay(params, stay))}</p>
+                <p>${Math.round(utilService.calcSumToPay(params, stay))}</p>
             </div>
 
             <div className="fee flex space-between">
                 <p>Staybnb service fee</p>
-                <p>${(Math.ceil(utilService.calcSumToPay(params, stay) * 0.14125))}</p>
+                <p>${(Math.round(utilService.calcSumToPay(params, stay) * 0.14125))}</p>
             </div>
 
             <div className="total flex space-between">
                 <p>Total</p>
-                <p>${Math.ceil((utilService.calcSumToPay(params, stay) + (utilService.calcSumToPay(params, stay) * 0.14125)))}</p>
+                <p>${Math.round((utilService.calcSumToPay(params, stay) + (utilService.calcSumToPay(params, stay) * 0.14125)))}</p>
             </div>
         </div>
     </div>
