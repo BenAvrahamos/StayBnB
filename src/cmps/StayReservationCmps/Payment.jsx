@@ -28,6 +28,8 @@ export function Payment({ stay, params }) {
             userOrderDetails.phone) {
 
             setIsOrder(true)
+
+            // make order and send to OrderConfirmation cmp
         }
         return
     }

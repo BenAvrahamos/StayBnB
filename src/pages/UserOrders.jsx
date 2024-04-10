@@ -4,7 +4,7 @@ import { loadOrders } from '../store/actions/order.actions.js'
 import { useEffect } from 'react'
 
 
-export function OrderList() {
+export function UserOrders() {
     const { orders } = useSelector(storeState => storeState.orderModule)
 
     useEffect(() => {

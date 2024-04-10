@@ -3,11 +3,6 @@ import { useSelector } from 'react-redux'
 import { useSearchParams } from 'react-router-dom'
 import { useState, useEffect, useRef } from "react"
 
-
-
-
-
-
 import { HeaderFilter } from "./HeaderFilter"
 import { DemoDataService } from "../../services/demoData.service"
 import { stayService } from "../../services/stay.local.service"
@@ -21,7 +16,7 @@ export function AppHeader({ dynamicPageLayOut, SetDynamicPageLayOut }) {
     const [modalType, setModalType] = useState()
 
 function onNavigate(){
-    navigate('/order')
+    navigate('/')
 }
 
     function goHome() {
