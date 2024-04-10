@@ -1,49 +1,58 @@
-.stay-reservation {
-    max-width: 1280px;
-    gap: 4.6511%;
+@media (width > 1280px) {
+    .stay-reservation {
+        margin-inline: 12.6386%;
+        padding-inline: 4.6701%;
+        gap: rem(80px);
 
-    .stay-reservation-modal {
-        padding: rem(24px);
-        border: 1px solid $gray3;
-        height: max-content;
-
-        hr {
-            margin: 0;
+        &>* {
+            border-radius: rem(12px);
         }
 
-        .stay-details-part {
-            padding-block-end: rem(24px);
+        .stay-reservation-modal {
+            padding: rem(24px);
+            border: 1px solid $gray3;
+            height: max-content;
+            flex-basis: rem(465.66px);
 
-            img {
-                object-fit: cover;
-                width: rem(104px);
-                height: rem(104px);
-                border-radius: rem(10px);
+            hr {
+                margin: 0;
             }
 
-            .text-details {
-                padding-inline-start: 1rem;
+            .stay-details-part {
+                padding-block-end: rem(24px);
 
-                h2,
-                p {
-                    margin-block-end: rem(5px);
+                img {
+                    object-fit: cover;
+                    width: rem(104px);
+                    height: rem(104px);
+                    border-radius: rem(10px);
+                }
+
+                .text-details {
+                    padding-inline-start: 1rem;
+
+                    h2,
+                    p {
+                        margin-block-end: rem(5px);
+                    }
+                }
+            }
+
+            .price-details-part {
+                h1 {
+                    padding-block: rem(24px);
+                    margin: 0;
+                }
+
+                div:not(:last-child) {
+                    padding-block-end: 1rem;
                 }
             }
         }
 
-        .price-details-part {
-            h1 {
-                padding-block: rem(24px);
-                margin: 0;
-            }
-
-            div:not(:last-child) {
-                padding-block-end: 1rem;
-            }
-        }
     }
-
 }
+
 
 @media (width > 742px) {
     .stay-reservation {
