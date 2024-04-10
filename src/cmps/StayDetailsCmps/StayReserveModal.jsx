@@ -11,6 +11,7 @@ import { stayService } from '../../services/stay.local.service'
 
 
 export function StayReserveModal({ stay,params, updateParams }) {
+
     const headerFilterBy = useSelector(storeState => storeState.stayModule.headerFilterBy)
     const [numOfDays, setNumOfDays] = useState(0)
     const [fee, setFee] = useState(0)
@@ -23,7 +24,7 @@ export function StayReserveModal({ stay,params, updateParams }) {
 
 
     useEffect(() => {
-        setNumOfDays(utilService.calcSumOfDays(reservation))
+        setNumOfDays(utilService.calcSumOfDays(params))
     }, [])
 
     useEffect(() => {
@@ -45,15 +46,20 @@ export function StayReserveModal({ stay,params, updateParams }) {
     }, [ref])
 
 
-
     function validateAndMoveToPayment() {
-        if (reservation.checkIn && reservation.checkout &&
-            (reservation.guests.adults || reservation.guests.children || reservation.guests.infants)) {
-            navigate(`/${stay._id}/payment`)
+        if (params.entryDate && params.exitDate &&
+            (params.adults || params.children || params.infants)) {
+            const queryParams = new URLSearchParams({
+                entryDate: params.entryDate,
+                exitDate: params.exitDate,
+                adults: params.adults || '',
+                children: params.children || '',
+                infants: params.infants || ''
+            }).toString();
+    
+            navigate(`/${stay._id}/payment?${queryParams}`)
         }
-        return
     }
-
     return (
         <div className="reserve-modal">
             <div className='container-price-selectors'>
@@ -65,20 +71,20 @@ export function StayReserveModal({ stay,params, updateParams }) {
                         <div className='check-in flex'>
                             <div className='txt flex column'>
                                 <label>Check-in</label>
-                                <div className='txt-date'>{getDate(reservation.checkIn)}/{getMonth(reservation.checkIn) + 1}/{getYear(reservation.checkIn)}</div>
+                                <div className='txt-date'>{getDate(+params.entryDate)}/{getMonth(+params.entryDate) + 1}/{getYear(+params.entryDate)}</div>
                             </div>
                         </div>
                         <div className='checkout flex'>
                             <div className='txt flex column'>
                                 <label>Checkout</label>
-                                <div className='txt-date'>{getDate(reservation.checkout)}/{getMonth(reservation.checkout) + 1}/{getYear(reservation.checkout)}</div>
+                                <div className='txt-date'>{getDate(+params.exitDate)}/{getMonth(+params.exitDate) + 1}/{getYear(+params.exitDate)}</div>
                             </div>
                         </div>
                     </div>
                     <div  ref={ref} className='guest-selector flex column' onClick={() => openModalType('guest')}>
                         <label className='guests'>Guests</label>
                         <div className='guest-container flex space-between'>
-                            {stayService.guestCountString(headerFilterBy)}
+                            {stayService.guestCountStringForReservation(params)}
                             {currArrow && <span className={`arrow-${currArrow}`}></span>}
                         </div>
                         
@@ -87,7 +93,7 @@ export function StayReserveModal({ stay,params, updateParams }) {
                     </div>
                 </div>
                 <div className='reserve-btn flex center' onClick={() => validateAndMoveToPayment()}><span >Reserve</span></div>
-                {reservation.checkIn && reservation.checkout && <p className='charged-p'>You won't be charged yet.</p>}
+                {+params.entryDate  && +params.exitDate && <p className='charged-p'>You won't be charged yet.</p>}
             </div>
             <div className='price-calc flex space-between'>
                 <span>${stay.price} X {numOfDays === 1 ? `${numOfDays} night` : `${numOfDays} nights`}</span>

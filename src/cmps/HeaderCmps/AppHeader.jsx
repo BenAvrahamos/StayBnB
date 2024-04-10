@@ -37,7 +37,6 @@ export function AppHeader({ dynamicPageLayOut, SetDynamicPageLayOut }) {
     return <section className={`app-header-container flex column center 
     ${dynamicPageLayOut.header.fixed ? 'fixed-header' : ''}
     ${dynamicPageLayOut.header.expanded ? 'expanded' : ''}`}>
-
         <section className="expanded-header flex space-between align-center">
 
             <div className="logo-section" onClick={goHome}>
@@ -55,7 +54,7 @@ export function AppHeader({ dynamicPageLayOut, SetDynamicPageLayOut }) {
                 </nav>
 
                 <div className="compact-header">
-                    <div onClick={() => { setModalType(modalType === 'map' ? null : 'map')}} className="map">Anywhere</div>
+                    <div onClick={() => { setModalType(modalType === 'map' ? null : 'map'); SetDynamicPageLayOut(false); }} className="map">Anywhere</div>
                     <div onClick={() => setModalType(modalType === 'check-in' ? null : 'check-in')} className="calendar">Any week</div>
                     <div onClick={() => setModalType(modalType === 'guest' ? null : 'guest')} className="guests">Add guests <div className="search-btn"></div> </div>
                 </div>

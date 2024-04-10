@@ -4,8 +4,11 @@ import { useSelector } from 'react-redux'
 import { stayService } from '../../services/stay.local.service'
 import { Order } from './Order'
 import { utilService } from '../../services/util.service'
+import { useParams } from "react-router"
 
-export function Payment({ stay }) {
+
+
+export function Payment({ stay, params }) {
     const reservation = useSelector(storeState => storeState.reservationModule.reservation)
     const [isDownUpArrow, setIsDownUpArrow] = useState('arrow-down')
     const [paymentMethod, changePaymentMethod] = useState(<><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-label="Credit card" role="img" focusable="false" style={{ display: 'block', height: '33px', width: '33px', fill: 'rgb(176, 176, 176)' }}><path d="M29 5a2 2 0 0 1 2 1.85V25a2 2 0 0 1-1.85 2H3a2 2 0 0 1-2-1.85V7a2 2 0 0 1 1.85-2H3zm0 6H3v14h26zm-3 10a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7-14H3v2h26z"></path></svg><p>Credit or debit card</p></>)
@@ -14,6 +17,7 @@ export function Payment({ stay }) {
     const [isPhone, setIsPhone] = useState(false)
     const [isOrder, setIsOrder] = useState(false)
 
+
     function checkAndValidateOrder(e) {
         e.stopPropagation()
         if (userOrderDetails.card.cardNum &&
@@ -21,7 +25,7 @@ export function Payment({ stay }) {
             userOrderDetails.card.cvv &&
             userOrderDetails.card.zip &&
             userOrderDetails.phone) {
-            
+
             setIsOrder(true)
         }
         return
@@ -77,14 +81,14 @@ export function Payment({ stay }) {
                 <h4>Edit</h4>
             </div>
             <div className='dates'>
-                <p>{utilService.timestampToDate(reservation.checkIn)}-{utilService.timestampToDate(reservation.checkout)}</p>
+                <p>{utilService.timestampToDate(+params.entryDate)}-{utilService.timestampToDate(+params.exitDate)}</p>
             </div>
             <div className='guests-container flex space-between'>
                 <h4>Guests</h4>
                 <h4>Edit</h4>
             </div>
             <div className='guests'>
-                <p>{reservation.guests.sum === 1 ? `${reservation.guests.sum} guest` : `${reservation.guests.sum} guests`}</p>
+                <p>{stayService.guestCountStringForReservation(params)}</p>
             </div>
             <hr />
             {stay && <div className='payment'>
@@ -174,6 +178,6 @@ export function Payment({ stay }) {
             </div>
             }
         </div>
-        {stay && isOrder && <Order stay={stay} />}
+        {stay && isOrder && <Order stay={stay} params={params} />}
     </section>
 }

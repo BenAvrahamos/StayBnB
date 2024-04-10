@@ -110,8 +110,9 @@ function generateStays() {
   
 }
 
-function calcSumToPay(reservation, stay) {
-    let diff = reservation.checkout - reservation.checkIn
+function calcSumToPay(params, stay) {
+    console.log(params);
+    let diff = params.exitDate - params.entryDate
     diff = diff / (1000 * 60 * 60 * 24)
     return diff * stay.price
 }
@@ -126,9 +127,9 @@ function timestampToDate(dateTimestamp) {
     return str;
 }
 
-function calcSumOfDays(reservation) {
-    const date1 = reservation.checkIn
-    const date2 = reservation.checkout
+function calcSumOfDays(params) {
+    const date1 = params.entryDate
+    const date2 = params.exitDate
     const differenceInMilliseconds = date2 - date1
     const differenceInDays = Math.ceil(differenceInMilliseconds / (24 * 60 * 60 * 1000))
     return differenceInDays

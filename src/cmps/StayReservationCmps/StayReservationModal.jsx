@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux"
 import { utilService } from "../../services/util.service"
 
-export function StayReservationModal({ stay }) {
+export function StayReservationModal({ stay, params }) {
 
     const reservation = useSelector(storeState => storeState.reservationModule.reservation)
 
@@ -11,7 +11,7 @@ export function StayReservationModal({ stay }) {
         const avgScore = totalSum / reviews.length
         return avgScore
     }
-    console.log(stay)
+  
     return <div className="stay-reservation-modal flex column">
         <div className="stay-details-part flex align-center">
             <img src={stay.imgUrls[0]} />
@@ -30,15 +30,15 @@ export function StayReservationModal({ stay }) {
             <h1>Price details</h1>
             <div className="accommodation flex space-between">
                 <p>Accommodation</p>
-                <p>${Math.ceil(utilService.calcSumToPay(reservation, stay))}</p>
+                <p>${Math.ceil(utilService.calcSumToPay(params, stay))}</p>
             </div>
             <div className="fee flex space-between">
                 <p>Staybnb service fee</p>
-                <p>${(Math.ceil(utilService.calcSumToPay(reservation, stay) * 0.14125))}</p>
+                <p>${(Math.ceil(utilService.calcSumToPay(params, stay) * 0.14125))}</p>
             </div>
             <div className="total flex space-between">
                 <p>Total</p>
-                <p>${Math.ceil((utilService.calcSumToPay(reservation, stay) + (utilService.calcSumToPay(reservation, stay) * 0.14125)))}</p>
+                <p>${Math.ceil((utilService.calcSumToPay(params, stay) + (utilService.calcSumToPay(params, stay) * 0.14125)))}</p>
             </div>
         </div>
     </div>

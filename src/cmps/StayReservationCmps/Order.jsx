@@ -4,9 +4,11 @@ import { format, getDay } from 'date-fns'
 import { useState } from 'react'
 import { utilService } from '../../services/util.service'
 
-export function Order({ stay }) {
+export function Order({ stay,params }) {
     const [isShownModal, setIsShownModal] = useState(true)
     const reservation = useSelector(storeState => storeState.reservationModule.reservation)
+
+ 
 
     function onCloseModal(e) {
         e.stopPropagation()
@@ -46,12 +48,12 @@ export function Order({ stay }) {
                         <div className='dates grid'>
                             <div className='flex column'>
                                 <p>Check-in:</p>
-                                <h5>{utilService.timestampToDate(reservation.checkIn)}</h5>
+                                <h5>{utilService.timestampToDate(+params.entryDate)}</h5>
                             </div>
 
                             <div className='flex column'>
                                 <p>Check-out:</p>
-                                <h5>{utilService.timestampToDate(reservation.checkout)}</h5>
+                                <h5>{utilService.timestampToDate(+params.exitDate)}</h5>
                             </div>
                         </div>
 
@@ -62,10 +64,10 @@ export function Order({ stay }) {
                                     <h5>{reservation.guests.sum}</h5>
                                 </div>
                                 <ul>
-                                    {reservation.guests.adults > 0 && <li>{reservation.guests.adults === 1 ? `${reservation.guests.sum} adult` : `${reservation.guests.sum} adults`}</li>}
-                                    {reservation.guests.children > 0 && <li>{reservation.guests.children === 1 ? `${reservation.guests.sum} child` : `${reservation.guests.sum} children`}</li>}
-                                    {reservation.guests.infants > 0 && <li>{reservation.guests.infants === 1 ? `${reservation.guests.sum} infant` : `${reservation.guests.sum} infants`}</li>}
-                                    {reservation.guests.pets > 0 && <li>{reservation.guests.pets === 1 ? `${reservation.guests.sum} pet` : `${reservation.guests.sum} pets`}</li>}
+                                    {+params.adults > 0 && <li>{+params.adults === 1 ? `${reservation.guests.sum} adult` : `${reservation.guests.sum} adults`}</li>}
+                                    {+params.children > 0 && <li>{+params.children === 1 ? `${reservation.guests.sum} child` : `${reservation.guests.sum} children`}</li>}
+                                    {+params.infants > 0 && <li>{+params.infants === 1 ? `${reservation.guests.sum} infant` : `${reservation.guests.sum} infants`}</li>}
+                                    {+params.pets > 0 && <li>{+params.pets === 1 ? `${reservation.guests.sum} pet` : `${reservation.guests.sum} pets`}</li>}
                                 </ul>
                             </div>
 
@@ -78,16 +80,16 @@ export function Order({ stay }) {
                         <div className='price flex column'>
                             <div className='flex space-between'>
                                 <p>Price:</p>
-                                <p>${stay.price} X {utilService.calcSumOfDays(reservation)} nights &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <span>${utilService.calcSumToPay(reservation, stay)}</span></p>
+                                <p>${stay.price} X {utilService.calcSumOfDays(params)} nights &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <span>${utilService.calcSumToPay(params, stay)}</span></p>
                             </div>
                             <div className='flex space-between'>
                                 <p>Service fee:</p>
-                                <p>${utilService.calcSumToPay(reservation, stay) * 0.14125}</p>
+                                <p>${utilService.calcSumToPay(params, stay) * 0.14125}</p>
                             </div>
                             <div className='flex space-between'>
                                 <h4>Total:</h4>
-                                <p><span>${utilService.calcSumToPay(reservation, stay) + (utilService.calcSumToPay(reservation, stay) * 0.14125)}</span></p>
+                                <p><span>${utilService.calcSumToPay(params, stay) + (utilService.calcSumToPay(params, stay) * 0.14125)}</span></p>
                             </div>
                         </div>
                     </div>

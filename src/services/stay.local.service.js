@@ -20,7 +20,8 @@ export const stayService = {
     getDefaultHeaderFilter,
     mergeFilters,
     guestCountString,
-    createDemoStay
+    createDemoStay,
+    guestCountStringForReservation
 }
 
 
@@ -289,7 +290,7 @@ function createDemoStay(stays) {
 
 function mergeFilters(mainFilter, headerFilter) {
     const { label } = mainFilter
-    const {loc, guestCount, entryDate, exitDate } = headerFilter
+    const { loc, guestCount, entryDate, exitDate } = headerFilter
     const mergeFilter = { ...loc, label, ...guestCount, entryDate, exitDate }
     return mergeFilter
 
@@ -302,6 +303,8 @@ function guestCountString(headerFilterBy) {
         guests = guestsCount === 1 ? '1 guest' : `${guestsCount} guests`
     }
 
+
+
     const infants = headerFilterBy.guestCount.infants > 0 ? `${headerFilterBy.guestCount.infants} infants` : ''
     const pets = headerFilterBy.guestCount.pets > 0 ? `${headerFilterBy.guestCount.pets} pets` : ''
 
@@ -313,6 +316,28 @@ function guestCountString(headerFilterBy) {
 
     return parts.join(', ')
 }
+
+
+function guestCountStringForReservation(params) {
+    const guestsCount = +params.adults + +params.children
+    let guests = ''
+    if (guestsCount > 0) {
+        guests = guestsCount === 1 ? '1 guest' : `${guestsCount} guests`
+    }
+
+
+    const infants = params.infants > 0 ? `${params.infants} infants` : ''
+    const pets = params.pets > 0 ? `${params.pets} pets` : ''
+
+    const parts = [guests, infants, pets].filter(Boolean)
+
+    if (parts.length === 0) {
+        return "Add guests"
+    }
+
+    return parts.join(', ')
+}
+
 
 
 // TEST DATA
