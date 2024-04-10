@@ -97,7 +97,6 @@ export function StayReserveModal({ stay,params, updateParams }) {
                 <span>Staybnb service fee</span>
                 <span>${fee}</span>
             </div>}
-            <hr />
             {fee > 0 && <div className='sum-total flex space-between'>
                 <span>Total</span>
                 <span>${(stay.price * numOfDays + fee).toFixed(2)}</span>
