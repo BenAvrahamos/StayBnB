@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom'
 import { StayPreview } from './StayPreview.jsx'
 import { store } from '../store/store.js'
 
-import { setStayHeaderFilter, setStayFilter} from '../store/actions/stay.actions.js'
+import { setStayHeaderFilter, setStayFilter } from '../store/actions/stay.actions.js'
 import { stayService } from '../services/stay.local.service.js'
 
-export function StayList({ stays, filterBy }) {
+export function StayList({ stays, filterBy, isFixed }) {
     const { headerFilterBy } = store.getState().stayModule
     const { loc, guestCount, entryDate, exitDate } = headerFilterBy
 
@@ -34,12 +34,12 @@ export function StayList({ stays, filterBy }) {
         .join('&')
 
     return (
-        <ul onClick={clearFilter} className="stay-list grid">
+        <ul onClick={clearFilter} className={`stay-list grid ${isFixed ? 'fixed-list' : ''}`}>
             {stays.map(stay => (
                 <li key={stay._id}>
                     <Link to={{
                         pathname: `/${stay._id}`,
-                        search: queryParams 
+                        search: queryParams
                     }}>
                         <StayPreview
                             stay={stay}

@@ -6,11 +6,11 @@ import { FilterModal } from './FilterModal'
 import { filterLists } from "../services/filterLists.service"
 
 
-export function LabelsFilter({ setStayFilter, filterBy }) {
+export function LabelsFilter({ setStayFilter, filterBy, isFixed }) {
 	const [showFilterModal, setShowFilter] = useState(false)
 
 	function handleChange(label) {
-		setStayFilter({ ...filterBy, label : [label]})
+		setStayFilter({ ...filterBy, label: [label] })
 	}
 
 	const openFilterModal = () => {
@@ -18,7 +18,7 @@ export function LabelsFilter({ setStayFilter, filterBy }) {
 	}
 
 	return <>
-		<section className="index-filter-section grid align-center">
+		<section className={`index-filter-section grid align-center ${isFixed ? 'fixed-label-filter' : ''}`}>
 			<section className="label-filter-section grid">
 				<SvgSavedCmp
 					folder={'labels'}
