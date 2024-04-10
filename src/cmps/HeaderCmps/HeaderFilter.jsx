@@ -55,7 +55,7 @@ export function HeaderFilter({ modalType, setModalType, }) {
 
     return <section ref={ref} className={`header-filter flex ${modalType ? 'grey' : ''}`}>
         <div className={`destination ${modalType === 'map' ? 'selected' : ''}`} onClick={() => setModalType(modalType === 'map' ? null : 'map')}>
-            Where<span className='grayTxt'>{headerFilterBy.loc.region ? headerFilterBy.loc.region : "search destinations"}</span>
+            Where<span  className=' grayTxt'>{headerFilterBy.loc.region ? headerFilterBy.loc.region : "search destinations"}</span>
         </div>
 
         <div className={`dates ${modalType === 'check-in' ? 'selected' : ''}`} onClick={() => setModalType(modalType === 'check-in' ? null : 'check-in')}>

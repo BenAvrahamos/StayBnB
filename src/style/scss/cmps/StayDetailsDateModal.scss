@@ -1,43 +1,36 @@
-.date-filter {
+.stay-details-date-filter {
     position: absolute;
-    top: 120%;
+    top: -130%;
+    left: -142%;
     box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.15);
-    width: 53rem;
+    width: 50rem;
     height: 31rem;
     border-radius: 1.5em;
     background-color: white;
     z-index: 1;
     display: flex;
-    justify-content: center;
+    justify-content: end;
     align-content: center;
-}
+    flex-direction: column;
 
-.rdrDateRangePickerWrapper {
-    & span{
-        color: black;
-    }
-
-
-    & .rdrDefinedRangesWrapper {
-        position: absolute;
-        
-    }
-
+    & .rdrMonths {
+        font: size 0.875em;
+     }
+ 
+     & .rdrDays {
+        font-size: 0.875em;
+     }
 
 }
 
-.rdrMonths {
-   font-size: 1.2em;
-}
 
 
-.rdrDays {
-    font-size: 1.2em;
- }
 
- .rdrDateRange {
-   color: rebeccapurple;
-}
+
+
+
+
+
 
 // .rdrDateRangePickerWrapper span {
 //     color: black;

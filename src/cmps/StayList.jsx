@@ -7,7 +7,22 @@ import { stayService } from '../services/stay.local.service.js'
 
 export function StayList({ stays, filterBy, dynamicPageLayOut }) {
     const { headerFilterBy } = store.getState().stayModule
-    const { loc, guestCount, entryDate, exitDate } = headerFilterBy
+    let { loc, guestCount, entryDate, exitDate } = headerFilterBy
+
+
+    if (!entryDate && !exitDate) {
+        entryDate = +new Date() // 
+        exitDate = +new Date() // 
+    }
+
+    if (!exitDate) {
+        exitDate = entryDate + (24 * 60 * 60 * 1000)
+    }
+
+    if (entryDate === exitDate ) {
+        exitDate = entryDate + (24 * 60 * 60 * 1000)
+    }
+
 
     const spreadLoc = loc ? { ...loc } : {}
     const spreadGuestCount = guestCount ? { ...guestCount } : {}

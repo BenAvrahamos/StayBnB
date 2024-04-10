@@ -8,9 +8,10 @@ import { GuestFilter } from '../HeaderCmps/GuestFilter'
 import { store } from '../../store/store'
 import { GuestCount } from './DetailsGuestCount'
 import { stayService } from '../../services/stay.local.service'
+import { StayDetailsDateModal } from './StayDetailsDateModal'
 
 
-export function StayReserveModal({ stay,params, updateParams }) {
+export function StayReserveModal({ stay, params, updateParams }) {
 
     const headerFilterBy = useSelector(storeState => storeState.stayModule.headerFilterBy)
     const [numOfDays, setNumOfDays] = useState(0)
@@ -37,9 +38,9 @@ export function StayReserveModal({ stay,params, updateParams }) {
                 openModalType('')
             }
         }
-    
+
         document.addEventListener('click', handleClickOutside)
-    
+
         return () => {
             document.removeEventListener('click', handleClickOutside)
         }
@@ -56,44 +57,47 @@ export function StayReserveModal({ stay,params, updateParams }) {
                 children: params.children || '',
                 infants: params.infants || ''
             }).toString();
-    
+
             navigate(`/${stay._id}/payment?${queryParams}`)
         }
+
+
     }
     return (
-        <div className="reserve-modal">
+        <div className="reserve-modal" ref={ref}>
             <div className='container-price-selectors'>
                 <div className="price-logo flex align-center">
                     <h2>${stay.price} &nbsp;</h2><span>night</span>
                 </div>
                 <div className='selectors-container flex column'>
                     <div className="date-selectors flex">
-                        <div className='check-in flex'>
-                            <div className='txt flex column'>
+                        <div className='check-in flex' onClick={() => openModalType('date')}>
+                            <div className='txt flex column'    >
                                 <label>Check-in</label>
                                 <div className='txt-date'>{getDate(+params.entryDate)}/{getMonth(+params.entryDate) + 1}/{getYear(+params.entryDate)}</div>
                             </div>
                         </div>
-                        <div className='checkout flex'>
+                        <div className='checkout flex' onClick={() => openModalType('date')}>
                             <div className='txt flex column'>
                                 <label>Checkout</label>
-                                <div className='txt-date'>{getDate(+params.exitDate)}/{getMonth(+params.exitDate) + 1}/{getYear(+params.exitDate)}</div>
+                                <div className='txt-date' >{getDate(+params.exitDate)}/{getMonth(+params.exitDate) + 1}/{getYear(+params.exitDate)}</div>
                             </div>
                         </div>
                     </div>
-                    <div  ref={ref} className='guest-selector flex column' onClick={() => openModalType('guest')}>
-                        <label className='guests'>Guests</label>
+                    <div className='guest-selector flex column' onClick={() => openModalType('guest')}>
+                        <label className='guests'>Guests</label >
                         <div className='guest-container flex space-between'>
                             {stayService.guestCountStringForReservation(params)}
                             {currArrow && <span className={`arrow-${currArrow}`}></span>}
                         </div>
-                        
-                            {modalType === 'guest'  && <GuestCount params={params} updateParams={updateParams} headerFilterBy={headerFilterBy} openModalType={openModalType} />}
-                      
+
+                        {modalType === 'guest' && <GuestCount params={params} updateParams={updateParams} headerFilterBy={headerFilterBy} openModalType={openModalType} />}
+                        {modalType === 'date' && <StayDetailsDateModal params={params} updateParams={updateParams} headerFilterBy={headerFilterBy} openModalType={openModalType} />}
+
                     </div>
                 </div>
                 <div className='reserve-btn flex center' onClick={() => validateAndMoveToPayment()}><span >Reserve</span></div>
-                {+params.entryDate  && +params.exitDate && <p className='charged-p'>You won't be charged yet.</p>}
+                {+params.entryDate && +params.exitDate && <p className='charged-p'>You won't be charged yet.</p>}
             </div>
             <div className='price-calc flex space-between'>
                 <span>${stay.price} X {numOfDays === 1 ? `${numOfDays} night` : `${numOfDays} nights`}</span>
