@@ -1,5 +1,5 @@
 .index-section,
-.app-header {
+.expanded-header {
     padding-inline: 1.5rem;
     max-width: 2520px;
     margin-inline: auto;
@@ -14,7 +14,7 @@
 
 @media (width > 742px) {
     .index-section,
-    .app-header,
+    .expanded-header,
     .stay-details,
     .stay-reservation {
         padding-inline: 2.5rem;
@@ -32,7 +32,7 @@
 
 @media (width > 1440px) {
     .index-section,
-    .app-header {
+    .expanded-header {
         padding-inline: 5rem;
     }
 }
