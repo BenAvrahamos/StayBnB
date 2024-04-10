@@ -10,7 +10,7 @@ import { GuestCount } from './DetailsGuestCount'
 import { stayService } from '../../services/stay.local.service'
 import { StayDetailsDateModal } from './StayDetailsDateModal'
 
-export function ReservationModal({ stay,params, updateParams }) {
+export function ReservationModal({ stay, params, updateParams }) {
 
     const headerFilterBy = useSelector(storeState => storeState.stayModule.headerFilterBy)
     const [numOfDays, setNumOfDays] = useState(0)
@@ -21,7 +21,7 @@ export function ReservationModal({ stay,params, updateParams }) {
     const [modalType, openModalType] = useState()
 
     const ref = useRef(null)
-console.log(modalType);
+    console.log(modalType);
 
     useEffect(() => {
         setNumOfDays(utilService.calcSumOfDays(params))
@@ -37,9 +37,9 @@ console.log(modalType);
                 openModalType('')
             }
         }
-    
+
         document.addEventListener('click', handleClickOutside)
-    
+
         return () => {
             document.removeEventListener('click', handleClickOutside)
         }
@@ -56,12 +56,12 @@ console.log(modalType);
                 children: params.children || '',
                 infants: params.infants || ''
             }).toString();
-    
+
             navigate(`/${stay._id}/payment?${queryParams}`)
         }
 
     }
-    return (
+    return <>
         <div className="reserve-modal" ref={ref}>
             <div className='container-price-selectors'>
                 <div className="price-logo flex align-center">
@@ -82,20 +82,20 @@ console.log(modalType);
                             </div>
                         </div>
                     </div>
-                    <div  ref={ref} className='guest-selector flex column' onClick={() => openModalType('guest')}>
+                    <div ref={ref} className='guest-selector flex column' onClick={() => openModalType('guest')}>
                         <label className='guests'>Guests</label>
                         <div className='guest-container flex space-between'>
                             {stayService.guestCountStringForReservation(params)}
                             {currArrow && <span className={`arrow-${currArrow}`}></span>}
                         </div>
-                        
-                            {modalType === 'guest'  && <GuestCount params={params} updateParams={updateParams} headerFilterBy={headerFilterBy} openModalType={openModalType} />}
-                            {modalType === 'date'  && <StayDetailsDateModal params={params} updateParams={updateParams} headerFilterBy={headerFilterBy} openModalType={openModalType} />}
-                      
+
+                        {modalType === 'guest' && <GuestCount params={params} updateParams={updateParams} headerFilterBy={headerFilterBy} openModalType={openModalType} />}
+                        {modalType === 'date' && <StayDetailsDateModal params={params} updateParams={updateParams} headerFilterBy={headerFilterBy} openModalType={openModalType} />}
+
                     </div>
                 </div>
                 <div className='reserve-btn flex center' onClick={() => validateAndMoveToPayment()}><span >Reserve</span></div>
-                {+params.entryDate  && +params.exitDate && <p className='charged-p'>You won't be charged yet.</p>}
+                {+params.entryDate && +params.exitDate && <p className='charged-p'>You won't be charged yet.</p>}
             </div>
             <div className='price-calc flex space-between'>
                 <span>${stay.price} X {numOfDays === 1 ? `${numOfDays} night` : `${numOfDays} nights`}</span>
@@ -110,5 +110,14 @@ console.log(modalType);
                 <span>${(stay.price * numOfDays + fee).toFixed(2)}</span>
             </div>}
         </div>
-    )
+
+        <div className='reserve-footer flex align-center space-between'>
+            <div className='flex column'>
+                <p><span>${stay.price}</span> &nbsp;night</p>
+                <p>{utilService.timestampsToShortDates(+params.entryDate, +params.exitDate)}</p>
+            </div>
+
+            <button className='flex center' onClick={() => validateAndMoveToPayment()}><span >Reserve</span></button>
+        </div>
+    </>
 }         
