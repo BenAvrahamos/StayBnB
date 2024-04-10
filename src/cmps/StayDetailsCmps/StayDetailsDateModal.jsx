@@ -4,10 +4,9 @@ import { DateRangePicker } from "react-date-range"
 import "react-date-range/dist/styles.css" // main css file
 import "react-date-range/dist/theme/default.css" // theme css file
 
-import { setStayHeaderFilter } from '../../store/actions/stay.actions'
 
-export function DateFilter({ setModalType, headerFilterBy }) {
-    
+export function StayDetailsDateModal({ updateParams, params }) {
+
     const [dateRange, setDateRange] = useState([
         {
             startDate: new Date(),
@@ -16,33 +15,36 @@ export function DateFilter({ setModalType, headerFilterBy }) {
         }
     ])
 
-    
+console.log(params);
 
 
     const handleSelect = (ranges) => {
         const startDateTimestamp = ranges.selection.startDate.getTime()
         const endDateTimestamp = ranges.selection.endDate.getTime()
 
-        if (!headerFilterBy.entryDate && !headerFilterBy.exitDate) {
+        if (!params.entryDate && !params.exitDate) {
 
-            setStayHeaderFilter({ ...headerFilterBy, entryDate: startDateTimestamp })
+            updateParams({ ...params, entryDate: startDateTimestamp })
 
-        } else if (headerFilterBy.entryDate && !headerFilterBy.exitDate) {
+        } else if (params.entryDate && !params.exitDate) {
 
-            setStayHeaderFilter({ ...headerFilterBy, exitDate: endDateTimestamp })
+            updateParams({ ...params, exitDate: endDateTimestamp })
         } else {
 
-            setStayHeaderFilter({ ...headerFilterBy, entryDate: startDateTimestamp, exitDate: null })
+            updateParams({ ...params, entryDate: startDateTimestamp, exitDate: null })
         }
 
         setDateRange([ranges.selection])
 
 
-        setModalType('check-out')
+
     }
 
     return (
-        <section className='date-filter'>
+        <section className='stay-details-date-filter'>
+
+
+
             <DateRangePicker
                 ranges={dateRange}
                 onChange={handleSelect}
@@ -55,7 +57,7 @@ export function DateFilter({ setModalType, headerFilterBy }) {
                 staticRanges={[]}
                 inputRanges={[]}
                 enableOutsideDays={true}
-                // disabledDates={disabledDates}
+            // disabledDates={disabledDates}
 
             />
         </section>
