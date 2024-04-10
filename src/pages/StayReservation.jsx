@@ -1,11 +1,11 @@
 import { useParams } from 'react-router'
 import { Payment } from '../cmps/StayReservationCmps/Payment'
-import { PaymentModal } from '../cmps/StayReservationCmps/PaymentModal'
+import { StayReservationModal } from '../cmps/StayReservationCmps/StayReservationModal'
 import { useEffect, useState } from 'react'
 import { stayService } from '../services/stay.local.service'
 import { useLocation, useSearchParams } from 'react-router-dom'
 
-export function StayPayment() {
+export function StayReservation() {
     const { stayId } = useParams()
     const [stay, setStay] = useState('')
 
@@ -57,11 +57,11 @@ export function StayPayment() {
         }
     }
 
-    return <section className="stay-payment grid">
+    return <section className="stay-reservation flex">
         {stay &&
             <>
                 <Payment stay={stay} params={params} />
-                <PaymentModal stay={stay} params={params} />
+                <StayReservationModal stay={stay} params={params} />
             </>}
     </section>
 }

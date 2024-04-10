@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { useSearchParams } from "react-router-dom"
 
 import { stayService } from "../services/stay.local.service"
 import { filterLists } from "../services/filterLists.service"
@@ -10,6 +11,7 @@ import { Accordion } from "./HelperCmps/Accordion"
 import { SwitchCmp } from "./HelperCmps/SwitchCmp"
 
 export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
+    const [searchParams, setSearchParams] = useSearchParams()
     const [selected, setSelected] = useState(filterBy)
     const [filteredStays, setFilteredStays] = useState(stayService.query(selected))
 
@@ -17,8 +19,9 @@ export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
         setFilteredStays(stayService.query(selected))
     }, [selected])
 
-    function clearFilter() {  //add rerender here
-        setSelected(filterBy)
+    function clearFilter() {
+        const emptyFilterPart = stayService.getEmptyModalFilter()
+        setSelected({ ...selected, ...emptyFilterPart })
     }
 
     function leaveFilter() {
@@ -27,6 +30,7 @@ export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
 
     function submitFilter() {
         setStayFilter(selected)
+        setSearchParams(selected)
         setShowFilter(false)
     }
 

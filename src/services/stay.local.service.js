@@ -18,6 +18,7 @@ export const stayService = {
     getEmptyStay,
     getDefaultFilter,
     getDefaultHeaderFilter,
+    getEmptyModalFilter,
     mergeFilters,
     guestCountString,
     createDemoStay,
@@ -282,6 +283,27 @@ function getEmptyOrder() {
     }
 }
 
+function getEmptyModalFilter() {
+    return {
+        placeType: 'any',       // any / room / entire home
+        priceRange: {
+            min: 0,
+            max: Infinity
+        },
+        bedrooms: 'any',
+        beds: 'any',
+        bathrooms: 'any',
+        propType: [],                // house / apartment / guesthouse / hotel
+        amenities: [],
+        bookingOpts: {
+            instant: false,
+            selfCheckIn: false,
+            allowsPets: false
+        },
+        hostLngs: []
+    }
+}
+
 function createDemoStay(stays) {
     if (utilService.loadFromStorage(STAY_DB)) return utilService.loadFromStorage(STAY_DB)
     else return utilService.saveToStorage(STAY_DB, stays)
@@ -289,9 +311,13 @@ function createDemoStay(stays) {
 
 
 function mergeFilters(mainFilter, headerFilter) {
-    const { label } = mainFilter
+    const { label, amenities, bathrooms, beds, bookingOpts, hostLngs, bedrooms, placeType, priceRange, propType } = mainFilter
     const { loc, guestCount, entryDate, exitDate } = headerFilter
-    const mergeFilter = { ...loc, label, ...guestCount, entryDate, exitDate }
+    const mergeFilter = {
+        amenities, bathrooms, beds, ...bookingOpts, hostLngs,
+        bedrooms, placeType, ...priceRange, propType, ...loc, label, ...guestCount, entryDate, exitDate
+    }
+    console.log(mergeFilter);
     return mergeFilter
 
 }

@@ -12,9 +12,11 @@ export function PaymentModal({ stay, params }) {
         return avgScore
     }
 
-    return <div className="stay-payment-modal flex column">
-        <div className="stay-details-part flex align-center">
+    return <div className="payment-modal flex column">
+        <div className="stay-details flex align-center">
+
             <img src={stay.imgUrls[0]} />
+
             <div className="text-details">
                 <h2>{stay.name}</h2>
                 <p>{stay.type}</p>
@@ -26,16 +28,20 @@ export function PaymentModal({ stay, params }) {
             </div>
         </div>
 
-        <div className="price-details-part">
+        <div className="price-details">
+            
             <h1>Price details</h1>
+
             <div className="accommodation flex space-between">
                 <p>Accommodation</p>
                 <p>${Math.ceil(utilService.calcSumToPay(params, stay))}</p>
             </div>
+
             <div className="fee flex space-between">
                 <p>Staybnb service fee</p>
                 <p>${(Math.ceil(utilService.calcSumToPay(params, stay) * 0.14125))}</p>
             </div>
+
             <div className="total flex space-between">
                 <p>Total</p>
                 <p>${Math.ceil((utilService.calcSumToPay(params, stay) + (utilService.calcSumToPay(params, stay) * 0.14125)))}</p>
