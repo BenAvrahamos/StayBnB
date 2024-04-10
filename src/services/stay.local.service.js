@@ -289,9 +289,13 @@ function createDemoStay(stays) {
 
 
 function mergeFilters(mainFilter, headerFilter) {
-    const { label } = mainFilter
+    const { label, amenities, bathrooms, beds, bookingOpts, hostLngs, bedrooms, placeType, priceRange, propType } = mainFilter
     const { loc, guestCount, entryDate, exitDate } = headerFilter
-    const mergeFilter = { ...loc, label, ...guestCount, entryDate, exitDate }
+    const mergeFilter = {
+        amenities, bathrooms, beds, ...bookingOpts, hostLngs,
+        bedrooms, placeType, ...priceRange, propType, ...loc, label, ...guestCount, entryDate, exitDate
+    }
+    console.log(mergeFilter);
     return mergeFilter
 
 }
