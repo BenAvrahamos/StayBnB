@@ -2,7 +2,8 @@
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 // import { userService } from './user.service.js'
-import { orders } from '../data/stay.js'
+import { orders } from '../data/orders.js'
+import { stays } from '../data/stay.js'
 const ORDER_DB = 'order_db'
 
 export const orderService = {
@@ -11,6 +12,7 @@ export const orderService = {
     save,
     remove,
     getOrder,
+    createDemoOrder
 }
 
 utilService.generateStays()
@@ -81,7 +83,7 @@ function getOrder(stay, reservation) {
           }
 }
 
-function _createDemoOrder() {
+function createDemoOrder() {
     if (utilService.loadFromStorage(ORDER_DB)) return utilService.loadFromStorage(ORDER_DB)
     return utilService.saveToStorage(ORDER_DB, orders)
 }

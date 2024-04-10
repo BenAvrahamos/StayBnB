@@ -8,7 +8,8 @@ import { LabelsFilter } from '../cmps/LabelsFilter.jsx'
 import { store } from '../store/store.js'
 import { stayService } from '../services/stay.local.service.js'
 
-export function StayIndex() {
+
+export function StayIndex({dynamicPageLayOut}) {
     const [searchParams, setSearchParams] = useSearchParams()
 
     const { stays } = useSelector(storeState => storeState.stayModule)

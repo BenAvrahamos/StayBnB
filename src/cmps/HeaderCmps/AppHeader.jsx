@@ -20,7 +20,9 @@ export function AppHeader({ dynamicPageLayOut, SetDynamicPageLayOut }) {
     var filterBy = useSelector(storeState => storeState.stayModule.filterBy)
     const [modalType, setModalType] = useState()
 
-
+function onNavigate(){
+    navigate('/order')
+}
 
     function goHome() {
         const defaultHeaderFilter = stayService.getDefaultHeaderFilter()
@@ -66,7 +68,7 @@ export function AppHeader({ dynamicPageLayOut, SetDynamicPageLayOut }) {
             <div className="user-section flex align-center" >
                 Staybnb your home
 
-                <button className="flex align-center space-between">☰
+                <button className="flex align-center space-between" onClick={onNavigate}> ☰
                     <div className="profile"></div>
                 </button>
 
