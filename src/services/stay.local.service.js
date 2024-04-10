@@ -18,6 +18,7 @@ export const stayService = {
     getEmptyStay,
     getDefaultFilter,
     getDefaultHeaderFilter,
+    getEmptyModalFilter,
     mergeFilters,
     guestCountString,
     createDemoStay,
@@ -279,6 +280,27 @@ function getEmptyOrder() {
         },
         msgs: [],
         status: "pending"           // approved / rejected
+    }
+}
+
+function getEmptyModalFilter() {
+    return {
+        placeType: 'any',       // any / room / entire home
+        priceRange: {
+            min: 0,
+            max: Infinity
+        },
+        bedrooms: 'any',
+        beds: 'any',
+        bathrooms: 'any',
+        propType: [],                // house / apartment / guesthouse / hotel
+        amenities: [],
+        bookingOpts: {
+            instant: false,
+            selfCheckIn: false,
+            allowsPets: false
+        },
+        hostLngs: []
     }
 }
 

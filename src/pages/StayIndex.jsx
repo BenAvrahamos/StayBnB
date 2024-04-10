@@ -8,7 +8,7 @@ import { LabelsFilter } from '../cmps/LabelsFilter.jsx'
 import { store } from '../store/store.js'
 import { stayService } from '../services/stay.local.service.js'
 
-export function StayIndex({dynamicPageLayOut}) {
+export function StayIndex({ dynamicPageLayOut }) {
     const [searchParams, setSearchParams] = useSearchParams()
 
     const { stays } = useSelector(storeState => storeState.stayModule)
@@ -16,18 +16,19 @@ export function StayIndex({dynamicPageLayOut}) {
     const { headerFilterBy } = store.getState().stayModule
 
     useEffect(() => {
-        setSearchParams(stayService.mergeFilters(filterBy,headerFilterBy))
+        setSearchParams(stayService.mergeFilters(filterBy, headerFilterBy))
         loadStays()
     }, [filterBy])
 
-    if (!stays || !stays.length) return <>
+    if (!stays || !stays.length) return <section className='index-section'>
         <LabelsFilter
             setStayFilter={setStayFilter}
             filterBy={filterBy}
             dynamicPageLayOut={dynamicPageLayOut}
         />
         <p>loading</p>
-    </>
+    </section>
+
     return <section className='index-section'>
         <LabelsFilter
             setStayFilter={setStayFilter}
