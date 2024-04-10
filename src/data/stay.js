@@ -154,7 +154,7 @@ export const stays = [{
     'Tv', 'Iron', 'Pool', 'Free parking',
     'Crib', 'Gym', 'Breakfast', 'Smoking allowed', 'Hot tub', 'Ev charger', 'King bed', 'BBQ grill',
     'Indoor fireplace', 'Beachfront', 'Ski-on/Ski-out', 'Waterfront',
-    'Smoke alarm', 'Carbon monoxide alarm', 'crib'],
+    'Smoke alarm', 'Carbon monoxide alarm'],
   labels: [
     "Play",
     "Tropical"

@@ -13,21 +13,24 @@
 /* VIEWS */
 @import 'pages/StayIndex.scss';
 @import 'pages/StayDetails.scss';
-@import 'pages/StayReservation.scss';
+@import 'pages/StayPayment.scss';
 
 /* CMPS */
 @import 'cmps/AppHeader.scss';
-@import 'cmps/StayPreview.scss';
-@import 'cmps/StayGalleryPreview.scss';
-// @import 'cmps/StayGalleryModal.scss';
-@import 'cmps/StayReviewsPreview.scss';
 @import 'cmps/HeadFilter.scss';
-@import 'cmps/LabelsFilter.scss';
-@import 'cmps/FilterModal.scss';
-@import 'cmps/Payment.scss';
 @import 'cmps/DateFilter.scss';
 @import 'cmps/MapFilter.scss';
 @import 'cmps/GuestFilter.scss';
+
+@import 'cmps/LabelsFilter.scss';
+@import 'cmps/StayPreview.scss';
+@import 'cmps/FilterModal.scss';
+
+@import 'cmps/StayGalleryPreview.scss';
+// @import 'cmps/StayGalleryModal.scss';
+@import 'cmps/StayReviewsPreview.scss';
 @import 'cmps/DetailsGuestCount.scss';
-@import 'cmps/StayReserveModal.scss';
+@import 'cmps/PaymentModal.scss';
+
+@import 'cmps/Payment.scss';
 @import 'cmps/Order.scss';

@@ -1,0 +1,215 @@
+.stay-payment {
+    gap: rem(80px);
+
+    &>* {
+        border-radius: rem(12px);
+    }
+
+    .stay-payment-modal {
+        padding: rem(24px);
+        border: 1px solid $gray3;
+        height: max-content;
+        flex-basis: rem(465.66px);
+
+        hr {
+            margin: 0;
+        }
+
+        .stay-details-part {
+            padding-block-end: rem(24px);
+
+            img {
+                object-fit: cover;
+                width: rem(104px);
+                height: rem(104px);
+                border-radius: rem(10px);
+            }
+
+            .text-details {
+                padding-inline-start: 1rem;
+
+                h2,
+                p {
+                    margin-block-end: rem(5px);
+                }
+            }
+        }
+
+        .price-details-part {
+            h1 {
+                padding-block: rem(24px);
+                margin: 0;
+            }
+
+            div:not(:last-child) {
+                padding-block-end: 1rem;
+            }
+        }
+    }
+
+}
+
+.stay-payment-details {
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 0;
+    }
+
+    .phone-add {
+        align-items: flex-start;
+
+        .header-phone-add {
+            align-items: baseline;
+            gap: rem(8px);
+
+            h2 {
+                padding-block: rem(16px);
+            }
+        }
+
+        .phone-modal-container {
+            align-items: flex-start;
+            gap: rem(16px);
+        }
+    }
+
+
+    .payment-details-header {
+
+        .go-back-arr,
+        h1 {
+            padding-block: rem(64px) rem(32px);
+        }
+
+        .go-back-arr::before {
+            content: "\f053";
+            font-family: fa-solid;
+            padding-inline-end: rem(18px);
+        }
+
+        h1 {
+            font-size: rem(32px);
+            margin: 0;
+        }
+    }
+
+    .reservation-details {
+        h2 {
+            font-size: rem(22px);
+            padding-block-end: 24px;
+        }
+
+        .dates,
+        .guests {
+            padding-block-end: rem(24px);
+            padding-block-start: .5rem;
+        }
+    }
+
+    .payment {
+
+        .expiration-cvv {}
+
+        .credit-card-details,
+        .required-and-phone,
+        .policy,
+        .ground-rules {
+            padding-block: 2rem rem(24px);
+        }
+
+        .credit-card-details,
+        .card-details {
+            gap: rem(8px);
+        }
+
+        .card-details {
+            input {
+                padding: rem(16px);
+                flex-grow: 1;
+                border: 1px solid $gray3;
+            }
+
+            .card-number {
+                border-radius: rem(8px);
+            }
+        }
+
+        .credit-card-header {
+            padding-block-end: rem(24px);
+
+            h2 {
+                padding-block-end: 0;
+            }
+        }
+
+        .btn {
+            max-width: rem(560px);
+            height: rem(56px);
+        }
+
+        .credit-card-imgs {
+            gap: rem(3px);
+
+            img {
+                height: rem(9px);
+            }
+        }
+
+        .select-credit-debit {
+            border: 1px solid $gray3;
+            padding: rem(16px);
+            border-radius: rem(8px);
+
+            .arrow-down::before {
+                content: '\f078';
+                font-family: fa-solid;
+            }
+
+            .arrow-up::before {
+                content: '\f106';
+                font-family: fa-solid;
+            }
+
+            .container {
+                gap: rem(16px);
+
+                p {
+                    color: #484848;
+                }
+            }
+        }
+
+        .confirm-and-pay {
+            height: rem(48px);
+            // padding: 14px 0px;
+            width: max-content;
+            padding-inline: rem(16px);
+            background: radial-gradient(103.95% 1413.54% at -3.95% 100%, #D33753 0%, #D13660 52.83%, #C72D65 100%);
+            border-radius: rem(8px);
+            font-family: circular-bold;
+            line-height: 19px;
+            color: #ffffff;
+            margin-block: 1rem;
+            cursor: pointer;
+        }
+    }
+}
+
+
+@media (width > 742px) {
+    .stay-payment {
+        padding: 5rem;
+    }
+}
+
+@media (width > 1280px) {
+    .stay-payment {
+        padding: 0;
+    }
+
+}
