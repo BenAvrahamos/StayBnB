@@ -12,17 +12,30 @@ import { stayService } from '../../services/stay.local.service'
 import { store } from '../../store/store'
 
 
-export function HeaderFilter({modalType,setModalType,ref}) {
-
+export function HeaderFilter({ modalType, setModalType, }) {
+    const ref = useRef(null)
     const navigate = useNavigate()
     const headerFilterBy = useSelector(storeState => storeState.stayModule.headerFilterBy)
     const { filterBy } = store.getState().stayModule
     const [searchParams, setSearchParams] = useSearchParams()
 
 
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (ref.current && !ref.current.contains(event.target)) {
+                setModalType('')
+            }
+        }
+
+        document.addEventListener('click', handleClickOutside)
+
+        return () => {
+            document.removeEventListener('click', handleClickOutside)
+        }
+
+    }, [ref])
 
 
-   
 
 
     function onLoadStays(ev) {

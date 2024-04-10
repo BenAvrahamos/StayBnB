@@ -1,6 +1,6 @@
 .index-section .stay-list,
 .index-filter-section,
-.app-header {
+.app-header-container {
     padding-inline: 1.5rem;
 }
 
@@ -12,7 +12,7 @@
 @media (width > 742px) {
     .index-section .stay-list,
     .index-filter-section,
-    .app-header,
+    .app-header-container,
     .stay-details,
     .stay-reservation {
         padding-inline: 2.5rem;
@@ -22,7 +22,7 @@
 @media (width > 1280px) {
 .stay-details,
 .stay-reservation,
-.app-header {
+.app-header-container {
         padding-inline: calc(50vw - 40rem);
     }
 }
@@ -30,7 +30,7 @@
 @media (width > 1920px) {
     .index-section .stay-list,
     .index-filter-section,
-    .app-header {
+    .app-header-container {
         padding-inline: 5rem;
     }
 }
