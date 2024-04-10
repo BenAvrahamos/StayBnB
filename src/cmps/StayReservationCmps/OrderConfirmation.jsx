@@ -4,7 +4,7 @@ import { format, getDay } from 'date-fns'
 import { useState } from 'react'
 import { utilService } from '../../services/util.service'
 
-export function Order({ stay,params }) {
+export function OrderConfirmation({ stay,params }) {
     const [isShownModal, setIsShownModal] = useState(true)
     const reservation = useSelector(storeState => storeState.reservationModule.reservation)
 
@@ -19,7 +19,7 @@ export function Order({ stay,params }) {
         isShownModal &&
         <>
             <div className='overlay' onClick={onCloseModal}></div>
-            <div className="order-confirmation">
+            <section className="order-confirmation">
                     <header className="order-header flex center">
                         <button onClick={onCloseModal} className='exit-btn'>X</button>
                         <h1 className="order-reserved">Reservation confirmed</h1>
@@ -97,7 +97,7 @@ export function Order({ stay,params }) {
                 <footer className='flex center'>
                     <button className="close-btn flex center" onClick={onCloseModal}>Close</button>
                 </footer>
-            </div>
+            </section>
 
         </>
     )

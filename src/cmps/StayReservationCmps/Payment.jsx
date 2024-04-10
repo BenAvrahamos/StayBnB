@@ -2,12 +2,10 @@
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { stayService } from '../../services/stay.local.service'
-import { Order } from './Order'
+import { OrderConfirmation } from './OrderConfirmation'
 import { utilService } from '../../services/util.service'
 import { useParams } from "react-router"
 import { useNavigate } from 'react-router'
-
-
 
 export function Payment({ stay, params }) {
     const navigate = useNavigate()
@@ -18,7 +16,8 @@ export function Payment({ stay, params }) {
     const [userOrderDetails, setUserOrderDetails] = useState({ card: { cardNum: '', expDate: '', cvv: '', zip: '' }, phone: '' })
     const [isPhone, setIsPhone] = useState(false)
     const [isOrder, setIsOrder] = useState(false)
-
+    const [isEditDates, setIsEditDates] = useState(false)
+    const [isEditGuests, setIsEditGuests] = useState(false)
 
     function checkAndValidateOrder(e) {
         e.stopPropagation()
@@ -61,15 +60,30 @@ export function Payment({ stay, params }) {
         if (name === 'phone') setUserOrderDetails((prevUserOrderDetails) => ({ ...prevUserOrderDetails, phone: value }))
     }
 
-    function onCloseAddPhone(e) {
-        e.stopPropagation()
-        setIsPhone(false)
+    function onModal(ev, type) {
+        ev.stopPropagation()
+        switch (type) {
+            case 'phone':
+                setIsPhone(!isPhone)
+                break
+            case 'dates':
+                setIsEditDates(!isEditDates)
+                break
+            case 'guests':
+                setIsEditGuests(!isEditGuests)
+                break
+        }
     }
 
-    function onOpenAddPhone(e) {
-        e.stopPropagation()
-        setIsPhone(true)
-    }
+    // function onCloseAddPhone(e) {
+    //     e.stopPropagation()
+    //     setIsPhone(false)
+    // }
+
+    // function onOpenAddPhone(e) {
+    //     e.stopPropagation()
+    //     setIsPhone(true)
+    // }
 
     function onClose(e) {
         e.stopPropagation()
@@ -92,7 +106,7 @@ export function Payment({ stay, params }) {
                     <h4>Dates</h4>
                     <p>{utilService.timestampToDate(+params.entryDate)}-{utilService.timestampToDate(+params.exitDate)}</p>
                 </div>
-                <h4>Edit</h4>
+                <button onClick={() => onModal(event, 'dates')}>Edit</button>
             </div>
 
             <div className='guests flex space-between'>
@@ -100,7 +114,7 @@ export function Payment({ stay, params }) {
                     <h4>Guests</h4>
                     <p>{stayService.guestCountStringForReservation(params)}</p>
                 </div>
-                <h4>Edit</h4>
+                <button onClick={() => onModal(event, 'guests')}>Edit</button>
             </div>
         </article>
 
@@ -158,21 +172,21 @@ export function Payment({ stay, params }) {
                         <h4>Phone number</h4>
                         <p>Add and confirm your phone number to get trip updates.</p>
                     </div>
-                    <button onClick={onOpenAddPhone}>Add</button>
+                    <button onClick={() => onModal(event, 'phone')}>Add</button>
                 </div>
 
                 {isPhone && <>
-                    <div className='overlay' onClick={onCloseAddPhone}></div>
+                    <div className='overlay' onClick={() => onModal(event, 'phone')}></div>
                     <div className='phone-modal flex column'>
                         <header className='flex center'>
-                            <button onClick={onCloseAddPhone} className='close-btn'><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false" style={{ display: 'block', fill: 'none', height: '16px', width: '16px', stroke: 'currentcolor', strokeWidth: '3', overflow: 'visible' }}><path d="m6 6 20 20M26 6 6 26"></path></svg></button>
+                            <button onClick={() => onModal(event, 'phone')} className='close-btn'><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false" style={{ display: 'block', fill: 'none', height: '16px', width: '16px', stroke: 'currentcolor', strokeWidth: '3', overflow: 'visible' }}><path d="m6 6 20 20M26 6 6 26"></path></svg></button>
                             <h2>Add phone number</h2>
                         </header>
                         <main>
                             <p>We’ll send you trip updates and a text to verify this number.</p>
                             <input type='tel' name="phone" value={userOrderDetails.phone} placeholder="Phone number" pattern="\d{3}-\d{3}-\d{4}" onChange={onUserOrderDetails} />
                             <p>We'll text you a code to confirm your number. Standard message and data rates apply.</p>
-                            <button className='add-btn' onClick={onCloseAddPhone}>Continue</button>
+                            <button className='add-btn' onClick={() => onModal(event, 'phone')}>Continue</button>
                         </main>
                     </div>
                 </>}
@@ -197,7 +211,7 @@ export function Payment({ stay, params }) {
                 <button className='confirm-btn' onClick={checkAndValidateOrder}>Confirm and pay</button>
             </article>
 
-            {stay && isOrder && <Order stay={stay} params={params} />}
+            {stay && isOrder && <OrderConfirmation stay={stay} params={params} />}
         </>}
 
     </section>

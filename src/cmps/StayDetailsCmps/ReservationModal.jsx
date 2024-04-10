@@ -57,9 +57,9 @@ console.log(modalType);
                 infants: params.infants || ''
             }).toString();
     
-            navigate(`/${stay._id}/payment`)
-            // navigate(`/${stay._id}/payment?${queryParams}`)  // goes into query params instead of search params (and then no navigation occurs)
+            navigate(`/${stay._id}/payment?${queryParams}`)
         }
+
     }
     return (
         <div className="reserve-modal" ref={ref}>
