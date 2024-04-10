@@ -103,9 +103,7 @@ export function StayDetails() {
                         </button>
                     </div>
                 </header>
-                <div className="gallery-cmp-container" ref={gallery}>
                     <StayGalleryPreview stay={stay} />
-                </div>
                 <main className="content-and-modal-container grid">
 
                     <section className="content">
@@ -161,9 +159,7 @@ export function StayDetails() {
                         </div>
 
                     </section>
-                    <div className="modal-of-details" ref={modal}>
                         <ReservationModal stay={stay} params={params} updateParams={updateParams} />
-                    </div>
                 </main>
 
                 <StayReviewsPreview stay={stay} />
