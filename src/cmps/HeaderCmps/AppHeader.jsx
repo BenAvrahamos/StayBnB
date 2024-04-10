@@ -17,7 +17,7 @@ export function AppHeader({ dynamicPageLayOut, SetDynamicPageLayOut }) {
     const ref = useRef(null)
     const [searchParams, setSearchParams] = useSearchParams()
     const navigate = useNavigate()
-    const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
+    var filterBy = useSelector(storeState => storeState.stayModule.filterBy)
     const [modalType, setModalType] = useState()
 
 function onNavigate(){

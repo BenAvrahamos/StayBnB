@@ -16,7 +16,7 @@ export function HeaderFilter({ modalType, setModalType, }) {
     const ref = useRef(null)
     const navigate = useNavigate()
     const headerFilterBy = useSelector(storeState => storeState.stayModule.headerFilterBy)
-    const { filterBy } = store.getState().stayModule
+    var { filterBy } = store.getState().stayModule
     const [searchParams, setSearchParams] = useSearchParams()
 
 
@@ -40,7 +40,8 @@ export function HeaderFilter({ modalType, setModalType, }) {
 
     function onLoadStays(ev) {
         ev.stopPropagation()
-        setSearchParams(stayService.mergeFilters(filterBy, headerFilterBy))
+        filterBy = stayService.mergeFilters(filterBy, headerFilterBy)
+        setSearchParams(filterBy)
         setModalType('')
         navigate('/')
         loadStays()

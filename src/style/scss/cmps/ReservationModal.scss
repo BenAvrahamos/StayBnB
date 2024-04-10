@@ -1,7 +1,9 @@
-.stay-details .reserve-modal {
+.reserve-modal {
     display: none;
     position: sticky;
     z-index: 1;
+    top: rem(100px);
+    margin-block-end: rem(80px);
     max-width: 23.25rem;
     background-color: #ffffff;
     padding: 24px;
@@ -40,8 +42,7 @@
     }
 
     .selectors-container {
-        cursor: pointer;
-
+            cursor: pointer;
         .check-in,
         .checkout {
             border: 1px solid $borderclr;
@@ -91,8 +92,7 @@
         margin-block-end: 1rem;
     }
 
-    .price-calc,
-    .fee-calc {
+    .price-calc, .fee-calc  {
         margin-block-end: 1rem;
     }
 
@@ -104,7 +104,7 @@
 }
 
 @media (width > 742px) {
-    .stay-details .reserve-modal {
+    .reserve-modal {
         display: block;
     }
 }

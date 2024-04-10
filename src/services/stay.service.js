@@ -10,6 +10,7 @@ export const stayService = {
     getFilterFromParams,
     getEmptyStay,
     getDefaultFilter,
+    getEmptyModalFilter,
     getEmptyOrder,
     getLabels
 }
@@ -107,6 +108,22 @@ function getDefaultFilter() {
             min: 0,
             max: Infinity
         },
+        bbb: {
+            bedrooms: 'any',
+            beds: 'any',
+            bathrooms: 'any'
+        },
+        propType: [],                // house / apartment / guesthouse / hotel
+        amenities: [],
+        bookingOpts: {
+            instant: false,
+            selfCheckIn: false,
+        }
+    }
+}
+
+function getEmptyModalFilter() {
+    return {
         bbb: {
             bedrooms: 'any',
             beds: 'any',

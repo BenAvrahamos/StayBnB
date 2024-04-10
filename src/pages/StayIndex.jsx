@@ -17,28 +17,26 @@ export function StayIndex({dynamicPageLayOut}) {
     const { headerFilterBy } = store.getState().stayModule
 
     useEffect(() => {
-        setSearchParams(stayService.mergeFilters(filterBy,headerFilterBy))
+        setSearchParams(stayService.mergeFilters(filterBy, headerFilterBy))
         loadStays()
     }, [filterBy])
 
-    if (!stays || !stays.length) return <>
+    if (!stays || !stays.length) return <section className='index-section'>
         <LabelsFilter
             setStayFilter={setStayFilter}
             filterBy={filterBy}
-            dynamicPageLayOut={dynamicPageLayOut}
         />
         <p>loading</p>
-    </>
+    </section>
+
     return <section className='index-section'>
         <LabelsFilter
             setStayFilter={setStayFilter}
             filterBy={filterBy}
-            dynamicPageLayOut={dynamicPageLayOut}
         />
         <StayList
             stays={stays}
             filterBy={filterBy}
-            dynamicPageLayOut={dynamicPageLayOut}
         />
         <section className='index-end-section flex column center'>
             <h1>Continue exploring homes</h1>

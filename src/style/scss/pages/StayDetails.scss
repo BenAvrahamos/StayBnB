@@ -31,7 +31,7 @@
 
     .content-and-modal-container {
         margin-block-start: 2rem;
-
+        position: relative;
         grid-template-columns: minmax(1px, 1fr);
         column-gap: 3.5rem;
 
@@ -152,7 +152,6 @@
     .stay-details {
         .content-and-modal-container {
             grid-template-columns: minmax(1px, 2fr) minmax(1px, 1fr);
-
             .content {
                 padding-inline-start: 0;
             }
