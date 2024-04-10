@@ -23,8 +23,6 @@
 
 
     & .compact-header {
-
-
         height: 2.875rem;
         border-radius: 3em;
         border: 1px solid #dddddd;
@@ -45,8 +43,6 @@
 
         }
 
-
-
         & .calendar {
             width: 9.8125rem;
             text-align: center;
@@ -64,8 +60,6 @@
             color: $gray1;
             font-weight: normal;
             padding-left: 0;
-
-
 
             & .search-btn {
                 border-radius: 50%;
@@ -189,9 +183,6 @@
     padding-block-end: 0;
     transition: 0.5s;
 
-
-
-
     & .header-filter {
         transform: translateY(-4.6rem) scale(0.4, 0.65);
         opacity: 0;
@@ -211,6 +202,8 @@
         display: none;
      
     }
+
+    
 }
 
 @media (width < 740px) {
@@ -218,3 +211,5 @@
         display: none;
     }
 }
+
+.expanded{}
