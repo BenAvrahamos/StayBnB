@@ -288,9 +288,9 @@ function createDemoStay(stays) {
 
 
 function mergeFilters(mainFilter, headerFilter) {
-    const { loc, label } = mainFilter
-    const { guestCount, entryDate, exitDate } = headerFilter
-    const mergeFilter = { ...loc, ...label, ...guestCount, entryDate, exitDate }
+    const { label } = mainFilter
+    const {loc, guestCount, entryDate, exitDate } = headerFilter
+    const mergeFilter = { ...loc, label, ...guestCount, entryDate, exitDate }
     return mergeFilter
 
 }

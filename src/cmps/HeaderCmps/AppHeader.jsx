@@ -13,7 +13,7 @@ import { DemoDataService } from "../../services/demoData.service"
 import { stayService } from "../../services/stay.local.service"
 import { setStayFilter, setStayHeaderFilter } from "../../store/actions/stay.actions"
 
-export function AppHeader({isFixed}) {
+export function AppHeader({ dynamicPageLayOut, SetDynamicPageLayOut }) {
     const ref = useRef(null)
     const [searchParams, setSearchParams] = useSearchParams()
     const navigate = useNavigate()
@@ -34,7 +34,10 @@ export function AppHeader({isFixed}) {
 
 
 
-    return <section className={`app-header-container flex column center ${isFixed ? 'fixed-header' : ''}`}>
+    return <section className={`app-header-container flex column center 
+    ${dynamicPageLayOut.header.fixed ? 'fixed-header' : ''}
+    ${dynamicPageLayOut.header.expanded ? 'expanded' : ''}`}>
+
         <section className="expanded-header flex space-between align-center">
 
             <div className="logo-section" onClick={goHome}>
@@ -52,7 +55,7 @@ export function AppHeader({isFixed}) {
                 </nav>
 
                 <div className="compact-header">
-                    <div onClick={() => setModalType(modalType === 'map' ? null : 'map')} className="map">Anywhere</div>
+                    <div onClick={() => { setModalType(modalType === 'map' ? null : 'map')}} className="map">Anywhere</div>
                     <div onClick={() => setModalType(modalType === 'check-in' ? null : 'check-in')} className="calendar">Any week</div>
                     <div onClick={() => setModalType(modalType === 'guest' ? null : 'guest')} className="guests">Add guests <div className="search-btn"></div> </div>
                 </div>
