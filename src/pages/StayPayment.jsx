@@ -57,7 +57,7 @@ export function StayPayment() {
         }
     }
 
-    return <section className="stay-payment flex">
+    return <section className="stay-payment grid">
         {stay &&
             <>
                 <Payment stay={stay} params={params} />

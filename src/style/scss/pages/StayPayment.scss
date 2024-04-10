@@ -1,55 +1,18 @@
 .stay-payment {
-    gap: rem(80px);
+    margin-block: 4rem 2rem;
 
-    &>* {
-        border-radius: rem(12px);
+    grid-template-columns: minmax(1px, 1fr);
+    column-gap: 3.5rem;
+
+    .payment-details {
+        grid-area: 1 / 1 / 2 / 2;
+        padding-inline: 1rem;
     }
 
-    .stay-payment-modal {
-        padding: rem(24px);
-        border: 1px solid $gray3;
-        height: max-content;
-        flex-basis: rem(465.66px);
-
-        hr {
-            margin: 0;
-        }
-
-        .stay-details-part {
-            padding-block-end: rem(24px);
-
-            img {
-                object-fit: cover;
-                width: rem(104px);
-                height: rem(104px);
-                border-radius: rem(10px);
-            }
-
-            .text-details {
-                padding-inline-start: 1rem;
-
-                h2,
-                p {
-                    margin-block-end: rem(5px);
-                }
-            }
-        }
-
-        .price-details-part {
-            h1 {
-                padding-block: rem(24px);
-                margin: 0;
-            }
-
-            div:not(:last-child) {
-                padding-block-end: 1rem;
-            }
-        }
+    .payment-modal {
+        grid-column: 1 / 2 / 2 / 3;
+        align-self: start;
     }
-
-}
-
-.stay-payment-details {
 
     h1,
     h2,
@@ -58,6 +21,227 @@
     h5,
     h6 {
         margin: 0;
+    }
+}
+
+.payment-details {
+    article {
+        padding-block: 2rem;
+
+        h2 {
+            font-size: 1.375rem;
+            padding-block-end: 1.5rem;
+        }
+    }
+
+    article:not(:last-of-type) {
+        border-block-end: 0.667px solid $gray2;
+    }
+
+    header {
+        position: relative;
+        font-size: 2rem;
+        margin-block-end: 0.75rem;
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        .back-btn {
+            position: absolute;
+            inset: -0.2rem auto auto -3.25rem;
+            font-size: 1.25rem;
+            height: 3rem;
+            width: 3rem;
+            border-radius: 50%;
+            background-color: transparent;
+
+            &::before {
+                content: "\f053";
+                font-family: fa-solid;
+            }
+
+            &:hover {
+                background-color: $btnHover;
+            }
+        }
+    }
+
+    .reservation-details {
+        .dates {
+            padding-block-end: 1.5rem;
+        }
+
+        .dates,
+        .guests {
+            div {
+                gap: 0.605rem;
+            }
+
+            &>h4 {
+                font-weight: 500;
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .payment {
+        .title {
+            padding-block-end: 1.65rem;
+
+            h2 {
+                padding: 0;
+            }
+        }
+
+        .credit-card-imgs {
+            gap: rem(3px);
+
+            img {
+                height: rem(9px);
+            }
+        }
+
+        .payment-div {
+            gap: 0.9rem;
+
+            &>input,
+            .select-payment-method {
+                width: 100%;
+                height: 3.6rem;
+                border: 0.667px solid $gray4;
+                border-radius: 0.5rem;
+                outline: none;
+                padding-inline: 1rem;
+            }
+
+            .select-payment-method {
+                background-color: transparent;
+
+                .arrow-down::before {
+                    content: '\f078';
+                    font-family: fa-solid;
+                    font-size: 1.2rem;
+                }
+
+                .arrow-up::before {
+                    content: '\f106';
+                    font-family: fa-solid;
+                    font-size: 1.2rem;
+                }
+            }
+        }
+
+        .card-details {
+            grid-template-columns: repeat(2, minmax(1px, 1fr));
+            grid-template-rows: repeat(2, 3.5rem);
+
+            &>* {
+                padding-inline: 1rem;
+                border: none;
+
+                cursor: pointer;
+
+                &:focus {
+                    border: 0.667px solid $darkGray;
+                }
+            }
+
+            .card-number {
+                grid-area: 1 / 1 / 2 / 3;
+                border-inline: 0.667px solid $gray4;
+                border-block-start: 0.667px solid $gray4;
+                border-radius: 0.5rem 0.5rem 0 0;
+            }
+
+            .expiration {
+                border-block: 0.667px solid $gray4;
+                border-inline-start: 0.667px solid $gray4;
+                border-radius: 0 0 0 0.5rem;
+            }
+
+            .cvv {
+                border-block: 0.667px solid $gray4;
+                border-inline: 0.667px solid $gray4;
+                border-radius: 0 0 0.5rem 0;
+            }
+        }
+    }
+
+    .required-info {
+        .text {
+            gap: 0.25rem;
+            font-weight: 200;
+
+            h4 {
+                padding-block-start: 0.5rem;
+            }
+        }
+
+        button {
+            height: 2.1rem;
+            width: 3.75rem;
+            background-color: transparent;
+            border: 0.667px solid $darkGray;
+            border-radius: 0.5rem;
+
+            &:hover {
+                background-color: $btnHover;
+            }
+        }
+    }
+
+    .cancellation-policy {
+        span {
+            text-decoration: underline;
+            font-weight: 600;
+        }
+    }
+
+    .ground-rules {
+        .rules {
+            margin-block-start: 1rem;
+            list-style-type: disc;
+            padding-inline-start: 1rem;
+
+            li {
+                &:first-of-type {
+                    padding-block: 0.2rem 0.55rem;
+                }
+            }
+        }
+    }
+
+    .confirmation {
+        padding-block: 2.5rem;
+        gap: 1rem;
+
+        p {
+            font-size: 0.805rem;
+
+            span {
+                text-decoration: underline;
+                font-weight: 600;
+
+                cursor: pointer;
+            }
+        }
+
+        .confirm-btn {
+            height: 3.5rem;
+            width: 12.75rem;
+
+            font-size: 1.15rem;
+            font-family: circular-bold;
+            line-height: 19px;
+            color: white;
+            background: radial-gradient(103.95% 1413.54% at -3.95% 100%, #D33753 0%, #D13660 52.83%, #C72D65 100%);
+            padding-inline: 1rem;
+            border-radius: 0.5rem;
+            margin-block: 1rem;
+
+            cursor: pointer;
+        }
     }
 
     .phone-add {
@@ -77,139 +261,23 @@
             gap: rem(16px);
         }
     }
-
-
-    .payment-details-header {
-
-        .go-back-arr,
-        h1 {
-            padding-block: rem(64px) rem(32px);
-        }
-
-        .go-back-arr::before {
-            content: "\f053";
-            font-family: fa-solid;
-            padding-inline-end: rem(18px);
-        }
-
-        h1 {
-            font-size: rem(32px);
-            margin: 0;
-        }
-    }
-
-    .reservation-details {
-        h2 {
-            font-size: rem(22px);
-            padding-block-end: 24px;
-        }
-
-        .dates,
-        .guests {
-            padding-block-end: rem(24px);
-            padding-block-start: .5rem;
-        }
-    }
-
-    .payment {
-
-        .expiration-cvv {}
-
-        .credit-card-details,
-        .required-and-phone,
-        .policy,
-        .ground-rules {
-            padding-block: 2rem rem(24px);
-        }
-
-        .credit-card-details,
-        .card-details {
-            gap: rem(8px);
-        }
-
-        .card-details {
-            input {
-                padding: rem(16px);
-                flex-grow: 1;
-                border: 1px solid $gray3;
-            }
-
-            .card-number {
-                border-radius: rem(8px);
-            }
-        }
-
-        .credit-card-header {
-            padding-block-end: rem(24px);
-
-            h2 {
-                padding-block-end: 0;
-            }
-        }
-
-        .btn {
-            max-width: rem(560px);
-            height: rem(56px);
-        }
-
-        .credit-card-imgs {
-            gap: rem(3px);
-
-            img {
-                height: rem(9px);
-            }
-        }
-
-        .select-credit-debit {
-            border: 1px solid $gray3;
-            padding: rem(16px);
-            border-radius: rem(8px);
-
-            .arrow-down::before {
-                content: '\f078';
-                font-family: fa-solid;
-            }
-
-            .arrow-up::before {
-                content: '\f106';
-                font-family: fa-solid;
-            }
-
-            .container {
-                gap: rem(16px);
-
-                p {
-                    color: #484848;
-                }
-            }
-        }
-
-        .confirm-and-pay {
-            height: rem(48px);
-            // padding: 14px 0px;
-            width: max-content;
-            padding-inline: rem(16px);
-            background: radial-gradient(103.95% 1413.54% at -3.95% 100%, #D33753 0%, #D13660 52.83%, #C72D65 100%);
-            border-radius: rem(8px);
-            font-family: circular-bold;
-            line-height: 19px;
-            color: #ffffff;
-            margin-block: 1rem;
-            cursor: pointer;
-        }
-    }
 }
-
 
 @media (width > 742px) {
     .stay-payment {
-        padding: 5rem;
+        grid-template-columns: minmax(1px, 6fr) minmax(1px, 5.05fr);
+
+        .payment-details {
+            padding-inline-start: 0;
+        }
     }
 }
 
 @media (width > 1280px) {
     .stay-payment {
-        padding: 0;
+        .payment-modal {
+            justify-self: end;
+            width: 23.25rem;
+        }
     }
-
 }
