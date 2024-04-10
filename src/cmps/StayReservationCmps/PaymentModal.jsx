@@ -11,14 +11,12 @@ export function PaymentModal({ stay, params }) {
         const avgScore = totalSum / reviews.length
         return avgScore
     }
-
+console.log(stay)
     return <div className="payment-modal flex column">
         <div className="stay-details flex align-center">
-
             <img src={stay.imgUrls[0]} />
-
             <div className="text-details">
-                <h2>{stay.name}</h2>
+                <h2>{stay.summary}</h2>
                 <p>{stay.type}</p>
                 <p>★ {calcScore(stay.reviews)} ({stay.reviews.length} reviews) {stay.host.experience.isSuper &&
                     <span>・
