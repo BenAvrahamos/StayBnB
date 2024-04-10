@@ -162,14 +162,18 @@ export function Payment({ stay, params }) {
                 </div>
 
                 {isPhone && <>
-                    <div className='overlay'></div>
+                    <div className='overlay' onClick={onCloseAddPhone}></div>
                     <div className='phone-modal flex column'>
-                        <button onClick={onCloseAddPhone}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false" style={{ display: 'block', fill: 'none', height: '16px', width: '16px', stroke: 'currentcolor', strokeWidth: '3', overflow: 'visible' }}><path d="m6 6 20 20M26 6 6 26"></path></svg></button>
-                        <h2>Add phone number</h2>
-                        <p>We’ll send you trip updates and a text to verify this number.</p>
-                        <input type='tel' name="phone" value={userOrderDetails.phone} placeholder="Phone number" pattern="\d{3}-\d{3}-\d{4}" onChange={onUserOrderDetails} />
-                        <button className='add-phone' onClick={onCloseAddPhone}>Continue</button>
-                        <p>We'll text you a code to confirm your number. Standard message and data rates apply.</p>
+                        <header className='flex center'>
+                            <button onClick={onCloseAddPhone} className='close-btn'><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false" style={{ display: 'block', fill: 'none', height: '16px', width: '16px', stroke: 'currentcolor', strokeWidth: '3', overflow: 'visible' }}><path d="m6 6 20 20M26 6 6 26"></path></svg></button>
+                            <h2>Add phone number</h2>
+                        </header>
+                        <main>
+                            <p>We’ll send you trip updates and a text to verify this number.</p>
+                            <input type='tel' name="phone" value={userOrderDetails.phone} placeholder="Phone number" pattern="\d{3}-\d{3}-\d{4}" onChange={onUserOrderDetails} />
+                            <p>We'll text you a code to confirm your number. Standard message and data rates apply.</p>
+                            <button className='add-btn' onClick={onCloseAddPhone}>Continue</button>
+                        </main>
                     </div>
                 </>}
             </article>

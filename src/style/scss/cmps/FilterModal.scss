@@ -343,7 +343,7 @@
 @media (width > 742px) {
     .filter-modal {
         margin-block: 2.5rem;
-        inset: 0 calc(50% - 24.5rem);
+        margin-inline: auto;
         max-width: 48.75rem;
 
         footer {
