@@ -20,18 +20,13 @@
         text-overflow: ellipsis;
     }
 
-    span {
-        font-size: 14px;
-        color: $headerGray;
-        font-weight: normal;
 
-    }
 
     &>div {
         height: 4rem;
         flex-grow: 1;
         border-radius: 3em;
-        padding: 0.875rem 1.5rem;
+        padding: 1.075rem 1.5rem;
 
         display: flex;
         flex-direction: column;
@@ -45,10 +40,25 @@
 
     & .destination {
         width: 17.75em;
+
+        & span {
+            font-size: 14px;
+            color: $headerGray;
+            font-weight: normal;
+    
+        }
+
     }
 
     & .dates {
         width: 8.75em;
+
+        & span {
+            font-size: 14px;
+            color: $headerGray;
+            font-weight: normal;
+    
+        }
     }
 
     & .guests {
@@ -57,6 +67,15 @@
         flex-direction: row;
         justify-content: space-between;
         padding-inline-end: 0.7em;
+
+        & span {
+            font-size: 14px;
+            color: $headerGray;
+            font-weight: normal;
+    
+        }
+
+
     }
 
     & .search-btn {
@@ -114,9 +133,9 @@
         gap: 0;
         justify-content: space-between;
 
-        span {
-            display: none;
-        }
+        // span {
+        //     display: none;
+        // }
 
         div {
             padding: 0.875rem 1rem;
