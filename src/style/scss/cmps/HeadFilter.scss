@@ -2,7 +2,7 @@
     width: calc(100vw - 5rem);
     max-width: 850px;
     font-size: 12px;
-    border-radius: 3em;
+    border-radius: 48px;
     box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.08);
     border: 1px solid #dddddd;
     margin-bottom: 0.5em;
@@ -26,7 +26,7 @@
     &>div {
         height: 4rem;
         flex-grow: 1;
-        border-radius: 3em;
+        border-radius: 48px;
         padding: 0.875rem 1.5rem;
 
         display: flex;

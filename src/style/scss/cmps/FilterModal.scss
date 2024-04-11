@@ -5,7 +5,7 @@
 
     color: $darkGray;
     background-color: white;
-    border-radius: 0.8rem;
+    border-radius: $BR3;
     letter-spacing: -0.8px;
 
     header,
@@ -23,7 +23,7 @@
         inset: 0 0 auto;
         padding: 1rem 1.5rem;
         border-block-end: 0.667px solid $lightGray;
-        border-radius: 0.8rem 0.8rem 0 0;
+        border-radius: $BR3 $BR3 0 0;
     }
 
     footer {
@@ -54,13 +54,13 @@
 
     .clear-btn {
         font-weight: 550;
-        border-radius: 0.6rem;
+        border-radius: $BR2;
     }
 
     .submit-btn {
         height: auto;
         padding: 0.9rem 1.7rem;
-        border-radius: 0.6rem;
+        border-radius: $BR2;
         color: white;
         background-color: $darkGray;
 
@@ -259,7 +259,7 @@
                 height: 100%;
                 width: 100%;
                 padding: 1rem;
-                border-radius: 0.75rem;
+                border-radius: 12px;
 
                 display: flex;
                 flex-direction: column;
@@ -347,7 +347,7 @@
         max-width: 48.75rem;
 
         footer {
-            border-radius: 0 0 0.8rem 0.8rem;
+            border-radius: 0 0 $BR3 $BR3;
         }
 
         main {
