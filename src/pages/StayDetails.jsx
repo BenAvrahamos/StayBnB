@@ -137,9 +137,8 @@ export function StayDetails() {
                                 })}
                             </div>
                         </div>
-                        <div className="amenity-info">
+                        <div className="amenity-info" id="amenities">
                             <h1>What this place offers: </h1>
-
                             <ul className="amenities-ul grid">
                                 {stay.amenities.map(amenity =>
                                     <li key={amenity} className="flex align-center">
