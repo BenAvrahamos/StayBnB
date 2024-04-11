@@ -19,30 +19,34 @@ export function RootCmp() {
     listMargin: false
   })
 
+
   useEffect(() => {
     const handleScroll = () => {
-      const offset = window.scrollY
-      if (offset > 0) {
-        SetDynamicPageLayOut({
-          header: { compact: true, fixed: true },
-          fixedFilterLabel: true,
-          listMargin: true
-        })
-      } else {
-        SetDynamicPageLayOut({
-          header: { compact: false, fixed: false },
-          fixedFilterLabel: false,
-          listMargin: false
-        })
+      const offset = window.scrollY;
+      const newLayout = {
+        header: { compact: offset > 0, fixed: offset > 0 },
+        fixedFilterLabel: offset > 0,
+        listMargin: offset > 0
+      };
+
+      // Check if the new layout is different from the current layout
+      if (
+        newLayout.header.compact !== dynamicPageLayOut.header.compact ||
+        newLayout.header.fixed !== dynamicPageLayOut.header.fixed ||
+        newLayout.fixedFilterLabel !== dynamicPageLayOut.fixedFilterLabel ||
+        newLayout.listMargin !== dynamicPageLayOut.listMargin
+      ) {
+        SetDynamicPageLayOut(newLayout);
       }
     };
 
     window.addEventListener('scroll', handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [dynamicPageLayOut]); // Add dynamicPageLayOut as a dependency to ensure the latest state is used for comparison
+
 
 
   return (

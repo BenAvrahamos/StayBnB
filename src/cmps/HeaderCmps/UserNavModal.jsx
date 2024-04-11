@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 
 export function UserNavModal(){
 
-    return <section className="user-nav-modal">
+    return <section className="user-nav-modal" >
            <NavLink to="/unActive" className='grayTxt'>Messages</NavLink>
            <NavLink to="/order" className='grayTxt'>Trips</NavLink>
            <NavLink to="/wishlist" className='grayTxt'>Wishlist</NavLink>

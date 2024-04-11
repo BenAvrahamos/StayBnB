@@ -1,11 +1,11 @@
 .user-nav-modal {
-    top: 7.7%;
+    top: 80px;
+    right: 80px;
     position: absolute;
     // border: 1px solid black;
     box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.15);
     width: 15.3rem;
-    right: 5.3%;
-    height: 24rem;
+    height: 20rem;
     border-radius: 10px;
     background-color: white;
     z-index: 1;
@@ -13,8 +13,8 @@
     flex-direction: column;
     justify-content: space-around;
     align-content: center;
+    padding: 0 1em 1em 1em;
+    font-size: 0.875em;
 
-    &>* {
-        
-    }
+
 }
