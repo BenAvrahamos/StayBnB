@@ -1,6 +1,6 @@
 import { NavLink, useNavigate } from "react-router-dom"
 import { useSelector } from 'react-redux'
-import { useSearchParams } from 'react-router-dom'
+import { useSearchParams,} from 'react-router-dom'
 import { useState, useEffect, useRef } from "react"
 
 import { HeaderFilter } from "./HeaderFilter"
@@ -48,6 +48,7 @@ function onNavigate(){
             return 'small' // Small header for details & payment
         }
     }
+
 
     return <section className={`app-header-container header-${getHeaderSize()} flex column center 
     ${dynamicPageLayOut.header.fixed ? 'fixed-header' : ''}
