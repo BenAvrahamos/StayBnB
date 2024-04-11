@@ -9,7 +9,7 @@ import { SvgPathCmp } from '../cmps/HelperCmps/SvgPathCmp'
 import { BedroomDetails } from '../cmps/StayDetailsCmps/BedroomDetails'
 import { StayReviewsPreview } from "../cmps/StayDetailsCmps/StayReviewsPreview"
 import { utilService } from "../services/util.service"
-
+import { DynamicLocalHeaderNav } from "../cmps/StayDetailsCmps/DynamicLocalHeaderNav"
 export function StayDetails() {
     const [searchParams, setSearchParams] = useSearchParams()
     const location = useLocation()
@@ -104,6 +104,7 @@ export function StayDetails() {
                     </div>
                 </header>
                 <StayGalleryPreview stay={stay} />
+                <DynamicLocalHeaderNav />
                 <main className="content-and-modal-container grid">
                     <section className="content">
                         <div className="place-info flex column">
