@@ -103,9 +103,8 @@ export function StayDetails() {
                         </button>
                     </div>
                 </header>
-                    <StayGalleryPreview stay={stay} />
+                <StayGalleryPreview stay={stay} />
                 <main className="content-and-modal-container grid">
-
                     <section className="content">
 
                         <article className="place-info flex column">
@@ -124,7 +123,6 @@ export function StayDetails() {
 
                         <article className="room-info">
                             <h2>Where you'll sleep</h2>
-
                             <div className="rooms-container grid">
                                 {stay.bedrooms.map(room => {
                                     const bedsLength = room.beds.length
@@ -159,11 +157,9 @@ export function StayDetails() {
                         </article>
 
                     </section>
-                        <ReservationModal stay={stay} params={params} updateParams={updateParams} />
+                    <ReservationModal stay={stay} params={params} updateParams={updateParams} />
                 </main>
-
                 <StayReviewsPreview stay={stay} />
-
             </section>
             }
         </>

@@ -1,6 +1,5 @@
 .stay-payment {
     margin-block: 4rem 2rem;
-
     grid-template-columns: minmax(1px, 1fr);
     column-gap: 3.5rem;
 
@@ -345,11 +344,13 @@
     }
 }
 
-@media (width > 1280px) {
-    .stay-payment {
-        .payment-modal {
-            justify-self: end;
-            width: 23.25rem;
-        }
-    }
-}
+// @media (width > 1280px) {
+//     .stay-payment {
+//         .payment-modal {
+//             justify-self: end;
+//             width: 23.25rem;
+//         }
+//     }
+// }
+
+// ask tomorrow since the sizes and gap are getting destroyed by these settings.
