@@ -108,21 +108,21 @@ export function StayDetails() {
 
                     <section className="content">
 
-                        <div className="place-info flex column">
+                        <article className="place-info flex column">
                             <h1>Entire {stay.type} in {stay.loc.city}, {stay.loc.country}</h1>
                             <p>{stay.capacity} guests ・ {stay.bedrooms.length} bedrooms ・ {utilService.countBedsInBedrooms(stay)} beds ・ {stay.baths} baths</p>
                             <p className="reviews-preview">{'★'.repeat(Math.ceil(utilService.calcScore(stay)))} {utilService.calcScore(stay)} ・ {stay.reviews.length} reviews</p>
-                        </div>
+                        </article>
 
-                        <div className="host-info flex">
+                        <article className="host-info flex">
                             <img src={stay.host.imgUrl} className="host-img" />
                             <div className="flex column">
                                 <h3>Hosted by {_findHostName()}</h3>
                                 <p>{stay.host.experience.isSuper ? 'Superhost ・' : ''}  {stay.host.experience.hostingTime > 1 ? `${stay.host.experience.hostingTime} years` : 'year'} hosting</p>
                             </div>
-                        </div>
+                        </article>
 
-                        <div className="room-info">
+                        <article className="room-info">
                             <h2>Where you'll sleep</h2>
 
                             <div className="rooms-container grid">
@@ -140,9 +140,9 @@ export function StayDetails() {
                                         </div>)
                                 })}
                             </div>
-                        </div>
+                        </article>
 
-                        <div className="amenity-info">
+                        <article className="amenity-info">
                             <h1>What this place offers: </h1>
 
                             <ul className="amenities-ul grid">
@@ -156,7 +156,7 @@ export function StayDetails() {
                                     <p>{safetyAmenities[0]}</p>
                                 </li>
                             </ul>
-                        </div>
+                        </article>
 
                     </section>
                         <ReservationModal stay={stay} params={params} updateParams={updateParams} />

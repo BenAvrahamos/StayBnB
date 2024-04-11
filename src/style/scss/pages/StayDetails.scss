@@ -1,5 +1,5 @@
 .stay-details {
-    margin-block-end: 4rem;
+    margin-block-end: 5rem;
 
     header {
         margin-block: 0 1rem;
@@ -47,10 +47,7 @@
             align-self: start;
         }
 
-        .place-info,
-        .host-info,
-        .room-info,
-        .amenity-info {
+        .content article:not(:last-of-type) {
             border-block-end: 0.667px solid $gray3;
         }
 
@@ -156,6 +153,7 @@
 
         .content-and-modal-container {
             grid-template-columns: minmax(1px, 2fr) minmax(1px, 1fr);
+
             .content {
                 padding-inline-start: 0;
             }
