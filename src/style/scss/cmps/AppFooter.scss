@@ -6,17 +6,12 @@
     box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1);
     font-size: 0.875em;
     color: $darkGray;
-
-
-
+    background-color: $btnHover;
 
     & .app-footer {
         column-gap: 23em;
         display: flex;
         flex-direction: row;
-
-
-
 
         & .options,
         .media {
@@ -30,7 +25,6 @@
                     text-decoration: underline;
                 }
             }
-
         }
 
         & .media {
@@ -43,7 +37,6 @@
                 display: flex;
                 column-gap: 1em;
 
-
                 & .facebook,
                 .twitter,
                 .instagram {
@@ -54,40 +47,28 @@
                     width: 1.25em, ;
                     height: 1.25em, ;
                     background-color: $darkGray;
+
                     cursor: pointer;
-
-
                 }
 
                 & .instagram:before {
-
                     content: '\f16d';
                     font-family: fa-brands;
                     color: white;
-              
-
                 }
 
                 & .twitter:before {
-
                     content: '\f099';
                     font-family: fa-brands;
                     color: white;
-            
-
                 }
 
                 & .facebook:before {
-
                     content: '\f39e';
                     font-family: fa-brands;
                     color: white;
-              
-
                 }
             }
-
-
         }
     }
 
