@@ -8,6 +8,7 @@ import { DemoDataService } from "../../services/demoData.service"
 import { stayService } from "../../services/stay.local.service"
 import { setStayFilter, setStayHeaderFilter } from "../../store/actions/stay.actions"
 import { UserNavModal } from "./UserNavModal"
+import { useLocation } from 'react-router-dom';
 
 export function AppHeader({ dynamicPageLayOut, SetDynamicPageLayOut }) {
     const ref = useRef(null)
@@ -38,9 +39,17 @@ function onNavigate(){
 
     }
 
+    const location = useLocation()
+    const getHeaderSize = () => {
+        const { pathname } = location
+        if (pathname === '/') {
+            return 'large' // Large header for the index
+        } else {
+            return 'small' // Small header for details & payment
+        }
+    }
 
-
-    return <section className={`app-header-container flex column center 
+    return <section className={`app-header-container header-${getHeaderSize()} flex column center 
     ${dynamicPageLayOut.header.fixed ? 'fixed-header' : ''}
     ${dynamicPageLayOut.header.expanded ? 'expanded' : ''}`}>
         <section className="expanded-header flex space-between align-center">
