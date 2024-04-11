@@ -9,7 +9,8 @@ import { SvgPathCmp } from '../cmps/HelperCmps/SvgPathCmp'
 import { BedroomDetails } from '../cmps/StayDetailsCmps/BedroomDetails'
 import { StayReviewsPreview } from "../cmps/StayDetailsCmps/StayReviewsPreview"
 import { utilService } from "../services/util.service"
-import { DynamicLocalHeaderNav } from "../cmps/StayDetailsCmps/DynamicLocalHeaderNav"
+import { DynamicLocalHeaderNav } from "../cmps/StayDetailsCmps/DynamicHeader/DynamicLocalHeaderNav"
+import { DynamicModalHeader } from "../cmps/StayDetailsCmps/DynamicHeader/DynamicModalHeader"
 export function StayDetails() {
     const [searchParams, setSearchParams] = useSearchParams()
     const location = useLocation()
@@ -91,15 +92,15 @@ export function StayDetails() {
 
     function loadGalleryObserver() {
         const observer = new IntersectionObserver(entries => {
-          if (!entries[entries.length - 1].isIntersecting) {
-            dynamicNav.current.style.display = 'block'
-          } else {
-            dynamicNav.current.style.display = 'none'
-          }
+            if (!entries[entries.length - 1].isIntersecting) {
+                dynamicNav.current.style.display = 'block'
+            } else {
+                dynamicNav.current.style.display = 'none'
+            }
         })
         setGalleryObserver(observer)
         galleryObserver?.observe(gallery.current)
-      }
+    }
 
     return (
         <>
@@ -122,6 +123,9 @@ export function StayDetails() {
                 </div>
                 <div ref={dynamicNav}>
                     <DynamicLocalHeaderNav />
+                </div>
+                <div>
+                    <DynamicModalHeader stay={stay} />
                 </div>
 
                 <main className="content-and-modal-container grid">
