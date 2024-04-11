@@ -110,7 +110,7 @@
                 width: 100%;
                 height: 3.6rem;
                 border: 0.667px solid $gray4;
-                border-radius: 0.5rem;
+                border-radius: $BR1;
                 outline: none;
                 padding-inline: 1rem;
             }
@@ -151,19 +151,19 @@
                 grid-area: 1 / 1 / 2 / 3;
                 border-inline: 0.667px solid $gray4;
                 border-block-start: 0.667px solid $gray4;
-                border-radius: 0.5rem 0.5rem 0 0;
+                border-radius: $BR1 $BR1 0 0;
             }
 
             .expiration {
                 border-block: 0.667px solid $gray4;
                 border-inline-start: 0.667px solid $gray4;
-                border-radius: 0 0 0 0.5rem;
+                border-radius: 0 0 0 $BR1;
             }
 
             .cvv {
                 border-block: 0.667px solid $gray4;
                 border-inline: 0.667px solid $gray4;
-                border-radius: 0 0 0.5rem 0;
+                border-radius: 0 0 $BR1 0;
             }
         }
     }
@@ -183,7 +183,7 @@
             width: 3.75rem;
             background-color: transparent;
             border: 0.667px solid $darkGray;
-            border-radius: 0.5rem;
+            border-radius: $BR1;
 
             &:hover {
                 background-color: $btnHover;
@@ -237,7 +237,7 @@
             color: white;
             background: radial-gradient(103.95% 1413.54% at -3.95% 100%, #D33753 0%, #D13660 52.83%, #C72D65 100%);
             padding-inline: 1rem;
-            border-radius: 0.5rem;
+            border-radius: $BR1;
             margin-block: 1rem;
 
             cursor: pointer;
@@ -251,7 +251,7 @@
 
         color: $darkGray;
         background-color: white;
-        border-radius: 0.8rem 0.8rem 0 0;
+        border-radius: $BR3 $BR3 0 0;
 
         header {
             position: relative;
@@ -259,7 +259,7 @@
             background-color: white;
             padding: 1rem 1.5rem;
             border-block-end: 0.667px solid $lightGray;
-            border-radius: 0.8rem 0.8rem 0 0;
+            border-radius: $BR3 $BR3 0 0;
             margin: 0;
 
             h2 {
@@ -305,7 +305,7 @@
             width: 100%;
             height: 3.5rem;
             border: solid 0.667px $gray4;
-            border-radius: 0.5rem;
+            border-radius: $BR1;
             margin-block-end: 0.5rem;
         }
 
@@ -333,7 +333,7 @@
 
         .phone-modal {
             max-width: 35.5rem;
-            border-radius: 0.8rem;
+            border-radius: $BR3;
             inset-block: 4.5rem auto;
             margin-inline: auto;
 

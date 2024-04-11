@@ -10,7 +10,7 @@ $galley-br: 0.75rem;
         padding-inline: rem(15px);
         border: 1px solid $darkGray;
         width: max-content;
-        border-radius: rem(8px);
+        border-radius: $BR1;
         position: absolute;
         background-color: #ffffff;
         bottom: rem(24px);

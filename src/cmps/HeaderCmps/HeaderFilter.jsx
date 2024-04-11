@@ -54,7 +54,7 @@ export function HeaderFilter({ modalType, setModalType, }) {
         return `${month} ${day}`
     }
 
-    return <section ref={ref} className={`header-filter flex ${modalType ? 'grey' : ''}`}>
+    return <section ref={ref} className={`header-filter flex ${modalType && modalType !== 'user-nav' ? 'grey' : ''}`}>
         <div className={`destination ${modalType === 'map' ? 'selected' : ''}`} onClick={() => setModalType(modalType === 'map' ? null : 'map')}>
             Where<span  className=' grayTxt'>{headerFilterBy.loc.region ? headerFilterBy.loc.region : "search destinations"}</span>
         </div>
@@ -68,7 +68,7 @@ export function HeaderFilter({ modalType, setModalType, }) {
 
         <div className={`guests ${modalType === 'guest' ? 'selected' : ''}`} onClick={() => setModalType(modalType === 'guest' ? null : 'guest')}>
             <div className="flex column justify-center">Who<span className='guest-count'>{stayService.guestCountString(headerFilterBy)}</span></div>
-            <button onClick={onLoadStays} className={`search-btn ${modalType !== '' ? 'compact' : ''}`} ><span>Search</span></button>
+            <button onClick={onLoadStays} className={`search-btn ${modalType !== '' && modalType !== 'user-nav' ? 'compact' : ''}`} ><span>Search</span></button>
         </div>
 
         {modalType === 'map' && <MapFilter setModalType={setModalType} headerFilterBy={headerFilterBy} />}

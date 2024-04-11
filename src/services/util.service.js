@@ -14,6 +14,7 @@ export const utilService = {
     calcSumToPay,
     timestampToDate,
     timestampsToShortDates,
+    timestampToMonthYear,
     calcSumOfDays
 }
 
@@ -137,6 +138,14 @@ function timestampsToShortDates(entryTimestamp, exitTimestamp) {
     else if (entryMonth === exitMonth) str = entryMonth + ' ' + entryDate + '-' + exitDate
     else str = entryDate + ' ' + entryMonth + '-' + exitDate + ' ' + exitMonth
     return str
+}
+
+function timestampToMonthYear(timeStr = "2016-08-14T04:00:00.000Z") { // temp default until connected to new demo data
+    const date = new Date(timeStr)
+    const month = date.toLocaleString('en-US', { month: 'long' })
+    const year = date.getFullYear()
+    
+    return month + ' ' + year
 }
 
 function calcSumOfDays(params) {

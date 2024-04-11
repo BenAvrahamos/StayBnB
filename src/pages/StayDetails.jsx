@@ -103,22 +103,27 @@ export function StayDetails() {
                         </button>
                     </div>
                 </header>
+
                 <StayGalleryPreview stay={stay} />
+
                 <main className="content-and-modal-container grid">
                     <section className="content">
-                        <div className="place-info flex column">
+
+                        <article className="place-info flex column">
                             <h1>Entire {stay.type} in {stay.loc.city}, {stay.loc.country}</h1>
                             <p>{stay.capacity} guests ・ {stay.bedrooms.length} bedrooms ・ {utilService.countBedsInBedrooms(stay)} beds ・ {stay.baths} baths</p>
-                            <p className="reviews-preview">{'★'.repeat(Math.round(utilService.calcScore(stay)))} {utilService.calcScore(stay)} ・ {stay.reviews.length} reviews</p>
-                        </div>
-                        <div className="host-info flex">
+                            <p className="reviews-preview">{'★'.repeat(Math.ceil(utilService.calcScore(stay)))} {utilService.calcScore(stay)} ・ {stay.reviews.length} reviews</p>
+                        </article>
+
+                        <article className="host-info flex">
                             <img src={stay.host.imgUrl} className="host-img" />
                             <div className="flex column">
                                 <h3>Hosted by {_findHostName()}</h3>
                                 <p>{stay.host.experience.isSuper ? 'Superhost ・' : ''}  {stay.host.experience.hostingTime > 1 ? `${stay.host.experience.hostingTime} years` : 'year'} hosting</p>
                             </div>
-                        </div>
-                        <div className="room-info">
+                        </article>
+
+                        <article className="room-info">
                             <h2>Where you'll sleep</h2>
                             <div className="rooms-container grid">
                                 {stay.bedrooms.map(room => {
@@ -127,7 +132,7 @@ export function StayDetails() {
                                         <div className="bedroom" key={room.name}
                                             style={{ paddingBlockEnd: bedsLength < longestBedsArrCount ? ((longestBedsArrCount - bedsLength) * .875) + 1.5 + 'rem' : '1.5rem' }}
                                         >
-                                            <div className="icons flex align-center space-evenly">
+                                            <div className="icons flex align-center">
                                                 {room.beds.map((bed, idx) => <SvgPathCmp name={bed.replaceAll(' ', '').toLowerCase()} key={room + idx} />)}
                                             </div>
                                             <h4>{room.name}</h4>
@@ -135,8 +140,9 @@ export function StayDetails() {
                                         </div>)
                                 })}
                             </div>
-                        </div>
-                        <div className="amenity-info">
+                        </article>
+
+                        <article className="amenity-info">
                             <h1>What this place offers: </h1>
 
                             <ul className="amenities-ul grid">
@@ -150,7 +156,8 @@ export function StayDetails() {
                                     <p>{safetyAmenities[0]}</p>
                                 </li>
                             </ul>
-                        </div>
+                        </article>
+
                     </section>
                     <ReservationModal stay={stay} params={params} updateParams={updateParams} />
                 </main>

@@ -9,7 +9,7 @@ import { StayIndex } from './pages/StayIndex'
 import { StayDetails } from './pages/StayDetails'
 import { AppHeader } from './cmps/HeaderCmps/AppHeader'
 import { StayPayment } from './pages/StayPayment'
-import { UserOrders } from './pages/UserOrders'
+import { UserTrips } from './pages/UserTrips'
 
 export function RootCmp() {
 
@@ -19,30 +19,34 @@ export function RootCmp() {
     listMargin: false
   })
 
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     const offset = window.scrollY
-  //     if (offset > 0) {
-  //       SetDynamicPageLayOut({
-  //         header: { compact: true, fixed: true },
-  //         fixedFilterLabel: true,
-  //         listMargin: true
-  //       })
-  //     } else {
-  //       SetDynamicPageLayOut({
-  //         header: { compact: false, fixed: false },
-  //         fixedFilterLabel: false,
-  //         listMargin: false
-  //       })
-  //     }
-  //   };
 
-  //   window.addEventListener('scroll', handleScroll);
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      const newLayout = {
+        header: { compact: offset > 0, fixed: offset > 0 },
+        fixedFilterLabel: offset > 0,
+        listMargin: offset > 0
+      };
 
-  //   return () => {
-  //     window.removeEventListener('scroll', handleScroll)
-  //   }
-  // }, [])
+      // Check if the new layout is different from the current layout
+      if (
+        newLayout.header.compact !== dynamicPageLayOut.header.compact ||
+        newLayout.header.fixed !== dynamicPageLayOut.header.fixed ||
+        newLayout.fixedFilterLabel !== dynamicPageLayOut.fixedFilterLabel ||
+        newLayout.listMargin !== dynamicPageLayOut.listMargin
+      ) {
+        SetDynamicPageLayOut(newLayout);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [dynamicPageLayOut]); // Add dynamicPageLayOut as a dependency to ensure the latest state is used for comparison
+
 
 
   return (
@@ -54,7 +58,7 @@ export function RootCmp() {
           <Route path='/' element={<StayIndex />} />
           <Route path='/:stayId' element={<StayDetails />} />
           <Route path='/:stayId/payment' element={<StayPayment />} />
-          <Route path='/trips' element={<UserOrders />} />
+          <Route path='/trips' element={<UserTrips />} />
         </Routes>
       </Router>
     </Provider>

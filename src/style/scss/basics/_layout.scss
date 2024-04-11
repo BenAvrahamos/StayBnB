@@ -1,5 +1,6 @@
 .index-section,
-.expanded-header {
+.expanded-header,
+.user-trips {
     padding-inline: 1.5rem;
     max-width: 2520px;
     margin-inline: auto;
@@ -16,7 +17,8 @@
     .index-section,
     .expanded-header,
     .stay-details,
-    .stay-payment {
+    .stay-payment,
+    .user-trips {
         padding-inline: 2.5rem;
     }
 }
@@ -33,7 +35,8 @@
 
 @media (width > 1440px) {
     .index-section,
-    .expanded-header {
+    .expanded-header,
+    .user-trips {
         padding-inline: 5rem;
     }
 }

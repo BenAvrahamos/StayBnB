@@ -5,7 +5,7 @@
 
     color: $darkGray;
     background-color: white;
-    border-radius: 0.8rem 0.8rem 0 0;
+    border-radius: $BR3 $BR3 0 0;
 
     header,
     footer {
@@ -18,7 +18,7 @@
         inset: 0 0 auto;
         padding: 1rem 1.5rem;
         border-block-end: 0.667px solid $lightGray;
-        border-radius: 0.8rem 0.8rem 0 0;
+        border-radius: $BR3 $BR3 0 0;
 
         .exit-btn {
             position: absolute;
@@ -47,7 +47,7 @@
             color: white;
             background: radial-gradient(103.95% 1413.54% at -3.95% 100%, #D33753 0%, #D13660 52.83%, #C72D65 100%);
             font-family: circular-bold;
-            border-radius: rem(8px);
+            border-radius: $BR1;
             padding: 0 1.5rem;
         }
     }
@@ -72,7 +72,7 @@
             object-fit: cover;
             aspect-ratio: 1/1;
             max-width: 15rem;
-            border-radius: 0.626rem;
+            border-radius: 10.016px;
         }
 
         .user,
@@ -148,10 +148,10 @@
     .order-confirmation {
         inset: 2rem calc(50% - 24.5rem);
         max-width: 48.75rem;
-        border-radius: 0.8rem;
+        border-radius: $BR3;
 
         footer {
-            border-radius: 0 0 0.8rem 0.8rem;
+            border-radius: 0 0 $BR3 $BR3;
 
         }
     }

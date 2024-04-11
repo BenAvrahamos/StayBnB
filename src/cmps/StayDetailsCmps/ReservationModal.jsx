@@ -21,7 +21,6 @@ export function ReservationModal({ stay, params, updateParams }) {
     const [modalType, openModalType] = useState()
 
     const ref = useRef(null)
-    console.log(modalType);
 
     useEffect(() => {
         setNumOfDays(utilService.calcSumOfDays(params))
