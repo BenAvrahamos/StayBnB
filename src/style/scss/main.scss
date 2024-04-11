@@ -1,4 +1,3 @@
-
 /* SETUP */
 @import 'setup/_typography.scss';
 @import 'setup/_functions.scss';
@@ -10,10 +9,12 @@
 @import 'basics/_helpers.scss';
 @import 'basics/_layout.scss';
 
-/* VIEWS */
+/* PAGES */
 @import 'pages/StayIndex.scss';
 @import 'pages/StayDetails.scss';
 @import 'pages/StayPayment.scss';
+
+@import 'pages/UserTrips.scss';
 
 /* CMPS */
 @import 'cmps/AppHeader.scss';
@@ -21,6 +22,7 @@
 @import 'cmps/DateFilter.scss';
 @import 'cmps/MapFilter.scss';
 @import 'cmps/GuestFilter.scss';
+@import 'cmps/UserNavModal.scss';
 
 @import 'cmps/LabelsFilter.scss';
 @import 'cmps/StayPreview.scss';
@@ -31,8 +33,8 @@
 @import 'cmps/StayReviewsPreview.scss';
 @import 'cmps/DetailsGuestCount.scss';
 @import 'cmps/ReservationModal.scss';
-
 @import 'cmps/PaymentModal.scss';
-@import 'cmps/Order.scss';
 @import 'cmps/StayDetailsDateModal.scss';
 @import 'cmps/DynamicLocalHeaderNav.scss';
+@import 'cmps/OrderConfirmation.scss';
+

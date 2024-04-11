@@ -25,3 +25,17 @@
         background-color: $btnHover;
     }
 }
+
+@mixin buttons3 {
+    background-color: white;
+    border: 0.667px $darkGray solid;
+    
+    &:hover {
+        background-color: $btnHover;
+    }
+    
+    &.selected {
+        scale: 0.85;
+        transition: scale 1s;
+    }
+}
