@@ -143,7 +143,7 @@ export function StayDetails() {
                             </div>
                         </article>
 
-                        <article className="amenity-info">
+                        <article className="amenity-info" id="amenities">
                             <h1>What this place offers: </h1>
                             <ul className="amenities-ul grid">
                                 {stay.amenities.map(amenity =>
@@ -161,7 +161,7 @@ export function StayDetails() {
                     </section>
                     <ReservationModal stay={stay} params={params} updateParams={updateParams} />
                 </main>
-                <StayReviewsPreview stay={stay} />
+                <StayReviewsPreview stay={stay}/>
             </section>
             }
         </>
