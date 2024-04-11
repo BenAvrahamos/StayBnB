@@ -10,7 +10,7 @@ export function StayGalleryPreview({ stay }) {
     }, [])
 
     return (
-        <section className="gallery-stay-details">
+        <section className="gallery-stay-details" id="gallery">
             {fivePicsPreview && fivePicsPreview.map((pic,idx) => <img key={idx} src={pic} className={`img${idx}`} />)}
             <div className='show-all-btn flex align-center'>{<StringToSvg svgString={staySvgService['showallphotos']} />} Show all photos</div>
         </section>

@@ -1,8 +1,19 @@
 .dynamic-header-nav {
     padding-inline-start: rem(286.5px);
+    position: fixed;
+    z-index: 20;
+    left: 0;
+    top: 0;
+    background-color: #fff;
+    width: 100%;
+    gap: 24px;
+    border-block-end: 0.667px solid $lightGray;
     a {
-        padding-block: rem(30px);
         font-size: rem(14px);
         color: $darkGray;
+        padding-block: 30px;
+        &:hover {
+            border-block-end: 3px solid $darkGray;
+        }
     }
 }
