@@ -13,10 +13,10 @@ import { DynamicLocalHeaderNav } from "../cmps/StayDetailsCmps/DynamicLocalHeade
 export function StayDetails() {
     const [searchParams, setSearchParams] = useSearchParams()
     const location = useLocation()
+    const [galleryObserver, setGalleryObserver] = useState(null)
+    const queryParams = new URLSearchParams(location.search)
     const gallery = useRef()
     const dynamicNav = useRef()
-    const [galleryObserver, setGalleryObserver] = useState()
-    const queryParams = new URLSearchParams(location.search)
 
     const {
         region,
@@ -54,12 +54,9 @@ export function StayDetails() {
     useEffect(() => {
         if (stay) {
             _calcLongestBedCount()
-        }
-        if (gallery.current && dynamicNav.current) {
             loadGalleryObserver()
         }
-    }, [stay, gallery, dynamicNav])
-
+    }, [stay])
 
     useEffect(() => {
         setSearchParams(params)
@@ -69,7 +66,6 @@ export function StayDetails() {
         try {
             const stay = await stayService.getById(stayId)
             setStay(stay)
-            loadGalleryObserver()
         } catch (err) {
             console.log(err)
         }
@@ -94,12 +90,16 @@ export function StayDetails() {
     }
 
     function loadGalleryObserver() {
-        setGalleryObserver(new IntersectionObserver(entries => {
-            if (!entries[entries.length - 1].isIntersecting) dynamicNav.current.style.display = 'block'
-            else dynamicNav.current.style.display = 'none'
-        }))
-        galleryObserver.observe(gallery.current)
-    }
+        const observer = new IntersectionObserver(entries => {
+          if (!entries[entries.length - 1].isIntersecting) {
+            dynamicNav.current.style.display = 'block'
+          } else {
+            dynamicNav.current.style.display = 'none'
+          }
+        })
+        setGalleryObserver(observer)
+        galleryObserver?.observe(gallery.current)
+      }
 
     return (
         <>
@@ -117,18 +117,21 @@ export function StayDetails() {
                         </button>
                     </div>
                 </header>
-
-                <StayGalleryPreview stay={stay} gallery={gallery} />
-                <DynamicLocalHeaderNav dymanicNav={dynamicNav} />
+                <div ref={gallery}>
+                    <StayGalleryPreview stay={stay} />
+                </div>
+                <div ref={dynamicNav}>
+                    <DynamicLocalHeaderNav />
+                </div>
 
                 <main className="content-and-modal-container grid">
                     <section className="content">
 
                         <article className="place-info flex column">
                             <h1>Entire {stay.type} in {stay.loc.city}, {stay.loc.country}</h1>
-                            <p>{stay.capacity > 1 ? stay.capacity + ' guests' : '1 guest'}・ {stay.bedrooms.length > 1 ? stay.bedrooms.length + ' bedrooms' : '1 bedroom'}  ・ 
-                            {utilService.countBedsInBedrooms(stay) > 1 ? utilService.countBedsInBedrooms(stay) + ' beds' : '1 bed'} ・ 
-                            {stay.baths.length > 1 ? stay.baths.length + ' baths' : '1 bath'}</p>
+                            <p>{stay.capacity > 1 ? stay.capacity + ' guests' : '1 guest'}・ {stay.bedrooms.length > 1 ? stay.bedrooms.length + ' bedrooms' : '1 bedroom'}  ・
+                                {utilService.countBedsInBedrooms(stay) > 1 ? utilService.countBedsInBedrooms(stay) + ' beds' : '1 bed'} ・
+                                {stay.baths.length > 1 ? stay.baths.length + ' baths' : '1 bath'}</p>
                             <p className="reviews-preview">{'★'.repeat(Math.ceil(utilService.calcScore(stay)))} {utilService.calcScore(stay)} ・ {stay.reviews.length} reviews</p>
                         </article>
 

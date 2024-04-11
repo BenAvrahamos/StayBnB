@@ -1,4 +1,5 @@
 .dynamic-header-nav {
+    display: flex;
     padding-inline-start: rem(286.5px);
     position: fixed;
     z-index: 20;
@@ -17,3 +18,4 @@
         }
     }
 }
+
