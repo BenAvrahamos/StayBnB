@@ -5,7 +5,7 @@
     z-index: 1;
     background-color: white;
     display: flex;
-//  width: fit-content;
+    //  width: fit-content;
 }
 
 
@@ -179,10 +179,15 @@
     .grayTxt:not(.grayTxt:hover) {
         color: $headerGray;
     }
+
 }
 
-.fixed-header {
-    position: fixed;
+.fixed-header.header-large{
+    position: fixed;}
+
+.fixed-header ,
+.header-small{
+  
     top: 0;
     padding-block-end: 0;
     transition: 0.5s;
@@ -217,3 +222,4 @@
         display: none;
     }
 }
+
