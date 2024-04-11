@@ -45,7 +45,17 @@
         }
 
         .review-score {
+            gap: 0.5rem;
+
             p {
+                font-size: 0.8rem;
+
+                span {
+                    color: $gray2;
+                }
+            }
+
+            h4 {
                 font-size: 0.8rem;
             }
         }

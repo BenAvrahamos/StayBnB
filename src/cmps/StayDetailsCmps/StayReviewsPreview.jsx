@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react"
 
+import { utilService } from "../../services/util.service"
+
 export function StayReviewsPreview({ stay }) {
     const [firstReviews, setFirstReviews] = useState([])
 
     useEffect(() => {
-        setFirstReviews(stay.reviews.slice(0, 6))
+        setFirstReviews(stay.reviews.sort((a, b) => b.rate - a.rate).slice(0, 6))
     }, [stay.reviews])
-
 
     return <>
         {firstReviews.length > 0 && <section className="stay-reviews grid">
@@ -16,15 +17,16 @@ export function StayReviewsPreview({ stay }) {
                         <img src={review.by.imgUrl} />
                         <div className="user-details-txt flex column">
                             <h3>{review.by.fullName}</h3>
-                            <p>{review.by._id}</p>
+                            <p>{review.by._id}</p> {/*should be where their from or how long they've been on the site*/}
                         </div>
                     </div>
                     <div className="not-flip-div flex column">
-                        <div className="review-score">
-                            <p>{'★'.repeat(review.score)}</p>
+                        <div className="review-score flex align-center">
+                            <p>{'★'.repeat(review.score)}<span>{'★'.repeat(5 - review.score)}</span></p>
+                            •
+                            <h4>{utilService.timestampToMonthYear(review.at)}</h4>
                         </div>
                         <div className="review-content">
-                            {/* {review.title && <h3>{review.title}</h3>} */}
                             <p>{review.txt}</p>
                         </div>
                     </div>
