@@ -103,7 +103,9 @@ export function StayDetails() {
                         </button>
                     </div>
                 </header>
+
                 <StayGalleryPreview stay={stay} />
+
                 <main className="content-and-modal-container grid">
                     <section className="content">
 
@@ -130,7 +132,7 @@ export function StayDetails() {
                                         <div className="bedroom" key={room.name}
                                             style={{ paddingBlockEnd: bedsLength < longestBedsArrCount ? ((longestBedsArrCount - bedsLength) * .875) + 1.5 + 'rem' : '1.5rem' }}
                                         >
-                                            <div className="icons flex align-center space-evenly">
+                                            <div className="icons flex align-center">
                                                 {room.beds.map((bed, idx) => <SvgPathCmp name={bed.replaceAll(' ', '').toLowerCase()} key={room + idx} />)}
                                             </div>
                                             <h4>{room.name}</h4>

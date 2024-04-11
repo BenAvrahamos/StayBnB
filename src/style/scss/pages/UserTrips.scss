@@ -1,0 +1,49 @@
+.user-trips {
+    color: $darkGray;
+}
+
+.no-user-trips {
+    h1 {
+        font-size: 2rem;
+        padding-block: 1.1rem 1.275rem;
+        border-block-end: 0.667px solid $gray2;
+        margin: 0;
+    }
+
+    div {
+        padding-block: 2.1rem 3rem;
+        border-block-end: 0.667px solid $gray2;
+
+        h2 {
+            font-size: 1.375rem;
+            letter-spacing: 0.02rem;
+            margin: 0;
+        }
+
+        p {
+            font-size: 1rem;
+            padding-block: 0.55rem;
+        }
+
+        button {
+            font-size: 1rem;
+            width: 10.2rem;
+            height: 3rem;
+            border-radius: 8px;
+            margin-block-start: 0.55rem;
+            
+            @include buttons3;
+        }
+    }
+
+    &>p {
+        padding-block: 1.5rem 2.25rem;
+
+        span {
+            font-family: circular-bold;
+            text-decoration: underline;
+
+            cursor: pointer;
+        }
+    }
+}
