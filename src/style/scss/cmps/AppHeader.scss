@@ -5,12 +5,12 @@
     z-index: 1;
     background-color: white;
     display: flex;
- width: 100vw;
+//  width: fit-content;
 }
 
 .expanded-header {
     height: 4.2em;
-    width: 98.5%;
+    width: 100%;
     margin-top: 0.3em;
     margin-inline: 0;
     z-index: 1;
