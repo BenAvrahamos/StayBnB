@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { format, getDay } from 'date-fns'
 import { useState } from 'react'
 import { utilService } from '../../services/util.service'
@@ -7,10 +7,12 @@ import { utilService } from '../../services/util.service'
 export function OrderConfirmation({ stay, params }) {
     const [isShownModal, setIsShownModal] = useState(true)
     const reservation = useSelector(storeState => storeState.reservationModule.reservation)
+    const navigate = useNavigate()
 
     function onCloseModal(e) {
         e.stopPropagation()
         setIsShownModal(false)
+        navigate('/trips')
     }
 
     return (

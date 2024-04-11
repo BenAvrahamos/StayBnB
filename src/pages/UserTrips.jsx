@@ -35,6 +35,10 @@ export function UserTrips() {
         setTripFilter(prevFilter => ({ ...prevFilter, [field]: value }))
     }
 
+    function onModal() {
+
+    }
+
     if (!userTrips || !userTrips.length) return <section className='user-trips no-user-trips'>
         <header className='flex align-center space-between'>
             <h1>Trips</h1>
@@ -116,7 +120,7 @@ export function UserTrips() {
 
         <ul className='grid'>
             {trips.map(trip => (
-                <li key={trip._orderId} className={`trip-card ${trip.status}`}>
+                <li key={trip._orderId} className={`trip-card ${trip.status}`} onClick={onModal} >
                     <header className='flex align-center space-between'>
                         <h3>{utilService.timestampsToShortDates(trip.entryDate, trip.exitDate)}</h3>
                         <p><span>Booking number: </span>{trip._orderId}</p>
@@ -137,6 +141,12 @@ export function UserTrips() {
 
                         <img src={trip.stay.img} alt={trip.stay.name} />
                     </main>
+
+                    {/* {onModal && <OrderConfirmation params={order} stays={stays} />} */}
+                    {/* params: entryDate, exitDate, adults, children, infants, pets 
+                        stay: imgUrls[0], name, location, price, bedrooms.length
+                        reservation (gets from inside the cmp): guests.sum
+                        */}
                 </li>
             ))}
         </ul>
