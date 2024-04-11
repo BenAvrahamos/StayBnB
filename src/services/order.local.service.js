@@ -9,6 +9,8 @@ const ORDER_DB = 'order_db'
 export const orderService = {
     query,
     getById,
+    getUserOrdersById,
+    filterUserOrders,
     save,
     remove,
     getOrder,
@@ -22,8 +24,8 @@ async function query() {
         let orders = await storageService.query(ORDER_DB)
         return orders
     }
-    catch (err) { 
-        console.log(err) 
+    catch (err) {
+        console.log(err)
     }
 }
 
@@ -34,6 +36,31 @@ async function getById(orderId) {
     } catch (err) {
         console.log(err)
     }
+}
+
+async function getUserOrdersById(userId) {
+    try {
+        var orders = await storageService.query(ORDER_DB, userId)
+        orders = orders.filter(order => order.buyer._id === userId)
+        return orders
+    } catch (err) {
+        console.log(err)
+    }
+}
+
+function filterUserOrders(userOrders, filter) {
+    if (filter.tense !== 'all') {
+        const today = new Date().getTime()
+        if (filter.tense === 'future') userOrders = userOrders.filter(order => order.exitDate >= today)
+        else if (filter.tense === 'current') userOrders = userOrders.filter(order => order.entryDate <= today && order.exitDate >= today)
+        else if (filter.tense === 'past') userOrders = userOrders.filter(order => order.exitDate <= today)
+    }
+
+    if (filter.status !== 'all') {
+        userOrders = userOrders.filter(order => order.status === filter.status)
+    }
+
+    return userOrders.sort((a, b) => a.entryDate - b.entryDate)
 }
 
 async function remove(orderId) {
@@ -61,26 +88,26 @@ async function save(order) {
 
 function getOrder(stay, reservation) {
     return {
-            hostId: stay.host._id,
-            buyer: {
-              _id: "u101",
-              fullName: "User 1"
-            }, // change afterwards to connected user
-            totalPrice: '',
-            entryDate: '',
-            exitDate: '',
-            guests: {
-              adults: '',
-              kids: '',
-            },
-            stay: {
-              _id: stay._id,
-              name: stay.name,
-              price: stay.price
-            },
-            msgs: [],
-            status: "approved" // approved / rejected change when there is a host and sockets
-          }
+        hostId: stay.host._id,
+        buyer: {
+            _id: "u101",
+            fullName: "User 1"
+        }, // change afterwards to connected user
+        totalPrice: '',
+        entryDate: '',
+        exitDate: '',
+        guests: {
+            adults: '',
+            kids: '',
+        },
+        stay: {
+            _id: stay._id,
+            name: stay.name,
+            price: stay.price
+        },
+        msgs: [],
+        status: "approved" // approved / rejected change when there is a host and sockets
+    }
 }
 
 function createDemoOrder() {

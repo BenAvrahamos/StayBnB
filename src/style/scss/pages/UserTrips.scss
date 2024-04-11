@@ -1,20 +1,39 @@
 .user-trips {
     color: $darkGray;
+
+    &>header {
+        border-block-end: 0.667px solid $gray2;
+
+        h1 {
+            font-size: 2rem;
+            padding-block: 1.1rem 1.275rem;
+            margin: 0;
+        }
+
+        .filters {
+            gap: 1rem;
+
+            select {
+                padding: 0.5rem 0 0.5rem 0.5rem;
+                border-radius: $BR1;
+                color: $darkGray;
+
+                cursor: pointer;
+
+                &:focus-visible {
+                    outline: none;
+                }
+            }
+        }
+    }
 }
 
 .no-user-trips {
-    h1 {
-        font-size: 2rem;
-        padding-block: 1.1rem 1.275rem;
-        border-block-end: 0.667px solid $gray2;
-        margin: 0;
-    }
-
-    div {
+    &>div {
         padding-block: 2.1rem 3rem;
         border-block-end: 0.667px solid $gray2;
 
-        h2 {
+        h3 {
             font-size: 1.375rem;
             letter-spacing: 0.02rem;
             margin: 0;
@@ -31,7 +50,7 @@
             height: 3rem;
             border-radius: $BR1;
             margin-block-start: 0.55rem;
-            
+
             @include buttons3;
         }
     }
@@ -45,6 +64,104 @@
             text-decoration: underline;
 
             cursor: pointer;
+        }
+    }
+}
+
+.user-trips:not(.no-user-trips) {
+    margin-block-end: 2rem;
+
+    img {
+        display: none;
+        object-fit: cover;
+        width: 5rem;
+        height: 5rem;
+    }
+
+    ul {
+        margin-block-start: 1.5rem;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+
+        .trip-card {
+            border-radius: $BR2;
+            box-shadow: $gray4 1px 1px 16px;
+
+            cursor: pointer;
+
+            &.approved {
+                @include cardColor(rgb(0, 204, 116))
+            }
+
+            &.pending {
+                @include cardColor(gray)
+            }
+
+            &.rejected {
+                @include cardColor(rgb(255, 101, 101))
+            }
+
+            &:hover {
+                scale: 1.025;
+                transition: scale 0.5s;
+            }
+
+            header {
+                padding-inline: 1.5rem;
+
+                h3 {
+                    text-wrap: nowrap;
+                }
+
+                p span {
+                    display: none;
+                }
+            }
+
+            main {
+                padding: 1rem 1.5rem;
+
+                .info {
+                    .guests p {
+                        text-wrap: nowrap;
+                    }
+                }
+            }
+
+        }
+    }
+}
+
+@media (width > 620px) {
+    .user-trips:not(.no-user-trips) ul {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (width > 900px) {
+    .user-trips:not(.no-user-trips) {
+        img {
+            display: block;
+        }
+
+        ul {
+            grid-template-columns: repeat(auto-fill, minmax(400.9px, 1fr));
+            gap: 2rem;
+
+            .trip-card {
+
+                header {
+                    padding-block: 0.25rem;
+
+                    p span {
+                        display: block;
+                    }
+                }
+
+                &:hover {
+                    scale: 1.05;
+                }
+            }
         }
     }
 }

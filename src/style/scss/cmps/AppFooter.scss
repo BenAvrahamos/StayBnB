@@ -9,9 +9,8 @@
     background-color: $btnHover;
 
     & .app-footer {
-        column-gap: 23em;
         display: flex;
-        flex-direction: row;
+        justify-content: space-between;
 
         & .options,
         .media {
@@ -43,7 +42,7 @@
                     display: flex;
                     justify-content: center;
                     align-items: center;
-              
+
                     width: 1.25em, ;
                     height: 1.25em, ;
                     background-color: $darkGray;
@@ -71,5 +70,10 @@
             }
         }
     }
+}
 
+@media (width > 900px) {
+    .app-footer-container .app-footer {
+        column-gap: 23em;
+    }
 }
