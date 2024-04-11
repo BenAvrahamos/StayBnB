@@ -106,7 +106,6 @@ function generateStays() {
 }
 
 function calcSumToPay(params, stay) {
-    console.log(params);
     let diff = params.exitDate - params.entryDate
     diff = diff / (1000 * 60 * 60 * 24)
     return diff * stay.price

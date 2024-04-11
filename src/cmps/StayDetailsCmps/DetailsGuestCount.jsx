@@ -16,7 +16,6 @@ export function GuestCount({ openModalType, params, updateParams }) {
         const currentCount = parseInt(newParams[guestType])
 
         newParams[guestType] = Math.max(0, currentCount + countChange)
-        console.log(params.adults)
 
         updateParams(newParams)
     }
