@@ -1,6 +1,6 @@
 import { NavLink, useNavigate } from "react-router-dom"
 import { useSelector } from 'react-redux'
-import { useSearchParams } from 'react-router-dom'
+import { useSearchParams,} from 'react-router-dom'
 import { useState, useEffect, useRef } from "react"
 
 import { HeaderFilter } from "./HeaderFilter"
@@ -37,6 +37,7 @@ function onNavigate(){
         setModalType(modalType === 'user-nav' ? null : 'user-nav')
 
     }
+
 
 
 
