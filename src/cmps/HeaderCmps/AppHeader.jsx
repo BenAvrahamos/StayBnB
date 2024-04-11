@@ -80,8 +80,9 @@ export function AppHeader({ dynamicPageLayOut, SetDynamicPageLayOut }) {
 
 
             <div className="user-section flex align-center" >
-                Staybnb your home
 
+            <NavLink  to="/edit">Staybnb your home</NavLink>
+            
                 <button className="flex align-center space-between" onClick={onOpenUserModal}> ☰
                     <div className="profile"></div>
                 </button>

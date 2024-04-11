@@ -1,9 +1,9 @@
 import { useRef } from 'react'
 export function DynamicLocalHeaderNav() {
-    const gallery = useRef()
-    const amenities = useRef()
-    const reviews = useRef()
-    const location = useRef()
+    // const gallery = useRef()
+    // const amenities = useRef()
+    // const reviews = useRef()
+    // const location = useRef()
     function onMoveToSection(e) {
         e.stopPropagation()
         const targetElement = e.target
