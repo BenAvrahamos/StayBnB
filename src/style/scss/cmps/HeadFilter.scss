@@ -9,6 +9,7 @@
     position: relative;
     column-gap: 0.4em;
     font-family: circular-bold;
+    
 
     transition: transform 0.4s;
 
@@ -99,6 +100,7 @@
         &.compact {
             width: 7rem;
             border-radius: 25px;
+           
 
             & span {
                 display: inline;

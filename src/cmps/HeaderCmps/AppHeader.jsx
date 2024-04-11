@@ -7,6 +7,7 @@ import { HeaderFilter } from "./HeaderFilter"
 import { DemoDataService } from "../../services/demoData.service"
 import { stayService } from "../../services/stay.local.service"
 import { setStayFilter, setStayHeaderFilter } from "../../store/actions/stay.actions"
+import { UserNavModal } from "./UserNavModal"
 
 export function AppHeader({ dynamicPageLayOut, SetDynamicPageLayOut }) {
     const ref = useRef(null)
@@ -14,6 +15,8 @@ export function AppHeader({ dynamicPageLayOut, SetDynamicPageLayOut }) {
     const navigate = useNavigate()
     var filterBy = useSelector(storeState => storeState.stayModule.filterBy)
     const [modalType, setModalType] = useState()
+
+    console.log(modalType);
 
 function onNavigate(){
     navigate('/')
@@ -27,6 +30,12 @@ function onNavigate(){
         setStayFilter(defaultMainFilter)
 
         navigate('/')
+    }
+
+    function onOpenUserModal(ev){
+        ev.stopPropagation()
+        setModalType(modalType === 'user-nav' ? null : 'user-nav')
+
     }
 
 
@@ -63,12 +72,14 @@ function onNavigate(){
             <div className="user-section flex align-center" >
                 Staybnb your home
 
-                <button className="flex align-center space-between" onClick={onNavigate}> ☰
+                <button className="flex align-center space-between" onClick={onOpenUserModal}> ☰
                     <div className="profile"></div>
                 </button>
 
             </div>
         </section>
+
+        {modalType === 'user-nav' && <UserNavModal />}
 
         <HeaderFilter modalType={modalType} setModalType={setModalType} />
     </section>

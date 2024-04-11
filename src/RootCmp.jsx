@@ -19,30 +19,30 @@ export function RootCmp() {
     listMargin: false
   })
 
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     const offset = window.scrollY
-  //     if (offset > 0) {
-  //       SetDynamicPageLayOut({
-  //         header: { compact: true, fixed: true },
-  //         fixedFilterLabel: true,
-  //         listMargin: true
-  //       })
-  //     } else {
-  //       SetDynamicPageLayOut({
-  //         header: { compact: false, fixed: false },
-  //         fixedFilterLabel: false,
-  //         listMargin: false
-  //       })
-  //     }
-  //   };
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY
+      if (offset > 0) {
+        SetDynamicPageLayOut({
+          header: { compact: true, fixed: true },
+          fixedFilterLabel: true,
+          listMargin: true
+        })
+      } else {
+        SetDynamicPageLayOut({
+          header: { compact: false, fixed: false },
+          fixedFilterLabel: false,
+          listMargin: false
+        })
+      }
+    };
 
-  //   window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll);
 
-  //   return () => {
-  //     window.removeEventListener('scroll', handleScroll)
-  //   }
-  // }, [])
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
 
 
   return (

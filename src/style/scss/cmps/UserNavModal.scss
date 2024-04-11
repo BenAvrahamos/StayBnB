@@ -1,0 +1,20 @@
+.user-nav-modal {
+    top: 7.7%;
+    position: absolute;
+    // border: 1px solid black;
+    box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.15);
+    width: 15.3rem;
+    right: 5.3%;
+    height: 24rem;
+    border-radius: 10px;
+    background-color: white;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: center;
+
+    &>* {
+        
+    }
+}
