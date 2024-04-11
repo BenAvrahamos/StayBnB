@@ -3,12 +3,9 @@ export function AppFooter() {
     const navigateTo = (url) => {
         window.open(url, '_blank')
     }
-
-
+    
     return <section className="app-footer-container">
         <div className="app-footer">
-
-
 
             <div className="options">
                 © 2024 Airbnb, Inc.

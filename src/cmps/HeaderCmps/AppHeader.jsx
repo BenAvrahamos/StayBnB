@@ -1,6 +1,6 @@
 import { NavLink, useNavigate } from "react-router-dom"
 import { useSelector } from 'react-redux'
-import { useSearchParams,} from 'react-router-dom'
+import { useSearchParams, } from 'react-router-dom'
 import { useState, useEffect, useRef } from "react"
 
 import { HeaderFilter } from "./HeaderFilter"
@@ -19,9 +19,9 @@ export function AppHeader({ dynamicPageLayOut, SetDynamicPageLayOut }) {
 
     console.log(modalType);
 
-function onNavigate(){
-    navigate('/')
-}
+    function onNavigate() {
+        navigate('/')
+    }
 
     function goHome() {
         const defaultHeaderFilter = stayService.getDefaultHeaderFilter()
@@ -33,7 +33,7 @@ function onNavigate(){
         navigate('/')
     }
 
-    function onOpenUserModal(ev){
+    function onOpenUserModal(ev) {
         ev.stopPropagation()
         setModalType(modalType === 'user-nav' ? null : 'user-nav')
 
@@ -80,8 +80,9 @@ function onNavigate(){
 
 
             <div className="user-section flex align-center" >
-                Staybnb your home
 
+            <NavLink  to="/edit">Staybnb your home</NavLink>
+            
                 <button className="flex align-center space-between" onClick={onOpenUserModal}> ☰
                     <div className="profile"></div>
                 </button>
