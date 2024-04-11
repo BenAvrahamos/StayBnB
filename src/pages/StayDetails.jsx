@@ -105,11 +105,8 @@ export function StayDetails() {
                 </header>
 
                 <StayGalleryPreview stay={stay} />
-<<<<<<< HEAD
                 <DynamicLocalHeaderNav />
-=======
 
->>>>>>> main
                 <main className="content-and-modal-container grid">
                     <section className="content">
 
@@ -144,14 +141,9 @@ export function StayDetails() {
                                         </div>)
                                 })}
                             </div>
-<<<<<<< HEAD
-                        </div>
-                        <div className="amenity-info" id="amenities">
-=======
                         </article>
 
                         <article className="amenity-info">
->>>>>>> main
                             <h1>What this place offers: </h1>
                             <ul className="amenities-ul grid">
                                 {stay.amenities.map(amenity =>
