@@ -27,6 +27,7 @@ export function ReservationModal({ stay, params, updateParams }) {
     useEffect(() => {
         setNumOfDays(utilService.calcSumOfDays(params))
         loadBtnScrolledObserver()
+        return () => btnObserver?.disconnect()
     }, [])
 
     useEffect(() => {
