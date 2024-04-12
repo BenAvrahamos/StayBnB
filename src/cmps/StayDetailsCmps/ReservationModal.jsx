@@ -84,12 +84,11 @@ export function ReservationModal({ stay, params, updateParams }) {
 
             navigate(`/${stay._id}/payment?${queryParams}`)
         }
-
     }
 
     return (
         <>
-            {isBtnScrolled && <DynamicModalHeader stay={stay} />}
+            {isBtnScrolled && <DynamicModalHeader stay={stay} params={params}/>}
             <div className="reserve-modal" ref={ref}>
                 <div className='container-price-selectors'>
                     <div className="price-logo flex align-center">
