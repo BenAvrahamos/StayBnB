@@ -9,21 +9,24 @@ import { store } from '../../store/store'
 import { GuestCount } from './DetailsGuestCount'
 import { stayService } from '../../services/stay.local.service'
 import { StayDetailsDateModal } from './StayDetailsDateModal'
+import { DynamicModalHeader } from './DynamicHeader/DynamicModalHeader'
 
 export function ReservationModal({ stay, params, updateParams }) {
-
+    const navigate = useNavigate()
     const headerFilterBy = useSelector(storeState => storeState.stayModule.headerFilterBy)
     const [numOfDays, setNumOfDays] = useState(0)
     const [fee, setFee] = useState(0)
     const [currArrow, setCurrArrow] = useState('down')
-    const navigate = useNavigate()
-    const reservation = useSelector(storeState => storeState.reservationModule.reservation)
     const [modalType, openModalType] = useState()
-
+    const [isBtnScrolled, setIsBtnScrolled] = useState(false)
+    const [btnObserver, setBtnObserver] = useState(null)
     const ref = useRef(null)
+    const btn = useRef()
+
 
     useEffect(() => {
         setNumOfDays(utilService.calcSumOfDays(params))
+        loadBtnScrolledObserver()
     }, [])
 
     useEffect(() => {
@@ -43,6 +46,29 @@ export function ReservationModal({ stay, params, updateParams }) {
         }
     }, [ref])
 
+    useEffect(() => {
+        if (btnObserver) btnObserver.observe(btn.current)
+            return () => {
+            btnObserver?.disconnect()
+        }
+    }, [btnObserver])
+
+    function loadBtnScrolledObserver() {
+        let observationCount = 0
+        const observer = new IntersectionObserver(entries => {
+            observationCount++
+            if (observationCount > 2) {
+                const isGalleryVisible = store.getState().stayModule.isGalleryVisible
+                if (!entries[0].isIntersecting && !isGalleryVisible) {
+                    setIsBtnScrolled(true)
+                }
+                else {
+                    setIsBtnScrolled(false)
+                }
+            }
+        })
+        setBtnObserver(observer)
+    }
 
     function validateAndMoveToPayment() {
         if (params.entryDate && params.exitDate &&
@@ -59,63 +85,67 @@ export function ReservationModal({ stay, params, updateParams }) {
         }
 
     }
-    return <>
-        <div className="reserve-modal" ref={ref}>
-            <div className='container-price-selectors'>
-                <div className="price-logo flex align-center">
-                    <h2>${Math.round(stay.price)} &nbsp;</h2><span>night</span>
-                </div>
-                <div className='selectors-container flex column'>
-                    <div className="date-selectors flex">
-                        <div className='check-in flex' onClick={() => openModalType('date')}>
-                            <div className='txt flex column'>
-                                <label>Check-in</label>
-                                <div className='txt-date'>{getDate(+params.entryDate)}/{getMonth(+params.entryDate) + 1}/{getYear(+params.entryDate)}</div>
+
+    return (
+        <>
+            {isBtnScrolled && <DynamicModalHeader stay={stay} />}
+            <div className="reserve-modal" ref={ref}>
+                <div className='container-price-selectors'>
+                    <div className="price-logo flex align-center">
+                        <h2>${Math.round(stay.price)} &nbsp;</h2><span>night</span>
+                    </div>
+                    <div className='selectors-container flex column'>
+                        <div className="date-selectors flex">
+                            <div className='check-in flex' onClick={() => openModalType('date')}>
+                                <div className='txt flex column'>
+                                    <label>Check-in</label>
+                                    <div className='txt-date'>{getDate(+params.entryDate)}/{getMonth(+params.entryDate) + 1}/{getYear(+params.entryDate)}</div>
+                                </div>
+                            </div>
+                            <div className='checkout flex' onClick={() => openModalType('date')}>
+                                <div className='txt flex column'>
+                                    <label>Checkout</label>
+                                    <div className='txt-date'>{getDate(+params.exitDate)}/{getMonth(+params.exitDate) + 1}/{getYear(+params.exitDate)}</div>
+                                </div>
                             </div>
                         </div>
-                        <div className='checkout flex' onClick={() => openModalType('date')}>
-                            <div className='txt flex column'>
-                                <label>Checkout</label>
-                                <div className='txt-date'>{getDate(+params.exitDate)}/{getMonth(+params.exitDate) + 1}/{getYear(+params.exitDate)}</div>
+                        <div ref={ref} className='guest-selector flex column' onClick={() => openModalType('guest')}>
+                            <label className='guests'>Guests</label>
+                            <div className='guest-container flex space-between'>
+                                {stayService.guestCountStringForReservation(params)}
+                                {currArrow && <span className={`arrow-${currArrow}`}></span>}
                             </div>
+
+                            {modalType === 'guest' && <GuestCount params={params} updateParams={updateParams} headerFilterBy={headerFilterBy} openModalType={openModalType} />}
+                            {modalType === 'date' && <StayDetailsDateModal params={params} updateParams={updateParams} headerFilterBy={headerFilterBy} openModalType={openModalType} />}
+
                         </div>
                     </div>
-                    <div ref={ref} className='guest-selector flex column' onClick={() => openModalType('guest')}>
-                        <label className='guests'>Guests</label>
-                        <div className='guest-container flex space-between'>
-                            {stayService.guestCountStringForReservation(params)}
-                            {currArrow && <span className={`arrow-${currArrow}`}></span>}
-                        </div>
-
-                        {modalType === 'guest' && <GuestCount params={params} updateParams={updateParams} headerFilterBy={headerFilterBy} openModalType={openModalType} />}
-                        {modalType === 'date' && <StayDetailsDateModal params={params} updateParams={updateParams} headerFilterBy={headerFilterBy} openModalType={openModalType} />}
-
-                    </div>
+                    <div className='reserve-btn flex center' ref={btn} onClick={() => validateAndMoveToPayment()}><span >Reserve</span></div>
+                    {+params.entryDate && +params.exitDate && <p className='charged-p'>You won't be charged yet.</p>}
                 </div>
-                <div className='reserve-btn flex center' onClick={() => validateAndMoveToPayment()}><span >Reserve</span></div>
-                {+params.entryDate && +params.exitDate && <p className='charged-p'>You won't be charged yet.</p>}
-            </div>
-            <div className='price-calc flex space-between'>
-                <span>${Math.round(stay.price)} X {numOfDays === 1 ? `${numOfDays} night` : `${numOfDays} nights`}</span>
-                <span className='sum'>${Math.round((stay.price * numOfDays))}</span>
-            </div>
-            {fee && <div className='fee-calc flex space-between'>
-                <span>Staybnb service fee</span>
-                <span>${fee}</span>
-            </div>}
-            {fee > 0 && <div className='sum-total flex space-between'>
-                <span>Total</span>
-                <span>${Math.round((stay.price * numOfDays + fee))}</span>
-            </div>}
-        </div>
-
-        <div className='reserve-footer flex align-center space-between'>
-            <div className='flex column'>
-                <p><span>${stay.price}</span> &nbsp;night</p>
-                <p>{utilService.timestampsToShortDates(+params.entryDate, +params.exitDate)}</p>
+                <div className='price-calc flex space-between'>
+                    <span>${Math.round(stay.price)} X {numOfDays === 1 ? `${numOfDays} night` : `${numOfDays} nights`}</span>
+                    <span className='sum'>${Math.round((stay.price * numOfDays))}</span>
+                </div>
+                {fee && <div className='fee-calc flex space-between'>
+                    <span>Staybnb service fee</span>
+                    <span>${fee}</span>
+                </div>}
+                {fee > 0 && <div className='sum-total flex space-between'>
+                    <span>Total</span>
+                    <span>${Math.round((stay.price * numOfDays + fee))}</span>
+                </div>}
             </div>
 
-            <button className='flex center' onClick={() => validateAndMoveToPayment()}><span >Reserve</span></button>
-        </div>
-    </>
+            <div className='reserve-footer flex align-center space-between'>
+                <div className='flex column'>
+                    <p><span>${stay.price}</span> &nbsp;night</p>
+                    <p>{utilService.timestampsToShortDates(+params.entryDate, +params.exitDate)}</p>
+                </div>
+
+                <button className='flex center' onClick={() => validateAndMoveToPayment()}><span >Reserve</span></button>
+            </div>
+        </>
+    )
 }         
