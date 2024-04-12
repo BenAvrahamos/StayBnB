@@ -15,7 +15,8 @@ export const utilService = {
     timestampToDate,
     timestampsToShortDates,
     timestampToMonthYear,
-    calcSumOfDays
+    calcSumOfDays,
+    calcLongestBedCount
 }
 
 function makeId(length = 6) {
@@ -177,4 +178,15 @@ function calcScore(stay) {
         return acc
     }, 0)
     return sumOfScores / stay.reviews.length
+}
+
+function calcLongestBedCount(stay) {
+    let maxBedCount = 0
+    stay.bedrooms.forEach((bedroom) => {
+        if (bedroom.beds.length > maxBedCount) {
+            maxBedCount = bedroom.beds.length
+        }
+    })
+    maxBedCount-- // two rows can contain up to 3 types of beds.
+    return maxBedCount
 }

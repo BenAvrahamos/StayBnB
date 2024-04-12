@@ -14,11 +14,11 @@ import { DynamicModalHeader } from "../cmps/StayDetailsCmps/DynamicHeader/Dynami
 export function StayDetails() {
     const [searchParams, setSearchParams] = useSearchParams()
     const location = useLocation()
-    const [galleryObserver, setGalleryObserver] = useState(null)
     const queryParams = new URLSearchParams(location.search)
-    const gallery = useRef()
-    const dynamicNav = useRef()
-
+    const safetyAmenities = ['Carbon monoxide alarm', 'Smoke alarm']
+    const { stayId } = useParams()
+    const [stay, setStay] = useState('')
+    const [longestBedsCount, setLongestBedsCount] = useState(1)
     const {
         region,
         adults,
@@ -38,13 +38,7 @@ export function StayDetails() {
         entryDate,
         exitDate
     }
-
     const [params, updateParams] = useState(paramsFromFilter)
-    const safetyAmenities = ['Carbon monoxide alarm', 'Smoke alarm']
-    const { stayId } = useParams()
-    const [stay, setStay] = useState('')
-    const [longestBedsArrCount, setLongestBedsArrCount] = useState(1)
-
     // is guest favorite - if truthy - show a cmp of guest fav
     useEffect(() => {
         if (stayId) {
@@ -54,8 +48,7 @@ export function StayDetails() {
 
     useEffect(() => {
         if (stay) {
-            _calcLongestBedCount()
-            loadGalleryObserver()
+            setLongestBedsCount(utilService.calcLongestBedCount(stay))
         }
     }, [stay])
 
@@ -72,34 +65,11 @@ export function StayDetails() {
         }
     }
 
-    function _calcLongestBedCount() {
-        let maxBedCount = 0
-        stay.bedrooms.forEach((bedroom) => {
-            if (bedroom.beds.length > maxBedCount) {
-                maxBedCount = bedroom.beds.length
-            }
-        })
-        maxBedCount-- // two rows can contain up to 3 types of beds.
-        setLongestBedsArrCount(maxBedCount)
-    }
-
     function _findHostName() {
         const host = stay.host
         const spaceIdx = host.fullName.indexOf(' ')
         const hostName = host.fullName.slice(0, spaceIdx)
         return hostName
-    }
-
-    function loadGalleryObserver() {
-        const observer = new IntersectionObserver(entries => {
-            if (!entries[entries.length - 1].isIntersecting) {
-                dynamicNav.current.style.display = 'block'
-            } else {
-                dynamicNav.current.style.display = 'none'
-            }
-        })
-        setGalleryObserver(observer)
-        galleryObserver?.observe(gallery.current)
     }
 
     return (
@@ -118,15 +88,15 @@ export function StayDetails() {
                         </button>
                     </div>
                 </header>
-                <div ref={gallery}>
-                    <StayGalleryPreview stay={stay} />
-                </div>
-                <div ref={dynamicNav}>
+                {/* <div ref={gallery}> */}
+                <StayGalleryPreview stay={stay} />
+                {/* </div> */}
+                {/* <div ref={dynamicNav}>
                     <DynamicLocalHeaderNav />
                 </div>
                 <div>
                     <DynamicModalHeader stay={stay} />
-                </div>
+                </div> */}
 
                 <main className="content-and-modal-container grid">
                     <section className="content">
@@ -154,7 +124,7 @@ export function StayDetails() {
                                     const bedsLength = room.beds.length
                                     return (
                                         <div className="bedroom" key={room.name}
-                                            style={{ paddingBlockEnd: bedsLength < longestBedsArrCount ? ((longestBedsArrCount - bedsLength) * .875) + 1.5 + 'rem' : '1.5rem' }}
+                                            style={{ paddingBlockEnd: bedsLength < longestBedsCount ? ((longestBedsCount - bedsLength) * .875) + 1.5 + 'rem' : '1.5rem' }}
                                         >
                                             <div className="icons flex align-center">
                                                 {room.beds.map((bed, idx) => <SvgPathCmp name={bed.replaceAll(' ', '').toLowerCase()} key={room + idx} />)}
