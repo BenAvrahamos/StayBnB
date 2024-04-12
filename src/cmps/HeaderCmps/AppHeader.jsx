@@ -40,7 +40,7 @@ export function AppHeader({ dynamicPageLayOut, SetDynamicPageLayOut }) {
     const location = useLocation()
     const getHeaderSize = () => {
         const { pathname } = location
-        if (pathname === '/' || pathname === '/trips') {
+        if (pathname === '/') {
             return 'large' // Large header for the index
         } else {
             return 'small' // Small header for details & payment

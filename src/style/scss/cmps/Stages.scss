@@ -4,18 +4,18 @@
 .stage-2,
 .stage-3,
 // .stage-4,
-.stage-6,
+// .stage-6,
 .stage-7,
-.stage-8,
-.stage-9,
-.stage-11,
+// .stage-8,
+// .stage-9,
+// .stage-11,
 .stage-12 {
     display: flex;
     flex-direction: row;
     width: 80%;
 
     & video {
-        width: 65%;
+        width: 50%;
     }
 
     & .text {
@@ -41,7 +41,9 @@
 .stage-9,
 .stage-11,
 .stage-12 {
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 
     & .text {
         display: flex;
@@ -50,19 +52,260 @@
         align-items: start;
 
         & .question {
-            font-size: 1.75em;
+            font-size: 2em;
             width: max-content;
-            margin-bottom: 0.3em;
         }
+    }
+}
+
+.stage-2 {
+    & .options {
+
+        &>* {
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+            padding: 1em;
+            width: 40em;
+            height: 7em;
+            @include buttons1;
+            border-radius: 20px;
+
+            & .title {
+                font-family: circular-bold;
+                margin-bottom: 1em;
+            }
+
+            & .subtitles {
+                width: 35em;
+                font-size: 0.875em;
+                color: $gray1;
+            }
+        }
+    }
+}
+
+.stage-3 {
+
+    & .options {
+        display: flex;
+        column-gap: 10px;
+
+        &>* {
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+            padding: 1em;
+            width: 10em;
+            height: 6.5em;
+            @include buttons1;
+            border-radius: 10px;
+
+            & .title {
+                font-family: circular-bold;
+                margin-bottom: 1em;
+            }
+
+            & .subtitles {
+                width: 35em;
+                font-size: 0.875em;
+                color: $gray1;
+            }
+
+        }
+
+    }
+}
+
+.stage-4 {
+
+    & .question,
+    .description {
+        margin-bottom: 0.3em;
+    }
+
+    & .options {
+
+        &>* {
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: row;
+            width: 35em;
+            height: 5em;
+            border-radius: 20px;
+
+            & div {
+                display: flex;
+                box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1);
+                margin-bottom: 0;
+            }
+
+            & span {
+                flex-grow: 1;
+                display: flex;
+                align-items: center;
+                box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1);
+            }
+
+            & .control {
+                display: flex;
+                align-items: center;
+                row-gap: 1em;
+                color: $gray1;
+
+                &> :nth-child(2) {
+                    padding: 0.3em;
+                    box-shadow: none;
+                }
+
+            }
+
+        }
+
+    }
+
+    & button {
+        width: 1.875rem;
+        height: 1.875rem;
+        border-radius: 50%;
+        font-size: 1.2em;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        border: solid 1px $gray4;
+        background-color: white;
+        padding: 0.7em;
+        color: $gray1;
+    }
+
+    & .disabled {
+        opacity: 20%;
+        cursor: not-allowed;
     }
 
 }
 
-.stage-7{
-    & .description{
+.stage-6 {
+
+    & .step,
+    .question,
+    .description {
+        margin-bottom: 1rem;
+    }
+
+    & .amenities-container {
+        width: 40rem;
+        height: 50vh;
+        box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1);
+        padding: 3rem 1rem;
+        display: flex;
+        flex-wrap: wrap;
+
+        overflow: auto;
+
+        & .amenity {
+            margin: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1em;
+            width: 9em;
+            height: 6.5em;
+            @include buttons1;
+            border-radius: 10px;
+        }
+    }
+}
+
+.stage-7 {
+    & .description {
         width: 38em;
     }
 
+}
+
+.stage-8 {
+
+    & .step,
+    .question,
+    .description {
+        margin-bottom: 0.5rem;
+    }
+
+    & input {
+        margin-top: 2em;
+        width: 32em;
+        color: $gray1;
+        font-size: 1.3rem;
+    }
+
+}
+
+.stage-9 {
+    justify-content: center;
+
+    & .step,
+    .question,
+    .description {
+        margin-bottom: 0.5rem;
+    }
+
+    & .text {
+        display: flex;
+        justify-content: center;
+
+
+    }
+
+    & pre {
+
+
+        text-align: center;
+
+        & textarea {
+            margin-top: 2em;
+            width: 50em;
+            height: 25rem;
+            color: $darkGray;
+            font-size: 1rem;
+            resize: none;
+            padding: 1rem;
+            border-radius: 10px;
+        }
+    }
+
+
+}
+
+.stage-11 {
+
+    & .step,
+    .question,
+    .description {
+        margin-bottom: 0.5rem;
+    }
+
+    & input[type='number'] {
+       @include buttons2;
+        font-size: 8em;
+        width: 3em;
+    }
+
+    & .price {
+        font-size: 8em;
+    }
+
+    & label {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    & .per-night{
+        font-size: 2em;
+    }
 }
 
 .stage-1,
@@ -83,17 +326,16 @@
     }
 }
 
-.step,
-.question,
-.description {
+.add-stay> :nth-child(2) {
     opacity: 0;
     animation: fadeIn 0.5s ease forwards;
-    animation-delay: 0.5s;
+    animation-delay: 0.2s;
     font-size: 1.125em;
     margin-bottom: 1em;
 }
 
-video{
+
+video {
     opacity: 0;
     animation: fadeIn 0.5s ease forwards;
 }

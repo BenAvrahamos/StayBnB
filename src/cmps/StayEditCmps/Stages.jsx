@@ -28,6 +28,27 @@ export function Stage2() {
             <span className='question'>What type of place will guests have?</span>
         </section>
 
+        <section className='options'>
+            <div>
+                <span className='title'>
+                    An Entire place
+                </span>
+                <span className='subtitles'>Guests have the whole place to themselves. This usually includes a bedroom, a bathroom, and a kitchen.</span>
+            </div>
+            <div>
+                <span className='title'>
+                    A room
+                </span>
+                <span className='subtitles'>Guests have their own private room for sleeping. Other areas could be shared.</span>
+            </div>
+            <div>
+                <span className='title'>
+                    A Shared room
+                </span>
+                <span className='subtitles'>Guests sleep in a bedroom or a common area that could be shared with others.</span>
+            </div>
+        </section>
+
     </section>
 
 }
@@ -37,6 +58,30 @@ export function Stage3() {
         <section className='text'>
             <span className='question'>Which of these best describes your place?
             </span>
+        </section>
+
+        <section className='options'>
+
+            <div>
+                <div className='icon'></div>
+                <span className='title'>House</span>
+            </div>
+
+            <div>
+                <div className='icon'></div>
+                <span className='title'>Apartment</span>
+            </div>
+
+            <div>
+                <div className='icon'></div>
+                <span className='title'>Guesthouse</span>
+            </div>
+
+            <div>
+                <div className='icon'></div>
+                <span className='title'>Hotel</span>
+            </div>
+
         </section>
 
     </section>
@@ -52,6 +97,50 @@ export function Stage4() {
             </span>
             <span className="description">How many guests can your place accommodate?</span>
         </section>
+
+        <section className='options'>
+
+            <div>
+                <span>Guests</span>
+                <div className='control'>
+                    <button>-</button>
+                    <span>0</span>
+                    <button>+</button>
+                </div>
+            </div>
+
+            <div>
+                <span>Bedrooms</span>
+                <div className='control'>
+                    <button>-</button>
+                    <span>0</span>
+                    <button>+</button>
+                </div>
+            </div>
+
+            <div>
+                <span>Baths</span>
+                <div className='control'>
+                    <button>-</button>
+                    <span>0</span>
+                    <button>+</button>
+                </div>
+            </div>
+
+            <div>
+                <span>Bathrooms</span>
+                <div className='control'>
+                    <button>-</button>
+                    <span>0</span>
+                    <button>+</button>
+                </div>
+            </div>
+
+
+
+        </section>
+
+
     </section>
 
 
@@ -86,6 +175,54 @@ export function Stage6() {
             <span className="question">Tell guests what your place has to offer</span>
             <span className="description">You can add more amenities after you publish your listing.
             </span>
+
+            <section className='amenities-container'>
+                <article className='amenity'>
+                    <div className='icon'></div>
+                    <div className='title'>Amenity</div>
+                </article>
+
+                <article className='amenity'>
+                    <div className='icon'></div>
+                    <div className='title'>Amenity</div>
+                </article>
+
+                <article className='amenity'>
+                    <div className='icon'></div>
+                    <div className='title'>Amenity</div>
+                </article>
+
+                <article className='amenity'>
+                    <div className='icon'></div>
+                    <div className='title'>Amenity</div>
+                </article>
+
+                <article className='amenity'>
+                    <div className='icon'></div>
+                    <div className='title'>Amenity</div>
+                </article>
+
+                <article className='amenity'>
+                    <div className='icon'></div>
+                    <div className='title'>Amenity</div>
+                </article>
+
+                <article className='amenity'>
+                    <div className='icon'></div>
+                    <div className='title'>Amenity</div>
+                </article>
+
+                <article className='amenity'>
+                    <div className='icon'></div>
+                    <div className='title'>Amenity</div>
+                </article>
+
+
+
+
+            </section>
+
+
         </section>
     </section>
 
@@ -106,29 +243,38 @@ export function Stage7() {
 }
 
 export function Stage8() {
+    const handleInputChange = (event) => {
+        const inputValue = event.target.value
+
+        if (inputValue.length > 32) {
+
+            event.target.value = inputValue.slice(0, 32)
+            event.target.disabled = true
+        }
+    }
+
     return <section className="stage-8">
         <section className='text'>
             <span className="question">Now, let's give your place a title</span>
-            <span className="description">Short titles work best. Have fun with it—you can always change it later
-            </span>
+            <span className="description">Short titles work best. Have fun with it—you can always change it later</span>
+            <input type="text" onChange={handleInputChange} />
+            <span className='counter'>{ }/32</span>
         </section>
     </section>
-
 
 }
 
 export function Stage9() {
     return <section className="stage-9">
         <section className='text'>
-
             <span className="question">Create your description</span>
-            <span className="description">Share what makes your place special.
-            </span>
+            <span className="description">Share what makes your place special.</span>
+            <pre><textarea name="" id="" /></pre>
         </section>
     </section>
 
-
 }
+
 
 export function Stage10() {
     const videoRef = useRef(null)
@@ -156,6 +302,12 @@ export function Stage11() {
             <span className="question">Now, set your price</span>
             <span className="description">You can change it anytime.
             </span>
+            <label htmlFor=""> <span className='price'>$</span>
+                <input type="number" />
+                <span className='per-night'>per night</span>  </label>
+
+
+
         </section>
     </section>
 
