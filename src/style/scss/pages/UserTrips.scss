@@ -24,6 +24,28 @@
                     outline: none;
                 }
             }
+
+            .layout-btns {
+                button {
+                    color: $gray1;
+                    background-color: transparent;
+
+                    &.selected {
+                        color: $darkGray;
+                        text-shadow: 0px 0px 1px $darkGray;
+                    }
+                }
+
+                .lines::after {
+                    content: '\f03a';
+                    font-family: fa-solid;
+                }
+
+                .cards::after {
+                    content: '\f009';
+                    font-family: fa-solid;
+                }
+            }
         }
     }
 }
@@ -171,9 +193,9 @@
 }
 
 @media (width > 600px) {
-    .user-trips:not(.no-user-trips) ul {
+    .user-trips:not(.no-user-trips) ul.cards {
         grid-template-columns: 1fr 1fr;
-    
+
         img {
             display: none;
         }
@@ -181,17 +203,16 @@
 }
 
 @media (width > 800px) {
-    .user-trips:not(.no-user-trips) ul {
-    
+    .user-trips:not(.no-user-trips) ul.cards {
         img {
             display: block;
         }
-    }  
+    }
 }
 
 @media (width > 900px) {
     .user-trips:not(.no-user-trips) {
-        ul {
+        ul.cards {
             grid-template-columns: repeat(auto-fill, minmax(400.9px, 1fr));
             gap: 2rem;
 
