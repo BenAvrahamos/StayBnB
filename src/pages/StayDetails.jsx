@@ -88,19 +88,9 @@ export function StayDetails() {
                         </button>
                     </div>
                 </header>
-                {/* <div ref={gallery}> */}
                 <StayGalleryPreview stay={stay} />
-                {/* </div> */}
-                {/* <div ref={dynamicNav}>
-                    <DynamicLocalHeaderNav />
-                </div>
-                <div>
-                    <DynamicModalHeader stay={stay} />
-                </div> */}
-
                 <main className="content-and-modal-container grid">
                     <section className="content">
-
                         <article className="place-info flex column">
                             <h1>Entire {stay.type} in {stay.loc.city}, {stay.loc.country}</h1>
                             <p>{stay.capacity > 1 ? stay.capacity + ' guests' : '1 guest'}・ {stay.bedrooms.length > 1 ? stay.bedrooms.length + ' bedrooms' : '1 bedroom'}  ・
@@ -135,7 +125,6 @@ export function StayDetails() {
                                 })}
                             </div>
                         </article>
-
                         <article className="amenity-info" id="amenities">
                             <h1>What this place offers: </h1>
                             <ul className="amenities-ul grid">
@@ -150,7 +139,6 @@ export function StayDetails() {
                                 </li>
                             </ul>
                         </article>
-
                     </section>
                     <ReservationModal stay={stay} params={params} updateParams={updateParams} />
                 </main>
