@@ -92,6 +92,7 @@ export function TripModal({ trip, setOnModal }) {
 
             <footer className='order-details-footer flex center'>
                 <button className="close-btn flex center" onClick={onCloseModal}>Close</button>
+                <button className="msg-btn flex center" >Message host</button>
             </footer>
         </section>
     </>

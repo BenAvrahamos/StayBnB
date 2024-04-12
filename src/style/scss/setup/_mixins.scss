@@ -60,4 +60,8 @@
     header .exit-btn:hover {
         background-color: lighten($status-color, 5);
     }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: lighten($status-color, 20); 
+    }
 }

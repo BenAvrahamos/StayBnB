@@ -196,6 +196,16 @@
     footer.order-details-footer {
         border-radius: 0;
     }
+
+    footer.order-details-footer {
+        gap: 5rem;
+    }
+
+    button:active {
+        scale: 0.95;
+
+        transition: scale 0.5s;
+    }
 }
 
 @media (width > 400px) {
