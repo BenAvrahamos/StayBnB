@@ -1,11 +1,24 @@
-export function ProgressFooter() {
-    return <section className="progress-footer">
+export function ProgressFooter({ editStage, setEditStage }) {
+    // Calculate the width of the progress bar filling based on the editStage
+    const progressBarWidth = editStage * 8.33 + '%'
 
-<button className="back-btn">Back</button>
-<div className="next-btn">Next</div>
+    return (
+        <section className="progress-footer">
+            <button onClick={() => {
+                if (editStage > 1) {
+                    setEditStage(prevStage => prevStage - 1);
+                }
+            }} className={`back-btn ${editStage === 1 ? 'disabled' : ''}`}>
+                Back
+            </button>
 
+            <div onClick={() => setEditStage(prevStage => prevStage + 1)} className="next-btn">
+                Next
+            </div>
 
+            <div className="progress-bar-background"></div>
 
-
-    </section>
+            <div className="progress-bar-filling" style={{ width: progressBarWidth }}></div>
+        </section>
+    )
 }

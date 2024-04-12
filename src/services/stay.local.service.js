@@ -189,16 +189,30 @@ function getFilterFromParams(searchParams) {
 }
 
 function getEmptyStay() {
-    return {              // add _id on save
-        name: '',
+    return {
+        _id: utilService.makeId(10),
         type: '',
+        previewImg: '',
         price: 0,
-        capacity: 8,
         imgUrls: [],
         summary: '',
-        amenities: [],
+        capacity: 0,
+        bedrooms: [],
+        booked: [],
+        baths: 0,
         labels: [],
-        host: {},
+        amenities: [],
+        host: {
+            _id: '',
+            fullName: '',
+            imgUrl: '',
+            userName: '',
+            password: '',
+            experience: {
+                isSuper: false,
+                hostingTime: 0
+            }
+        },
         loc: {
             region: '',
             country: '',
@@ -208,9 +222,8 @@ function getEmptyStay() {
             lat: 0,
             lng: 0
         },
-        reviews: [],
-        likedByUsers: []
-    }
+        reviews: []
+    };
 }
 
 function getDefaultFilter() {

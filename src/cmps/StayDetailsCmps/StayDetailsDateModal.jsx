@@ -15,7 +15,6 @@ export function StayDetailsDateModal({ updateParams, params }) {
         }
     ])
 
-console.log(params);
 
 
     const handleSelect = (ranges) => {

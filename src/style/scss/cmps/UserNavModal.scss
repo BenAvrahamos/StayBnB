@@ -1,20 +1,25 @@
 .user-nav-modal {
-    top: 80px;
-    right: 80px;
-    position: absolute;
-    // border: 1px solid black;
-    box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.15);
     width: 15.3rem;
     height: 20rem;
-    border-radius: 10px;
+
+    position: absolute;
+    top: 80px;
+    right: 80px;
+
+    font-size: 0.875em;
     background-color: white;
-    z-index: 1;
+    padding: 0 1em 1em 1em;
+    // border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.15);
+
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     align-content: center;
-    padding: 0 1em 1em 1em;
-    font-size: 0.875em;
 
+    z-index: 1;
 
+    &>* {
+        padding-block: 2rem;
+    }
 }

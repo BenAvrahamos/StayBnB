@@ -102,14 +102,12 @@ function generateStays() {
     for (let i = 0; i < 5; i++) {
         stays.push(generateStay())
     }
-
 }
 
 function calcSumToPay(params, stay) {
-    console.log(params);
     let diff = params.exitDate - params.entryDate
     diff = diff / (1000 * 60 * 60 * 24)
-    return diff * stay.price
+    return (diff * stay.price)
 }
 
 function timestampToDate(dateTimestamp) {
@@ -126,17 +124,25 @@ function timestampsToShortDates(entryTimestamp, exitTimestamp) {
     const entry = new Date(entryTimestamp)
     const exit = new Date(exitTimestamp)
 
-    const entryDate = entry.getDate()
-    const exitDate = exit.getDate()
-    const entryMonth = entry.toLocaleString('en-US', { month: 'short' })
-    const exitMonth = exit.toLocaleString('en-US', { month: 'short' })
     const entryYear = entry.getFullYear()
     const exitYear = exit.getFullYear()
+    const currentYear = new Date().getFullYear()
 
-    var str = ''
-    if (entryYear !== exitYear) str = entryDate + ' ' + entryMonth + ' ' + entryYear + '-' + exitDate + ' ' + exitMonth + ' ' + exitYear
-    else if (entryMonth === exitMonth) str = entryMonth + ' ' + entryDate + '-' + exitDate
-    else str = entryDate + ' ' + entryMonth + '-' + exitDate + ' ' + exitMonth
+    const entryMonth = entry.toLocaleString('en-US', { month: 'short' })
+    const exitMonth = exit.toLocaleString('en-US', { month: 'short' })
+
+    const entryDate = entry.getDate()
+    const exitDate = exit.getDate()
+
+    if (entryYear !== exitYear) {
+        return entryDate + ' ' + entryMonth + ' ' + entryYear + ' - ' + exitDate + ' ' + exitMonth + ' ' + exitYear
+    }
+    let str = ''
+    if (entryMonth === exitMonth) str += entryDate + ' - ' + exitDate + ' ' + entryMonth
+    else str += entryDate + ' ' + entryMonth + ' - ' + exitDate + ' ' + exitMonth
+
+    if (entryYear !== currentYear) str += ', ' + entryYear
+
     return str
 }
 
@@ -144,7 +150,7 @@ function timestampToMonthYear(timeStr = "2016-08-14T04:00:00.000Z") { // temp de
     const date = new Date(timeStr)
     const month = date.toLocaleString('en-US', { month: 'long' })
     const year = date.getFullYear()
-    
+
     return month + ' ' + year
 }
 

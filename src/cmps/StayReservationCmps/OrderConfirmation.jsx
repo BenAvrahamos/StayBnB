@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { format, getDay } from 'date-fns'
 import { useState } from 'react'
 import { utilService } from '../../services/util.service'
@@ -7,10 +7,12 @@ import { utilService } from '../../services/util.service'
 export function OrderConfirmation({ stay, params }) {
     const [isShownModal, setIsShownModal] = useState(true)
     const reservation = useSelector(storeState => storeState.reservationModule.reservation)
+    const navigate = useNavigate()
 
     function onCloseModal(e) {
         e.stopPropagation()
         setIsShownModal(false)
+        navigate('/trips')
     }
 
     return (
@@ -35,6 +37,7 @@ export function OrderConfirmation({ stay, params }) {
 
                         <div className='stay-name flex column'>
                             <p>Property name:</p>
+                            {/* <h5>{stay.name}</h5> */}
                             <h5>{stay.summary} in {stay.loc.city}, {stay.loc.country}</h5>
                         </div>
 
@@ -57,7 +60,7 @@ export function OrderConfirmation({ stay, params }) {
 
                         <div className='guests-rooms grid'>
                             <div className='guests-container flex column'>
-                                <div className='guests flex column'>
+                                <div className='guests flex'>
                                     <p>Total guests:</p>
                                     <h5>{reservation.guests.sum}</h5>
                                 </div>
@@ -79,15 +82,15 @@ export function OrderConfirmation({ stay, params }) {
                             <div className='flex space-between'>
                                 <p>Price:</p>
                                 <p>${stay.price} X {utilService.calcSumOfDays(params)} nights &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <span>${utilService.calcSumToPay(params, stay)}</span></p>
+                                    <span>${(utilService.calcSumToPay(params, stay)).toFixed(2)}</span></p>
                             </div>
                             <div className='flex space-between'>
                                 <p>Service fee:</p>
-                                <p>${utilService.calcSumToPay(params, stay) * 0.14125}</p>
+                                <p>${(utilService.calcSumToPay(params, stay) * 0.14125).toFixed(2)}</p>
                             </div>
                             <div className='flex space-between'>
                                 <h4>Total:</h4>
-                                <p><span>${utilService.calcSumToPay(params, stay) + (utilService.calcSumToPay(params, stay) * 0.14125)}</span></p>
+                                <p><span>${(utilService.calcSumToPay(params, stay) + (utilService.calcSumToPay(params, stay) * 0.14125)).toFixed(2)}</span></p>
                             </div>
                         </div>
                     </div>

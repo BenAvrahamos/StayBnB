@@ -74,6 +74,20 @@
         transition: scale 1s;
     }
 
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+        background-color: $darkGray;
+    }
+
+    ::-webkit-scrollbar-track {
+        border-radius: 5px;
+        background-color: $lightGray;
+    }
+
     main {
         height: calc(100% - 9rem);
         overflow-y: auto;
@@ -300,6 +314,7 @@
             div {
                 margin: 1.6rem 1rem 0 0;
                 height: fit-content;
+
                 div {
                     margin: 0;
                 }
@@ -309,7 +324,7 @@
                 margin-block: 0 0.4rem;
                 margin-inline: 0.1rem;
             }
-            
+
             p {
                 color: $gray1;
             }

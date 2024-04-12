@@ -1,20 +1,61 @@
 .user-trips {
     color: $darkGray;
+
+    &>header {
+        border-block-end: 0.667px solid $gray2;
+
+        h1 {
+            font-size: 2rem;
+            padding-block: 1.1rem 1.275rem;
+            margin: 0;
+        }
+
+        .filters {
+            gap: 1rem;
+
+            select {
+                padding: 0.5rem 0 0.5rem 0.5rem;
+                border-radius: $BR1;
+                color: $darkGray;
+
+                cursor: pointer;
+
+                &:focus-visible {
+                    outline: none;
+                }
+            }
+
+            .layout-btns {
+                button {
+                    color: $gray1;
+                    background-color: transparent;
+
+                    &.selected {
+                        color: $darkGray;
+                        text-shadow: 0px 0px 1px $darkGray;
+                    }
+                }
+
+                .lines::after {
+                    content: '\f03a';
+                    font-family: fa-solid;
+                }
+
+                .cards::after {
+                    content: '\f009';
+                    font-family: fa-solid;
+                }
+            }
+        }
+    }
 }
 
 .no-user-trips {
-    h1 {
-        font-size: 2rem;
-        padding-block: 1.1rem 1.275rem;
-        border-block-end: 0.667px solid $gray2;
-        margin: 0;
-    }
-
-    div {
+    &>div {
         padding-block: 2.1rem 3rem;
         border-block-end: 0.667px solid $gray2;
 
-        h2 {
+        h3 {
             font-size: 1.375rem;
             letter-spacing: 0.02rem;
             margin: 0;
@@ -31,7 +72,7 @@
             height: 3rem;
             border-radius: $BR1;
             margin-block-start: 0.55rem;
-            
+
             @include buttons3;
         }
     }
@@ -45,6 +86,198 @@
             text-decoration: underline;
 
             cursor: pointer;
+        }
+    }
+}
+
+.user-trips:not(.no-user-trips) {
+    margin-block-end: 2rem;
+
+    img {
+        display: none;
+        object-fit: cover;
+        width: 5rem;
+        height: 5rem;
+        border-radius: $BR1;
+    }
+
+    ul {
+        margin-block-start: 1.5rem;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+
+        .trip-card {
+            border-radius: $BR2;
+            box-shadow: $gray4 1px 1px 16px;
+
+            cursor: pointer;
+
+            &.approved {
+                @include cardColor(rgb(0, 204, 146))
+            }
+
+            &.pending {
+                @include cardColor(gray)
+            }
+
+            &.rejected {
+                @include cardColor(rgb(255, 101, 101))
+            }
+
+            &:hover {
+                scale: 1.025;
+                transition: scale 0.5s;
+            }
+
+            header {
+                padding-inline: 1.5rem;
+
+                h3 {
+                    text-wrap: nowrap;
+                }
+
+                p span {
+                    display: none;
+                }
+            }
+
+            main {
+                padding: 1rem 1.5rem;
+
+                .info {
+                    grid-auto-flow: row;
+
+                    .guests p {
+                        text-wrap: nowrap;
+                    }
+                }
+            }
+
+        }
+    }
+
+    ul.lines main {
+        justify-content: stretch;
+
+        img {
+            display: none;
+        }
+
+        .info {
+            grid-auto-flow: row;
+        }
+    }
+}
+
+.trip-modal {
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 0;
+    }
+
+    &.approved {
+        @include modalColor(rgb(0, 204, 146))
+    }
+
+    &.pending {
+        @include modalColor(rgb(163, 162, 162))
+    }
+
+    &.rejected {
+        @include modalColor(rgb(255, 101, 101))
+    }
+
+    header.order-header,
+    footer.order-details-footer {
+        border-radius: 0;
+    }
+
+    footer.order-details-footer {
+        gap: 5rem;
+    }
+
+    button:active {
+        scale: 0.95;
+
+        transition: scale 0.5s;
+    }
+}
+
+@media (width > 400px) {
+    .user-trips:not(.no-user-trips) ul {
+        img {
+            display: block;
+        }
+    }
+}
+
+@media (width > 600px) {
+    .user-trips:not(.no-user-trips) {
+        ul.cards {
+            grid-template-columns: 1fr 1fr;
+
+            img {
+                display: none;
+            }
+        }
+
+        ul.lines header p {
+            display: flex;
+            
+            span {
+                display: block;
+            }
+        }
+    }
+}
+
+
+@media (width > 800px) {
+    .user-trips:not(.no-user-trips) ul.cards {
+        img {
+            display: block;
+        }
+    }
+}
+
+@media (width > 900px) {
+    .user-trips:not(.no-user-trips) {
+        ul.cards {
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 2rem;
+
+            .trip-card {
+                header {
+                    padding-block: 0.25rem;
+
+                    p span {
+                        display: block;
+                    }
+                }
+
+                main {
+                    gap: 1rem;
+                }
+
+                &:hover {
+                    scale: 1.05;
+                }
+            }
+        }
+
+        ul.lines main {
+
+            .info {
+                width: 100%;
+                grid-template-columns: 25% 25% 25%;
+                align-items: center;
+                gap: 2rem;
+            }
         }
     }
 }

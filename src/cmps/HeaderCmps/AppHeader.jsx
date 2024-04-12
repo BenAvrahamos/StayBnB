@@ -17,8 +17,6 @@ export function AppHeader({ dynamicPageLayOut, SetDynamicPageLayOut }) {
     var filterBy = useSelector(storeState => storeState.stayModule.filterBy)
     const [modalType, setModalType] = useState()
 
-    console.log(modalType);
-
     function onNavigate() {
         navigate('/')
     }

@@ -8,7 +8,6 @@ export function DynamicLocalHeaderNav() {
         e.stopPropagation()
         const targetElement = e.target
         const targetPosition = targetElement.getBoundingClientRect().top
-        console.log(targetPosition)
         const scrollPosition = targetPosition + 30 // Adjust the scroll position to stop 80px before the target
         window.scrollTo({ top: scrollPosition, behavior: 'smooth' })
     }
