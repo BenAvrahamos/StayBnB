@@ -248,7 +248,7 @@
 @media (width > 900px) {
     .user-trips:not(.no-user-trips) {
         ul.cards {
-            grid-template-columns: repeat(auto-fill, minmax(400.9px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
             gap: 2rem;
 
             .trip-card {
@@ -258,6 +258,10 @@
                     p span {
                         display: block;
                     }
+                }
+
+                main {
+                    gap: 1rem;
                 }
 
                 &:hover {

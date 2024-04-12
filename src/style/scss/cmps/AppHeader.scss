@@ -183,11 +183,12 @@
 }
 
 .fixed-header.header-large{
-    position: fixed;}
+    position: fixed;
+    width: 100%;
+}
 
 .fixed-header ,
-.header-small{
-  
+.header-small {
     top: 0;
     padding-block-end: 0;
     transition: 0.5s;
