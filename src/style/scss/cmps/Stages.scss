@@ -93,6 +93,11 @@
     margin-bottom: 1em;
 }
 
+video{
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
+}
+
 .question {
     width: 10em;
     font-size: 3em;
