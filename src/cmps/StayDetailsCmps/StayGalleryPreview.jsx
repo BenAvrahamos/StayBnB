@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { staySvgService } from '../../services/stay-svg.service'
 import { StringToSvg } from './StringToSvg'
 import { DynamicLocalHeaderNav } from './DynamicHeader/DynamicLocalHeaderNav'
+import { changeGalleryVisibility } from '../../store/actions/stay.actions'
 
 export function StayGalleryPreview({ stay }) {
     const gallery = useRef()
@@ -28,10 +29,10 @@ export function StayGalleryPreview({ stay }) {
       function loadGalleryObserver() {
         const observer = new IntersectionObserver(entries => {
           if (!entries[entries.length - 1].isIntersecting) {
-            console.log('hi')
+            changeGalleryVisibility(false)
             setIsGalleryIntersecting(false)
           } else {
-            console.log('hello')
+            changeGalleryVisibility(true)
             setIsGalleryIntersecting(true)
           }
         })
