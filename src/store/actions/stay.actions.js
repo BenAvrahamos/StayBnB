@@ -1,5 +1,5 @@
 import { stayService } from '../../services/stay.local.service'
-import { ADD_STAY, REMOVE_STAY, SET_FILTER, SET_STAYS, UPDATE_STAY, SET_HEADER_FILTER } from "../reducers/stay.reducer"
+import { ADD_STAY, REMOVE_STAY, SET_FILTER, SET_STAYS, UPDATE_STAY, SET_HEADER_FILTER, SET_GALLERY_OBSERVATION } from "../reducers/stay.reducer"
 import { store } from "../store"
 
 
@@ -53,4 +53,8 @@ export function setStayHeaderFilter(headerFilterBy = stayService.getDefaultHeade
     store.dispatch({ type: SET_HEADER_FILTER, headerFilterBy })
     // return Promise.resolve(filterBy)
     // return loadStays()
+}
+
+export function changeGalleryVisibility(visibility) {
+    store.dispatch({type: SET_GALLERY_OBSERVATION, isVisible: visibility})
 }
