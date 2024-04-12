@@ -76,6 +76,7 @@
         object-fit: cover;
         width: 5rem;
         height: 5rem;
+        border-radius: $BR1;
     }
 
     ul {
@@ -133,6 +134,7 @@
 }
 
 .trip-modal {
+
     h1,
     h2,
     h3,
@@ -158,25 +160,37 @@
     footer.order-details-footer {
         border-radius: 0;
     }
+}
 
-    img {
-        width: auto;
-        height: auto;
+@media (width > 400px) {
+    .user-trips:not(.no-user-trips) ul {
+        img {
+            display: block;
+        }
     }
 }
 
-@media (width > 620px) {
+@media (width > 600px) {
     .user-trips:not(.no-user-trips) ul {
         grid-template-columns: 1fr 1fr;
+    
+        img {
+            display: none;
+        }
     }
+}
+
+@media (width > 800px) {
+    .user-trips:not(.no-user-trips) ul {
+    
+        img {
+            display: block;
+        }
+    }  
 }
 
 @media (width > 900px) {
     .user-trips:not(.no-user-trips) {
-        img {
-            display: block;
-        }
-
         ul {
             grid-template-columns: repeat(auto-fill, minmax(400.9px, 1fr));
             gap: 2rem;
