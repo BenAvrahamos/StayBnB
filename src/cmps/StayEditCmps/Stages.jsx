@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 export function Stage1() {
     const videoRef = useRef(null)
@@ -23,25 +23,31 @@ export function Stage1() {
 
 
 export function Stage2() {
+
+    function handleSelect() {
+
+    }
+
+
     return <section className="stage-2">
         <section className='text'>
             <span className='question'>What type of place will guests have?</span>
         </section>
 
         <section className='options'>
-            <div>
+            <div onClick={() => handleSelect}>
                 <span className='title'>
                     An Entire place
                 </span>
                 <span className='subtitles'>Guests have the whole place to themselves. This usually includes a bedroom, a bathroom, and a kitchen.</span>
             </div>
-            <div>
+            <div onClick={() => handleSelect}>
                 <span className='title'>
                     A room
                 </span>
                 <span className='subtitles'>Guests have their own private room for sleeping. Other areas could be shared.</span>
             </div>
-            <div>
+            <div onClick={() => handleSelect()}>
                 <span className='title'>
                     A Shared room
                 </span>
@@ -53,98 +59,92 @@ export function Stage2() {
 
 }
 
-export function Stage3() {
-    return <section className="stage-3">
-        <section className='text'>
-            <span className='question'>Which of these best describes your place?
-            </span>
+export function Stage3({ stay, editStay }) {
+
+    function handleSelect(value) {
+        const updatedStay = { ...stay, type: value }
+        editStay(updatedStay)
+    }
+
+    return (
+        <section className="stage-3">
+            <section className='text'>
+                <span className='question'>Which of these best describes your place?</span>
+            </section>
+
+            <section className='options'>
+                <div onClick={() => handleSelect('house')} className={stay.type === 'house' ? 'selected' : ''}>
+                    <div className='icon'></div>
+                    <span className='title'>House</span>
+                </div>
+
+                <div onClick={() => handleSelect('apartment')} className={stay.type === 'apartment' ? 'selected' : ''}>
+                    <div className='icon'></div>
+                    <span className='title'>Apartment</span>
+                </div>
+
+                <div onClick={() => handleSelect('hotel')} className={stay.type === 'hotel' ? 'selected' : ''}>
+                    <div className='icon'></div>
+                    <span className='title'>Guesthouse</span>
+                </div>
+
+                <div onClick={() => handleSelect('guesthouse')} className={stay.type === 'guesthouse' ? 'selected' : ''}>
+                    <div className='icon'></div>
+                    <span className='title'>Hotel</span>
+                </div>
+            </section>
         </section>
-
-        <section className='options'>
-
-            <div>
-                <div className='icon'></div>
-                <span className='title'>House</span>
-            </div>
-
-            <div>
-                <div className='icon'></div>
-                <span className='title'>Apartment</span>
-            </div>
-
-            <div>
-                <div className='icon'></div>
-                <span className='title'>Guesthouse</span>
-            </div>
-
-            <div>
-                <div className='icon'></div>
-                <span className='title'>Hotel</span>
-            </div>
-
-        </section>
-
-    </section>
-
-
-
+    );
 }
 
-export function Stage4() {
-    return <section className="stage-4">
-        <section className='text'>
-            <span className='question'>Let's start with the basics
-            </span>
-            <span className="description">How many guests can your place accommodate?</span>
+export function Stage4({ stay, editStay }) {
+    console.log(stay);
+
+    const isCapacityZero = stay.capacity === 0
+    const isCapacityMax = stay.capacity === 16
+
+    const isBathsZero = stay.baths === 0
+    const isBathsMax = stay.baths === 16
+
+    return (
+        <section className="stage-4">
+            <section className='text'>
+                <span className='question'>Let's start with the basics</span>
+                <span className="description">How many guests can your place accommodate?</span>
+            </section>
+
+            <section className='options'>
+                <div>
+                    <span>Guests</span>
+                    <div className='control'>
+                        <button onClick={() => !isCapacityZero && editStay({ ...stay, capacity: stay.capacity - 1 })} className={isCapacityZero ? 'disabled' : ''}>-</button>
+                        <span>{stay.capacity}</span>
+                        <button onClick={() => !isCapacityMax && editStay({ ...stay, capacity: stay.capacity + 1 })} className={isCapacityMax ? 'disabled' : ''}>+</button>
+                    </div>
+                </div>
+
+                <div>
+                    <span>Bedrooms</span>
+                    <div className='control'>
+                        <button onClick={() => !isBathsZero && editStay({ ...stay, baths: stay.baths - 1 })} className={isBathsZero ? 'disabled' : ''}>-</button>
+                        <span>{stay.baths}</span>
+                        <button onClick={() => !isBathsMax && editStay({ ...stay, baths: stay.baths + 1 })} className={isBathsMax ? 'disabled' : ''}>+</button>
+                    </div>
+                </div>
+
+                <div>
+                    <span>Bathrooms</span>
+                    <div className='control'>
+                        <button onClick={() => !isBathsZero && editStay({ ...stay, baths: stay.baths - 1 })} className={isBathsZero ? 'disabled' : ''}>-</button>
+                        <span>4</span>
+                        <button onClick={() => !isBathsMax && editStay({ ...stay, baths: stay.baths + 1 })} className={isBathsMax ? 'disabled' : ''}>+</button>
+                    </div>
+                </div>
+            </section>
         </section>
-
-        <section className='options'>
-
-            <div>
-                <span>Guests</span>
-                <div className='control'>
-                    <button>-</button>
-                    <span>0</span>
-                    <button>+</button>
-                </div>
-            </div>
-
-            <div>
-                <span>Bedrooms</span>
-                <div className='control'>
-                    <button>-</button>
-                    <span>0</span>
-                    <button>+</button>
-                </div>
-            </div>
-
-            <div>
-                <span>Baths</span>
-                <div className='control'>
-                    <button>-</button>
-                    <span>0</span>
-                    <button>+</button>
-                </div>
-            </div>
-
-            <div>
-                <span>Bathrooms</span>
-                <div className='control'>
-                    <button>-</button>
-                    <span>0</span>
-                    <button>+</button>
-                </div>
-            </div>
-
-
-
-        </section>
-
-
-    </section>
-
-
+    )
 }
+
 
 export function Stage5() {
     const videoRef = useRef(null)
@@ -242,26 +242,30 @@ export function Stage7() {
 
 }
 
-export function Stage8() {
+export function Stage8({ stay, editStay }) {
+    const [inputValue, setInputValue] = useState(stay.summary)
+
     const handleInputChange = (event) => {
-        const inputValue = event.target.value
+        const newValue = event.target.value
 
-        if (inputValue.length > 32) {
-
-            event.target.value = inputValue.slice(0, 32)
-            event.target.disabled = true
+        if (newValue.length <= 32) {
+            setInputValue(newValue)
+            editStay({ ...stay, summary: newValue })
+        } else {
+            setInputValue(newValue.slice(0, 32))
         }
     }
 
-    return <section className="stage-8">
-        <section className='text'>
-            <span className="question">Now, let's give your place a title</span>
-            <span className="description">Short titles work best. Have fun with it—you can always change it later</span>
-            <input type="text" onChange={handleInputChange} />
-            <span className='counter'>{ }/32</span>
+    return (
+        <section className="stage-8">
+            <section className='text'>
+                <span className="question">Now, let's give your place a title</span>
+                <span className="description">Short titles work best. Have fun with it—you can always change it later</span>
+                <input type="text" value={inputValue} onChange={handleInputChange} />
+                <span className='counter'>{inputValue.length}/32</span>
+            </section>
         </section>
-    </section>
-
+    )
 }
 
 export function Stage9() {
@@ -276,7 +280,7 @@ export function Stage9() {
 }
 
 
-export function Stage10() {
+export function Stage10({stay,editStay}) {
     const videoRef = useRef(null)
 
     useEffect(() => {
@@ -296,22 +300,27 @@ export function Stage10() {
 
 }
 
-export function Stage11() {
-    return <section className="stage-11">
-        <section className='text'>
-            <span className="question">Now, set your price</span>
-            <span className="description">You can change it anytime.
-            </span>
-            <label htmlFor=""> <span className='price'>$</span>
-                <input type="number" />
-                <span className='per-night'>per night</span>  </label>
+export function Stage11({ stay, editStay }) {
+    const [price, setPrice] = useState(stay.price || '')
+    const handlePriceChange = (event) => {
+        const newPrice = event.target.value
+        setPrice(newPrice)
+        editStay({ ...stay, price: newPrice })
+    };
 
-
-
+    return (
+        <section className="stage-11">
+            <section className='text'>
+                <span className="question">Now, set your price</span>
+                <span className="description">You can change it anytime.</span>
+                <label htmlFor="">
+                    <span className='price'>$</span>
+                    <input type="number" value={price} onChange={handlePriceChange} />
+                    <span className='per-night'>per night</span>
+                </label>
+            </section>
         </section>
-    </section>
-
-
+    )
 }
 
 export function Stage12() {

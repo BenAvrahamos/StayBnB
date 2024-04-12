@@ -153,9 +153,13 @@
                 row-gap: 1em;
                 color: $gray1;
 
+
                 &> :nth-child(2) {
                     padding: 0.3em;
+                    width: 1.3em;
                     box-shadow: none;
+                    display: flex;
+                    justify-content: center;
                 }
 
             }
@@ -288,7 +292,7 @@
     }
 
     & input[type='number'] {
-       @include buttons2;
+        @include buttons2;
         font-size: 8em;
         width: 3em;
     }
@@ -303,7 +307,7 @@
         align-items: center;
     }
 
-    & .per-night{
+    & .per-night {
         font-size: 2em;
     }
 }
