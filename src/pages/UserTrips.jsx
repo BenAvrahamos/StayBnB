@@ -13,6 +13,7 @@ export function UserTrips() {
     const [tripFilter, setTripFilter] = useState({ tense: 'future', status: 'all' })
     const [onModal, setOnModal] = useState(false)
     const [chosenTrip, setChosenTrip] = useState(null)
+    const [layoutType, setLayout] = useState('cards')
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -42,6 +43,10 @@ export function UserTrips() {
     function onChoose(trip) {
         setChosenTrip(trip)
         setOnModal(true)
+    }
+
+    function onLayout(type) {
+        setLayout(type)
     }
 
     if (!userTrips || !userTrips.length) return <section className='user-trips no-user-trips'>
@@ -108,6 +113,11 @@ export function UserTrips() {
                 <h1>Trips</h1>
 
                 <div className='filters flex'>
+                    <div className='layout-btns flex align-center'>
+                        <button onClick={() => onLayout('lines')} className={`lines flex center ${(layoutType === 'lines' ? 'selected' : '')}`}></button>
+                        <button onClick={() => onLayout('cards')} className={`cards flex center ${(layoutType === 'cards' ? 'selected' : '')}`}></button>
+                    </div>
+
                     <select name="tense" value={tripFilter.tense} onChange={handleFilter}>
                         <option value="all">All</option>
                         <option value="future">Future</option>
@@ -124,7 +134,7 @@ export function UserTrips() {
                 </div>
             </header>
 
-            <ul className='grid'>
+            <ul className={`grid ${layoutType}`}>
                 {trips.map(trip => (
                     <li key={trip._orderId} className={`trip-card ${trip.status}`} onClick={() => onChoose(trip)} >
 

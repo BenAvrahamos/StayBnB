@@ -174,10 +174,6 @@
 
 @media (width > 600px) {
     .order-confirmation {
-        header h1 {
-            font-size: 2rem;
-        }
-
         .order-details {
             .price {
                 width: 60%;
@@ -197,9 +193,12 @@
         max-width: 48.75rem;
         border-radius: $BR3;
 
+        header h1 {
+            font-size: 2rem;
+        }
+
         footer {
             border-radius: 0 0 $BR3 $BR3;
-
         }
 
         .order-details {
