@@ -1,0 +1,99 @@
+.stage-1,
+.stage-5,
+.stage-10,
+.stage-2,
+.stage-3,
+// .stage-4,
+.stage-6,
+.stage-7,
+.stage-8,
+.stage-9,
+.stage-11,
+.stage-12 {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+
+    & video {
+        width: 65%;
+    }
+
+    & .text {
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        width: 40em;
+
+        & .step,
+        .question,
+        .description {
+            margin-bottom: 1em;
+        }
+    }
+}
+
+.stage-2,
+.stage-3,
+.stage-4,
+.stage-6,
+.stage-7,
+.stage-8,
+.stage-9,
+.stage-11,
+.stage-12 {
+    justify-content: center;
+
+    & .text {
+        display: flex;
+        flex-direction: column;
+        width: max-content;
+        align-items: start;
+
+        & .question {
+            font-size: 1.75em;
+            width: max-content;
+            margin-bottom: 0.3em;
+        }
+    }
+
+}
+
+.stage-7{
+    & .description{
+        width: 38em;
+    }
+
+}
+
+.stage-1,
+.stage-5,
+.stage-10 {
+    display: flex;
+    flex-direction: row;
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.step,
+.question,
+.description {
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
+    animation-delay: 0.5s;
+    font-size: 1.125em;
+    margin-bottom: 1em;
+}
+
+.question {
+    width: 10em;
+    font-size: 3em;
+}
