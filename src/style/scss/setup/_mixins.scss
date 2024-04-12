@@ -48,3 +48,16 @@
         background-color: $status-color;
     }
 }
+
+@mixin modalColor($status-color) {
+    border: 4px solid $status-color;
+
+    header,
+    footer {
+        background-color: $status-color;
+    }
+
+    header .exit-btn:hover {
+        background-color: lighten($status-color, 5);
+    }
+}

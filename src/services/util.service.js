@@ -102,13 +102,12 @@ function generateStays() {
     for (let i = 0; i < 5; i++) {
         stays.push(generateStay())
     }
-
 }
 
 function calcSumToPay(params, stay) {
     let diff = params.exitDate - params.entryDate
     diff = diff / (1000 * 60 * 60 * 24)
-    return diff * stay.price
+    return (diff * stay.price)
 }
 
 function timestampToDate(dateTimestamp) {

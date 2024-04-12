@@ -5,10 +5,14 @@ import { useEffect, useState } from 'react'
 import { orderService } from '../services/order.local.service.js'
 import { utilService } from '../services/util.service.js'
 
+import { TripModal } from '../cmps/UserTripsCmps/TripModal.jsx'
+
 export function UserTrips() {
     const [userTrips, setUserTrips] = useState([])
     const [trips, setTrips] = useState([])
     const [tripFilter, setTripFilter] = useState({ tense: 'future', status: 'all' })
+    const [onModal, setOnModal] = useState(false)
+    const [chosenTrip, setChosenTrip] = useState(null)
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -35,8 +39,9 @@ export function UserTrips() {
         setTripFilter(prevFilter => ({ ...prevFilter, [field]: value }))
     }
 
-    function onModal() {
-
+    function onChoose(trip) {
+        setChosenTrip(trip)
+        setOnModal(true)
     }
 
     if (!userTrips || !userTrips.length) return <section className='user-trips no-user-trips'>
@@ -97,58 +102,58 @@ export function UserTrips() {
         <p>Can't find your reservation here? <span>Visit the Help Center</span></p>
     </section>
 
-    return <section className='user-trips'>
-        <header className='flex align-center space-between'>
-            <h1>Trips</h1>
+    return <>
+        <section className='user-trips'>
+            <header className='flex align-center space-between'>
+                <h1>Trips</h1>
 
-            <div className='filters flex'>
-                <select name="tense" value={tripFilter.tense} onChange={handleFilter}>
-                    <option value="all">All</option>
-                    <option value="future">Future</option>
-                    <option value="current">Current</option>
-                    <option value="past">Past</option>
-                </select>
+                <div className='filters flex'>
+                    <select name="tense" value={tripFilter.tense} onChange={handleFilter}>
+                        <option value="all">All</option>
+                        <option value="future">Future</option>
+                        <option value="current">Current</option>
+                        <option value="past">Past</option>
+                    </select>
 
-                <select name="status" value={tripFilter.status} onChange={handleFilter}>
-                    <option value="all">All</option>
-                    <option value="approved">Approved</option>
-                    <option value="pending">Pending</option>
-                    <option value="rejected">Rejected</option>
-                </select>
-            </div>
-        </header>
+                    <select name="status" value={tripFilter.status} onChange={handleFilter}>
+                        <option value="all">All</option>
+                        <option value="approved">Approved</option>
+                        <option value="pending">Pending</option>
+                        <option value="rejected">Rejected</option>
+                    </select>
+                </div>
+            </header>
 
-        <ul className='grid'>
-            {trips.map(trip => (
-                <li key={trip._orderId} className={`trip-card ${trip.status}`} onClick={onModal} >
-                    <header className='flex align-center space-between'>
-                        <h3>{utilService.timestampsToShortDates(trip.entryDate, trip.exitDate)}</h3>
-                        <p><span>Booking number: </span>{trip._orderId}</p>
-                    </header>
-                    <main className='flex space-between'>
-                        <div className='info flex column'>
-                            <h4>{trip.stay.name}</h4>
-                            <p>{trip.stay.location}</p>
-                            <div className='guests flex'>
-                                {trip.guests.adults > 1 && <p>{trip.guests.adults} adults</p>}
-                                {trip.guests.adults === 1 && <p>{trip.guests.adults} adult</p>}
-                                {trip.guests.children > 1 && <p>&nbsp;• {trip.guests.children} children</p>}
-                                {trip.guests.children === 1 && <p>&nbsp;• {trip.guests.children} child</p>}
-                                {trip.guests.infants > 1 && <p>&nbsp;• {trip.guests.infants} infants</p>}
-                                {trip.guests.infants === 1 && <p>&nbsp;• {trip.guests.infants} infant</p>}
+            <ul className='grid'>
+                {trips.map(trip => (
+                    <li key={trip._orderId} className={`trip-card ${trip.status}`} onClick={() => onChoose(trip)} >
+
+                        <header className='flex align-center space-between'>
+                            <h3>{utilService.timestampsToShortDates(trip.entryDate, trip.exitDate)}</h3>
+                            <p><span>Booking number: </span>{trip._orderId}</p>
+                        </header>
+
+                        <main className='flex space-between'>
+                            <div className='info flex column'>
+                                <h4>{trip.stay.name}</h4>
+                                <p>{trip.stay.location}</p>
+                                <div className='guests flex'>
+                                    {trip.guests.adults > 1 && <p>{trip.guests.adults} adults</p>}
+                                    {trip.guests.adults === 1 && <p>{trip.guests.adults} adult</p>}
+                                    {trip.guests.children > 1 && <p>&nbsp;• {trip.guests.children} children</p>}
+                                    {trip.guests.children === 1 && <p>&nbsp;• {trip.guests.children} child</p>}
+                                    {trip.guests.infants > 1 && <p>&nbsp;• {trip.guests.infants} infants</p>}
+                                    {trip.guests.infants === 1 && <p>&nbsp;• {trip.guests.infants} infant</p>}
+                                </div>
                             </div>
-                        </div>
 
-                        <img src={trip.stay.img} alt={trip.stay.name} />
-                    </main>
+                            <img src={trip.stay.img} alt={trip.stay.name} />
+                        </main>
 
-                    {/* {onModal && <OrderConfirmation params={order} stays={stays} />} */}
-                    {/* params: entryDate, exitDate, adults, children, infants, pets 
-                        stay: imgUrls[0], name, location, price, bedrooms.length
-                        reservation (gets from inside the cmp): guests.sum
-                        */}
-                </li>
-            ))}
-        </ul>
-    </section>
+                    </li>
+                ))}
+            </ul>
+        </section>
+        {onModal && chosenTrip && <TripModal trip={chosenTrip} setOnModal={setOnModal} />}
+    </>
 }

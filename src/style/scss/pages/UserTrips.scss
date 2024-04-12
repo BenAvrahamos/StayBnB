@@ -132,6 +132,39 @@
     }
 }
 
+.trip-modal {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 0;
+    }
+
+    &.approved {
+        @include modalColor(rgb(0, 204, 116))
+    }
+
+    &.pending {
+        @include modalColor(rgb(163, 162, 162))
+    }
+
+    &.rejected {
+        @include modalColor(rgb(255, 101, 101))
+    }
+
+    header.order-header,
+    footer.order-details-footer {
+        border-radius: 0;
+    }
+
+    img {
+        width: auto;
+        height: auto;
+    }
+}
+
 @media (width > 620px) {
     .user-trips:not(.no-user-trips) ul {
         grid-template-columns: 1fr 1fr;
