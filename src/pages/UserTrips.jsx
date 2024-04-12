@@ -140,11 +140,11 @@ export function UserTrips() {
 
                         <header className='flex align-center space-between'>
                             <h3>{utilService.timestampsToShortDates(trip.entryDate, trip.exitDate)}</h3>
-                            <p><span>Booking number: </span>{trip._orderId}</p>
+                            <p><span>Booking number:</span>&nbsp;&nbsp;{trip._orderId}</p>
                         </header>
 
                         <main className='flex space-between'>
-                            <div className='info flex column'>
+                            <div className='info grid'>
                                 <h4>{trip.stay.name}</h4>
                                 <p>{trip.stay.location}</p>
                                 <div className='guests flex'>
