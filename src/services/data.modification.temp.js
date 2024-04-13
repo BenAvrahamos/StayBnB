@@ -1,7 +1,8 @@
 import { staysDemoData } from "../data/NewDemoData"
 import { utilService } from "./util.service"
-import fs from 'fs'
 
+const propertyTypes = ['House', 'Apartment', 'Guesthouse', 'Hotel']
+const placeTypes = ['An entire home', 'Shared room', 'Room']
 const amenities = ['Wifi', 'Internet', 'Washer', 'Air conditioning', 'Portable air conditioning unit', 'Dedicated workspace', 'Smoke alarm', 'Tv', 'Cable tv', 'Kitchen',
     'Full kitchen', 'Refrigerator', 'Hair dryer', 'Dryer', 'Heating', 'Iron', 'Pool', 'Hottub', 'Free parking', 'Free parking on premises',
     'Free street parking', 'Crib', 'Bbq', 'Gym', 'Indoor fireplace', 'Ev charger', 'Smoking allowed', 'Pets are welcome', 'Breakfast',
@@ -17,10 +18,15 @@ const aboutDescs = ['A friendly person', 'I love pets!']
 const responseTimes = ['within an hour', 'within 5 minutes', 'within a day', 'within 2 hours']
 
 export function createNewDemoData() {
+    removeTypeProperty()
     getRandomNumOfBeds()
-    addRandomBedrooms()
-    floorRates()
+    addRandomBedrooms()    
+    addIsInstantBooking()
+    addTenBookedDates()
     addAmenities()
+    floorRates()
+    modifyPropertyType()
+    modifyPlaceType()
     generateUsers()
     AddHostToStay()
     for(let i = 0; i < 13; i++) {
@@ -31,7 +37,6 @@ export function createNewDemoData() {
 
 function addRandomBedrooms() {
     const possibleBeds = ['double bed', 'couch', 'sofa bed', 'king size bed', 'queen size bed', 'bunk bed']
-   
     stayCollection.forEach(stay => {
         stay.capacity = 0
         stay.bedrooms = [] 
@@ -66,6 +71,11 @@ function floorRates() {
         stay.reviews.forEach(review => Math.floor(review.rate))
     })
 }
+
+function addIsInstantBooking() {
+    stayCollection.forEach(stay => stay.isInstantBooking = Math.random > 0.5 ? true : false)
+}
+
 
 function getRandomNumOfBeds() {
     stayCollection.forEach(stay => {
@@ -167,4 +177,40 @@ function checkAndUpdateReviews(nameOfPreviousHost, stay, newHostName) {
     stay.reviews.forEach(review => {
         if (review.txt.includes(nameOfPreviousHost)) review.txt.replaceAll(nameOfPreviousHost, newHostName)
     })
+}
+
+function modifyPropertyType() {
+    stayCollection.forEach(stay => stay.propertyType = propertyTypes[utilService.getRandomIntInclusive(0, propertyTypes.length - 1)])
+}
+
+function modifyPlaceType() {
+    stayCollection.forEach(stay => stay.placeType = placeTypes[utilService.getRandomIntInclusive(0, placeTypes.length - 1)])
+}
+
+function generateBookedDates() {
+    let currentDate = new Date()
+    let minDate = new Date(currentDate.getTime() + 7 * 24 * 60 * 60 * 1000)
+    let maxDate = new Date(currentDate.getTime() + 365 * 24 * 60 * 60 * 1000) // Adjusted to one year from current date
+    let rangeInDays = (maxDate.getTime() - minDate.getTime()) / (24 * 60 * 60 * 1000)
+    let randomDays = Math.floor(Math.random() * (rangeInDays + 1))
+    let entryDate = new Date(minDate.getTime() + randomDays * 24 * 60 * 60 * 1000)
+    let exitDate = new Date(entryDate.getTime() + 7 * 24 * 60 * 60 * 1000)
+    entryDate.setUTCHours(0, 0, 0, 0)
+    exitDate.setUTCHours(0, 0, 0, 0)
+    return { entryDate: entryDate.getTime(), exitDate: exitDate.getTime() }
+}
+
+function addTenBookedDates() {
+    stayCollection.forEach(stay => {
+        const randBookedDates = []
+        for(let i = 0; i < 10; i++) {
+            randBookedDates.push(generateBookedDates())
+        }
+        stay.bookedDates = randBookedDates
+        return stay.bookedDates
+    })
+}
+
+function removeTypeProperty() {
+    stayCollection.forEach(stay => delete stay.type)
 }
