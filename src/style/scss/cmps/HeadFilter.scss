@@ -7,7 +7,7 @@
     border: 1px solid #dddddd;
     margin-bottom: 0.5em;
     position: relative;
-    column-gap: 0.4em;
+    // column-gap: 0.4em;
     font-family: circular-bold;
     
 
@@ -27,12 +27,13 @@
         height: 4rem;
         flex-grow: 1;
         border-radius: 48px;
-        padding: 0.875rem 1.5rem;
+        padding: 0.875rem 2rem;
 
         display: flex;
         flex-direction: column;
         justify-content: center;
         cursor: pointer;
+        
 
         &:not(.selected):hover {
             background-color: rgba(#71717123, 0.25);
@@ -61,7 +62,7 @@
             font-size: 0.875rem;
             color: $headerGray;
             font-weight: normal;
-    
+            
         }
     }
 
