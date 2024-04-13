@@ -2,11 +2,11 @@ import { useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { loadStays, removeStay, saveStay, setStayFilter } from '../store/actions/stay.actions.js'
-
 import { StayList } from '../cmps/StayList.jsx'
 import { LabelsFilter } from '../cmps/LabelsFilter.jsx'
 import { store } from '../store/store.js'
 import { stayService } from '../services/stay.local.service.js'
+import { createNewDemoData } from '../services/data.modification.temp.js'
 
 
 export function StayIndex({dynamicPageLayOut}) {
@@ -19,6 +19,7 @@ export function StayIndex({dynamicPageLayOut}) {
     useEffect(() => {
         setSearchParams(stayService.mergeFilters(filterBy, headerFilterBy))
         loadStays()
+        createNewDemoData()
     }, [filterBy])
 
     if (!stays || !stays.length) return <section className='index-section'>
