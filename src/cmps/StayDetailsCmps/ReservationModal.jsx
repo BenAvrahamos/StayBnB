@@ -49,7 +49,7 @@ export function ReservationModal({ stay, params, updateParams }) {
 
     useEffect(() => {
         if (btnObserver) btnObserver.observe(btn.current)
-            return () => {
+        return () => {
             btnObserver?.disconnect()
         }
     }, [btnObserver])
@@ -88,7 +88,7 @@ export function ReservationModal({ stay, params, updateParams }) {
 
     return (
         <>
-            {isBtnScrolled && <DynamicModalHeader stay={stay} params={params}/>}
+            {isBtnScrolled && <DynamicModalHeader stay={stay} params={params} />}
             <div className="reserve-modal" ref={ref}>
                 <div className='container-price-selectors'>
                     <div className="price-logo flex align-center">
@@ -96,28 +96,33 @@ export function ReservationModal({ stay, params, updateParams }) {
                     </div>
                     <div className='selectors-container flex column'>
                         <div className="date-selectors flex">
-                            <div className='check-in flex' onClick={() => openModalType('date')}>
+                            <div className='check-in flex' onClick={() => openModalType(modalType === 'date' ? null : 'date')}>
                                 <div className='txt flex column'>
                                     <label>Check-in</label>
                                     <div className='txt-date'>{getDate(+params.entryDate)}/{getMonth(+params.entryDate) + 1}/{getYear(+params.entryDate)}</div>
                                 </div>
                             </div>
-                            <div className='checkout flex' onClick={() => openModalType('date')}>
+                            <div className='checkout flex' onClick={() => openModalType(modalType === 'date' ? null : 'date')} >
                                 <div className='txt flex column'>
                                     <label>Checkout</label>
-                                    <div className='txt-date'>{getDate(+params.exitDate)}/{getMonth(+params.exitDate) + 1}/{getYear(+params.exitDate)}</div>
+                                    <div className='txt-date'>
+                                        {params.exitDate ?
+                                            `${getDate(+params.exitDate)}/${getMonth(+params.exitDate) + 1}/${getYear(+params.exitDate)}` :
+                                            "Add date"
+                                        }
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div ref={ref} className='guest-selector flex column' onClick={() => openModalType('guest')}>
-                            <label className='guests'>Guests</label>
-                            <div className='guest-container flex space-between'>
+                        <div ref={ref} className='guest-selector flex column' >
+                            <label onClick={() => openModalType(modalType === 'guest' ? null : 'guest')} className='guests'>Guests</label>
+                            <div className='guest-container flex space-between' onClick={() => openModalType(modalType === 'guest' ? null : 'guest')}>
                                 {stayService.guestCountStringForReservation(params)}
                                 {currArrow && <span className={`arrow-${currArrow}`}></span>}
                             </div>
 
                             {modalType === 'guest' && <GuestCount params={params} updateParams={updateParams} headerFilterBy={headerFilterBy} openModalType={openModalType} />}
-                            {modalType === 'date' && <StayDetailsDateModal params={params} updateParams={updateParams} headerFilterBy={headerFilterBy} openModalType={openModalType} />}
+                            {modalType === 'date' && <StayDetailsDateModal stay={stay} params={params} updateParams={updateParams} headerFilterBy={headerFilterBy} openModalType={openModalType} />}
 
                         </div>
                     </div>

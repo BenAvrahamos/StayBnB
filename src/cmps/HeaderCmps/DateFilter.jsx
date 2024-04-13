@@ -55,6 +55,8 @@ export function DateFilter({ setModalType, headerFilterBy }) {
                 staticRanges={[]}
                 inputRanges={[]}
                 enableOutsideDays={true}
+                minDate={new Date()} 
+                rangeColors={['#c72d65']}
                 // disabledDates={disabledDates}
 
             />
