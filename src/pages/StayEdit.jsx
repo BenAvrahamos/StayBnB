@@ -27,7 +27,7 @@ export function StayEdit() {
         {editStage === 9 && <Stage9 />}
         {editStage === 10 && <Stage10 stay={stay} editStay={editStay} />}
         {editStage === 11 && <Stage11 stay={stay} editStay={editStay} />}
-        {editStage === 12 && <Stage12 />}
+        {editStage === 12 && <Stage12 stay={stay} />}
 
         <ProgressFooter editStage={editStage} setEditStage={setEditStage} />
 

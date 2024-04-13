@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { utilService } from '../../services/util.service'
 
 export function Stage1() {
     const videoRef = useRef(null)
@@ -280,7 +281,7 @@ export function Stage9() {
 }
 
 
-export function Stage10({stay,editStay}) {
+export function Stage10({ stay, editStay }) {
     const videoRef = useRef(null)
 
     useEffect(() => {
@@ -323,12 +324,19 @@ export function Stage11({ stay, editStay }) {
     )
 }
 
-export function Stage12() {
+export function Stage12({ stay }) {
     return <section className="stage-12">
         <section className='text'>
             <span className="question">Review your listing</span>
             <span className="description">Here's what we'll show to guests. Make sure everything looks good.
             </span>
+
+            <div className='stay-edit-preview'>
+                <img src={`https://picsum.photos/id/${utilService.getRandomIntInclusive(1, 150)}/600/600`} />
+                <div><span className='boldTxt'> ${stay.price} </span> night</div>
+
+            </div>
+
         </section>
     </section>
 

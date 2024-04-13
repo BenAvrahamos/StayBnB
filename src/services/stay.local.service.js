@@ -91,9 +91,13 @@ async function query(filterBy, headerFilterBy = {}) {
             stayArr = stayArr.filter(stay => filterBy.amenities.every(amenity => stay.amenities.includes(amenity)))
         }
 
-        if (filterBy.placeType !== 'any') {
-            stayArr = stayArr.filter(stay => stay.type === filterBy.placeType)
-        }
+        // if (filterBy.placeType !== 'any') {
+        //     console.log(stayArr[0].type);
+        //     console.log(filterBy.placeType);
+        //     stayArr = stayArr.filter(stay => stay.type === filterBy.placeType)
+        // }
+
+      
 
         // if (filterBy.priceRange) {
         //     stayArr = stayArr.filter(stay => stay.price >= filterBy.priceRange.min && stay.price <= filterBy.priceRange.max)
