@@ -11,7 +11,6 @@ import { createNewDemoData } from '../services/data.modification.temp.js'
 
 export function StayIndex({dynamicPageLayOut}) {
     const [searchParams, setSearchParams] = useSearchParams()
-
     const { stays } = useSelector(storeState => storeState.stayModule)
     const { filterBy } = useSelector(storeState => storeState.stayModule)
     const { headerFilterBy } = store.getState().stayModule
@@ -19,7 +18,6 @@ export function StayIndex({dynamicPageLayOut}) {
     useEffect(() => {
         setSearchParams(stayService.mergeFilters(filterBy, headerFilterBy))
         loadStays()
-        createNewDemoData()
     }, [filterBy])
 
     if (!stays || !stays.length) return <section className='index-section'>
