@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { StayPreview } from './StayPreview.jsx'
 import { store } from '../store/store.js'
 
-export function StayList({ stays, filterBy }) {
+export function StayList({ stays, filterBy, scrolledPage }) {
     const { headerFilterBy } = store.getState().stayModule
 
     let { loc, guestCount, entryDate, exitDate } = headerFilterBy
@@ -25,8 +25,16 @@ export function StayList({ stays, filterBy }) {
         return Object.keys(obj).map(key => `${encodeURIComponent(key)}=${encodeURIComponent(obj[key])}`).join('&');
     }
 
+	const scrolledHeader = () => {
+        if (scrolledPage) {
+            return 'list-header-expanded'
+        } else {
+            return ''
+        }
+    }
+
     return (
-        <ul className={'stay-list grid'}>
+        <ul className={`stay-list ${scrolledHeader()} grid`}>
             {stays.map(stay => (
                 <li key={stay._id}>
                     <Link to={{
