@@ -1,6 +1,11 @@
 import { staysDemoData } from "../data/NewDemoData"
 import { utilService } from "./util.service"
 
+const labels = ['new', 'off-the-grid', 'iconic_cities', 'rooms', 'creative_spaces', 'boats', 'grand_pianos', 'vineyards',
+'historical_homes', 'mansions', 'lake', 'bed_&_breakfasts', 'farms', 'treehouses', 'skiing', 'earth_homes',
+'beach', 'amazing_views', 'countryside', 'a-frames', 'desert', 'design', 'beachfront', 'caves', 'national_parks',
+'castles', 'lakefront', 'islands', 'trulli', 'tropical', 'cabins', 'campers', 'camping', 'arctic', 'tiny_homes', 'surfing',
+'barns', 'cycladic_homes', 'hanoks', 'ryokans', 'domes', 'shepard_huts', 'yurts', 'minsus', 'casas_particulares']
 const propertyTypes = ['House', 'Apartment', 'Guesthouse', 'Hotel']
 const placeTypes = ['An entire home', 'Shared room', 'Room']
 const amenities = ['Wifi', 'Internet', 'Washer', 'Air conditioning', 'Portable air conditioning unit', 'Dedicated workspace', 'Smoke alarm', 'Tv', 'Cable tv', 'Kitchen',
