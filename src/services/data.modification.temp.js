@@ -31,6 +31,7 @@ export function createNewDemoData() {
     removeTypeProperty()
     getRandomNumOfBeds()
     addRandomBedrooms()    
+    addBathsNumber()
     addIsInstantBooking()
     addTenBookedDates()
     addAmenities()
@@ -225,4 +226,8 @@ function addTenBookedDates() {
 
 function removeTypeProperty() {
     stayCollection.forEach(stay => delete stay.type)
+}
+
+function addBathsNumber() {
+    stayCollection.forEach(stay => stay.baths = utilService.getRandomIntInclusive(1 ,2))
 }
