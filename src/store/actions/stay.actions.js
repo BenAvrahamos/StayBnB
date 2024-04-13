@@ -9,9 +9,7 @@ export async function loadStays() {
     try {
         const { filterBy } = store.getState().stayModule
         const { headerFilterBy } = store.getState().stayModule
-    
-
-        const stays = await stayService.query(filterBy,headerFilterBy)
+        const stays = await stayService.query(filterBy, headerFilterBy)
         store.dispatch({ type: SET_STAYS, stays })
     } catch (err) {
         console.log('stay action -> Cannot load stays', err)
