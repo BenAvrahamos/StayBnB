@@ -4,17 +4,17 @@ import { utilService } from "../services/util.service"
 export function StayPreview({ stay, filterBy }) {
 
     return <article className="stay-preview">
-        <img src={stay.previewImg}/>
-        
-        {!filterBy.loc.city && <h1>{stay.loc.city}, {stay.loc.country}</h1>}
-        {filterBy.loc.city && <h1>{stay.name}</h1>}
+        <img src={stay.imgUrls[0]} />
 
-        {!filterBy.loc.city && <p className="grayTxt">1,234 kilometers away</p>}
-        {filterBy.loc.city && <p className="grayTxt">{stay.summary}</p>}
+        {!filterBy.loc.region && <h1>{stay.loc.city}, {stay.loc.country}</h1>}
+        {filterBy.loc.region && <h1>{stay.propertyType} in {stay.loc.address.split(', ')[1]}</h1>}
 
-        {!filterBy.entryDate && <p className="grayTxt">Apr 7-9</p>}
+        {!filterBy.loc.region && <p className="grayTxt">1,234 kilometers away</p>}
+        {filterBy.loc.city && <p className="grayTxt">{stay.summary.length > 34 ? stay.summary.substring(0, 35) + '...' : stay.summary}</p>}
 
-            {!filterBy.entryDate && <p><span className="boldTxt"><span className="moneySgn">$</span>{Math.round(stay.price)}</span> night</p>}
-            {filterBy.entryDate && <p><span className="boldTxt"><span className="moneySgn">$</span>{Math.round(stay.price)}</span> night<span className="grayTxt underline"> • {stayService.getNumberOfNights() * stay.price} total</span></p>}
+        {!filterBy.entryDate && <p className="grayTxt">Apr 7-9</p>} {/* Make function that fined available dates for each stay and places them here */}
+
+        {!filterBy.entryDate && <p><span className="boldTxt"><span className="moneySgn">$</span>{Math.round(stay.price)}</span> night</p>}
+        {filterBy.entryDate && <p><span className="boldTxt"><span className="moneySgn">$</span>{Math.round(stay.price)}</span> night • <span className="grayTxt underline"><span className="moneySgn">$</span>{(stayService.getNumberOfNights(filterBy) * stay.price).toFixed(2)} total</span></p>}
     </article>
 }
