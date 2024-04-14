@@ -15,55 +15,34 @@ import { StayEdit } from './pages/StayEdit'
 
 export function RootCmp() {
 
-  const [dynamicPageLayOut, SetDynamicPageLayOut] = useState({
-    header: { compact: false, fixed:   false },
-    fixedFilterLabel: false,
-    listMargin: false
-  })
-
+  const [scrolledPage, setScrolledPage] = useState( false )
 
   useEffect(() => {
     const handleScroll = () => {
       const offset = window.scrollY;
-      const newLayout = {
-        header: { compact: offset > 0, fixed: offset > 0 },
-        fixedFilterLabel: offset > 0,
-        listMargin: offset > 0
-      };
+      const newLayout =  offset > 0
 
-      // Check if the new layout is different from the current layout
-      if (
-        newLayout.header.compact !== dynamicPageLayOut.header.compact ||
-        newLayout.header.fixed !== dynamicPageLayOut.header.fixed ||
-        newLayout.fixedFilterLabel !== dynamicPageLayOut.fixedFilterLabel ||
-        newLayout.listMargin !== dynamicPageLayOut.listMargin
-      ) {
-        SetDynamicPageLayOut(newLayout);
-      }
-    };
+      if (newLayout !== scrolledPage) setScrolledPage(newLayout)
+    }
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll)
 
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [dynamicPageLayOut]); // Add dynamicPageLayOut as a dependency to ensure the latest state is used for comparison
-
-
+    return () => { window.removeEventListener('scroll', handleScroll) }
+  }, [scrolledPage])
 
   return (
     <Provider store={store}>
       <Router>
-        <AppHeader dynamicPageLayOut={dynamicPageLayOut} SetDynamicPageLayOut={SetDynamicPageLayOut} />
+        <AppHeader scrolledPage={scrolledPage} />
 
         <Routes>
-          <Route path='/' element={<StayIndex />} />
+          <Route path='/' element={<StayIndex scrolledPage={scrolledPage} />} />
           <Route path='/:stayId' element={<StayDetails />} />
           <Route path='/:stayId/payment' element={<StayPayment />} />
           <Route path='/trips' element={<UserTrips />} />
           <Route path='/edit' element={<StayEdit />} />
         </Routes>
-        <AppFooter/>
+        <AppFooter />
       </Router>
     </Provider>
   )

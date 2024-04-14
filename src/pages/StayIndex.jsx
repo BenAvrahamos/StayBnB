@@ -2,14 +2,14 @@ import { useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { loadStays, removeStay, saveStay, setStayFilter } from '../store/actions/stay.actions.js'
-
 import { StayList } from '../cmps/StayList.jsx'
 import { LabelsFilter } from '../cmps/LabelsFilter.jsx'
 import { store } from '../store/store.js'
 import { stayService } from '../services/stay.local.service.js'
+import { createNewDemoData } from '../services/data.modification.temp.js'
 
 
-export function StayIndex({dynamicPageLayOut}) {
+export function StayIndex({scrolledPage}) {
     const [searchParams, setSearchParams] = useSearchParams()
 
     const { stays } = useSelector(storeState => storeState.stayModule)
@@ -17,14 +17,16 @@ export function StayIndex({dynamicPageLayOut}) {
     const { headerFilterBy } = store.getState().stayModule
 
     useEffect(() => {
-        setSearchParams(stayService.mergeFilters(filterBy, headerFilterBy))
+        setSearchParams(stayService.mergeFiltersSP(filterBy, headerFilterBy))
         loadStays()
+        createNewDemoData()
     }, [filterBy])
 
     if (!stays || !stays.length) return <section className='index-section'>
         <LabelsFilter
             setStayFilter={setStayFilter}
             filterBy={filterBy}
+            scrolledPage={scrolledPage}
         />
         <p>loading</p>
     </section>
@@ -33,10 +35,12 @@ export function StayIndex({dynamicPageLayOut}) {
         <LabelsFilter
             setStayFilter={setStayFilter}
             filterBy={filterBy}
+            scrolledPage={scrolledPage}
         />
         <StayList
             stays={stays}
             filterBy={filterBy}
+            scrolledPage={scrolledPage}
         />
         <section className='index-end-section flex column center'>
             <h1>Continue exploring homes</h1>

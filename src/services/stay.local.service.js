@@ -19,16 +19,15 @@ export const stayService = {
     getDefaultFilter,
     getDefaultHeaderFilter,
     getEmptyModalFilter,
-    mergeFilters,
+    mergeFiltersSP,
+    mergeFiltersStore,
     guestCountString,
     createDemoStay,
     guestCountStringForReservation
 }
 
 
-async function query(filterBy, headerFilterBy = {}) {
-    filterBy = { ...filterBy, ...headerFilterBy }
-
+async function query(filterBy) {
     try {
         let stayArr = await storageService.query(STAY_DB)
 
@@ -97,7 +96,7 @@ async function query(filterBy, headerFilterBy = {}) {
         //     stayArr = stayArr.filter(stay => stay.type === filterBy.placeType)
         // }
 
-      
+
 
         // if (filterBy.priceRange) {
         //     stayArr = stayArr.filter(stay => stay.price >= filterBy.priceRange.min && stay.price <= filterBy.priceRange.max)
@@ -164,11 +163,9 @@ async function save(stay) {
 }
 
 function getNumberOfNights({ entryDate, exitDate }) {
-    const entryTimestamp = new Date(entryDate).getTime()
-    const exitTimestamp = new Date(exitDate).getTime()
+    const difference = exitDate - entryDate
 
-    const difference = exitTimestamp - entryTimestamp
-    const stayLength = Math.ceil(difference / 1000 * 60 * 60 * 24)
+    const stayLength = Math.ceil(difference / (1000 * 60 * 60 * 24))
     return stayLength
 }
 
@@ -260,14 +257,14 @@ function getDefaultFilter() {
             selfCheckIn: false,
             allowsPets: false
         },
+        accessibility: [],
         hostLngs: []
     }
 }
 
 function getDefaultHeaderFilter() {
     return {
-        loc: {
-        },
+        loc: {},
         entryDate: '',
         exitDate: '',            // dates
         guestCount: { adults: 0, children: 0, infants: 0, pets: 0 },                // number of guests
@@ -317,6 +314,7 @@ function getEmptyModalFilter() {
             selfCheckIn: false,
             allowsPets: false
         },
+        accessibility: [],
         hostLngs: []
     }
 }
@@ -327,16 +325,22 @@ function createDemoStay(stays) {
 }
 
 
-function mergeFilters(mainFilter, headerFilter) {
+function mergeFiltersSP(mainFilter, headerFilter) {
     const { label, amenities, bathrooms, beds, bookingOpts, hostLngs, bedrooms, placeType, priceRange, propType } = mainFilter
     const { loc, guestCount, entryDate, exitDate } = headerFilter
     const mergeFilter = {
-        amenities, bathrooms, beds, ...bookingOpts, hostLngs,
-        bedrooms, placeType, ...priceRange, propType, ...loc, label, ...guestCount, entryDate, exitDate
+        amenities, bathrooms, beds, ...bookingOpts, hostLngs, bedrooms, placeType, ...priceRange,
+        propType, ...loc, label, ...guestCount, entryDate, exitDate
     }
-   
-    return mergeFilter
 
+    return mergeFilter
+}
+
+function mergeFiltersStore(mainFilter, headerFilter) {
+    const { label, amenities, bathrooms, beds, bookingOpts, hostLngs, bedrooms, placeType, priceRange, propType } = mainFilter
+    const { loc, guestCount, entryDate, exitDate } = headerFilter
+
+    return { amenities, bathrooms, beds, bookingOpts, hostLngs, bedrooms, placeType, priceRange, propType, loc, label, guestCount, entryDate, exitDate }
 }
 
 function guestCountString(headerFilterBy) {

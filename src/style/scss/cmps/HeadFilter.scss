@@ -9,7 +9,6 @@
     position: relative;
     // column-gap: 0.4em;
     font-family: circular-bold;
-    align-items: center;
 
 
     transition: transform 0.4s;
@@ -54,13 +53,12 @@
         width: 17.75em;
         font-size: 0.75rem;
 
- 
-
 
         & span {
             padding-top: 0.25em;
             font-size: 0.9rem;
             color: $headerGray;
+            font-weight: normal;
 
         }
 
@@ -74,8 +72,7 @@
             padding-top: 0.25em;
             font-size: 0.9rem;
             color: $headerGray;
-
-
+            font-weight: normal;
 
         }
     }
@@ -114,7 +111,7 @@
         }
 
         &.compact {
-            width: 7rem;
+            // width: 7rem;
             border-radius: 25px;
 
 
@@ -127,8 +124,7 @@
             }
         }
 
-
-        &:before {
+        &::before {
             content: '\f002';
             font-family: fa-solid;
             color: white;
