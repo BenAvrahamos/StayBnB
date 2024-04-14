@@ -118,7 +118,7 @@ function timestampToDate(dateTimestamp) {
     const monthName = date.toLocaleString('en-US', { month: 'short' })
     const yearOfDate = date.getFullYear()
     let str = dayOfDate + ', ' + dateOfDate + ' ' + monthName + ' ' + yearOfDate
-    return str
+    return str // need to change to be clearer as in airbnb
 }
 
 function timestampsToShortDates(entryTimestamp, exitTimestamp) {
