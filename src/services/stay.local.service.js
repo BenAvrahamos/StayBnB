@@ -85,11 +85,8 @@ async function query(filterBy) {
         //     stays = stays.filter(stay => stay.type === filterBy.placeType)
         // }
 
-<<<<<<< HEAD
-=======
 
 
->>>>>>> a2501c401104884a43f346f1402f23aaf7648bde
         // if (filterBy.priceRange) {
         //     stays = stays.filter(stay => stay.price >= filterBy.priceRange.min && stay.price <= filterBy.priceRange.max)
         // }
