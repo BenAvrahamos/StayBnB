@@ -1,15 +1,9 @@
 .stage-1,
-.stage-5,
-.stage-10,
+.stage-6,
+.stage-11,
 .stage-2,
 .stage-3,
-// .stage-4,
-// .stage-6,
-.stage-7,
-// .stage-8,
-// .stage-9,
-// .stage-11,
-.stage-12 {
+.stage-4 {
     display: flex;
     flex-direction: row;
     width: 80%;
@@ -34,13 +28,13 @@
 
 .stage-2,
 .stage-3,
-.stage-4,
-.stage-6,
+.stage-5,
 .stage-7,
 .stage-8,
 .stage-9,
-.stage-11,
-.stage-12 {
+.stage-10,
+.stage-12,
+.stage-13 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -134,6 +128,52 @@
 }
 
 .stage-4 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    & .text {
+        display: flex;
+        flex-direction: column;
+
+        & .question {
+            width: max-content;
+            font-size: 2rem;
+            margin-bottom: 1em;
+        }
+    }
+
+    & .options {
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        column-gap: 10px;
+        flex-direction: column;
+        width: 100%;
+
+
+        & label {
+            font-size: 1.2em;
+            display: flex;
+            width: 45rem;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1em;
+            column-gap: 5em;
+
+            & input {
+                font-size: 1.2em;
+                width: 20em;
+            }
+        }
+
+
+
+    }
+}
+
+.stage-5 {
 
     & .question,
     .description {
@@ -206,7 +246,7 @@
 
 }
 
-.stage-6 {
+.stage-7 {
 
     & .step,
     .question,
@@ -245,14 +285,19 @@
     }
 }
 
-.stage-7 {
+.stage-8 {
+
+    & .question {
+        margin-bottom: 0.5em;
+    }
+
     & .description {
         width: 38em;
     }
 
 }
 
-.stage-8 {
+.stage-9 {
 
     & .step,
     .question,
@@ -261,7 +306,7 @@
     }
 
     & input {
-        margin-top: 2em;
+        margin-top: 0.7em;
         width: 32em;
         color: $gray1;
         font-size: 1.3rem;
@@ -269,7 +314,7 @@
 
 }
 
-.stage-9 {
+.stage-10 {
     justify-content: center;
 
     & .step,
@@ -291,7 +336,7 @@
         text-align: center;
 
         & textarea {
-            margin-top: 2em;
+            margin-top: 1em;
             width: 50em;
             height: 25rem;
             color: $darkGray;
@@ -305,7 +350,7 @@
 
 }
 
-.stage-11 {
+.stage-12 {
 
     & .step,
     .question,
@@ -334,16 +379,71 @@
     }
 }
 
-.stage-12 {
+.stage-13 {
+
     .stay-edit-preview {
-        width: 300px;
+        padding: 1rem 1rem 0.3rem 1rem;
+        margin-top: 1.5em;
+        box-shadow: 1px -1px 16px 5px rgba(0, 0, 0, 0.1215686275);
+        width: 24.475rem;
+        height: 27.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 30px;
+
+        & img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 16px;
+            background-color: #e5e5e5;
+        }
+
+        & .preview-text {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding: 0.3em;
+
+            & .summary-and-price {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+
+
+                & .price {
+                    display: flex;
+                    column-gap: 0.3em;
+
+                    & .per-night {
+                        font-size: 0.9em;
+                        align-self: center;
+                    }
+                }
+
+        
+
+
+            }
+            & .new {
+           
+              
+                color: $gray1;
+                font-size: 0.9em;
+                margin-right: 0.3em;
+            }
+
+        }
+
+
     }
 
 }
 
 .stage-1,
-.stage-5,
-.stage-10 {
+.stage-6,
+.stage-11 {
     display: flex;
     flex-direction: row;
 }

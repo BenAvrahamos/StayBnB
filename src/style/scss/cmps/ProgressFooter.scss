@@ -20,19 +20,27 @@
         cursor: pointer;
         justify-content: center;
         align-items: center;
-        transition: transform 0.2s; 
+        transition: opacity 0.2s, transform 0.2s; // Added opacity transition
         user-select: none;
 
         &:hover {
-            transform: scale(1.02)
+            transform: scale(1.02);
+        }
+
+        &.disabled {
+            opacity: 0.15;
+            cursor: not-allowed;
+            transform: scale(1);
         }
     }
+
 
     & .back-btn {
         margin-left: 50px;
         text-decoration: underline;
         font-size: 1em;
         user-select: none;
+
         &.disabled {
             opacity: 20%;
             cursor: not-allowed;
@@ -40,7 +48,7 @@
     }
 
 
-    & .Publish-btn{
+    & .Publish-btn {
         margin-right: 50px;
         width: 8em;
         background-color: $siteColor;
@@ -51,7 +59,7 @@
         cursor: pointer;
         justify-content: center;
         align-items: center;
-        transition: transform 0.2s; 
+        transition: transform 0.2s;
         user-select: none;
 
         &:hover {

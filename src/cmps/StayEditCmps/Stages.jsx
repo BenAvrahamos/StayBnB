@@ -42,17 +42,17 @@ export function Stage2({ stay, editStay }) {
         <section className='options'>
             <div onClick={() => handleSelect('An entire home')} className={stay.placeType === 'An entire home' ? 'selected' : ''}>
                 <span className='title'>
-                An entire home
+                    An entire home
                 </span>
                 <span className='subtitles'>Guests have the whole place to themselves. This usually includes a bedroom, a bathroom, and a kitchen.</span>
-                <SvgPathCmp name={'house'}/> 
+                <SvgPathCmp name={'house'} />
             </div>
             <div onClick={() => handleSelect('A room')} className={stay.placeType === 'A room' ? 'selected' : ''}>
                 <span className='title'>
                     A room
                 </span>
                 <span className='subtitles'>Guests have their own private room for sleeping. Other areas could be shared.</span>
-                <SvgPathCmp name={'Workspace'}/> 
+                <SvgPathCmp name={'Workspace'} />
             </div>
             <div onClick={() => handleSelect('A Shared room')} className={stay.placeType === 'A Shared room' ? 'selected' : ''}>
                 <span className='title'>
@@ -79,31 +79,63 @@ export function Stage3({ stay, editStay }) {
 
             <section className='options'>
                 <div onClick={() => handleSelect('house')} className={stay.propertyType === 'house' ? 'selected' : ''}>
-                        <SvgPathCmp name={'house'}/> 
+                    <SvgPathCmp name={'house'} />
                     <div className='icon'></div>
                     <span className='title'>House</span>
                 </div>
 
                 <div onClick={() => handleSelect('apartment')} className={stay.propertyType === 'apartment' ? 'selected' : ''}>
-                <SvgPathCmp name={'apartment'}/> 
+                    <SvgPathCmp name={'apartment'} />
                     <span className='title'>Apartment</span>
                 </div>
 
                 <div onClick={() => handleSelect('hotel')} className={stay.propertyType === 'hotel' ? 'selected' : ''}>
-                <SvgPathCmp name={'guesthouse'}/> 
+                    <SvgPathCmp name={'guesthouse'} />
                     <span className='title'>Guesthouse</span>
                 </div>
 
                 <div onClick={() => handleSelect('guesthouse')} className={stay.propertyType === 'guesthouse' ? 'selected' : ''}>
-                <SvgPathCmp name={'hotel'}/> 
+                    <SvgPathCmp name={'hotel'} />
                     <span className='title'>Hotel</span>
                 </div>
+            </section>
+        </section>
+    )
+}
+
+export function Stage4({ stay, editStay }) {
+    function handleInputChange(e) {
+        const { id, value } = e.target
+        const updatedLoc = { ...stay.loc, [id]: value }
+        const updatedStay = { ...stay, loc: updatedLoc }
+        editStay(updatedStay)
+    }
+
+    return (
+        <section className="stage-4">
+            <section className='text'>
+                <span className='question'>Where's your place located?</span>
+                <span className="description">Your address is only shared with guests after they’ve made a reservation.</span>
+            </section>
+
+            <section className='options'>
+                <label htmlFor="address">Address:
+                    <input type="text" id="address" value={stay.loc.address} onChange={handleInputChange} />
+                </label>
+
+                <label htmlFor="city">City:
+                    <input type="text" id="city" value={stay.loc.city} onChange={handleInputChange} />
+                </label>
+
+                <label htmlFor="country">Country:
+                    <input type="text" id="country" value={stay.loc.country} onChange={handleInputChange} />
+                </label>
             </section>
         </section>
     );
 }
 
-export function Stage4({ stay, editStay }) {
+export function Stage5({ stay, editStay }) {
     const isCapacityZero = stay.capacity === 0;
     const isCapacityMax = stay.capacity === 16;
 
@@ -117,7 +149,7 @@ export function Stage4({ stay, editStay }) {
     const isBathsMax = stay.baths === 16;
 
     return (
-        <section className="stage-4">
+        <section className="stage-5">
             <section className='text'>
                 <span className='question'>Let's start with the basics</span>
                 <span className="description">How many guests can your place accommodate?</span>
@@ -166,7 +198,7 @@ export function Stage4({ stay, editStay }) {
 
 
 
-export function Stage5() {
+export function Stage6() {
     const videoRef = useRef(null)
 
     useEffect(() => {
@@ -176,7 +208,7 @@ export function Stage5() {
     }, [])
 
 
-    return <section className="stage-5">
+    return <section className="stage-6">
         <section className="text">
             <span className="step">Step 2</span>
             <span className="question">Make your place stand out</span>
@@ -188,8 +220,8 @@ export function Stage5() {
 
 }
 
-export function Stage6() {
-    return <section className="stage-6">
+export function Stage7() {
+    return <section className="stage-7">
         <section className='text'>
 
             <span className="question">Tell guests what your place has to offer</span>
@@ -199,7 +231,7 @@ export function Stage6() {
             <section className='amenities-container'>
                 <article className='amenity'>
                     <div className='icon'></div>
-                    <SvgPathCmp name={'apartment'}/> 
+                    <SvgPathCmp name={'apartment'} />
                     <div className='title'>Amenity</div>
                 </article>
 
@@ -250,8 +282,8 @@ export function Stage6() {
 
 }
 
-export function Stage7() {
-    return <section className="stage-7">
+export function Stage8() {
+    return <section className="stage-8">
         <section className='text'>
 
             <span className="question">Add photos of your place</span>
@@ -263,7 +295,7 @@ export function Stage7() {
 
 }
 
-export function Stage8({ stay, editStay }) {
+export function Stage9({ stay, editStay }) {
     const [inputValue, setInputValue] = useState(stay.summary)
 
     const handleInputChange = (event) => {
@@ -278,7 +310,7 @@ export function Stage8({ stay, editStay }) {
     }
 
     return (
-        <section className="stage-8">
+        <section className="stage-9">
             <section className='text'>
                 <span className="question">Now, let's give your place a title</span>
                 <span className="description">Short titles work best. Have fun with it—you can always change it later</span>
@@ -290,7 +322,7 @@ export function Stage8({ stay, editStay }) {
 }
 
 
-export function Stage9({ stay, editStay }) {
+export function Stage10({ stay, editStay }) {
     const [inputValue, setInputValue] = useState(stay.desc);
 
     const handleInputChange = (event) => {
@@ -305,7 +337,7 @@ export function Stage9({ stay, editStay }) {
     }
 
     return (
-        <section className="stage-9">
+        <section className="stage-10">
             <section className='text'>
                 <span className="question">Create your description</span>
                 <span className="description">Share what makes your place special.</span>
@@ -317,7 +349,7 @@ export function Stage9({ stay, editStay }) {
 }
 
 
-export function Stage10({ stay, editStay }) {
+export function Stage11({ stay, editStay }) {
     const videoRef = useRef(null)
 
     useEffect(() => {
@@ -325,7 +357,7 @@ export function Stage10({ stay, editStay }) {
             videoRef.current.play()
         }
     }, [])
-    return <section className="stage-10">
+    return <section className="stage-11">
         <section className="text">
             <span className="step">Step 3</span>
             <span className="question">Finish up and publish</span>
@@ -337,7 +369,7 @@ export function Stage10({ stay, editStay }) {
 
 }
 
-export function Stage11({ stay, editStay }) {
+export function Stage12({ stay, editStay }) {
     const [price, setPrice] = useState(stay.price || '')
     const handlePriceChange = (event) => {
         const newPrice = event.target.value
@@ -346,7 +378,7 @@ export function Stage11({ stay, editStay }) {
     };
 
     return (
-        <section className="stage-11">
+        <section className="stage-12">
             <section className='text'>
                 <span className="question">Now, set your price</span>
                 <span className="description">You can change it anytime.</span>
@@ -360,8 +392,14 @@ export function Stage11({ stay, editStay }) {
     )
 }
 
-export function Stage12({ stay }) {
-    return <section className="stage-12">
+export function Stage13({ stay }) {
+
+    function formatPrice(price) {
+
+        return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    }
+    console.log(stay);
+    return <section className="stage-13">
         <section className='text'>
             <span className="question">Review your listing</span>
             <span className="description">Here's what we'll show to guests. Make sure everything looks good.
@@ -369,7 +407,27 @@ export function Stage12({ stay }) {
 
             <div className='stay-edit-preview'>
                 <img src={`https://picsum.photos/id/${utilService.getRandomIntInclusive(1, 150)}/600/600`} />
-                <div><span className='boldTxt'> ${stay.price} </span> night</div>
+
+                <div className='preview-text'>
+
+                    <div className='summary-and-price'>
+                        <span className='summary' style={{ fontStyle: (!stay.summary ? 'italic' : 'normal') }}>
+                            {stay.summary || "No summary chosen for now"}
+                        </span>
+                        <span className='price'>
+                            ${formatPrice(stay.price)}
+                            <span className="per-night">night</span>
+                        </span>
+                    </div>
+
+
+                    <div >
+                        <span className='new'>New</span>
+                        ★
+                    </div>
+
+
+                </div>
 
             </div>
 
