@@ -50,24 +50,8 @@ export function UserTrips() {
     }
 
     if (!userTrips || !userTrips.length) return <section className='user-trips no-user-trips'>
-        <header className='flex align-center space-between'>
+        <header>
             <h1>Trips</h1>
-
-            <div className='filters flex'>
-                <select name="tense" value={tripFilter.tense} onChange={handleFilter}>
-                    <option value="all">All</option>
-                    <option value="future">Future</option>
-                    <option value="current">Current</option>
-                    <option value="past">Past</option>
-                </select>
-
-                <select name="status" value={tripFilter.status} onChange={handleFilter}>
-                    <option value="all">All</option>
-                    <option value="approved">Approved</option>
-                    <option value="pending">Pending</option>
-                    <option value="rejected">Rejected</option>
-                </select>
-            </div>
         </header>
 
         <div>
@@ -136,30 +120,30 @@ export function UserTrips() {
 
             <ul className={`grid ${layoutType}`}>
                 {trips.map(trip => (
-                    <li key={trip._orderId} className={`trip-card ${trip.status}`} onClick={() => onChoose(trip)} >
+                    <li key={trip._orderId} className={`trip-card grid ${trip.status}`} onClick={() => onChoose(trip)} >
 
-                        <header className='flex align-center space-between'>
-                            <h3>{utilService.timestampsToShortDates(trip.entryDate, trip.exitDate)}</h3>
+                        <div className='title flex column'>
+                            <h3>{trip.stay.location.split(', ')[0]}</h3>
+                            <p>{trip.stay.name}</p>
                             <p><span>Booking number:</span>&nbsp;&nbsp;{trip._orderId}</p>
-                        </header>
+                        </div>
 
-                        <main className='flex space-between'>
-                            <div className='info grid'>
-                                <h4>{trip.stay.name}</h4>
-                                <p>{trip.stay.location}</p>
-                                <div className='guests flex'>
-                                    {trip.guests.adults > 1 && <p>{trip.guests.adults} adults</p>}
-                                    {trip.guests.adults === 1 && <p>{trip.guests.adults} adult</p>}
-                                    {trip.guests.children > 1 && <p>&nbsp;• {trip.guests.children} children</p>}
-                                    {trip.guests.children === 1 && <p>&nbsp;• {trip.guests.children} child</p>}
-                                    {trip.guests.infants > 1 && <p>&nbsp;• {trip.guests.infants} infants</p>}
-                                    {trip.guests.infants === 1 && <p>&nbsp;• {trip.guests.infants} infant</p>}
-                                </div>
-                            </div>
+                        <div className='dates'>
+                            <h4>{utilService.timestampsToShortDates(trip.entryDate, trip.exitDate)}</h4>
+                        </div>
 
+                        <div className='address flex column'>
+                            <p>{trip.stay.location.address || 'ADDRESS HERE'}</p>
+                            <p>{trip.stay.location.split(', ')[0]}</p>
+                            <p>{trip.stay.location.split(', ')[1]}</p>
+                        </div>
+
+                        <div className='image'>
                             <img src={trip.stay.img} alt={trip.stay.name} />
-                        </main>
-
+                            <p>{utilService.timestampDaysAway(trip.entryDate)}&nbsp;|&nbsp;
+                                <span className={`status ${trip.status}`}>{trip.status}</span>
+                            </p>
+                        </div>
                     </li>
                 ))}
             </ul>
