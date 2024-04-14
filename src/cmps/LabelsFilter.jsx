@@ -26,7 +26,7 @@ export function LabelsFilter({ setStayFilter, filterBy, scrolledPage }) {
 
 	return <>
 		<section className={`index-filter-section grid ${scrolledHeader()}`}>
-			<section className="label-filter-section grid">
+			<section className="label-filter-section grid ">
 				<SvgSavedCmp
 					folder={'labels'}
 					svgNames={filterLists.filterLabels}
