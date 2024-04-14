@@ -151,6 +151,15 @@
                     }
                 }
             }
+            .accordion-arrow {
+                grid-column: 1;
+                margin-block-start: 1.5rem;
+
+                font-family: circular-bold;
+                text-decoration: underline;
+    
+                cursor: pointer;
+            }
         }
 
     }

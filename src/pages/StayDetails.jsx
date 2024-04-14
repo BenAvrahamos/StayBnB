@@ -9,6 +9,7 @@ import { SvgPathCmp } from '../cmps/HelperCmps/SvgPathCmp'
 import { BedroomDetails } from '../cmps/StayDetailsCmps/BedroomDetails'
 import { StayReviewsPreview } from "../cmps/StayDetailsCmps/StayReviewsPreview"
 import { utilService } from "../services/util.service"
+import { Accordion } from "../cmps/HelperCmps/Accordion"
 
 export function StayDetails() {
     const [searchParams, setSearchParams] = useSearchParams()
@@ -127,15 +128,25 @@ export function StayDetails() {
                         <article className="amenity-info" id="amenities">
                             <h1>What this place offers: </h1>
                             <ul className="amenities-ul grid">
-                                {stay.amenities.map(amenity =>
+
+                                {stay.amenities.slice(0, 9).map(amenity =>
                                     <li key={amenity} className="flex align-center">
                                         <SvgPathCmp name={amenity.replaceAll(' ', '').toLowerCase()} />
                                         <p>{amenity}</p>
                                     </li>)}
+
                                 <li className={`${stay.amenities.includes(safetyAmenities[0]) ? '' : 'no-safety-amenity'} flex align-center`}>
                                     <SvgPathCmp name={safetyAmenities[0].replaceAll(' ', '').toLowerCase()} />
                                     <p>{safetyAmenities[0]}</p>
                                 </li>
+
+                                <Accordion>
+                                    {stay.amenities.slice(9).map(amenity =>
+                                        <li key={amenity} className="flex align-center">
+                                            <SvgPathCmp name={amenity.replaceAll(' ', '').toLowerCase()} />
+                                            <p>{amenity}</p>
+                                        </li>)}
+                                </Accordion>
                             </ul>
                         </article>
                     </section>
