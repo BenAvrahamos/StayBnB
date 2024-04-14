@@ -1,19 +1,25 @@
 import { useState } from "react"
-import { Stage1, Stage10, Stage11, Stage12, Stage2, Stage3, Stage4, Stage5, Stage6, Stage7, Stage8, Stage9 } from "../cmps/StayEditCmps/Stages.jsx"
+import { Stage1, Stage10, Stage11, Stage12, Stage13, Stage2, Stage3, Stage4, Stage5, Stage6, Stage7, Stage8, Stage9 } from "../cmps/StayEditCmps/Stages.jsx"
 import { ProgressFooter } from "../cmps/StayEditCmps/ProgressFooter"
 import { StayEditHeader } from "../cmps/StayEditCmps/StayEditHeader"
 import { stayService } from "../services/stay.local.service.js"
+import { loadStays, removeStay, saveStay, setStayFilter } from '../store/actions/stay.actions.js'
+import { NavLink, useNavigate } from "react-router-dom"
+
+
 
 
 export function StayEdit() {
     const [stay, editStay] = useState(stayService.getEmptyStay)
-    console.log(stay);
-
+    const navigate = useNavigate()
+  console.log(stay);
     const [editStage, setEditStage] = useState(1)
 
     function onSaveStay(){
-        
+        saveStay(stay)
+          navigate('/')
     }
+
 
 
     return <section className="add-stay">
@@ -31,9 +37,10 @@ export function StayEdit() {
         {editStage === 9 && <Stage9 stay={stay} editStay={editStay} />}
         {editStage === 10 && <Stage10 stay={stay} editStay={editStay} />}
         {editStage === 11 && <Stage11 stay={stay} editStay={editStay} />}
-        {editStage === 12 && <Stage12 stay={stay} onSaveStay={onSaveStay} />}
+        {editStage === 12 && <Stage12 stay={stay} editStay={editStay} />}
+        {editStage === 13 && <Stage13 stay={stay} onSaveStay={onSaveStay} />}
 
-        <ProgressFooter editStage={editStage} setEditStage={setEditStage} />
+        <ProgressFooter onSaveStay={onSaveStay} stay={stay} editStage={editStage} setEditStage={setEditStage} />
 
 
 
