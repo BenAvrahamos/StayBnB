@@ -12,7 +12,7 @@ export const DemoDataService = {
 
 }
 
-generateRandomStays(170 )
+// generateRandomStays(170 )
 
 orderService.createDemoOrder()
 

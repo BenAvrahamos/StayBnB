@@ -96,7 +96,7 @@ export function Payment({ stay, params }) {
 
         <header className="flex">
             <button className='back-btn' onClick={onClose}></button>
-            <h1>Request to book</h1>
+            <h1>{stay.isInstantBooking ? 'Confirm to pay' : 'Request to book'}</h1>
         </header>
 
 

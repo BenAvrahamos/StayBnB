@@ -9,8 +9,7 @@ import { SvgPathCmp } from '../cmps/HelperCmps/SvgPathCmp'
 import { BedroomDetails } from '../cmps/StayDetailsCmps/BedroomDetails'
 import { StayReviewsPreview } from "../cmps/StayDetailsCmps/StayReviewsPreview"
 import { utilService } from "../services/util.service"
-import { DynamicLocalHeaderNav } from "../cmps/StayDetailsCmps/DynamicHeader/DynamicLocalHeaderNav"
-import { DynamicModalHeader } from "../cmps/StayDetailsCmps/DynamicHeader/DynamicModalHeader"
+
 export function StayDetails() {
     const [searchParams, setSearchParams] = useSearchParams()
     const location = useLocation()
@@ -67,8 +66,8 @@ export function StayDetails() {
 
     function _findHostName() {
         const host = stay.host
-        const spaceIdx = host.fullName.indexOf(' ')
-        const hostName = host.fullName.slice(0, spaceIdx)
+        const spaceIdx = host.fullname.indexOf(' ')
+        const hostName = host.fullname.slice(0, spaceIdx)
         return hostName
     }
 
@@ -92,15 +91,15 @@ export function StayDetails() {
                 <main className="content-and-modal-container grid">
                     <section className="content">
                         <article className="place-info flex column">
-                            <h1>Entire {stay.type} in {stay.loc.city}, {stay.loc.country}</h1>
+                            <h1>Entire {stay.propertyType} in {stay.loc.city}, {stay.loc.country}</h1>
                             <p>{stay.capacity > 1 ? stay.capacity + ' guests' : '1 guest'}・ {stay.bedrooms.length > 1 ? stay.bedrooms.length + ' bedrooms' : '1 bedroom'}  ・
                                 {utilService.countBedsInBedrooms(stay) > 1 ? utilService.countBedsInBedrooms(stay) + ' beds' : '1 bed'} ・
-                                {stay.baths.length > 1 ? stay.baths.length + ' baths' : '1 bath'}</p>
-                            <p className="reviews-preview">{'★'.repeat(Math.ceil(utilService.calcScore(stay)))} {utilService.calcScore(stay)} ・ {stay.reviews.length} reviews</p>
+                                {stay.baths > 1 ? stay.baths + ' baths' : '1 bath'}</p>
+                            <p className="reviews-preview">{'★'.repeat(Math.ceil(utilService.calcRate(stay)))} {utilService.calcRate(stay).toFixed(2)} ・ {stay.reviews.length} reviews</p>
                         </article>
 
                         <article className="host-info flex">
-                            <img src={stay.host.imgUrl} className="host-img" />
+                            <img src={stay.host.hostImg} className="host-img" />
                             <div className="flex column">
                                 <h3>Hosted by {_findHostName()}</h3>
                                 <p>{stay.host.experience.isSuper ? 'Superhost ・' : ''}  {stay.host.experience.hostingTime > 1 ? `${stay.host.experience.hostingTime} years` : 'year'} hosting</p>

@@ -6,7 +6,6 @@ import { stays } from '../data/stay.js'
 const STAY_DB = 'stay_db'
 
 // createDemoStay(stays)
-
 export const stayService = {
     query,
     getById,
@@ -22,37 +21,31 @@ export const stayService = {
     mergeFiltersSP,
     mergeFiltersStore,
     guestCountString,
-    createDemoStay,
+    createDemoData,
     guestCountStringForReservation
 }
 
 
 async function query(filterBy) {
     try {
-        let stayArr = await storageService.query(STAY_DB)
-
+        let stays = await storageService.query(STAY_DB)
         if (filterBy.loc.region) {
-            stayArr = stayArr.filter(stay => stay.loc.region === filterBy.loc.region)
+            stays = stays.filter(stay => stay.loc.region === filterBy.loc.region)
         }
-
         if (filterBy.loc.country) {
-            stayArr = stayArr.filter(stay => stay.loc.country === filterBy.loc.country)
+            stays = stays.filter(stay => stay.loc.country === filterBy.loc.country)
         }
-
         if (filterBy.loc.countryCode) {
-            stayArr = stayArr.filter(stay => stay.loc.countryCode === filterBy.loc.countryCode)
+            stays = stays.filter(stay => stay.loc.countryCode === filterBy.loc.countryCode)
         }
-
         if (filterBy.loc.city) {
-            stayArr = stayArr.filter(stay => stay.loc.city === filterBy.loc.city)
+            stays = stays.filter(stay => stay.loc.city === filterBy.loc.city)
         }
-
         if (filterBy.loc.address) {
-            stayArr = stayArr.filter(stay => stay.loc.address === filterBy.loc.address)
+            stays = stays.filter(stay => stay.loc.address === filterBy.loc.address)
         }
-
         if (filterBy.entryDate) {
-            stayArr = stayArr.filter(stay => {
+            stays = stays.filter(stay => {
                 return !stay.booked.some(booking => {
                     return (
                         (booking.entryDate >= filterBy.entryDate && booking.entryDate <= filterBy.exitDate) ||
@@ -62,18 +55,16 @@ async function query(filterBy) {
                 })
             })
         }
-
         if (filterBy.guestCount) {
             if (filterBy.guestCount.adults || filterBy.guestCount.children) {
                 const filterCapacity = filterBy.guestCount.adults + filterBy.guestCount.children
-                stayArr = stayArr.filter(stay => stay.capacity >= filterCapacity)
+                stays = stays.filter(stay => stay.capacity >= filterCapacity)
             }
-
             if (filterBy.guestCount.infants) {
-                stayArr = stayArr.filter(stay => stay.amenities.includes('crib'))
+                stays = stays.filter(stay => stay.amenities.includes('crib'))
             }
             if (filterBy.guestCount.pets) {
-                stayArr = stayArr.filter(stay =>
+                stays = stays.filter(stay =>
                     stay.amenities.includes('pets allowed') ||
                     stay.amenities.includes('Pets are welcome') ||
                     stay.amenities.includes('Allows pets on property') ||
@@ -83,52 +74,43 @@ async function query(filterBy) {
         }
 
         // if (filterBy.label) {
-        //     stayArr = stayArr.filter(stay => stay.labels.includes(filterBy.label))
+        //     stays = stays.filter(stay => stay.labels.includes(filterBy.label))
         // }
-
         if (filterBy.amenities.length) {
-            stayArr = stayArr.filter(stay => filterBy.amenities.every(amenity => stay.amenities.includes(amenity)))
+            stays = stays.filter(stay => filterBy.amenities.every(amenity => stay.amenities.includes(amenity)))
         }
-
         // if (filterBy.placeType !== 'any') {
-        //     console.log(stayArr[0].type);
+        //     console.log(stays[0].type);
         //     console.log(filterBy.placeType);
-        //     stayArr = stayArr.filter(stay => stay.type === filterBy.placeType)
+        //     stays = stays.filter(stay => stay.type === filterBy.placeType)
         // }
 
 
 
         // if (filterBy.priceRange) {
-        //     stayArr = stayArr.filter(stay => stay.price >= filterBy.priceRange.min && stay.price <= filterBy.priceRange.max)
+        //     stays = stays.filter(stay => stay.price >= filterBy.priceRange.min && stay.price <= filterBy.priceRange.max)
         // }
-
         if (filterBy.bedrooms !== 'any') {
-            stayArr = stayArr.filter(stay => stay.bedrooms.length >= filterBy.bedrooms)
+            stays = stays.filter(stay => stay.bedrooms.length >= filterBy.bedrooms)
         }
-
         if (filterBy.beds !== 'any') {
-            stayArr = stayArr.filter(stay => stay.bedrooms.reduce((acc, room) => acc + room.beds.length, 0) >= filterBy.beds)
+            stays = stays.filter(stay => stay.bedrooms.reduce((acc, room) => acc + room.beds.length, 0) >= filterBy.beds)
         }
-
         if (filterBy.bathrooms !== 'any') {
-            stayArr = stayArr.filter(stay => stay.baths >= filterBy.bathrooms)
+            stays = stays.filter(stay => stay.baths >= filterBy.bathrooms)
         }
-
         if (filterBy.propType.length) {
-            stayArr = stayArr.filter(stay => filterBy.propType.includes(stay.propType))
+            stays = stays.filter(stay => filterBy.propType.includes(stay.propType))
         }
-
         if (filterBy.hostLngs.length) {
-            // stayArr = stayArr.filter(stay => filterBy.hostLngs.includes(stay.host.lng))
+            // stays = stays.filter(stay => filterBy.hostLngs.includes(stay.host.lng))
         }
-
-
         // stays = stays.map({_id, title, price, imgUrl}) => ({})
 
-        return stayArr
+        return stays
+    } catch (err) {
+        console.log(err)
     }
-
-    catch (err) { console.log(err) }
 }
 
 async function getById(stayId) {
@@ -319,9 +301,9 @@ function getEmptyModalFilter() {
     }
 }
 
-function createDemoStay(stays) {
-    if (utilService.loadFromStorage(STAY_DB)) return utilService.loadFromStorage(STAY_DB)
-    else return utilService.saveToStorage(STAY_DB, stays)
+function createDemoData(key, value) {
+    if (utilService.loadFromStorage(key)) return utilService.loadFromStorage(key)
+    else return utilService.saveToStorage(key, value)
 }
 
 

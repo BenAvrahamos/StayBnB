@@ -9,7 +9,7 @@ export const utilService = {
     animateCSS,
     debounce,
     countBedsInBedrooms,
-    calcScore,
+    calcRate,
     generateStays,
     calcSumToPay,
     timestampToDate,
@@ -119,7 +119,7 @@ function timestampToDate(dateTimestamp) {
     const monthName = date.toLocaleString('en-US', { month: 'short' })
     const yearOfDate = date.getFullYear()
     let str = dayOfDate + ', ' + dateOfDate + ' ' + monthName + ' ' + yearOfDate
-    return str
+    return str // need to change to be clearer as in airbnb
 }
 
 function timestampsToShortDates(entryTimestamp, exitTimestamp) {
@@ -172,13 +172,13 @@ function countBedsInBedrooms(stay) {
     return numOfBeds
 }
 
-function calcScore(stay) {
-    const scores = stay.reviews.map(review => review.score)
-    const sumOfScores = scores.reduce((acc, score) => {
-        acc += score
+function calcRate(stay) {
+    const rates = stay.reviews.map(review => review.rate)
+    const sumOfRates = rates.reduce((acc, rate) => {
+        acc += rate
         return acc
     }, 0)
-    return sumOfScores / stay.reviews.length
+    return sumOfRates / stay.reviews.length
 }
 
 function calcLongestBedCount(stay) {
