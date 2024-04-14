@@ -12,12 +12,9 @@ import { SwitchCmp } from "./HelperCmps/SwitchCmp"
 
 
 export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
-    const [searchParams, setSearchParams] = useSearchParams()
     const [selected, setSelected] = useState(filterBy)
     const [filteredStays, setFilteredStays] = useState(stayService.query(selected))
-
-
-
+    
     useEffect(() => {
         setFilteredStays(stayService.query(selected))
     }, [selected])
@@ -33,18 +30,21 @@ export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
 
     function submitFilter() {
         setStayFilter(selected)
-        setSearchParams(selected)
         setShowFilter(false)
     }
 
     function handleChange(field, value) {
         setSelected(prevFilterBy => {
-            if (field !== 'propType' && field !== 'amenities' && field !== 'hostLngs' && field !== 'label') {
+            if (field === 'bedrooms' || field === 'beds' || field === 'bathrooms' || field === 'placeType') {
                 return { ...prevFilterBy, [field]: value }
+            } else if (field === 'priceRange') {
+                // doesn't have input.
+            } else if (field === 'bookingOpts') {
+                // return { ...prevFilterBy, [field][value] = !field.value }
             } else {
                 const propTypeArray = prevFilterBy[field] || []
                 const updatedPropTypeArray = propTypeArray.includes(value) ?
-                    propTypeArray.filter(item => item !== value) : [...propTypeArray, value]
+                propTypeArray.filter(item => item !== value) : [...propTypeArray, value]
                 return { ...prevFilterBy, [field]: updatedPropTypeArray }
             }
         })

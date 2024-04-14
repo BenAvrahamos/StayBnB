@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { utilService } from '../../services/util.service'
+import { SvgPathCmp } from '../HelperCmps/SvgPathCmp'
+import { ButtonGroup } from '../HelperCmps/ButtonGroup'
 
 export function Stage1() {
     const videoRef = useRef(null)
@@ -61,7 +63,7 @@ export function Stage2() {
 }
 
 export function Stage3({ stay, editStay }) {
-
+    const propTypeItems=  [{ value: 'house' }, { value: 'apartment' }, { value: 'guesthouse' }, { value: 'hotel' }]
     function handleSelect(value) {
         const updatedStay = { ...stay, type: value }
         editStay(updatedStay)
@@ -75,22 +77,23 @@ export function Stage3({ stay, editStay }) {
 
             <section className='options'>
                 <div onClick={() => handleSelect('house')} className={stay.type === 'house' ? 'selected' : ''}>
+                        <SvgPathCmp name={'house'}/> 
                     <div className='icon'></div>
                     <span className='title'>House</span>
                 </div>
 
                 <div onClick={() => handleSelect('apartment')} className={stay.type === 'apartment' ? 'selected' : ''}>
-                    <div className='icon'></div>
+                <SvgPathCmp name={'apartment'}/> 
                     <span className='title'>Apartment</span>
                 </div>
 
                 <div onClick={() => handleSelect('hotel')} className={stay.type === 'hotel' ? 'selected' : ''}>
-                    <div className='icon'></div>
+                <SvgPathCmp name={'guesthouse'}/> 
                     <span className='title'>Guesthouse</span>
                 </div>
 
                 <div onClick={() => handleSelect('guesthouse')} className={stay.type === 'guesthouse' ? 'selected' : ''}>
-                    <div className='icon'></div>
+                <SvgPathCmp name={'hotel'}/> 
                     <span className='title'>Hotel</span>
                 </div>
             </section>
@@ -180,6 +183,7 @@ export function Stage6() {
             <section className='amenities-container'>
                 <article className='amenity'>
                     <div className='icon'></div>
+                    <SvgPathCmp name={'apartment'}/> 
                     <div className='title'>Amenity</div>
                 </article>
 

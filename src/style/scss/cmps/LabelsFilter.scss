@@ -1,5 +1,5 @@
 .index-filter-section {
-    margin-block-start: 1em;
+    padding-block: 0.5rem 1rem;
     z-index: 2;
 
     grid-auto-flow: column;
@@ -7,7 +7,18 @@
 
     button {
         display: none;
+        align-items: center;
+    
     }
+}
+
+.labels-header-expanded {
+    position: fixed;
+    inset: 10rem 0 auto 0;
+    transform: translateY(-5rem);
+    background-color: white;
+
+    transition: transform 0.1s;
 }
 
 .label-filter-section {
@@ -79,9 +90,10 @@
         border: 0.667px solid $gray2;
         border-radius: 12px;
         color: $darkGray;
-
+        display: flex;
+        justify-content: center;
         transition: 0s;
-
+        column-gap: 0.8em;
 
         img {
             height: 1rem;

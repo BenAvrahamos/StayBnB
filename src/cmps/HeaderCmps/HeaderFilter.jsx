@@ -7,43 +7,39 @@ import { useNavigate, useSearchParams } from 'react-router-dom'
 import { DateFilter } from './DateFilter'
 import { MapFilter } from './MapFilter'
 import { GuestFilter } from './GuestFilter'
-import { loadStays } from '../../store/actions/stay.actions'
+import { loadStays, setStayFilter } from '../../store/actions/stay.actions'
 import { stayService } from '../../services/stay.local.service'
 import { store } from '../../store/store'
 
 
 export function HeaderFilter({ modalType, setModalType, }) {
-    const ref = useRef(null)
+    const header = useRef(null)
     const navigate = useNavigate()
     const headerFilterBy = useSelector(storeState => storeState.stayModule.headerFilterBy)
-    var { filterBy } = store.getState().stayModule
-    const [searchParams, setSearchParams] = useSearchParams()
-
+    let filterBy = useSelector(storeState => storeState.stayModule.filterBy)
 
     useEffect(() => {
         const handleClickOutside = (event) => {
-            if (ref.current && !ref.current.contains(event.target)) {
+            if (header.current && !header.current.contains(event.target)) {
                 setModalType('')
             }
         }
-
         document.addEventListener('click', handleClickOutside)
-
         return () => {
             document.removeEventListener('click', handleClickOutside)
         }
 
-    }, [ref])
-
-
-
+    }, [header])
 
     function onLoadStays(ev) {
         ev.stopPropagation()
-        filterBy = stayService.mergeFilters(filterBy, headerFilterBy)
-        setSearchParams(filterBy)
-        setModalType('')
+
+        const filterByStore = stayService.mergeFiltersStore(filterBy, headerFilterBy)
+
         navigate('/')
+        setModalType('')
+
+        setStayFilter(filterByStore)
         loadStays()
     }
 
@@ -54,17 +50,24 @@ export function HeaderFilter({ modalType, setModalType, }) {
         return `${month} ${day}`
     }
 
-    return <section ref={ref} className={`header-filter flex ${modalType && modalType !== 'user-nav' ? 'grey' : ''}`}>
+    return <section ref={header} className={`header-filter flex ${modalType && modalType !== 'user-nav' ? 'grey' : ''}`}>
         <div className={`destination ${modalType === 'map' ? 'selected' : ''}`} onClick={() => setModalType(modalType === 'map' ? null : 'map')}>
-            Where<span  className=' grayTxt'>{headerFilterBy.loc.region ? headerFilterBy.loc.region : "search destinations"}</span>
+            Where<span className=' grayTxt'>{headerFilterBy.loc.region ? headerFilterBy.loc.region : "search destinations"}</span>
         </div>
+
+        <span className='splitter-1'></span>
 
         <div className={`dates ${modalType === 'check-in' ? 'selected' : ''}`} onClick={() => setModalType(modalType === 'check-in' ? null : 'check-in')}>
             Check in<span>{headerFilterBy.entryDate ? formatDate(headerFilterBy.entryDate) : 'add dates'}</span>
         </div>
+
+        <span className='splitter-2'></span>
+
         <div className={`dates ${modalType === 'check-out' ? 'selected' : ''}`} onClick={() => setModalType(modalType === 'check-out' ? null : 'check-out')}>
             Check out<span>{headerFilterBy.exitDate ? formatDate(headerFilterBy.exitDate) : 'add dates'}</span>
         </div>
+
+        <span className='splitter-3'></span>
 
         <div className={`guests ${modalType === 'guest' ? 'selected' : ''}`} onClick={() => setModalType(modalType === 'guest' ? null : 'guest')}>
             <div className="flex column justify-center">Who<span className='guest-count'>{stayService.guestCountString(headerFilterBy)}</span></div>

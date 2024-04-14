@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { loadStays, removeStay, saveStay, setStayHeaderFilter } from '../../store/actions/stay.actions.js'
 import { store } from '../../store/store.js'
 
-export function GuestCount({ openModalType, params, updateParams }) {
+export function GuestCount({ openModalType, params, updateParams, stay}) {
 
     function onCloseModal(ev) {
         ev.stopPropagation()
@@ -31,14 +31,14 @@ export function GuestCount({ openModalType, params, updateParams }) {
                 </div>
 
                 <div className="count">
-                    <button className={+params.adults === 0 ? 'disabled' : ''} onClick={() => {
-                        if (params.adults > 0) {
+                    <button className={+params.adults === 1 ? 'disabled' : ''} onClick={() => {
+                        if (params.adults > 1) {
                             updateGuestCounts('adults', -1)
                         }
                     }}>-</button>
                     {+params.adults}
-                    <button className={+params.adults + +params.children >= 16 ? 'disabled' : ''} onClick={() => {
-                        if (+params.adults + +params.children < 16) {
+                    <button className={+params.adults + +params.children >= stay.capacity ? 'disabled' : ''} onClick={() => {
+                        if (+params.adults + +params.children < stay.capacity) {
                             updateGuestCounts('adults', +1)
                         }
                     }}>+</button>
@@ -59,8 +59,8 @@ export function GuestCount({ openModalType, params, updateParams }) {
                         }
                     }}>-</button>
                     {+params.children}
-                    <button className={+params.adults + +params.children >= 16 ? 'disabled' : ''} onClick={() => {
-                        if (+params.adults + +params.children < 16) {
+                    <button className={+params.adults + +params.children >= stay.capacity ? 'disabled' : ''} onClick={() => {
+                        if (+params.adults + +params.children < stay.capacity) {
                             updateGuestCounts('children', +1)
                         }
                     }}>+</button>

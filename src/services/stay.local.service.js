@@ -18,15 +18,21 @@ export const stayService = {
     getDefaultFilter,
     getDefaultHeaderFilter,
     getEmptyModalFilter,
-    mergeFilters,
+    mergeFiltersSP,
+    mergeFiltersStore,
     guestCountString,
     createDemoData,
     guestCountStringForReservation
 }
 
+<<<<<<< HEAD
 async function query(filterBy, headerFilterBy = {}) {
     filterBy = { ...filterBy, ...headerFilterBy }
 
+=======
+
+async function query(filterBy) {
+>>>>>>> a2501c401104884a43f346f1402f23aaf7648bde
     try {
         let stays = await storageService.query(STAY_DB)
         if (filterBy.loc.region) {
@@ -85,6 +91,11 @@ async function query(filterBy, headerFilterBy = {}) {
         //     stays = stays.filter(stay => stay.type === filterBy.placeType)
         // }
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> a2501c401104884a43f346f1402f23aaf7648bde
         // if (filterBy.priceRange) {
         //     stays = stays.filter(stay => stay.price >= filterBy.priceRange.min && stay.price <= filterBy.priceRange.max)
         // }
@@ -143,11 +154,9 @@ async function save(stay) {
 }
 
 function getNumberOfNights({ entryDate, exitDate }) {
-    const entryTimestamp = new Date(entryDate).getTime()
-    const exitTimestamp = new Date(exitDate).getTime()
+    const difference = exitDate - entryDate
 
-    const difference = exitTimestamp - entryTimestamp
-    const stayLength = Math.ceil(difference / 1000 * 60 * 60 * 24)
+    const stayLength = Math.ceil(difference / (1000 * 60 * 60 * 24))
     return stayLength
 }
 
@@ -239,14 +248,14 @@ function getDefaultFilter() {
             selfCheckIn: false,
             allowsPets: false
         },
+        accessibility: [],
         hostLngs: []
     }
 }
 
 function getDefaultHeaderFilter() {
     return {
-        loc: {
-        },
+        loc: {},
         entryDate: '',
         exitDate: '',            // dates
         guestCount: { adults: 0, children: 0, infants: 0, pets: 0 },                // number of guests
@@ -296,6 +305,7 @@ function getEmptyModalFilter() {
             selfCheckIn: false,
             allowsPets: false
         },
+        accessibility: [],
         hostLngs: []
     }
 }
@@ -306,16 +316,22 @@ function createDemoData(key, value) {
 }
 
 
-function mergeFilters(mainFilter, headerFilter) {
+function mergeFiltersSP(mainFilter, headerFilter) {
     const { label, amenities, bathrooms, beds, bookingOpts, hostLngs, bedrooms, placeType, priceRange, propType } = mainFilter
     const { loc, guestCount, entryDate, exitDate } = headerFilter
     const mergeFilter = {
-        amenities, bathrooms, beds, ...bookingOpts, hostLngs,
-        bedrooms, placeType, ...priceRange, propType, ...loc, label, ...guestCount, entryDate, exitDate
+        amenities, bathrooms, beds, ...bookingOpts, hostLngs, bedrooms, placeType, ...priceRange,
+        propType, ...loc, label, ...guestCount, entryDate, exitDate
     }
 
     return mergeFilter
+}
 
+function mergeFiltersStore(mainFilter, headerFilter) {
+    const { label, amenities, bathrooms, beds, bookingOpts, hostLngs, bedrooms, placeType, priceRange, propType } = mainFilter
+    const { loc, guestCount, entryDate, exitDate } = headerFilter
+
+    return { amenities, bathrooms, beds, bookingOpts, hostLngs, bedrooms, placeType, priceRange, propType, loc, label, guestCount, entryDate, exitDate }
 }
 
 function guestCountString(headerFilterBy) {

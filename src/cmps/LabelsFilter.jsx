@@ -5,8 +5,7 @@ import { FilterModal } from './FilterModal'
 
 import { filterLists } from "../services/filterLists.service"
 
-
-export function LabelsFilter({ setStayFilter, filterBy }) {
+export function LabelsFilter({ setStayFilter, filterBy, scrolledPage }) {
 	const [showFilterModal, setShowFilter] = useState(false)
 
 	function handleChange(label) {
@@ -17,9 +16,17 @@ export function LabelsFilter({ setStayFilter, filterBy }) {
 		setShowFilter(true)
 	}
 
+	const scrolledHeader = () => {
+        if (scrolledPage) {
+            return 'labels-header-expanded'
+        } else {
+            return ''
+        }
+    }
+
 	return <>
-		<section className="index-filter-section grid">
-			<section className="label-filter-section grid">
+		<section className={`index-filter-section grid ${scrolledHeader()}`}>
+			<section className="label-filter-section grid ">
 				<SvgSavedCmp
 					folder={'labels'}
 					svgNames={filterLists.filterLabels}

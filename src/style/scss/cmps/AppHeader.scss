@@ -1,31 +1,24 @@
 .app-header-container {
+    display: flex;
+    background-color: white;
+    border-bottom: solid 0.667px $gray2;
     padding-block-end: 1em;
     margin-block-end: 1em;
-    border-bottom: solid 0.667px $gray2;
     z-index: 1;
-    background-color: white;
-    display: flex;
-    //  width: fit-content;
 }
 
-
-
 .expanded-header {
-
     height: 4.2em;
     width: 100%;
     margin-top: 0.3em;
     margin-inline: 0;
     z-index: 1;
 
-
     .details-header {
         width: 80%;
     }
 
-
-
-    & .compact-header {
+    .compact-header {
         height: 2.875rem;
         border-radius: 48px;
         border: 1px solid #dddddd;
@@ -39,22 +32,20 @@
         opacity: 0;
         width: 0;
 
-
-        & .map {
+        .map {
             width: 10.3rem;
             text-align: center;
 
         }
 
-        & .calendar {
+        .calendar {
             width: 9.8125rem;
             text-align: center;
             box-shadow: 1px 0 0px 0px rgba(0, 0, 0, 0.1), -1px 0 0px 0px rgba(0, 0, 0, 0.1);
 
         }
 
-        & .guests {
-
+        .guests {
             width: 14rem;
             text-align: center;
             display: flex;
@@ -64,7 +55,7 @@
             font-weight: normal;
             padding-left: 0;
 
-            & .search-btn {
+            .search-btn {
                 border-radius: 50%;
                 width: 2rem;
                 height: 2rem;
@@ -102,14 +93,10 @@
                 height: 30px;
             }
         }
-
-
     }
 
     .nav-section {
         width: 25em;
-
-
 
         nav {
             width: 22em;
@@ -124,11 +111,7 @@
                 }
             }
         }
-
-
     }
-
-
 
     .user-section {
         width: 22.5em;
@@ -155,6 +138,7 @@
                 width: 2.4rem;
                 height: 2.4rem;
                 border-radius: 50%;
+                margin: 0.25rem 0.5rem 0 0;
                 background-color: white;
 
                 &::before {
@@ -162,7 +146,6 @@
                     font-family: fa-solid;
 
                     position: absolute;
-                    inset: 0 0 0 0;
                     scale: 2.6;
                     transform-origin: top;
                     color: $gray1; //switch to $gray1
@@ -179,41 +162,35 @@
     .grayTxt:not(.grayTxt:hover) {
         color: $headerGray;
     }
-
 }
 
-.fixed-header.header-large{
+.header-fixed {
     position: fixed;
-    width: 100%;
+    inset: 0 0 auto 0;
 }
 
-.fixed-header ,
-.header-small {
-    top: 0;
+.header-condensed {
     padding-block-end: 0;
     transition: 0.5s;
 
-    & .header-filter {
-        transform: translateY(-4.6rem) scale(0.4, 0.65);
+     .header-filter {
+        transform: translateY(-3.5rem) scale(0.4, 0.65);
         opacity: 0;
-        transition: 0.3s;
+        transition: 0.3s ease-out;
         height: 0;
     }
 
-    & .compact-header {
+     .compact-header {
         display: inline;
         opacity: 1;
-        transition: 0.3s;
+        transition: opacity 0.3s;
         display: flex;
         width: 22rem;
     }
 
     & nav {
         display: none;
-
     }
-
-
 }
 
 @media (width < 740px) {
@@ -221,4 +198,3 @@
         display: none;
     }
 }
-

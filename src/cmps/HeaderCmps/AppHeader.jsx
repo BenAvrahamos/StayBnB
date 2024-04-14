@@ -10,12 +10,13 @@ import { setStayFilter, setStayHeaderFilter } from "../../store/actions/stay.act
 import { UserNavModal } from "./UserNavModal"
 import { useLocation } from 'react-router-dom';
 
-export function AppHeader({ dynamicPageLayOut, SetDynamicPageLayOut }) {
-    const ref = useRef(null)
-    const [searchParams, setSearchParams] = useSearchParams()
-    const navigate = useNavigate()
+export function AppHeader({scrolledPage}) {
     var filterBy = useSelector(storeState => storeState.stayModule.filterBy)
+    const [searchParams, setSearchParams] = useSearchParams()
     const [modalType, setModalType] = useState()
+    const ref = useRef(null)
+    const navigate = useNavigate()
+    const location = useLocation()
 
     function onNavigate() {
         navigate('/')
@@ -34,23 +35,36 @@ export function AppHeader({ dynamicPageLayOut, SetDynamicPageLayOut }) {
     function onOpenUserModal(ev) {
         ev.stopPropagation()
         setModalType(modalType === 'user-nav' ? null : 'user-nav')
-
     }
 
-    const location = useLocation()
-    const getHeaderSize = () => {
+    const getHeaderWidth = () => {
         const { pathname } = location
-        if (pathname === '/') {
-            return 'large' // Large header for the index
+        if (pathname === '/' || pathname === '/trips' || pathname === '/wishlist' || pathname === '/dashboard') {
+            return 'wide' // wide header for the index/trips/dashboard/wishlist
         } else {
-            return 'small' // Small header for details & payment
+            return 'narrow' // narrow header for details/payment/user-info/messages
         }
     }
 
+    const getHeaderSize = () => {
+        const { pathname } = location
+        if (pathname === '/' && !scrolledPage) {
+            return 'expanded' // expanded header for the index
+        } else {
+            return 'condensed' // condensed header for details/payment/user-info/trips/dashboard/wishlist
+        }
+    }
 
-    return <section className={`app-header-container header-${getHeaderSize()} flex column center 
-    ${dynamicPageLayOut.header.fixed ? 'fixed-header' : ''}
-    ${dynamicPageLayOut.header.expanded ? 'expanded' : ''}`}>
+    const getHeaderPosition = () => {
+        const { pathname } = location
+        if (pathname === '/') {
+            return 'header-fixed' // fixed header for the index
+        } else {
+            return '' // static header for details/payment/user-info/trips/dashboard/wishlist
+        }
+    }
+
+    return <section className={`app-header-container header-${getHeaderWidth()} header-${getHeaderSize()} ${getHeaderPosition()} flex column center`}>
         <section className="expanded-header flex space-between align-center">
 
             <div className="logo-section" onClick={goHome}>
@@ -75,12 +89,10 @@ export function AppHeader({ dynamicPageLayOut, SetDynamicPageLayOut }) {
 
             </div>
 
-
-
             <div className="user-section flex align-center" >
 
-            <NavLink  to="/edit">Staybnb your home</NavLink>
-            
+                <NavLink to="/edit">Staybnb your home</NavLink>
+
                 <button className="flex align-center space-between" onClick={onOpenUserModal}> ☰
                     <div className="profile"></div>
                 </button>
