@@ -28,7 +28,7 @@ export function ReservationModal({ stay, params, updateParams }) {
         setNumOfDays(utilService.calcSumOfDays(params))
         loadBtnScrolledObserver()
         return () => btnObserver?.disconnect()
-    }, [])
+    }, [params])
 
     useEffect(() => {
         setFee(parseInt((numOfDays * stay.price) * 0.14125))
@@ -106,11 +106,12 @@ export function ReservationModal({ stay, params, updateParams }) {
                                 <div className='txt flex column'>
                                     <label>Checkout</label>
                                     <div className='txt-date'>
-                                        {params.exitDate ?
+                                        {params.exitDate && !isNaN(+params.exitDate) ?
                                             `${getDate(+params.exitDate)}/${getMonth(+params.exitDate) + 1}/${getYear(+params.exitDate)}` :
                                             "Add date"
                                         }
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -121,7 +122,7 @@ export function ReservationModal({ stay, params, updateParams }) {
                                 {currArrow && <span className={`arrow-${currArrow}`}></span>}
                             </div>
 
-                            {modalType === 'guest' && <GuestCount params={params} updateParams={updateParams} headerFilterBy={headerFilterBy} openModalType={openModalType} />}
+                            {modalType === 'guest' && <GuestCount stay={stay} params={params} updateParams={updateParams} headerFilterBy={headerFilterBy} openModalType={openModalType} />}
                             {modalType === 'date' && <StayDetailsDateModal stay={stay} params={params} updateParams={updateParams} headerFilterBy={headerFilterBy} openModalType={openModalType} />}
 
                         </div>
@@ -131,7 +132,7 @@ export function ReservationModal({ stay, params, updateParams }) {
                 </div>
                 <div className='price-calc flex space-between'>
                     <span>${Math.round(stay.price)} X {numOfDays === 1 ? `${numOfDays} night` : `${numOfDays} nights`}</span>
-                    <span className='sum'>${Math.round((stay.price * numOfDays))}</span>
+                    <span className='sum'>${Math.round((stay.price * numOfDays * (+params.adults + +params.children)))}</span>
                 </div>
                 {fee && <div className='fee-calc flex space-between'>
                     <span>Staybnb service fee</span>
@@ -139,7 +140,7 @@ export function ReservationModal({ stay, params, updateParams }) {
                 </div>}
                 {fee > 0 && <div className='sum-total flex space-between'>
                     <span>Total</span>
-                    <span>${Math.round((stay.price * numOfDays + fee))}</span>
+                    <span>${Math.round((stay.price * numOfDays * (+params.adults + +params.children) + fee))}</span>
                 </div>}
             </div>
 

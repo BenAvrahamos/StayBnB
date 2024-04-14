@@ -59,12 +59,19 @@ export function HeaderFilter({ modalType, setModalType, }) {
             Where<span  className=' grayTxt'>{headerFilterBy.loc.region ? headerFilterBy.loc.region : "search destinations"}</span>
         </div>
 
+        <span className='splitter-1'></span>
+
         <div className={`dates ${modalType === 'check-in' ? 'selected' : ''}`} onClick={() => setModalType(modalType === 'check-in' ? null : 'check-in')}>
             Check in<span>{headerFilterBy.entryDate ? formatDate(headerFilterBy.entryDate) : 'add dates'}</span>
         </div>
+
+        <span className='splitter-2'></span>
+
         <div className={`dates ${modalType === 'check-out' ? 'selected' : ''}`} onClick={() => setModalType(modalType === 'check-out' ? null : 'check-out')}>
             Check out<span>{headerFilterBy.exitDate ? formatDate(headerFilterBy.exitDate) : 'add dates'}</span>
         </div>
+
+        <span className='splitter-3'></span>
 
         <div className={`guests ${modalType === 'guest' ? 'selected' : ''}`} onClick={() => setModalType(modalType === 'guest' ? null : 'guest')}>
             <div className="flex column justify-center">Who<span className='guest-count'>{stayService.guestCountString(headerFilterBy)}</span></div>

@@ -95,15 +95,16 @@
             margin-bottom: 10px;
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
             padding: 1em;
             width: 10em;
             height: 6.5em;
-            @include buttons1;
+            @include buttons2;
             border-radius: 10px;
 
             & .title {
                 font-family: circular-bold;
-                margin-bottom: 1em;
+                // margin-bottom: 1em;
             }
 
             & .subtitles {
@@ -112,6 +113,11 @@
                 color: $gray1;
             }
 
+        }
+        svg{
+            width: 2rem;
+            height: 2rem;
+         
         }
 
     }
@@ -212,14 +218,19 @@
             margin: 10px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            justify-content: space-between;
+            // align-items: center;
             padding: 1em;
             width: 9em;
             height: 6.5em;
-            @include buttons1;
+            @include buttons2;
             border-radius: 10px;
         }
+    }
+    svg{
+        width: 2rem;
+        height: 2rem;
+     
     }
 }
 

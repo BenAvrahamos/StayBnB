@@ -7,8 +7,8 @@ import "react-date-range/dist/theme/default.css"; // theme css file
 export function StayDetailsDateModal({ updateParams, params, stay }) {
     const [dateRange, setDateRange] = useState([
         {
-            startDate: new Date(),
-            endDate: new Date(),
+            startDate: +params.entryDate,
+            endDate: +params.exitDate,
             key: "selection"
         }
     ]);
@@ -53,8 +53,8 @@ export function StayDetailsDateModal({ updateParams, params, stay }) {
                 enableOutsideDays={true}
                 disabledDates={disabledDatesArray.map(date => date.getTime())}
                 minDate={new Date()}
-                rangeColors={['#c72d65']	
-            }
+                rangeColors={['#c72d65']
+                }
             />
         </section>
     );
