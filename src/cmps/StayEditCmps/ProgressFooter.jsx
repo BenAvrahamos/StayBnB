@@ -1,4 +1,4 @@
-export function ProgressFooter({ editStage, setEditStage }) {
+export function ProgressFooter({ editStage, setEditStage, onSaveStay }) {
     // Calculate the width of the progress bar filling based on the editStage
     const progressBarWidth = editStage * 8.33 + '%'
 
@@ -12,9 +12,19 @@ export function ProgressFooter({ editStage, setEditStage }) {
                 Back
             </button>
 
-            <div onClick={() => setEditStage(prevStage => prevStage + 1)} className="next-btn">
-                Next
-            </div>
+            <div>
+            {editStage < 12 && (
+                <div onClick={() => setEditStage(prevStage => prevStage + 1)} className="next-btn">
+                    Next
+                </div>
+            )}
+            
+            {editStage >= 12 && (
+                <div onClick={onSaveStay} className="Publish-btn">
+                    Publish
+                </div>
+            )}
+        </div>
 
             <div className="progress-bar-background"></div>
 

@@ -31,6 +31,7 @@ async function query(filterBy) {
 
     try {
         let stays = await storageService.query(STAY_DB)
+        console.log(stays[0]);
         //     console.log(stays);
         // if (filterBy.loc.region) {
         //     stays = stays.filter(stay => stay.loc.region === filterBy.loc.region)
@@ -176,40 +177,43 @@ function getFilterFromParams(searchParams) {
 
 function getEmptyStay() {
     return {
-        _id: utilService.makeId(10),
-        type: '',
-        previewImg: '',
-        price: 0,
-        imgUrls: [],
-        summary: '',
-        capacity: 0,
-        bedrooms: [],
-        booked: [],
-        baths: 0,
-        labels: [],
         amenities: [],
+        bathrooms: 0,
+        baths: 0,
+        bedrooms: [],
+        bookedDates: [],
+        capacity: 0,
+        desc: "",
         host: {
-            _id: '',
-            fullName: '',
-            imgUrl: '',
-            userName: '',
-            password: '',
-            experience: {
-                isSuper: false,
-                hostingTime: 0
-            }
+            id: "",
+            fullname: "",
+            location: "",
+            about: "",
+            responseTime: "",
+           
         },
+        imgUrls: [],
+        isInstantBooking: false,
+        labels: [],
+        likedByUsers: [],
         loc: {
-            region: '',
-            country: '',
-            countryCode: '',
-            city: '',
-            address: '',
-            lat: 0,
-            lng: 0
+            country: "",
+            countryCode: "",
+            city: "",
+            address: "",
+            lng: 0,
+        
         },
-        reviews: []
-    };
+        name: "",
+        placeType: "",
+        price: 0,
+        propertyType: "",
+        reviews: [],
+        roomType: "",
+        sumOfBeds: 0,
+        summary: "",
+        _id: ""
+    }
 }
 
 function getDefaultFilter() {

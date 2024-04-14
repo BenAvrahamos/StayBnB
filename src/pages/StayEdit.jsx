@@ -11,23 +11,27 @@ export function StayEdit() {
 
     const [editStage, setEditStage] = useState(1)
 
+    function onSaveStay(){
+        
+    }
+
 
     return <section className="add-stay">
 
         <StayEditHeader />
 
-        {editStage === 1 && <Stage1 />}
-        {editStage === 2 && <Stage2 />}
+        {editStage === 1 && <Stage1 stay={stay} editStay={editStay}/>}
+        {editStage === 2 && <Stage2 stay={stay} editStay={editStay}/>}
         {editStage === 3 && <Stage3 stay={stay} editStay={editStay} />}
         {editStage === 4 && <Stage4 stay={stay} editStay={editStay} />}
-        {editStage === 5 && <Stage5 />}
-        {editStage === 6 && <Stage6 />}
+        {editStage === 5 && <Stage5 stay={stay} editStay={editStay}/>}
+        {editStage === 6 && <Stage6 stay={stay} editStay={editStay}/>}
         {editStage === 7 && <Stage7 stay={stay} editStay={editStay} />}
         {editStage === 8 && <Stage8 stay={stay} editStay={editStay} />}
-        {editStage === 9 && <Stage9 />}
+        {editStage === 9 && <Stage9 stay={stay} editStay={editStay} />}
         {editStage === 10 && <Stage10 stay={stay} editStay={editStay} />}
         {editStage === 11 && <Stage11 stay={stay} editStay={editStay} />}
-        {editStage === 12 && <Stage12 stay={stay} />}
+        {editStage === 12 && <Stage12 stay={stay} onSaveStay={onSaveStay} />}
 
         <ProgressFooter editStage={editStage} setEditStage={setEditStage} />
 

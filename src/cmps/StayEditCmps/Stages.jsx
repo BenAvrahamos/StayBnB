@@ -25,10 +25,12 @@ export function Stage1() {
 }
 
 
-export function Stage2() {
+export function Stage2({ stay, editStay }) {
 
-    function handleSelect() {
-
+    function handleSelect(value) {
+        const updatedStay = { ...stay, placeType: value }
+        console.log(stay);
+        editStay(updatedStay)
     }
 
 
@@ -38,34 +40,34 @@ export function Stage2() {
         </section>
 
         <section className='options'>
-            <div onClick={() => handleSelect}>
+            <div onClick={() => handleSelect('An entire home')} className={stay.placeType === 'An entire home' ? 'selected' : ''}>
                 <span className='title'>
-                    An Entire place
+                An entire home
                 </span>
                 <span className='subtitles'>Guests have the whole place to themselves. This usually includes a bedroom, a bathroom, and a kitchen.</span>
+                <SvgPathCmp name={'house'}/> 
             </div>
-            <div onClick={() => handleSelect}>
+            <div onClick={() => handleSelect('A room')} className={stay.placeType === 'A room' ? 'selected' : ''}>
                 <span className='title'>
                     A room
                 </span>
                 <span className='subtitles'>Guests have their own private room for sleeping. Other areas could be shared.</span>
+                <SvgPathCmp name={'Workspace'}/> 
             </div>
-            <div onClick={() => handleSelect()}>
+            <div onClick={() => handleSelect('A Shared room')} className={stay.placeType === 'A Shared room' ? 'selected' : ''}>
                 <span className='title'>
                     A Shared room
                 </span>
                 <span className='subtitles'>Guests sleep in a bedroom or a common area that could be shared with others.</span>
             </div>
         </section>
-
     </section>
 
 }
 
 export function Stage3({ stay, editStay }) {
-    const propTypeItems=  [{ value: 'house' }, { value: 'apartment' }, { value: 'guesthouse' }, { value: 'hotel' }]
     function handleSelect(value) {
-        const updatedStay = { ...stay, type: value }
+        const updatedStay = { ...stay, propertyType: value }
         editStay(updatedStay)
     }
 
@@ -76,23 +78,23 @@ export function Stage3({ stay, editStay }) {
             </section>
 
             <section className='options'>
-                <div onClick={() => handleSelect('house')} className={stay.type === 'house' ? 'selected' : ''}>
+                <div onClick={() => handleSelect('house')} className={stay.propertyType === 'house' ? 'selected' : ''}>
                         <SvgPathCmp name={'house'}/> 
                     <div className='icon'></div>
                     <span className='title'>House</span>
                 </div>
 
-                <div onClick={() => handleSelect('apartment')} className={stay.type === 'apartment' ? 'selected' : ''}>
+                <div onClick={() => handleSelect('apartment')} className={stay.propertyType === 'apartment' ? 'selected' : ''}>
                 <SvgPathCmp name={'apartment'}/> 
                     <span className='title'>Apartment</span>
                 </div>
 
-                <div onClick={() => handleSelect('hotel')} className={stay.type === 'hotel' ? 'selected' : ''}>
+                <div onClick={() => handleSelect('hotel')} className={stay.propertyType === 'hotel' ? 'selected' : ''}>
                 <SvgPathCmp name={'guesthouse'}/> 
                     <span className='title'>Guesthouse</span>
                 </div>
 
-                <div onClick={() => handleSelect('guesthouse')} className={stay.type === 'guesthouse' ? 'selected' : ''}>
+                <div onClick={() => handleSelect('guesthouse')} className={stay.propertyType === 'guesthouse' ? 'selected' : ''}>
                 <SvgPathCmp name={'hotel'}/> 
                     <span className='title'>Hotel</span>
                 </div>
@@ -102,13 +104,17 @@ export function Stage3({ stay, editStay }) {
 }
 
 export function Stage4({ stay, editStay }) {
-    console.log(stay);
+    const isCapacityZero = stay.capacity === 0;
+    const isCapacityMax = stay.capacity === 16;
 
-    const isCapacityZero = stay.capacity === 0
-    const isCapacityMax = stay.capacity === 16
+    const isBedroomsZero = stay.sumOfBeds === 0;
+    const isBedroomsMax = stay.sumOfBeds === 16;
 
-    const isBathsZero = stay.baths === 0
-    const isBathsMax = stay.baths === 16
+    const isBathroomsZero = stay.bathrooms === 0;
+    const isBathroomsMax = stay.bathrooms === 16;
+
+    const isBathsZero = stay.baths === 0;
+    const isBathsMax = stay.baths === 16;
 
     return (
         <section className="stage-4">
@@ -121,33 +127,43 @@ export function Stage4({ stay, editStay }) {
                 <div>
                     <span>Guests</span>
                     <div className='control'>
-                        <button onClick={() => !isCapacityZero && editStay({ ...stay, capacity: stay.capacity - 1 })} className={isCapacityZero ? 'disabled' : ''}>-</button>
+                        <button onClick={() => editStay({ ...stay, capacity: Math.max(stay.capacity - 1, 0) })} className={isCapacityZero ? 'disabled' : ''}>-</button>
                         <span>{stay.capacity}</span>
-                        <button onClick={() => !isCapacityMax && editStay({ ...stay, capacity: stay.capacity + 1 })} className={isCapacityMax ? 'disabled' : ''}>+</button>
+                        <button onClick={() => editStay({ ...stay, capacity: Math.min(stay.capacity + 1, 16) })} className={isCapacityMax ? 'disabled' : ''}>+</button>
                     </div>
                 </div>
 
                 <div>
                     <span>Bedrooms</span>
                     <div className='control'>
-                        <button onClick={() => !isBathsZero && editStay({ ...stay, baths: stay.baths - 1 })} className={isBathsZero ? 'disabled' : ''}>-</button>
-                        <span>{stay.baths}</span>
-                        <button onClick={() => !isBathsMax && editStay({ ...stay, baths: stay.baths + 1 })} className={isBathsMax ? 'disabled' : ''}>+</button>
+                        <button onClick={() => editStay({ ...stay, sumOfBeds: Math.max(stay.sumOfBeds - 1, 0) })} className={isBedroomsZero ? 'disabled' : ''}>-</button>
+                        <span>{stay.sumOfBeds}</span>
+                        <button onClick={() => editStay({ ...stay, sumOfBeds: Math.min(stay.sumOfBeds + 1, 16) })} className={isBedroomsMax ? 'disabled' : ''}>+</button>
                     </div>
                 </div>
 
                 <div>
                     <span>Bathrooms</span>
                     <div className='control'>
-                        <button onClick={() => !isBathsZero && editStay({ ...stay, baths: stay.baths - 1 })} className={isBathsZero ? 'disabled' : ''}>-</button>
-                        <span>4</span>
-                        <button onClick={() => !isBathsMax && editStay({ ...stay, baths: stay.baths + 1 })} className={isBathsMax ? 'disabled' : ''}>+</button>
+                        <button onClick={() => editStay({ ...stay, bathrooms: Math.max(stay.bathrooms - 1, 0) })} className={isBathroomsZero ? 'disabled' : ''}>-</button>
+                        <span>{stay.bathrooms}</span>
+                        <button onClick={() => editStay({ ...stay, bathrooms: Math.min(stay.bathrooms + 1, 16) })} className={isBathroomsMax ? 'disabled' : ''}>+</button>
+                    </div>
+                </div>
+
+                <div>
+                    <span>Baths</span>
+                    <div className='control'>
+                        <button onClick={() => editStay({ ...stay, baths: Math.max(stay.baths - 1, 0) })} className={isBathsZero ? 'disabled' : ''}>-</button>
+                        <span>{stay.baths}</span>
+                        <button onClick={() => editStay({ ...stay, baths: Math.min(stay.baths + 1, 16) })} className={isBathsMax ? 'disabled' : ''}>+</button>
                     </div>
                 </div>
             </section>
         </section>
-    )
+    );
 }
+
 
 
 export function Stage5() {
@@ -273,15 +289,31 @@ export function Stage8({ stay, editStay }) {
     )
 }
 
-export function Stage9() {
-    return <section className="stage-9">
-        <section className='text'>
-            <span className="question">Create your description</span>
-            <span className="description">Share what makes your place special.</span>
-            <pre><textarea name="" id="" /></pre>
-        </section>
-    </section>
 
+export function Stage9({ stay, editStay }) {
+    const [inputValue, setInputValue] = useState(stay.desc);
+
+    const handleInputChange = (event) => {
+        const newValue = event.target.value
+
+        if (newValue.length <= 500) {
+            setInputValue(newValue);
+            editStay({ ...stay, desc: newValue })
+        } else {
+            setInputValue(newValue.slice(0, 500))
+        }
+    }
+
+    return (
+        <section className="stage-9">
+            <section className='text'>
+                <span className="question">Create your description</span>
+                <span className="description">Share what makes your place special.</span>
+                <pre><textarea value={inputValue} onChange={handleInputChange} rows={10} cols={50} /></pre>
+                <span className='counter'>{inputValue.length}/500</span>
+            </section>
+        </section>
+    )
 }
 
 

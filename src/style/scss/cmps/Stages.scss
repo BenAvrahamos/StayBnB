@@ -68,8 +68,9 @@
             padding: 1em;
             width: 40em;
             height: 7em;
-            @include buttons1;
+            @include buttons2;
             border-radius: 20px;
+            position: relative;
 
             & .title {
                 font-family: circular-bold;
@@ -82,6 +83,14 @@
                 color: $gray1;
             }
         }
+    }
+
+    svg {
+        width: 3rem;
+        height: 3rem;
+        position: absolute;
+        right: 6%;
+        top: 31%;
     }
 }
 
@@ -114,10 +123,11 @@
             }
 
         }
-        svg{
+
+        svg {
             width: 2rem;
             height: 2rem;
-         
+
         }
 
     }
@@ -227,10 +237,11 @@
             border-radius: 10px;
         }
     }
-    svg{
+
+    svg {
         width: 2rem;
         height: 2rem;
-     
+
     }
 }
 
@@ -323,8 +334,8 @@
     }
 }
 
-.stage-12{
-    .stay-edit-preview{
+.stage-12 {
+    .stay-edit-preview {
         width: 300px;
     }
 

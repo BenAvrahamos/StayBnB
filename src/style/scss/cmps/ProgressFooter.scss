@@ -39,6 +39,26 @@
         }
     }
 
+
+    & .Publish-btn{
+        margin-right: 50px;
+        width: 8em;
+        background-color: $siteColor;
+        height: 3em;
+        color: white;
+        border-radius: 10px;
+        display: flex;
+        cursor: pointer;
+        justify-content: center;
+        align-items: center;
+        transition: transform 0.2s; 
+        
+
+        &:hover {
+            transform: scale(1.02)
+        }
+    }
+
     & .progress-bar-filling,
     .progress-bar-background {
         position: absolute;
