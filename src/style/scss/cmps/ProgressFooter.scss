@@ -11,10 +11,26 @@
 
     & .next-btn {
         margin-right: 50px;
+        width: 6em;
+        background-color: $darkGray;
+        height: 3em;
+        color: white;
+        border-radius: 10px;
+        display: flex;
+        cursor: pointer;
+        justify-content: center;
+        align-items: center;
+        transition: transform 0.2s; 
+
+        &:hover {
+            transform: scale(1.02)
+        }
     }
 
     & .back-btn {
         margin-left: 50px;
+        text-decoration: underline;
+        font-size: 1em;
 
         &.disabled {
             opacity: 20%;
