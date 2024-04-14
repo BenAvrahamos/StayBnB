@@ -27,11 +27,14 @@
         height: rem(48px);
         background: radial-gradient(103.95% 1413.54% at -3.95% 100%, #D33753 0%, #D13660 52.83%, #C72D65 100%);
         border-radius: $BR1;
-        font-family: circular-bold;
         line-height: 19px;
-        color: #ffffff;
         margin-block-start: 1rem;
         margin-block-end: rem(8px);
         cursor: pointer;
+        
+        span {
+            color: #ffffff;
+            font-family: circular-bold;
+        }
     }
 }
