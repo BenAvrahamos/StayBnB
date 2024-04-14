@@ -25,14 +25,8 @@ export const stayService = {
     guestCountStringForReservation
 }
 
-<<<<<<< HEAD
-async function query(filterBy, headerFilterBy = {}) {
-    filterBy = { ...filterBy, ...headerFilterBy }
-
-=======
 
 async function query(filterBy) {
->>>>>>> a2501c401104884a43f346f1402f23aaf7648bde
     try {
         let stays = await storageService.query(STAY_DB)
         if (filterBy.loc.region) {
