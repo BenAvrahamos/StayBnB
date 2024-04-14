@@ -5,10 +5,10 @@ import { stayService } from "./stay.local.service"
 const STAY_DB = 'stay_db'
 const USER_DB = 'user_db'
 const labels = ['new', 'off-the-grid', 'iconic_cities', 'rooms', 'creative_spaces', 'boats', 'grand_pianos', 'vineyards',
-'historical_homes', 'mansions', 'lake', 'bed_&_breakfasts', 'farms', 'treehouses', 'skiing', 'earth_homes',
-'beach', 'amazing_views', 'countryside', 'a-frames', 'desert', 'design', 'beachfront', 'caves', 'national_parks',
-'castles', 'lakefront', 'islands', 'trulli', 'tropical', 'cabins', 'campers', 'camping', 'arctic', 'tiny_homes', 'surfing',
-'barns', 'cycladic_homes', 'hanoks', 'ryokans', 'domes', 'shepard_huts', 'yurts', 'minsus', 'casas_particulares']
+    'historical_homes', 'mansions', 'lake', 'bed_&_breakfasts', 'farms', 'treehouses', 'skiing', 'earth_homes',
+    'beach', 'amazing_views', 'countryside', 'a-frames', 'desert', 'design', 'beachfront', 'caves', 'national_parks',
+    'castles', 'lakefront', 'islands', 'trulli', 'tropical', 'cabins', 'campers', 'camping', 'arctic', 'tiny_homes', 'surfing',
+    'barns', 'cycladic_homes', 'hanoks', 'ryokans', 'domes', 'shepard_huts', 'yurts', 'minsus', 'casas_particulares']
 const propertyTypes = ['House', 'Apartment', 'Guesthouse', 'Hotel']
 const placeTypes = ['An entire home', 'Shared room', 'Room']
 const amenities = ['Wifi', 'Internet', 'Washer', 'Air conditioning', 'Portable air conditioning unit', 'Dedicated workspace', 'Smoke alarm', 'Tv', 'Cable tv', 'Kitchen',
@@ -30,19 +30,20 @@ createNewDemoData()
 export function createNewDemoData() {
     removeTypeProperty()
     getRandomNumOfBeds()
-    addRandomBedrooms()    
+    addRandomBedrooms()
     addBathsNumber()
     addIsInstantBooking()
     addTenBookedDates()
     addAmenities()
     floorRates()
+    modifyReviewersPics()
     modifyPropertyType()
     modifyPlaceType()
     generateUsers()
     AddHostToStay()
     stayService.createDemoData(STAY_DB, stayCollection)
     stayService.createDemoData(USER_DB, userCollection)
-    for(let i = 0; i < 13; i++) {
+    for (let i = 0; i < 13; i++) {
         console.log(stayCollection[i])
         console.log(userCollection[i])
     }
@@ -52,7 +53,7 @@ function addRandomBedrooms() {
     const possibleBeds = ['double bed', 'couch', 'sofa bed', 'king size bed', 'queen size bed', 'bunk bed']
     stayCollection.forEach(stay => {
         stay.capacity = 0
-        stay.bedrooms = [] 
+        stay.bedrooms = []
         let countOfPossibleBeds = stay.sumOfBeds
         for (let i = 0; i < stay.sumOfBeds; i++) {
             if (countOfPossibleBeds === 0) return
@@ -64,7 +65,7 @@ function addRandomBedrooms() {
                 countOfPossibleBeds--
             } else {
                 currRoom.name = `Bedroom ${i}`,
-                currRoom.beds = []
+                    currRoom.beds = []
                 const randNumOfBeds = utilService.getRandomIntInclusive(1, countOfPossibleBeds)
                 countOfPossibleBeds -= randNumOfBeds
                 for (let j = 0; j < randNumOfBeds; j++) {
@@ -93,7 +94,7 @@ function addIsInstantBooking() {
 function getRandomNumOfBeds() {
     stayCollection.forEach(stay => {
         stay.sumOfBeds = utilService.getRandomIntInclusive(2, 7)
-        if(stay.beds) delete stay.beds 
+        if (stay.beds) delete stay.beds
     })
 }
 
@@ -147,7 +148,7 @@ function generateUsers() {
 function AddHostToStay() {
     const namesOfPreviousHosts = stayCollection.map(stay => {
         const idxOfSpace = stay.host.fullname.indexOf(' ')
-        if(idxOfSpace === -1) return stay.host.fullname
+        if (idxOfSpace === -1) return stay.host.fullname
         const name = stay.host.fullname.substring(0, idxOfSpace)
         return name
     })
@@ -216,7 +217,7 @@ function generateBookedDates() {
 function addTenBookedDates() {
     stayCollection.forEach(stay => {
         const randBookedDates = []
-        for(let i = 0; i < 10; i++) {
+        for (let i = 0; i < 10; i++) {
             randBookedDates.push(generateBookedDates())
         }
         stay.bookedDates = randBookedDates
@@ -229,5 +230,11 @@ function removeTypeProperty() {
 }
 
 function addBathsNumber() {
-    stayCollection.forEach(stay => stay.baths = utilService.getRandomIntInclusive(1 ,2))
+    stayCollection.forEach(stay => stay.baths = utilService.getRandomIntInclusive(1, 2))
+}
+
+function modifyReviewersPics() {
+    stayCollection.forEach(stay => {
+        stay.reviews.forEach((review, idx) => review.by.imgUrl = `https://xsgames.co/randomusers/assets/avatars/${Math.random > 0.5 ? 'female' : 'male'}/${idx}.jpg`)
+    })
 }
