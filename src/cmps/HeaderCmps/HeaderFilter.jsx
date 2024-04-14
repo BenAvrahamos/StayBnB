@@ -71,7 +71,7 @@ export function HeaderFilter({ modalType, setModalType, }) {
 
         <div className={`guests ${modalType === 'guest' ? 'selected' : ''}`} onClick={() => setModalType(modalType === 'guest' ? null : 'guest')}>
             <div className="flex column justify-center">Who<span className='guest-count'>{stayService.guestCountString(headerFilterBy)}</span></div>
-            <button onClick={onLoadStays} className={`search-btn ${modalType !== '' && modalType !== 'user-nav' ? 'compact' : ''}`} ></button>
+            <button onClick={onLoadStays} className={`search-btn ${modalType !== '' && modalType !== 'user-nav' ? 'compact' : ''}`} ><span>Search</span></button>
         </div>
 
         {modalType === 'map' && <MapFilter setModalType={setModalType} headerFilterBy={headerFilterBy} />}
