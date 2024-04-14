@@ -28,7 +28,7 @@ export function StayDetailsDateModal({ updateParams, params, stay }) {
         setDateRange([ranges.selection]);
     };
 
-    const disabledDatesArray = stay.booked.reduce((acc, booking) => {
+    const disabledDatesArray = stay.bookedDates.reduce((acc, booking) => {
         const entryDate = new Date(booking.entryDate);
         const exitDate = new Date(booking.exitDate);
 

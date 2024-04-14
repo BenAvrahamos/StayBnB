@@ -46,8 +46,8 @@ export function createNewDemoData() {
     stayService.createDemoData(STAY_DB, stayCollection)
     stayService.createDemoData(USER_DB, userCollection)
     for (let i = 0; i < 13; i++) {
-        console.log(stayCollection[i])
-        console.log(userCollection[i])
+        // console.log(stayCollection[i])
+        // console.log(userCollection[i])
     }
 }
 

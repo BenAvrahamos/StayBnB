@@ -26,27 +26,30 @@ export const stayService = {
 }
 
 
+
 async function query(filterBy) {
+
     try {
         let stays = await storageService.query(STAY_DB)
-        if (filterBy.loc.region) {
-            stays = stays.filter(stay => stay.loc.region === filterBy.loc.region)
-        }
-        if (filterBy.loc.country) {
-            stays = stays.filter(stay => stay.loc.country === filterBy.loc.country)
-        }
-        if (filterBy.loc.countryCode) {
-            stays = stays.filter(stay => stay.loc.countryCode === filterBy.loc.countryCode)
-        }
-        if (filterBy.loc.city) {
-            stays = stays.filter(stay => stay.loc.city === filterBy.loc.city)
-        }
-        if (filterBy.loc.address) {
-            stays = stays.filter(stay => stay.loc.address === filterBy.loc.address)
-        }
+        //     console.log(stays);
+        // if (filterBy.loc.region) {
+        //     stays = stays.filter(stay => stay.loc.region === filterBy.loc.region)
+        // }
+        // if (filterBy.loc.country) {
+        //     stays = stays.filter(stay => stay.loc.country === filterBy.loc.country)
+        // }
+        // if (filterBy.loc.countryCode) {
+        //     stays = stays.filter(stay => stay.loc.countryCode === filterBy.loc.countryCode)
+        // }
+        // if (filterBy.loc.city) {
+        //     stays = stays.filter(stay => stay.loc.city === filterBy.loc.city)
+        // }
+        // if (filterBy.loc.address) {
+        //     stays = stays.filter(stay => stay.loc.address === filterBy.loc.address)
+        // }
         if (filterBy.entryDate) {
             stays = stays.filter(stay => {
-                return !stay.booked.some(booking => {
+                return !stay.bookedDates.some(booking => {
                     return (
                         (booking.entryDate >= filterBy.entryDate && booking.entryDate <= filterBy.exitDate) ||
                         (booking.exitDate >= filterBy.entryDate && booking.exitDate <= filterBy.exitDate) ||
@@ -61,7 +64,7 @@ async function query(filterBy) {
                 stays = stays.filter(stay => stay.capacity >= filterCapacity)
             }
             if (filterBy.guestCount.infants) {
-                stays = stays.filter(stay => stay.amenities.includes('crib'))
+                stays = stays.filter(stay => stay.amenities.includes('Crib'))
             }
             if (filterBy.guestCount.pets) {
                 stays = stays.filter(stay =>
@@ -73,39 +76,39 @@ async function query(filterBy) {
             }
         }
 
-        // if (filterBy.label) {
-        //     stays = stays.filter(stay => stay.labels.includes(filterBy.label))
+        // // if (filterBy.label) {
+        // //     stays = stays.filter(stay => stay.labels.includes(filterBy.label))
+        // // }
+        // if (filterBy.amenities.length) {
+        //     stays = stays.filter(stay => filterBy.amenities.every(amenity => stay.amenities.includes(amenity)))
         // }
-        if (filterBy.amenities.length) {
-            stays = stays.filter(stay => filterBy.amenities.every(amenity => stay.amenities.includes(amenity)))
-        }
-        // if (filterBy.placeType !== 'any') {
-        //     console.log(stays[0].type);
-        //     console.log(filterBy.placeType);
-        //     stays = stays.filter(stay => stay.type === filterBy.placeType)
-        // }
+        // // if (filterBy.placeType !== 'any') {
+        // //     console.log(stays[0].type);
+        // //     console.log(filterBy.placeType);
+        // //     stays = stays.filter(stay => stay.type === filterBy.placeType)
+        // // }
 
 
 
-        // if (filterBy.priceRange) {
-        //     stays = stays.filter(stay => stay.price >= filterBy.priceRange.min && stay.price <= filterBy.priceRange.max)
+        // // if (filterBy.priceRange) {
+        // //     stays = stays.filter(stay => stay.price >= filterBy.priceRange.min && stay.price <= filterBy.priceRange.max)
+        // // }
+        // if (filterBy.bedrooms !== 'any') {
+        //     stays = stays.filter(stay => stay.bedrooms.length >= filterBy.bedrooms)
         // }
-        if (filterBy.bedrooms !== 'any') {
-            stays = stays.filter(stay => stay.bedrooms.length >= filterBy.bedrooms)
-        }
-        if (filterBy.beds !== 'any') {
-            stays = stays.filter(stay => stay.bedrooms.reduce((acc, room) => acc + room.beds.length, 0) >= filterBy.beds)
-        }
-        if (filterBy.bathrooms !== 'any') {
-            stays = stays.filter(stay => stay.baths >= filterBy.bathrooms)
-        }
-        if (filterBy.propType.length) {
-            stays = stays.filter(stay => filterBy.propType.includes(stay.propType))
-        }
-        if (filterBy.hostLngs.length) {
-            // stays = stays.filter(stay => filterBy.hostLngs.includes(stay.host.lng))
-        }
-        // stays = stays.map({_id, title, price, imgUrl}) => ({})
+        // if (filterBy.beds !== 'any') {
+        //     stays = stays.filter(stay => stay.bedrooms.reduce((acc, room) => acc + room.beds.length, 0) >= filterBy.beds)
+        // }
+        // if (filterBy.bathrooms !== 'any') {
+        //     stays = stays.filter(stay => stay.baths >= filterBy.bathrooms)
+        // }
+        // if (filterBy.propType.length) {
+        //     stays = stays.filter(stay => filterBy.propType.includes(stay.propType))
+        // }
+        // if (filterBy.hostLngs.length) {
+        //     // stays = stays.filter(stay => filterBy.hostLngs.includes(stay.host.lng))
+        // }
+        // // stays = stays.map({_id, title, price, imgUrl}) => ({})
 
         return stays
     } catch (err) {
