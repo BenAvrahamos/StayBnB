@@ -22,7 +22,7 @@ export function DynamicModalHeader({ stay, params }) {
     return <div className="dynamic-modal-header flex align-center">
         <div className="txt-container flex column">
             <h3>${stay.price} <span>night</span></h3>
-            <p className="txt-reviews">★ {utilService.calcScore(stay)} ・ {stay.reviews.length} reviews </p>
+            <p className="txt-reviews">★ {utilService.calcRate(stay).toFixed(2)} ・ {stay.reviews.length} reviews </p>
         </div>
         <button className='flex center' onClick={() => validateAndMoveToPayment()}><span >Reserve</span></button>
     </div>
