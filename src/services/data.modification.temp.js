@@ -32,6 +32,8 @@ export function createNewDemoData() {
     getRandomNumOfBeds()
     addRandomBedrooms()
     addBathsNumber()
+    createStayDesc()
+    limitSummaryLength()
     addIsInstantBooking()
     addTenBookedDates()
     addAmenities()
@@ -237,4 +239,20 @@ function modifyReviewersPics() {
     stayCollection.forEach(stay => {
         stay.reviews.forEach((review, idx) => review.by.imgUrl = `https://xsgames.co/randomusers/assets/avatars/${Math.random > 0.5 ? 'female' : 'male'}/${idx}.jpg`)
     })
+}
+
+function limitSummaryLength() {
+    stayCollection.forEach(stay => {
+        for(let i = 0; i < 120; i++) {
+            if(stay.summary[i] === '.') {
+                const firstSentenceIdentifier = i // the index 
+                return stay.summary = stay.summary.substring(0, firstSentenceIdentifier)
+            }
+        }
+        return stay.summary = stay.summary.substring(0, 120)
+    })
+}
+
+function createStayDesc() {
+    stayCollection.forEach(stay => stay.desc = stay.summary)
 }
