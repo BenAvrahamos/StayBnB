@@ -45,9 +45,9 @@ export function createNewDemoData() {
     AddHostToStay()
     stayService.createDemoData(STAY_DB, stayCollection)
     stayService.createDemoData(USER_DB, userCollection)
-    for (let i = 0; i < 13; i++) {
+    for (let i = 0; i < 5; i++) {
         // console.log(stayCollection[i])
-        // console.log(userCollection[i])
+        console.log(userCollection[i])
     }
 }
 
