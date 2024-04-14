@@ -9,7 +9,7 @@ export const utilService = {
     animateCSS,
     debounce,
     countBedsInBedrooms,
-    calcScore,
+    calcRate,
     generateStays,
     calcSumToPay,
     timestampToDate,
@@ -171,13 +171,13 @@ function countBedsInBedrooms(stay) {
     return numOfBeds
 }
 
-function calcScore(stay) {
-    const scores = stay.reviews.map(review => review.score)
-    const sumOfScores = scores.reduce((acc, score) => {
-        acc += score
+function calcRate(stay) {
+    const rates = stay.reviews.map(review => review.rate)
+    const sumOfRates = rates.reduce((acc, rate) => {
+        acc += rate
         return acc
     }, 0)
-    return sumOfScores / stay.reviews.length
+    return sumOfRates / stay.reviews.length
 }
 
 function calcLongestBedCount(stay) {
