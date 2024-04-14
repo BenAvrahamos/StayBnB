@@ -38,7 +38,7 @@ export function OrderConfirmation({ stay, params }) {
                         <div className='stay-name flex column'>
                             <p>Property name:</p>
                             {/* <h5>{stay.name}</h5> */}
-                            <h5>{stay.summary} in {stay.loc.city}, {stay.loc.country}</h5>
+                            <h5>{stay.propertyType} in {stay.loc.city}, {stay.loc.country}</h5>
                         </div>
 
                         <div className='booking-number flex column'>
@@ -82,15 +82,15 @@ export function OrderConfirmation({ stay, params }) {
                             <div className='flex space-between'>
                                 <p>Price:</p>
                                 <p>${stay.price} X {utilService.calcSumOfDays(params)} nights &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <span>${(utilService.calcSumToPay(params, stay)).toFixed(2)}</span></p>
+                                    <span>${(Math.round(utilService.calcSumToPay(params, stay)))}</span></p>
                             </div>
                             <div className='flex space-between'>
                                 <p>Service fee:</p>
-                                <p>${(utilService.calcSumToPay(params, stay) * 0.14125).toFixed(2)}</p>
+                                <p>${(Math.round(utilService.calcSumToPay(params, stay) * 0.14125))}</p>
                             </div>
                             <div className='flex space-between'>
                                 <h4>Total:</h4>
-                                <p><span>${(utilService.calcSumToPay(params, stay) + (utilService.calcSumToPay(params, stay) * 0.14125)).toFixed(2)}</span></p>
+                                <p><span>${(Math.round(utilService.calcSumToPay(params, stay)) + (Math.round(utilService.calcSumToPay(params, stay) * 0.14125)))}</span></p>
                             </div>
                         </div>
                     </div>
