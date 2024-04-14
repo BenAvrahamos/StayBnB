@@ -69,11 +69,14 @@
         }
 
         &:active {
-            color: $darkGray;
-            border-block-end: 2px solid black;
-
             scale: 0.85;
             transition: scale 1s;
+        }
+
+        &.selected,
+        &:active {
+            opacity: 0.8;
+            border-block-end: 2px solid $darkGray;
         }
     }
 }
