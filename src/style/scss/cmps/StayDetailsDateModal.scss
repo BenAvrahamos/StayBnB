@@ -10,6 +10,7 @@
     z-index: 1;
     display: flex;
     padding-top: 4em;
+    color: $darkGray;
 
     align-content: center;
     flex-direction: column;
@@ -45,7 +46,7 @@
 
 
 // .rdrDateRangePickerWrapper span {
-//     color: black;
+//     color: $darkGray;
 //     border-radius: 50%;
 //     // height: 2.7em;
 // }

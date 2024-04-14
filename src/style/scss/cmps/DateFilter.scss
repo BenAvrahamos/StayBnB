@@ -5,6 +5,7 @@
     width: 53rem;
     height: 31rem;
     border-radius: 24px;
+    color: $darkGray;
     background-color: white;
     z-index: 1;
     display: flex;
@@ -14,7 +15,7 @@
 
 .rdrDateRangePickerWrapper {
     & span{
-        color: black;
+        color: $darkGray;
     }
 
 
@@ -40,7 +41,7 @@
 }
 
 // .rdrDateRangePickerWrapper span {
-//     color: black;
+//     color: $darkGray;
 //     border-radius: 50%;
 //     // height: 2.7em;
 // }
