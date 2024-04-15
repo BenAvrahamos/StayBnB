@@ -1,4 +1,4 @@
-import { stayService } from "./stay.local.service"
+import { stayService } from "./stay.service"
 import { utilService } from "./util.service"
 import { orderService } from "../services/order.local.service"
 

@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { stayService } from '../../services/stay.local.service'
+import { stayService } from '../../services/stay.service'
 import { OrderConfirmation } from './OrderConfirmation'
 import { utilService } from '../../services/util.service'
 import { useParams } from "react-router"

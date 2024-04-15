@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from 'react'
 import { utilService } from '../../services/util.service'
 import { SvgPathCmp } from '../HelperCmps/SvgPathCmp'
 import { ButtonGroup } from '../HelperCmps/ButtonGroup'
+import { getAmenities } from '../../services/data.modification.temp'
+import { ImgUploader } from '../HelperCmps/ImgUploader'
 
 export function Stage1() {
     const videoRef = useRef(null)
@@ -220,77 +222,55 @@ export function Stage6() {
 
 }
 
-export function Stage7() {
-    return <section className="stage-7">
-        <section className='text'>
+export function Stage7({ stay, editStay }) {
+    function handleChange(value) {
+        const index = stay.amenities.indexOf(value)
 
-            <span className="question">Tell guests what your place has to offer</span>
-            <span className="description">You can add more amenities after you publish your listing.
-            </span>
+        if (index === -1) {
+            const updatedAmenities = [...stay.amenities, value]
+            editStay({ ...stay, amenities: updatedAmenities })
+        } else {
+            const updatedAmenities = [...stay.amenities.slice(0, index), ...stay.amenities.slice(index + 1)];
+            editStay({ ...stay, amenities: updatedAmenities })
+        }
+    }
 
-            <section className='amenities-container'>
-                <article className='amenity'>
-                    <div className='icon'></div>
-                    <SvgPathCmp name={'apartment'} />
-                    <div className='title'>Amenity</div>
-                </article>
-
-                <article className='amenity'>
-                    <div className='icon'></div>
-                    <div className='title'>Amenity</div>
-                </article>
-
-                <article className='amenity'>
-                    <div className='icon'></div>
-                    <div className='title'>Amenity</div>
-                </article>
-
-                <article className='amenity'>
-                    <div className='icon'></div>
-                    <div className='title'>Amenity</div>
-                </article>
-
-                <article className='amenity'>
-                    <div className='icon'></div>
-                    <div className='title'>Amenity</div>
-                </article>
-
-                <article className='amenity'>
-                    <div className='icon'></div>
-                    <div className='title'>Amenity</div>
-                </article>
-
-                <article className='amenity'>
-                    <div className='icon'></div>
-                    <div className='title'>Amenity</div>
-                </article>
-
-                <article className='amenity'>
-                    <div className='icon'></div>
-                    <div className='title'>Amenity</div>
-                </article>
-
-
-
-
+    return (
+        <section className="stage-7">
+            <section className='text'>
+                <span className="question">Tell guests what your place has to offer</span>
+                <span className="description">You can add more amenities after you publish your listing.</span>
+                <section className='amenities-container'>
+                    {getAmenities().map(amenity => (
+                        <button
+                            key={amenity}
+                            className={`amenity ${stay.amenities.includes(amenity) ? 'selected' : ''}`}
+                            onClick={() => handleChange(amenity)}
+                        >
+                             <SvgPathCmp name={amenity.replace(/[^\w\d]/gi, '').toLowerCase()} />
+                            {amenity}
+                        </button>
+                    ))}
+                </section>
             </section>
-
-
         </section>
-    </section>
-
-
+    )
 }
 
-export function Stage8() {
-    return <section className="stage-8">
-        <section className='text'>
 
-            <span className="question">Add photos of your place</span>
-            <span className="description">Guests are more likely to book a listing that includes photos. You can add more photos after you publish your listing.
-            </span>
-        </section>
+export function Stage8({ stay, editStay }) {
+
+console.log(stay);
+
+return (
+    <section className="stage-8">
+      <section className='text'>
+        <span className="question">Add photos of your place</span>
+        <span className="description">Guests are more likely to book a listing that includes photos. You can add more photos after you publish your listing.</span>
+      </section>
+      <ImgUploader placeholder={stay.imgUrls[0]} editStay={editStay} stay={stay}/>
     </section>
+  )
 
 
 }
@@ -406,7 +386,7 @@ export function Stage13({ stay }) {
             </span>
 
             <div className='stay-edit-preview'>
-                <img src={`https://picsum.photos/id/${utilService.getRandomIntInclusive(1, 150)}/600/600`} />
+                <img src={stay.imgUrls[0]} />
 
                 <div className='preview-text'>
 
@@ -419,7 +399,6 @@ export function Stage13({ stay }) {
                             <span className="per-night">night</span>
                         </span>
                     </div>
-
 
                     <div >
                         <span className='new'>New</span>

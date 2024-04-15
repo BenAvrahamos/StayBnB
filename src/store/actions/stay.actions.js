@@ -1,4 +1,4 @@
-import { stayService } from '../../services/stay.local.service'
+import { stayService } from '../../services/stay.service'
 import { ADD_STAY, REMOVE_STAY, SET_FILTER, SET_STAYS, UPDATE_STAY, SET_HEADER_FILTER, SET_GALLERY_OBSERVATION } from "../reducers/stay.reducer"
 import { store } from "../store"
 

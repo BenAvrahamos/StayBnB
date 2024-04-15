@@ -2,7 +2,7 @@ import { useParams } from 'react-router'
 import { Payment } from '../cmps/StayReservationCmps/Payment'
 import { PaymentModal } from '../cmps/StayReservationCmps/PaymentModal'
 import { useEffect, useState } from 'react'
-import { stayService } from '../services/stay.local.service'
+import { stayService } from '../services/stay.service'
 import { useLocation, useSearchParams } from 'react-router-dom'
 
 export function StayPayment() {

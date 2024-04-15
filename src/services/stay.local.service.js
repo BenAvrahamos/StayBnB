@@ -1,9 +1,9 @@
 
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
-// import { userService } from './user.service.js'
-import { stays } from '../data/stay.js'
+import { httpService } from './http.service.js'
 const STAY_DB = 'stay_db'
+const BASE_URL = 'stay/'
 
 // createDemoStay(stays)
 export const stayService = {
@@ -27,125 +27,153 @@ export const stayService = {
 
 
 
-async function query(filterBy) {
+// async function query(filterBy) {
 
-    try {
-        let stays = await storageService.query(STAY_DB)
-        console.log(stays[0]);
-        //     console.log(stays);
-        // if (filterBy.loc.region) {
-        //     stays = stays.filter(stay => stay.loc.region === filterBy.loc.region)
-        // }
-        // if (filterBy.loc.country) {
-        //     stays = stays.filter(stay => stay.loc.country === filterBy.loc.country)
-        // }
-        // if (filterBy.loc.countryCode) {
-        //     stays = stays.filter(stay => stay.loc.countryCode === filterBy.loc.countryCode)
-        // }
-        // if (filterBy.loc.city) {
-        //     stays = stays.filter(stay => stay.loc.city === filterBy.loc.city)
-        // }
-        // if (filterBy.loc.address) {
-        //     stays = stays.filter(stay => stay.loc.address === filterBy.loc.address)
-        // }
-        if (filterBy.entryDate) {
-            stays = stays.filter(stay => {
-                return !stay.bookedDates.some(booking => {
-                    return (
-                        (booking.entryDate >= filterBy.entryDate && booking.entryDate <= filterBy.exitDate) ||
-                        (booking.exitDate >= filterBy.entryDate && booking.exitDate <= filterBy.exitDate) ||
-                        (booking.entryDate <= filterBy.entryDate && booking.exitDate >= filterBy.exitDate)
-                    )
-                })
-            })
-        }
-        if (filterBy.guestCount) {
-            if (filterBy.guestCount.adults || filterBy.guestCount.children) {
-                const filterCapacity = filterBy.guestCount.adults + filterBy.guestCount.children
-                stays = stays.filter(stay => stay.capacity >= filterCapacity)
-            }
-            if (filterBy.guestCount.infants) {
-                stays = stays.filter(stay => stay.amenities.includes('Crib'))
-            }
-            if (filterBy.guestCount.pets) {
-                stays = stays.filter(stay =>
-                    stay.amenities.includes('pets allowed') ||
-                    stay.amenities.includes('Pets are welcome') ||
-                    stay.amenities.includes('Allows pets on property') ||
-                    stay.amenities.includes('Allows pets as host')
-                )
-            }
-        }
+//     try {
+//         let stays = await storageService.query(STAY_DB)
+//         console.log(stays[0]);
+//         //     console.log(stays);
+//         // if (filterBy.loc.region) {
+//         //     stays = stays.filter(stay => stay.loc.region === filterBy.loc.region)
+//         // }
+//         // if (filterBy.loc.country) {
+//         //     stays = stays.filter(stay => stay.loc.country === filterBy.loc.country)
+//         // }
+//         // if (filterBy.loc.countryCode) {
+//         //     stays = stays.filter(stay => stay.loc.countryCode === filterBy.loc.countryCode)
+//         // }
+//         // if (filterBy.loc.city) {
+//         //     stays = stays.filter(stay => stay.loc.city === filterBy.loc.city)
+//         // }
+//         // if (filterBy.loc.address) {
+//         //     stays = stays.filter(stay => stay.loc.address === filterBy.loc.address)
+//         // }
+//         if (filterBy.entryDate) {
+//             stays = stays.filter(stay => {
+//                 return !stay.bookedDates.some(booking => {
+//                     return (
+//                         (booking.entryDate >= filterBy.entryDate && booking.entryDate <= filterBy.exitDate) ||
+//                         (booking.exitDate >= filterBy.entryDate && booking.exitDate <= filterBy.exitDate) ||
+//                         (booking.entryDate <= filterBy.entryDate && booking.exitDate >= filterBy.exitDate)
+//                     )
+//                 })
+//             })
+//         }
+//         if (filterBy.guestCount) {
+//             if (filterBy.guestCount.adults || filterBy.guestCount.children) {
+//                 const filterCapacity = filterBy.guestCount.adults + filterBy.guestCount.children
+//                 stays = stays.filter(stay => stay.capacity >= filterCapacity)
+//             }
+//             if (filterBy.guestCount.infants) {
+//                 stays = stays.filter(stay => stay.amenities.includes('Crib'))
+//             }
+//             if (filterBy.guestCount.pets) {
+//                 stays = stays.filter(stay =>
+//                     stay.amenities.includes('pets allowed') ||
+//                     stay.amenities.includes('Pets are welcome') ||
+//                     stay.amenities.includes('Allows pets on property') ||
+//                     stay.amenities.includes('Allows pets as host')
+//                 )
+//             }
+//         }
 
-        // // if (filterBy.label) {
-        // //     stays = stays.filter(stay => stay.labels.includes(filterBy.label))
-        // // }
-        // if (filterBy.amenities.length) {
-        //     stays = stays.filter(stay => filterBy.amenities.every(amenity => stay.amenities.includes(amenity)))
-        // }
-        // // if (filterBy.placeType !== 'any') {
-        // //     console.log(stays[0].type);
-        // //     console.log(filterBy.placeType);
-        // //     stays = stays.filter(stay => stay.type === filterBy.placeType)
-        // // }
+//         // // if (filterBy.label) {
+//         // //     stays = stays.filter(stay => stay.labels.includes(filterBy.label))
+//         // // }
+//         // if (filterBy.amenities.length) {
+//         //     stays = stays.filter(stay => filterBy.amenities.every(amenity => stay.amenities.includes(amenity)))
+//         // }
+//         // // if (filterBy.placeType !== 'any') {
+//         // //     console.log(stays[0].type);
+//         // //     console.log(filterBy.placeType);
+//         // //     stays = stays.filter(stay => stay.type === filterBy.placeType)
+//         // // }
 
 
 
-        // // if (filterBy.priceRange) {
-        // //     stays = stays.filter(stay => stay.price >= filterBy.priceRange.min && stay.price <= filterBy.priceRange.max)
-        // // }
-        // if (filterBy.bedrooms !== 'any') {
-        //     stays = stays.filter(stay => stay.bedrooms.length >= filterBy.bedrooms)
-        // }
-        // if (filterBy.beds !== 'any') {
-        //     stays = stays.filter(stay => stay.bedrooms.reduce((acc, room) => acc + room.beds.length, 0) >= filterBy.beds)
-        // }
-        // if (filterBy.bathrooms !== 'any') {
-        //     stays = stays.filter(stay => stay.baths >= filterBy.bathrooms)
-        // }
-        // if (filterBy.propType.length) {
-        //     stays = stays.filter(stay => filterBy.propType.includes(stay.propType))
-        // }
-        // if (filterBy.hostLngs.length) {
-        //     // stays = stays.filter(stay => filterBy.hostLngs.includes(stay.host.lng))
-        // }
-        // // stays = stays.map({_id, title, price, imgUrl}) => ({})
+//         // // if (filterBy.priceRange) {
+//         // //     stays = stays.filter(stay => stay.price >= filterBy.priceRange.min && stay.price <= filterBy.priceRange.max)
+//         // // }
+//         // if (filterBy.bedrooms !== 'any') {
+//         //     stays = stays.filter(stay => stay.bedrooms.length >= filterBy.bedrooms)
+//         // }
+//         // if (filterBy.beds !== 'any') {
+//         //     stays = stays.filter(stay => stay.bedrooms.reduce((acc, room) => acc + room.beds.length, 0) >= filterBy.beds)
+//         // }
+//         // if (filterBy.bathrooms !== 'any') {
+//         //     stays = stays.filter(stay => stay.baths >= filterBy.bathrooms)
+//         // }
+//         // if (filterBy.propType.length) {
+//         //     stays = stays.filter(stay => filterBy.propType.includes(stay.propType))
+//         // }
+//         // if (filterBy.hostLngs.length) {
+//         //     // stays = stays.filter(stay => filterBy.hostLngs.includes(stay.host.lng))
+//         // }
+//         // // stays = stays.map({_id, title, price, imgUrl}) => ({})
 
-        return stays
-    } catch (err) {
-        console.log(err)
-    }
+//         return stays
+//     } catch (err) {
+//         console.log(err)
+//     }
+// }
+
+// async function getById(stayId) {
+//     try {
+//         const stay = await storageService.get(STAY_DB, stayId)
+//         return stay
+//     } catch (err) {
+//         console.log(err)
+//     }
+// }
+
+// async function remove(stayId) {
+//     try {
+//         await storageService.remove(STAY_DB, stayId)
+//     } catch (err) {
+//         console.log(err)
+//     }
+// }
+
+// async function save(stay) {
+//     try {
+//         if (stay._id) {
+//             const updatedStay = await storageService.put(STAY_DB, stay)
+//             return updatedStay
+//         } else {
+//             stay._id = utilService.makeId()
+//             console.log( stay._id);
+//             const stayToAdd = await storageService.post(STAY_DB, stay)
+//             return stayToAdd
+//         }
+//     } catch (err) {
+//         console.log(err)
+//     }
+// }
+
+function query() {
+    return httpService.get(BASE_URL)
 }
 
-async function getById(stayId) {
-    try {
-        const stay = await storageService.get(STAY_DB, stayId)
-        return stay
-    } catch (err) {
-        console.log(err)
-    }
+function getById(stayId) {
+
+    return httpService.get(BASE_URL + stayId)
 }
 
-async function remove(stayId) {
-    try {
-        await storageService.remove(STAY_DB, stayId)
-    } catch (err) {
-        console.log(err)
-    }
+function getLabels(stay) {
+    return stay.labels
 }
 
-async function save(stay) {
-    try {
-        if (stay._id) {
-            const updatedStay = await storageService.put(STAY_DB, stay)
-            return updatedStay
-        } else {
-            const stayToAdd = await storageService.post(STAY_DB, stay)
-            return stayToAdd
-        }
-    } catch (err) {
-        console.log(err)
-    }
+function remove(stayId) {
+    return httpService.delete(BASE_URL + stayId)
+}
+
+function save(stay) {
+    if (stay._id) return httpService.put(BASE_URL, stay)
+    else return httpService.post(BASE_URL, stay)
+}
+
+function addStayMsg(stay, msg) {
+    return httpService.post(BASE_URL + stay._id + '/msg', { txt: msg.txt })
 }
 
 function getNumberOfNights({ entryDate, exitDate }) {
@@ -190,9 +218,16 @@ function getEmptyStay() {
             location: "",
             about: "",
             responseTime: "",
+            experience : {isSuperhost: false}
            
         },
-        imgUrls: [],
+        imgUrls: [
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436975/hx9ravtjop3uqv4giupt.jpg",
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436294/mvhb3iazpiar6duvy9we.jpg",
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436496/ihozxprafjzuhil9qhh4.jpg",
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436952/aef9ajipinpjhkley1e3.jpg",
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436948/vgfxpvmcpd2q40qxtuv3.jpg",
+          ],
         isInstantBooking: false,
         labels: [],
         likedByUsers: [],

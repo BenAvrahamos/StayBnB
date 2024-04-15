@@ -5,7 +5,7 @@ import { useState, useEffect, useRef } from "react"
 
 import { HeaderFilter } from "./HeaderFilter"
 import { DemoDataService } from "../../services/demoData.service"
-import { stayService } from "../../services/stay.local.service"
+import { stayService } from "../../services/stay.service"
 import { setStayFilter, setStayHeaderFilter } from "../../store/actions/stay.actions"
 import { UserNavModal } from "./UserNavModal"
 import { useLocation } from 'react-router-dom';

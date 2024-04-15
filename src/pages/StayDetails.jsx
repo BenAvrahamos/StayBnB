@@ -1,8 +1,9 @@
 import { useParams } from "react-router"
 import { useState, useEffect, useRef } from 'react'
-import { stayService } from "../services/stay.local.service"
+import { stayService } from "../services/stay.service"
 import { useLocation } from 'react-router-dom'
 import { useSearchParams } from 'react-router-dom'
+
 import { StayGalleryPreview } from '../cmps/StayDetailsCmps/StayGalleryPreview'
 import { ReservationModal } from '../cmps/StayDetailsCmps/ReservationModal'
 import { SvgPathCmp } from '../cmps/HelperCmps/SvgPathCmp'
@@ -59,6 +60,8 @@ export function StayDetails() {
     async function loadStay() {
         try {
             const stay = await stayService.getById(stayId)
+            console.log("🚀 ~ loadStay ~ stay:", stay)
+          
             setStay(stay)
         } catch (err) {
             console.log(err)

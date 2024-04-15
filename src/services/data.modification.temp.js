@@ -1,6 +1,6 @@
 import { staysDemoData } from "../data/NewDemoData"
 import { utilService } from "./util.service"
-import { stayService } from "./stay.local.service"
+import { stayService } from "./stay.service"
 
 const STAY_DB = 'stay_db'
 const USER_DB = 'user_db'
@@ -259,3 +259,10 @@ function limitSummaryLength() {
 function createStayDesc() {
     stayCollection.forEach(stay => stay.desc = stay.summary)
 }
+<<<<<<< HEAD
+=======
+
+export function getAmenities(){
+    return amenities
+}
+>>>>>>> 2d19083928c351dd848531a47674cf0fe209e756

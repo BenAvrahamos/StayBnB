@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useSearchParams } from "react-router-dom"
 
-import { stayService } from "../services/stay.local.service"
+import { stayService } from "../services/stay.service"
 import { filterLists } from "../services/filterLists.service"
 
 import { PriceRangeChart } from "./PriceRangeChart"

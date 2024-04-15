@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Stage1, Stage10, Stage11, Stage12, Stage13, Stage2, Stage3, Stage4, Stage5, Stage6, Stage7, Stage8, Stage9 } from "../cmps/StayEditCmps/Stages.jsx"
 import { ProgressFooter } from "../cmps/StayEditCmps/ProgressFooter"
 import { StayEditHeader } from "../cmps/StayEditCmps/StayEditHeader"
-import { stayService } from "../services/stay.local.service.js"
+import { stayService } from "../services/stay.service.js"
 import { loadStays, removeStay, saveStay, setStayFilter } from '../store/actions/stay.actions.js'
 import { NavLink, useNavigate } from "react-router-dom"
 
@@ -12,7 +12,7 @@ import { NavLink, useNavigate } from "react-router-dom"
 export function StayEdit() {
     const [stay, editStay] = useState(stayService.getEmptyStay)
     const navigate = useNavigate()
-  console.log(stay);
+
     const [editStage, setEditStage] = useState(1)
 
     function onSaveStay(){

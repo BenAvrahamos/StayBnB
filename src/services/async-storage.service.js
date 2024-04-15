@@ -21,8 +21,7 @@ function get(entityType, entityId) {
 }
 
 function post(entityType, newEntity) {
-    newEntity = {...newEntity}
-    newEntity._id = _makeId()
+    newEntity = { ...newEntity }
     return query(entityType).then(entities => {
         entities.push(newEntity)
         _save(entityType, entities)
@@ -52,6 +51,7 @@ function remove(entityType, entityId) {
 function _save(entityType, entities) {
     localStorage.setItem(entityType, JSON.stringify(entities))
 }
+<<<<<<< HEAD
 
 function _makeId(length = 5) {
     var text = ''
@@ -61,3 +61,5 @@ function _makeId(length = 5) {
     }
     return text
 }
+=======
+>>>>>>> 2d19083928c351dd848531a47674cf0fe209e756
