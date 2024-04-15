@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom'
 
 export function UserNavModal(){
 
@@ -7,6 +7,7 @@ export function UserNavModal(){
            <NavLink to="/trips" className='grayTxt'>Trips</NavLink>
            <NavLink to="/wishlist" className='grayTxt'>Wishlist</NavLink>
            <NavLink to="/edit" className='grayTxt'>Airbnb your home</NavLink>
+           <NavLink to="/dashboard" className='grayTxt'>Profile</NavLink>
            <NavLink to="/unActive" className='grayTxt'>Log out</NavLink>
     </section>
 
