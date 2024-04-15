@@ -17,8 +17,6 @@ export const orderService = {
     createDemoOrder
 }
 
-// utilService.generateStays()
-
 async function query() {
     try {
         let orders = await storageService.query(ORDER_DB)
@@ -55,11 +53,9 @@ function filterUserOrders(userOrders, filter) {
         else if (filter.tense === 'current') userOrders = userOrders.filter(order => order.entryDate <= today && order.exitDate >= today)
         else if (filter.tense === 'past') userOrders = userOrders.filter(order => order.exitDate <= today)
     }
-
     if (filter.status !== 'all') {
         userOrders = userOrders.filter(order => order.status === filter.status)
     }
-
     return userOrders.sort((a, b) => a.entryDate - b.entryDate)
 }
 
@@ -86,27 +82,36 @@ async function save(order) {
     }
 }
 
-function getOrder(stay, reservation) {
-    return {
-        hostId: stay.host._id,
-        buyer: {
-            _id: "u101",
-            fullName: "User 1"
-        }, // change afterwards to connected user
-        totalPrice: '',
-        entryDate: '',
-        exitDate: '',
-        guests: {
-            adults: '',
-            kids: '',
-        },
-        stay: {
-            _id: stay._id,
-            name: stay.name,
-            price: stay.price
-        },
-        msgs: [],
-        status: "approved" // approved / rejected change when there is a host and sockets
+async function getOrder(stay, loggedInUser, params) {
+    try {
+        return {
+            hostId: stay.host.id,
+            buyer: {
+                _id: loggedInUser._id || '0000000', // 000000 for guest ID
+                fullname: loggedInUser.fullname || 'Guest'
+            },
+            totalPrice: utilService.calcSumToPay(params, stay),
+            entryDate: params.entryDate,
+            exitDate: params.exitDate,
+            guests: {
+                adults: +params.adults || 0,
+                children: +params.children || 0,
+                infants: +params.infants || 0,
+                pets: +params.pets || 0
+            },
+            stay: {
+                _id: stay._id,
+                name: stay.name,
+                price: stay.price,
+                location: stay.loc,
+                img: stay.imgUrls[0]
+            },
+            msgs: [],
+            status: "pending"
+        }
+    } catch (err) {
+        console.log('err', err)
+        throw err
     }
 }
 
