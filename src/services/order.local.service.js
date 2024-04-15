@@ -17,7 +17,7 @@ export const orderService = {
     createDemoOrder
 }
 
-utilService.generateStays()
+// utilService.generateStays()
 
 async function query() {
     try {
