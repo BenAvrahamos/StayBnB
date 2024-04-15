@@ -1,9 +1,8 @@
 
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
-// import { userService } from './user.service.js'
 import { orders } from '../data/orders.js'
-import { stays } from '../data/stay.js'
+
 const ORDER_DB = 'order_db'
 
 export const orderService = {
