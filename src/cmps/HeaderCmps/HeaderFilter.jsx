@@ -8,7 +8,7 @@ import { DateFilter } from './DateFilter'
 import { MapFilter } from './MapFilter'
 import { GuestFilter } from './GuestFilter'
 import { loadStays, setStayFilter } from '../../store/actions/stay.actions'
-import { stayService } from '../../services/stay.local.service'
+import { stayService } from '../../services/stay.service'
 import { store } from '../../store/store'
 
 

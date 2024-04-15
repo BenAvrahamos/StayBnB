@@ -1,6 +1,6 @@
 import { staysDemoData } from "../data/NewDemoData"
 import { utilService } from "./util.service"
-import { stayService } from "./stay.local.service"
+import { stayService } from "./stay.service"
 
 const STAY_DB = 'stay_db'
 const USER_DB = 'user_db'

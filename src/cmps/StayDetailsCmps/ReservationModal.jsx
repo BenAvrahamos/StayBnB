@@ -7,7 +7,7 @@ import { getDate, getMonth, getYear } from 'date-fns'
 import { GuestFilter } from '../HeaderCmps/GuestFilter'
 import { store } from '../../store/store'
 import { GuestCount } from './DetailsGuestCount'
-import { stayService } from '../../services/stay.local.service'
+import { stayService } from '../../services/stay.service'
 import { StayDetailsDateModal } from './StayDetailsDateModal'
 import { DynamicModalHeader } from './DynamicHeader/DynamicModalHeader'
 

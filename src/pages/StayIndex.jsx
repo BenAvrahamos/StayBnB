@@ -5,7 +5,7 @@ import { loadStays, removeStay, saveStay, setStayFilter } from '../store/actions
 import { StayList } from '../cmps/StayList.jsx'
 import { LabelsFilter } from '../cmps/LabelsFilter.jsx'
 import { store } from '../store/store.js'
-import { stayService } from '../services/stay.local.service.js'
+import { stayService } from '../services/stay.service.js'
 import { createNewDemoData } from '../services/data.modification.temp.js'
 
 
