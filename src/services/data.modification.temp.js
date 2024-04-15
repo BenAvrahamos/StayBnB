@@ -259,10 +259,7 @@ function limitSummaryLength() {
 function createStayDesc() {
     stayCollection.forEach(stay => stay.desc = stay.summary)
 }
-<<<<<<< HEAD
-=======
 
 export function getAmenities(){
     return amenities
 }
->>>>>>> 2d19083928c351dd848531a47674cf0fe209e756

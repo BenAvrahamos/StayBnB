@@ -51,7 +51,6 @@ function remove(entityType, entityId) {
 function _save(entityType, entities) {
     localStorage.setItem(entityType, JSON.stringify(entities))
 }
-<<<<<<< HEAD
 
 function _makeId(length = 5) {
     var text = ''
@@ -61,5 +60,3 @@ function _makeId(length = 5) {
     }
     return text
 }
-=======
->>>>>>> 2d19083928c351dd848531a47674cf0fe209e756
