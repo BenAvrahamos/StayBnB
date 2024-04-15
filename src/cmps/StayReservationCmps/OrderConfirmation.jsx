@@ -18,14 +18,6 @@ export function OrderConfirmation({ stay, order }) {
         navigate('/trips')
     }
 
-    function calcGuestCount() {
-        let sumOfGuests = 0
-        for (let guestTypeCount in order.guests) {
-            sumOfGuests += +order.guests[guestTypeCount]
-        }
-        return sumOfGuests
-    }
-
     return (
         isShownModal &&
         <>
@@ -73,7 +65,7 @@ export function OrderConfirmation({ stay, order }) {
                         <div className='guests-container flex column'>
                             <div className='guests flex'>
                                 <p>Total guests:</p>
-                                <h5>{calcGuestCount()}</h5>
+                                <h5>{utilService.calcGuestCount(order)}</h5>
                             </div>
                             <ul>
                                 {+order.adults > 0 && <li>{+order.adults === 1 ? `${order.guests.adults} adult` : `${order.guests.adults} adults`}</li>}

@@ -17,7 +17,8 @@ export const utilService = {
     timestampToMonthYear,
     timestampDaysAway,
     calcSumOfDays,
-    calcLongestBedCount
+    calcLongestBedCount,
+    calcGuestCount
 }
 
 function makeId(length = 6) {
@@ -203,4 +204,12 @@ function calcLongestBedCount(stay) {
     })
     maxBedCount-- // two rows can contain up to 3 types of beds.
     return maxBedCount
+}
+
+function calcGuestCount(order) {
+    let sumOfGuests = 0
+    for (let guestTypeCount in order.guests) {
+        sumOfGuests += +order.guests[guestTypeCount]
+    }
+    return sumOfGuests
 }
