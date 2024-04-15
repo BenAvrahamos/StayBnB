@@ -259,4 +259,3 @@ function limitSummaryLength() {
 function createStayDesc() {
     stayCollection.forEach(stay => stay.desc = stay.summary)
 }
-
