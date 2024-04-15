@@ -4,6 +4,8 @@ import { stayService } from "./stay.local.service"
 
 const STAY_DB = 'stay_db'
 const USER_DB = 'user_db'
+const ORDER_DB = 'order_db'
+
 const labels = ['new', 'off-the-grid', 'iconic_cities', 'rooms', 'creative_spaces', 'boats', 'grand_pianos', 'vineyards',
     'historical_homes', 'mansions', 'lake', 'bed_&_breakfasts', 'farms', 'treehouses', 'skiing', 'earth_homes',
     'beach', 'amazing_views', 'countryside', 'a-frames', 'desert', 'design', 'beachfront', 'caves', 'national_parks',
@@ -22,6 +24,7 @@ const amenities = ['Wifi', 'Internet', 'Washer', 'Air conditioning', 'Portable a
     'Smart lock', 'Oven', 'Luggage drop off allowed', 'Babysitter recommendations', 'Ethernet connection']
 const stayCollection = staysDemoData.slice()
 const userCollection = []
+const orderCollection = []
 const aboutDescs = ['A friendly person', 'I love pets!']
 const responseTimes = ['within an hour', 'within 5 minutes', 'within a day', 'within 2 hours']
 
@@ -256,3 +259,4 @@ function limitSummaryLength() {
 function createStayDesc() {
     stayCollection.forEach(stay => stay.desc = stay.summary)
 }
+
