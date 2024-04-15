@@ -283,6 +283,3 @@ function guestCountStringForReservation(params) {
 
     return parts.join(', ')
 }
-
-
-'hello!'
