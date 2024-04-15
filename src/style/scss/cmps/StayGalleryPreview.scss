@@ -3,6 +3,7 @@ $galley-br: 0.75rem;
 .gallery-stay-details {
     position: relative;
     display: grid;
+    color: $darkGray;
 
     .show-all-btn {
         gap: rem(8px);

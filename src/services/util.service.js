@@ -15,6 +15,7 @@ export const utilService = {
     timestampToDate,
     timestampsToShortDates,
     timestampToMonthYear,
+    timestampDaysAway,
     calcSumOfDays,
     calcLongestBedCount
 }
@@ -146,6 +147,19 @@ function timestampsToShortDates(entryTimestamp, exitTimestamp) {
     if (entryYear !== currentYear) str += ', ' + entryYear
 
     return str
+}
+
+function timestampDaysAway(entryTimestamp) {
+    const entry = new Date(entryTimestamp)
+    const today = new Date()
+    today.setHours(0, 0, 0, 0)
+    
+    const days = Math.floor((entry - today) / (1000 * 60 * 60 * 24))
+
+    if (days < 0) return 'already happened'
+    if (days === 0) return 'today'
+
+    return 'in ' + days + ' days'
 }
 
 function timestampToMonthYear(timeStr = "2016-08-14T04:00:00.000Z") { // temp default until connected to new demo data

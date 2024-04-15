@@ -51,7 +51,7 @@
     }
 
     .clear-btn {
-        font-weight: 550;
+        font-family: circular-medium;
         border-radius: $BR2;
     }
 
@@ -63,7 +63,7 @@
         background-color: $darkGray;
 
         font-size: 0.92rem;
-        font-weight: 600;
+        font-family: circular-bold;
     }
 
     button:active {
@@ -94,20 +94,16 @@
 
         h2 {
             font-size: 1.41rem;
-            font-weight: 550;
             margin: 0;
-            letter-spacing: -1px;
         }
 
         h3 {
-            font-weight: 500;
             font-size: 1rem;
             margin: 0;
         }
 
         h4 {
             font-size: 0.9rem;
-            font-weight: 500;
             margin: 0;
         }
 
@@ -144,7 +140,7 @@
 
         .accordion-arrow {
             font-size: 0.9375rem;
-            font-weight: 550;
+            font-family: circular-bold;
             text-decoration: underline;
 
             cursor: pointer;
@@ -170,7 +166,7 @@
 
             .btn {
                 font-size: 1rem;
-                font-weight: 600;
+                font-family: circular-bold;
                 padding: 1rem 0.5rem;
                 height: 4.0625rem;
                 width: 100%;
@@ -258,7 +254,6 @@
 
             .btn {
                 font-size: 15px;
-                font-weight: 600;
                 height: 100%;
                 width: 100%;
                 padding: 1rem;

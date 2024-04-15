@@ -35,7 +35,7 @@
 
     div {
         font-size: 0.85rem;
-        font-weight: 550;
+        font-family: circular-bold;
         opacity: 0.6;
         position: relative;
 
@@ -69,11 +69,14 @@
         }
 
         &:active {
-            color: $darkGray;
-            border-block-end: 2px solid black;
-
             scale: 0.85;
             transition: scale 1s;
+        }
+
+        &.selected,
+        &:active {
+            opacity: 0.8;
+            border-block-end: 2px solid $darkGray;
         }
     }
 }

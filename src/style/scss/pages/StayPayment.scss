@@ -2,6 +2,7 @@
     margin-block: 4rem 2rem;
     grid-template-columns: minmax(1px, 1fr);
     column-gap: 3.5rem;
+    color: $darkGray;
 
     .payment-details {
         grid-area: 1 / 1 / 2 / 2;
@@ -171,7 +172,7 @@
     .required-info {
         .text {
             gap: 0.25rem;
-            font-weight: 200;
+            font-family: circular-thin;
 
             h4 {
                 padding-block-start: 0.5rem;
@@ -194,7 +195,7 @@
     .cancellation-policy {
         span {
             text-decoration: underline;
-            font-weight: 600;
+            font-family: circular-bold;
         }
     }
 
@@ -221,7 +222,7 @@
 
             span {
                 text-decoration: underline;
-                font-weight: 600;
+                font-family: circular-bold;
 
                 cursor: pointer;
             }
@@ -317,7 +318,7 @@
             background-color: $darkGray;
 
             &:hover {
-                background-color: black;
+                background-color: $darkGray;
             }
         }
     }

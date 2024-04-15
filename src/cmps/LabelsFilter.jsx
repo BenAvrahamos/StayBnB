@@ -7,8 +7,10 @@ import { filterLists } from "../services/filterLists.service"
 
 export function LabelsFilter({ setStayFilter, filterBy, scrolledPage }) {
 	const [showFilterModal, setShowFilter] = useState(false)
+	const [selectedValue, setSelectedValue] = useState('')
 
 	function handleChange(label) {
+		setSelectedValue(label)
 		setStayFilter({ ...filterBy, label: [label] })
 	}
 
@@ -17,12 +19,12 @@ export function LabelsFilter({ setStayFilter, filterBy, scrolledPage }) {
 	}
 
 	const scrolledHeader = () => {
-        if (scrolledPage) {
-            return 'labels-header-expanded'
-        } else {
-            return ''
-        }
-    }
+		if (scrolledPage) {
+			return 'labels-header-expanded'
+		} else {
+			return ''
+		}
+	}
 
 	return <>
 		<section className={`index-filter-section grid ${scrolledHeader()}`}>
@@ -30,11 +32,15 @@ export function LabelsFilter({ setStayFilter, filterBy, scrolledPage }) {
 				<SvgSavedCmp
 					folder={'labels'}
 					svgNames={filterLists.filterLabels}
-					handleChange={handleChange} />
+					handleChange={handleChange}
+					selectedValue={selectedValue}/>
 			</section>
+
 			<button className="flex align-center" onClick={openFilterModal}>
-				<img src="./src/assets/svg/filter.svg" /> <span>Filters</span></button>
+				<img src="./src/assets/svg/filter.svg" /> <span>Filters</span>
+			</button>
 		</section>
+
 		{showFilterModal && <FilterModal
 			setShowFilter={setShowFilter}
 			setStayFilter={setStayFilter}

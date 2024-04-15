@@ -1,5 +1,6 @@
 .reserve-modal {
     display: none;
+    color: $darkGray;
 }
 
 .reserve-footer {
@@ -9,6 +10,7 @@
     background-color: white;
     padding-inline: 1.5rem;
     border-block-start: 0.667px solid $gray2;
+    color: $darkGray;
 
     span {
         font-family: circular-bold;
@@ -93,7 +95,7 @@
             }
 
             label {
-                font-size: em(11px);
+                font-size: 0.6rem;
                 font-family: circular-bold;
                 cursor: pointer;
             }
