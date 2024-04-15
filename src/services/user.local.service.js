@@ -11,7 +11,6 @@ export const userService = {
     signup,
     getById,
     getLoggedInUser,
-    updateScore,
     getEmptyCredentials
 }
 
@@ -68,6 +67,9 @@ function _setLoggedinUser(user) {
     return userToSave
 }
 
+function addStayToUserFavorites(stayId) {
+    
+}
 
 function getEmptyCredentials() {
     return {
