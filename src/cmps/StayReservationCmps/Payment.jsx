@@ -6,10 +6,12 @@ import { OrderConfirmation } from './OrderConfirmation'
 import { utilService } from '../../services/util.service'
 import { useParams } from "react-router"
 import { useNavigate } from 'react-router'
+import { addOrder } from '../../store/actions/order.actions'
 
 export function Payment({ stay, params }) {
     const navigate = useNavigate()
     const reservation = useSelector(storeState => storeState.reservationModule.reservation)
+    const [order, setOrder] = useState(null)
     const [isDownUpArrow, setIsDownUpArrow] = useState('arrow-down')
     const [paymentMethod, changePaymentMethod] = useState(<><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-label="Credit card" role="img" focusable="false" style={{ display: 'block', height: '33px', width: '33px', fill: 'rgb(176, 176, 176)' }}><path d="M29 5a2 2 0 0 1 2 1.85V25a2 2 0 0 1-1.85 2H3a2 2 0 0 1-2-1.85V7a2 2 0 0 1 1.85-2H3zm0 6H3v14h26zm-3 10a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7-14H3v2h26z"></path></svg><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Credit or debit card</p></>)
     const [isCredit, setIsCredit] = useState(true)
@@ -19,19 +21,21 @@ export function Payment({ stay, params }) {
     const [isEditDates, setIsEditDates] = useState(false)
     const [isEditGuests, setIsEditGuests] = useState(false)
 
-    function checkAndValidateOrder(e) {
-        e.stopPropagation()
-        if (userOrderDetails.card.cardNum &&
-            userOrderDetails.card.expDate &&
-            userOrderDetails.card.cvv &&
-            userOrderDetails.card.zip &&
-            userOrderDetails.phone) {
-
-            setIsOrder(true)
-
-            // make order and send to OrderConfirmation cmp
+    async function checkAndValidateOrder(e) {
+        try {
+            e.stopPropagation()
+            if (userOrderDetails.card.cardNum &&
+                userOrderDetails.card.expDate &&
+                userOrderDetails.card.cvv &&
+                userOrderDetails.card.zip &&
+                userOrderDetails.phone) {
+                setOrder(await addOrder(params, stay))
+                setIsOrder(true)
+            }
+        } catch (err) {
+            console.log('err', err)
+            throw err
         }
-        return
     }
 
     function onChoosePaymentMethod(e) {
@@ -213,7 +217,7 @@ export function Payment({ stay, params }) {
                 <button className='confirm-btn' onClick={checkAndValidateOrder}>Confirm and pay</button>
             </article>
 
-            {stay && isOrder && <OrderConfirmation stay={stay} params={params} />}
+            {stay && isOrder && <OrderConfirmation stay={stay} order={order} />}
         </>}
 
     </section>
