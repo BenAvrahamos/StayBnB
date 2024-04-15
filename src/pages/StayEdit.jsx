@@ -12,7 +12,7 @@ import { NavLink, useNavigate } from "react-router-dom"
 export function StayEdit() {
     const [stay, editStay] = useState(stayService.getEmptyStay)
     const navigate = useNavigate()
-  console.log(stay);
+
     const [editStage, setEditStage] = useState(1)
 
     function onSaveStay(){

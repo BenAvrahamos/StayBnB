@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from 'react'
 import { stayService } from "../services/stay.local.service"
 import { useLocation } from 'react-router-dom'
 import { useSearchParams } from 'react-router-dom'
+
 import { StayGalleryPreview } from '../cmps/StayDetailsCmps/StayGalleryPreview'
 import { ReservationModal } from '../cmps/StayDetailsCmps/ReservationModal'
 import { SvgPathCmp } from '../cmps/HelperCmps/SvgPathCmp'

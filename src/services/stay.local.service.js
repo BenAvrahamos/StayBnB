@@ -140,6 +140,8 @@ async function save(stay) {
             const updatedStay = await storageService.put(STAY_DB, stay)
             return updatedStay
         } else {
+            stay._id = utilService.makeId()
+            console.log( stay._id);
             const stayToAdd = await storageService.post(STAY_DB, stay)
             return stayToAdd
         }
@@ -190,9 +192,16 @@ function getEmptyStay() {
             location: "",
             about: "",
             responseTime: "",
+            experience : {isSuperhost: false}
            
         },
-        imgUrls: [],
+        imgUrls: [
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436975/hx9ravtjop3uqv4giupt.jpg",
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436294/mvhb3iazpiar6duvy9we.jpg",
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436496/ihozxprafjzuhil9qhh4.jpg",
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436952/aef9ajipinpjhkley1e3.jpg",
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436948/vgfxpvmcpd2q40qxtuv3.jpg",
+          ],
         isInstantBooking: false,
         labels: [],
         likedByUsers: [],
