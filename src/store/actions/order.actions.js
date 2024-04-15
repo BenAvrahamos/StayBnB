@@ -1,11 +1,15 @@
 import { SET_ORDERS, ADD_ORDER, REMOVE_ORDER, UPDATE_ORDER } from '../reducers/order.reducer'
 import { orderService } from '../../services/order.local.service'
 import { store } from '../store'
+import { userService } from '../../services/user.local.service'
 
-export async function addOrder(order) {
+export async function addOrder(params, stay) {
     try {
-        const addedOrder = await orderService.save(order)
-        store.dispatch({ ADD_ORDER, order: addedOrder })
+        const user = userService.getLoggedInUser() ? userService.getLoggedInUser() : { _id: '000000', fullname: 'Guest'}
+        const order = await orderService.getOrder(stay, user, params)
+        const orderToAdd = await orderService.save(order)
+        store.dispatch({ type: ADD_ORDER, order: orderToAdd })
+        return orderToAdd
     } catch (err) {
         console.log(err)
     }
