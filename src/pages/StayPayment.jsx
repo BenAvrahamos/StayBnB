@@ -8,10 +8,7 @@ import { useLocation, useSearchParams } from 'react-router-dom'
 export function StayPayment() {
     const { stayId } = useParams()
     const [stay, setStay] = useState('')
-
-
     const [searchParams, setSearchParams] = useSearchParams()
-
     const location = useLocation()
     const queryParams = new URLSearchParams(location.search)
 
