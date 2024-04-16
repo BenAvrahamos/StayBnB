@@ -6,7 +6,7 @@ import { StayList } from '../cmps/StayList.jsx'
 import { LabelsFilter } from '../cmps/LabelsFilter.jsx'
 import { store } from '../store/store.js'
 import { stayService } from '../services/stay.service.js'
-// import { createNewDemoData } from '../services/data.modification.temp.js'
+
 import { socketService, SOCKET_EVENT_ODER_UPDATE } from '../services/socket.service.js'
 
 

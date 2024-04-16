@@ -41,7 +41,7 @@ export function StayList({ stays, filterBy, scrolledPage }) {
                         pathname: `/${stay._id}`,
                         search: condensedSP
                     }}
-                        target='_blank'
+                        // target='_blank'
                     >
                         <StayPreview
                             stay={stay}
