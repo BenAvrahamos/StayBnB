@@ -9,11 +9,14 @@ import { stayService } from "../../services/stay.service"
 import { setStayFilter, setStayHeaderFilter } from "../../store/actions/stay.actions"
 import { UserNavModal } from "./UserNavModal"
 import { useLocation } from 'react-router-dom';
+import { LoginSignup } from "../LoginSignup"
 
 export function AppHeader({ scrolledPage }) {
     var filterBy = useSelector(storeState => storeState.stayModule.filterBy)
     const [searchParams, setSearchParams] = useSearchParams()
     const [modalType, setModalType] = useState()
+    const [isLoginModal, setIsLoginModal] = useState(false)
+
     const ref = useRef(null)
     const navigate = useNavigate()
     const location = useLocation()
@@ -103,7 +106,8 @@ export function AppHeader({ scrolledPage }) {
             </div>
         </section>
 
-        {modalType === 'user-nav' && <UserNavModal />}
+        {modalType === 'user-nav' && <UserNavModal setIsLoginModal={setIsLoginModal}/>}
+        {isLoginModal && <LoginSignup setIsLoginModal={setIsLoginModal} />}
 
         <HeaderFilter modalType={modalType} setModalType={setModalType} />
     </section>

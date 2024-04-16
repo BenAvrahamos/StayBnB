@@ -2,7 +2,7 @@
     display: flex;
     padding-inline-start: rem(286.5px);
     position: fixed;
-    z-index: 20;
+    z-index: 2;
     left: 0;
     top: 0;
     color: $darkGray;
@@ -10,6 +10,7 @@
     width: 100%;
     gap: 24px;
     border-block-end: 0.667px solid $lightGray;
+    
     a {
         font-size: rem(14px);
         color: $darkGray;

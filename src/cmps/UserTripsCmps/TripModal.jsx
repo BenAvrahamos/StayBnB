@@ -1,6 +1,7 @@
 import { utilService } from "../../services/util.service"
 
 export function TripModal({ trip, setOnModal }) {
+    console.log(trip);
 
     function onCloseModal(e) {
         e.stopPropagation()
@@ -38,18 +39,20 @@ export function TripModal({ trip, setOnModal }) {
 
                 <div className='stay-name flex column'>
                     <p>Location:</p>
-                    <h5>{trip.stay.location}</h5>
+                    <h5>{trip.stay.location.address}</h5>
+                    <h5>{trip.stay.location.city}</h5>
+                    <h5>{trip.stay.location.country}</h5>
                 </div>
 
                 <div className='dates grid'>
                     <div className='flex column'>
                         <p>Check-in:</p>
-                        <h5>{utilService.timestampToDate(trip.entryDate)}</h5>
+                        <h5>{utilService.timestampToDate(+trip.entryDate)}</h5>
                     </div>
 
                     <div className='flex column'>
                         <p>Check-out:</p>
-                        <h5>{utilService.timestampToDate(trip.exitDate)}</h5>
+                        <h5>{utilService.timestampToDate(+trip.exitDate)}</h5>
                     </div>
                 </div>
 
@@ -60,10 +63,10 @@ export function TripModal({ trip, setOnModal }) {
                             <h5>&nbsp;&nbsp;{guestSum()}</h5>
                         </div>
                         <ul>
-                            {trip.guests.adults > 0 && <li> {trip.guests.adults} adult{trip.guests.adults === 1 ? '' : 's'}</li>}
-                            {trip.guests.children > 0 && <li>{trip.guests.children} child{trip.guests.children === 1 ? '' : 'ren'}</li>}
-                            {trip.guests.infants > 0 && <li>{trip.guests.infants} infant{trip.guests.infants === 1 ? '' : 's'}</li>}
-                            {trip.guests.pets > 0 && <li>{trip.guests.pets} pet{trip.guests.pets === 1 ? '' : 's'}</li>}
+                            {+trip.guests.adults > 0 && <li> {trip.guests.adults} adult{trip.guests.adults === 1 ? '' : 's'}</li>}
+                            {+trip.guests.children > 0 && <li>{trip.guests.children} child{trip.guests.children === 1 ? '' : 'ren'}</li>}
+                            {+trip.guests.infants > 0 && <li>{trip.guests.infants} infant{trip.guests.infants === 1 ? '' : 's'}</li>}
+                            {+trip.guests.pets > 0 && <li>{trip.guests.pets} pet{trip.guests.pets === 1 ? '' : 's'}</li>}
                         </ul>
                     </div>
 
@@ -77,15 +80,15 @@ export function TripModal({ trip, setOnModal }) {
                     <div className='flex space-between'>
                         <p>Price:</p>
                         <p>${trip.stay.price} X {utilService.calcSumOfDays(trip)} nights &nbsp;&nbsp;&nbsp;&nbsp;
-                            <span>${(utilService.calcSumToPay(trip, trip.stay)).toFixed(2)}</span></p>
+                            <span>${(utilService.calcSumToPayAtTrips(trip, trip.stay)).toFixed(2)}</span></p>
                     </div>
                     <div className='flex space-between'>
                         <p>Service fee:</p>
-                        <p>${(utilService.calcSumToPay(trip, trip.stay) * 0.14125).toFixed(2)}</p>
+                        <p>${(utilService.calcSumToPayAtTrips(trip, trip.stay) * 0.14125).toFixed(2)}</p>
                     </div>
                     <div className='flex space-between'>
                         <h4>Total:</h4>
-                        <p><span>${(utilService.calcSumToPay(trip, trip.stay) + (utilService.calcSumToPay(trip, trip.stay) * 0.14125)).toFixed(2)}</span></p>
+                        <p><span>${(utilService.calcSumToPayAtTrips(trip, trip.stay) + (utilService.calcSumToPayAtTrips(trip, trip.stay) * 0.14125)).toFixed(2)}</span></p>
                     </div>
                 </div>
             </div>

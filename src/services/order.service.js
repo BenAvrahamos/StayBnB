@@ -99,10 +99,11 @@ async function getOrder(stay, loggedInUser, params) {
         return {
             hostId: stay.host.id,
             buyer: {
-                _id: loggedInUser._id || '0000000', // 000000 for guest ID
+                _id: loggedInUser._id || '0000000',
                 fullname: loggedInUser.fullname || 'Guest'
             },
             totalPrice: utilService.calcSumToPay(params, stay),
+    
             entryDate: params.entryDate,
             exitDate: params.exitDate,
             guests: {
@@ -115,7 +116,11 @@ async function getOrder(stay, loggedInUser, params) {
                 _id: stay._id,
                 name: stay.name,
                 price: stay.price,
-                location: stay.loc,
+                location: {
+                    address: stay.loc.address,
+                    city : stay.loc.city,
+                    country:stay.loc.country
+                },
                 img: stay.imgUrls[0]
             },
             msgs: [],
