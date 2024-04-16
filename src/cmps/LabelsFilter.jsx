@@ -4,6 +4,7 @@ import { SvgWithNamesCmp } from "./HelperCmps/SvgWithNamesCmp"
 import { FilterModal } from './FilterModal'
 
 import { filterLists } from "../services/filterLists.service"
+import { SvgPathCmp } from "./HelperCmps/SvgPathCmp"
 
 export function LabelsFilter({ setStayFilter, filterBy, scrolledPage }) {
 	const [showFilterModal, setShowFilter] = useState(false)
@@ -32,11 +33,12 @@ export function LabelsFilter({ setStayFilter, filterBy, scrolledPage }) {
 				<SvgWithNamesCmp
 					svgNames={filterLists.filterLabels}
 					handleChange={handleChange}
-					selectedValue={selectedValue}/>
+					selectedValue={selectedValue} />
 			</section>
 
 			<button className="flex align-center" onClick={openFilterModal}>
-				<img src="./src/assets/svg/filter.svg" /> <span>Filters</span>
+				<SvgPathCmp name={'settings'} />
+				<span>Filters</span>
 			</button>
 		</section>
 
