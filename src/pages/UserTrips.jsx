@@ -5,6 +5,7 @@ import { orderService } from '../services/order.service.js'
 import { utilService } from '../services/util.service.js'
 import { socketService, SOCKET_EVENT_ODER_UPDATE } from '../services/socket.service.js'
 import { TripModal } from '../cmps/UserTripsCmps/TripModal.jsx'
+import { userService } from '../services/user.service.js'
 
 export function UserTrips() {
     const [userTrips, setUserTrips] = useState([])
@@ -20,9 +21,9 @@ export function UserTrips() {
 
         const fetchData = async () => {
             try {
-                const trips = await orderService.getUserOrdersById('u101')
+                const user = userService.getLoggedInUser()
+                const trips = await orderService.getUserOrdersById(user._id)
                 setUserTrips(trips)
-                console.log(trips);
             }
             catch (err) { console.log(err) }
         }
@@ -51,11 +52,11 @@ export function UserTrips() {
         setLayout(type)
     }
 
-    function onUpdateOrderStatus(data){
+    function onUpdateOrderStatus(data) {
         orderService.save(data.order)
 
-        
-        
+
+
     }
 
     if (!userTrips || !userTrips.length) return <section className='user-trips no-user-trips'>
@@ -132,24 +133,24 @@ export function UserTrips() {
                     <li key={trip._orderId} className={`trip-card grid ${trip.status}`} onClick={() => onChoose(trip)} >
 
                         <div className='title flex column'>
-                            <h3>{trip.stay.location.split(', ')[0]}</h3>
-                            <p>{trip.stay.name}</p>
+                            <h3>{trip.stay.name}</h3>
                             <p><span>Booking number:</span>&nbsp;&nbsp;{trip._orderId}</p>
                         </div>
 
                         <div className='dates'>
-                            <h4>{utilService.timestampsToShortDates(trip.entryDate, trip.exitDate)}</h4>
+                            <h4>{utilService.timestampsToShortDates(+trip.entryDate, +trip.exitDate)}</h4>
                         </div>
 
                         <div className='address flex column'>
-                            <p>{trip.stay.location.address || 'ADDRESS HERE'}</p>
-                            <p>{trip.stay.location.split(', ')[0]}</p>
-                            <p>{trip.stay.location.split(', ')[1]}</p>
+            
+                            <p>{trip.stay.location.address}</p>
+                            <p>{trip.stay.location.city}</p>
+                            <p>{trip.stay.location.country}</p>
                         </div>
 
                         <div className='image'>
                             <img src={trip.stay.img} alt={trip.stay.name} />
-                            <p>{utilService.timestampDaysAway(trip.entryDate)}&nbsp;|&nbsp;
+                            <p>{utilService.timestampDaysAway(+trip.entryDate)}&nbsp;|&nbsp;
                                 <span className={`status ${trip.status}`}>{trip.status}</span>
                             </p>
                         </div>

@@ -18,7 +18,8 @@ export const utilService = {
     timestampDaysAway,
     calcSumOfDays,
     calcLongestBedCount,
-    calcGuestCount
+    calcGuestCount,
+    calcSumToPayAtTrips
 }
 
 function makeId(length = 6) {
@@ -111,6 +112,13 @@ function calcSumToPay(params, stay) {
     let diff = params.exitDate - params.entryDate
     diff = diff / (1000 * 60 * 60 * 24)
     return (diff * stay.price * (+params.adults + +params.children))
+}
+
+function calcSumToPayAtTrips(params, stay) {
+    let diff = params.exitDate - params.entryDate
+    diff = diff / (1000 * 60 * 60 * 24)
+    console.log(params);
+    return (diff * stay.price * (+params.guests.adults + +params.guests.children))
 }
 
 function timestampToDate(dateTimestamp) {

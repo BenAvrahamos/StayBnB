@@ -24,14 +24,14 @@ export function Payment({ stay, params }) {
     async function checkAndValidateOrder(e) {
         try {
             e.stopPropagation()
-            if (userOrderDetails.card.cardNum &&
-                userOrderDetails.card.expDate &&
-                userOrderDetails.card.cvv &&
-                userOrderDetails.card.zip &&
-                userOrderDetails.phone) {
+            // if (userOrderDetails.card.cardNum &&
+            //     userOrderDetails.card.expDate &&
+            //     userOrderDetails.card.cvv &&
+            //     userOrderDetails.card.zip &&
+            //     userOrderDetails.phone) {
                 setOrder(await addOrder(params, stay))
                 setIsOrder(true)
-            }
+            // }
         } catch (err) {
             console.log('err', err)
             throw err
@@ -159,13 +159,13 @@ export function Payment({ stay, params }) {
 
                     {isCredit && <>
                         <div className='card-details grid'>
-                            <input className="card-number" type="text" name="cardNum" pattern="[0-9]{16}" value={userOrderDetails.card.cardNum} placeholder="Card number" onChange={onUserOrderDetails} />
-                            <input className="expiration" pattern="\d{2}/\d{2}" name="expDate" type="text" value={userOrderDetails.card.expDate} placeholder="Expiration" onChange={onUserOrderDetails} />
-                            <input className="cvv" type="text" pattern="\d{3,4}" name="cvv" placeholder="CVV" value={userOrderDetails.card.cvv} onChange={onUserOrderDetails} />
+                            <input className="card-number" type="text" name="cardNum" pattern="[0-9]{16}" value={userOrderDetails.card.cardNum || "1234 5678 9012 3456"} placeholder="Card number" onChange={onUserOrderDetails} />
+                            <input className="expiration" pattern="\d{2}/\d{2}" name="expDate" type="text" value={userOrderDetails.card.expDate || "4/26"} placeholder="Expiration" onChange={onUserOrderDetails} />
+                            <input className="cvv" type="text" pattern="\d{3,4}" name="cvv" placeholder="CVV" value={userOrderDetails.card.cvv|| "586"} onChange={onUserOrderDetails} />
                         </div>
 
-                        <input className='zip' name="zip" type='text' value={userOrderDetails.card.zip} placeholder="ZIP code" onChange={onUserOrderDetails} />
-                        <input className='country' name="country" type='text' value={userOrderDetails.card.country || userOrderDetails.card.region} placeholder="Country/region" onChange={onUserOrderDetails} />
+                        <input className='zip' name="zip" type='text' value={userOrderDetails.card.zip || "58586"} placeholder="ZIP code" onChange={onUserOrderDetails} />
+                        <input className='country' name="country" type='text' value={userOrderDetails.card.country || userOrderDetails.card.region || "Israel"} placeholder="Country/region" onChange={onUserOrderDetails} />
                     </>}
                 </div>
             </article>
@@ -190,7 +190,7 @@ export function Payment({ stay, params }) {
                         </header>
                         <main>
                             <p>We’ll send you trip updates and a text to verify this number.</p>
-                            <input type='tel' name="phone" value={userOrderDetails.phone} placeholder="Phone number" pattern="\d{3}-\d{3}-\d{4}" onChange={onUserOrderDetails} />
+                            <input type='tel' name="phone" value={userOrderDetails.phone || "054-782-1812"} placeholder="Phone number" pattern="\d{3}-\d{3}-\d{4}" onChange={onUserOrderDetails} />
                             <p>We'll text you a code to confirm your number. Standard message and data rates apply.</p>
                             <button className='add-btn' onClick={(event) => onModal(event, 'phone')}>Continue</button>
                         </main>

@@ -60,7 +60,6 @@ export function StayDetails() {
     async function loadStay() {
         try {
             const stay = await stayService.getById(stayId)
-            console.log("🚀 ~ loadStay ~ stay:", stay)
           
             setStay(stay)
         } catch (err) {
