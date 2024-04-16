@@ -165,7 +165,10 @@ export function Payment({ stay, params }) {
                         </div>
 
                         <input className='zip' name="zip" type='text' value={userOrderDetails.card.zip} placeholder="ZIP code" onChange={onUserOrderDetails} />
-                        <input className='country' name="country" type='text' value={userOrderDetails.card.country || userOrderDetails.card.region} placeholder="Country/region" onChange={onUserOrderDetails} />
+
+                        <label htmlFor="country" className="country flex column space-between">Country/region
+                            <input className='country' name="country" type='text' value={userOrderDetails.card.country || userOrderDetails.card.region} placeholder="Israel" onChange={onUserOrderDetails} />
+                        </label>
                     </>}
                 </div>
             </article>
