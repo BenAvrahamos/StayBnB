@@ -28,7 +28,7 @@ export function UserDashboard() {
     return (
         <section className="dashboard">
             {userStays && <div className="user-stays-dashboard">
-                <h2>My stays</h2>
+                <h2>My properties</h2>
                 <div className="user-stays-container grid">
                     {userStays.map(stay => {
                         return <article key={stay._id} className="flex column">
