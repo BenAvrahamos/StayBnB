@@ -6,6 +6,7 @@ import { StayList } from '../cmps/StayList.jsx'
 import { LabelsFilter } from '../cmps/LabelsFilter.jsx'
 import { store } from '../store/store.js'
 import { stayService } from '../services/stay.service.js'
+
 import { socketService, SOCKET_EVENT_ODER_UPDATE } from '../services/socket.service.js'
 
 
@@ -29,12 +30,12 @@ export function StayIndex({ scrolledPage }) {
     }, ['hi'])
 
     const scrolledHeader = () => {
-        if (scrolledPage) {
-            return 'index-header-condensed'
-        } else {
-            return ''
-        }
-    }
+		if (scrolledPage) {
+			return 'index-header-condensed'
+		} else {
+			return 'index-header-expanded'
+		}
+	}
 
     if (!stays || !stays.length) return <section className='index-section'>
         <LabelsFilter

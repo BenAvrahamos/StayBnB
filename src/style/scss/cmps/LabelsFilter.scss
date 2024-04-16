@@ -1,6 +1,6 @@
 .index-filter-section {
     padding-block: 0.5rem;
-    z-index: 2;
+    z-index: 1;
 
     grid-auto-flow: column;
     grid-gap: 0 1rem;
@@ -8,18 +8,15 @@
     button {
         display: none;
         align-items: center;
+    }
 
-    }
-    
-    &.labels-header-condensed {
-        position: fixed;
-        inset: 10.55rem 0 auto 0;
-        transform: translateY(-5rem);
-        background-color: white;
-        box-shadow: 0 1px 5px $gray2;
-        
-        transition: transform 0.1s;
-    }
+    position: sticky;
+    top: 10.5rem;
+    transform: translateY(-5rem);
+    background-color: white;
+    border-block-end: 1px solid $gray2;
+
+    transition: transform 0.1s;
 }
 
 .label-filter-section {
@@ -82,31 +79,45 @@
     }
 }
 
-@media (width > 724px) {
-    .index-filter-section button {
-        display: block;
-        font-size: 0.75rem;
+@media (width > 742px) {
+    .index-filter-section {
+        position: static;
+        box-shadow: none;
+        border: none;
 
-        height: 3rem;
-        width: 5.75rem;
-        margin: 0.75rem 0.375rem 0 0;
-        background-color: transparent;
-        border: 0.667px solid $gray2;
-        border-radius: 12px;
-        color: $darkGray;
-        display: flex;
-        justify-content: center;
-        transition: 0s;
-        column-gap: 0.8em;
-
-        img {
-            height: 1rem;
-            width: 1rem;
+        &.labels-header-condensed {
+            position: sticky;
+            top: 10.5rem;
+            transform: translateY(-5rem);
+            background-color: white;
+            border-block-end: 1px solid $gray2;
         }
 
-        &:hover {
-            background-color: $btnHover;
-            border: 1px solid $darkGray;
+        button {
+            display: block;
+            font-size: 0.75rem;
+
+            height: 3rem;
+            width: 5.75rem;
+            margin: 0.75rem 0.375rem 0 0;
+            background-color: transparent;
+            border: 0.667px solid $gray2;
+            border-radius: 12px;
+            color: $darkGray;
+            display: flex;
+            justify-content: center;
+            transition: 0s;
+            column-gap: 0.8em;
+
+            img {
+                height: 1rem;
+                width: 1rem;
+            }
+
+            &:hover {
+                background-color: $btnHover;
+                border: 1px solid $darkGray;
+            }
         }
     }
 }

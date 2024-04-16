@@ -24,7 +24,6 @@ export function UserDashboard() {
         getUserOrdersAndStays()
     }, [])
 
-
     return (
         <section className="dashboard">
             {userStays && <div className="user-stays-dashboard">

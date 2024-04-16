@@ -12,7 +12,7 @@ import { stayService } from '../../services/stay.service'
 import { store } from '../../store/store'
 
 
-export function HeaderFilter({ modalType, setModalType, }) {
+export function HeaderFilter({ modalType, setModalType }) {
     const header = useRef(null)
     const navigate = useNavigate()
     const headerFilterBy = useSelector(storeState => storeState.stayModule.headerFilterBy)
@@ -50,28 +50,34 @@ export function HeaderFilter({ modalType, setModalType, }) {
         return `${month} ${day}`
     }
 
-    return <section ref={header} className={`header-filter flex ${modalType && modalType !== 'user-nav' ? 'grey' : ''}`}>
-        <div className={`destination ${modalType === 'map' ? 'selected' : ''}`} onClick={() => setModalType(modalType === 'map' ? null : 'map')}>
-            Where<span className=' grayTxt'>{headerFilterBy.loc.region ? headerFilterBy.loc.region : "search destinations"}</span>
+    return <section ref={header} className={`header-filter grid align-center ${modalType && modalType !== 'user-nav' ? 'grey' : ''}`}>
+        <div className={`destination ${modalType === 'map' ? 'selected' : ''} flex column justify-center`} onClick={() => setModalType(modalType === 'map' ? null : 'map')}>
+            Where
+            <span className=' grayTxt'>{headerFilterBy.loc.region ? headerFilterBy.loc.region : "Search destinations"}</span>
         </div>
 
         <span className='splitter-1'></span>
 
-        <div className={`dates ${modalType === 'check-in' ? 'selected' : ''}`} onClick={() => setModalType(modalType === 'check-in' ? null : 'check-in')}>
-            Check in<span>{headerFilterBy.entryDate ? formatDate(headerFilterBy.entryDate) : 'add dates'}</span>
+        <div className={`dates check-in ${modalType === 'check-in' ? 'selected' : ''} flex column justify-center`} onClick={() => setModalType(modalType === 'check-in' ? null : 'check-in')}>
+            Check in
+            <span>{headerFilterBy.entryDate ? formatDate(headerFilterBy.entryDate) : 'Add dates'}</span>
         </div>
 
         <span className='splitter-2'></span>
 
-        <div className={`dates ${modalType === 'check-out' ? 'selected' : ''}`} onClick={() => setModalType(modalType === 'check-out' ? null : 'check-out')}>
-            Check out<span>{headerFilterBy.exitDate ? formatDate(headerFilterBy.exitDate) : 'add dates'}</span>
+        <div className={`dates check-out ${modalType === 'check-out' ? 'selected' : ''} flex column justify-center`} onClick={() => setModalType(modalType === 'check-out' ? null : 'check-out')}>
+            Check out
+            <span>{headerFilterBy.exitDate ? formatDate(headerFilterBy.exitDate) : 'Add dates'}</span>
         </div>
 
         <span className='splitter-3'></span>
 
-        <div className={`guests ${modalType === 'guest' ? 'selected' : ''}`} onClick={() => setModalType(modalType === 'guest' ? null : 'guest')}>
-            <div className="flex column justify-center">Who<span className='guest-count'>{stayService.guestCountString(headerFilterBy)}</span></div>
-            <button onClick={onLoadStays} className={`search-btn ${modalType !== '' && modalType !== 'user-nav' ? 'compact' : ''}`} ><span>Search</span></button>
+        <div className={`guests ${modalType === 'guest' ? 'selected' : ''} flex space-between`} onClick={() => setModalType(modalType === 'guest' ? null : 'guest')}>
+            <div className="flex column justify-center">
+                Who
+                <span className='guest-count'>{stayService.guestCountString(headerFilterBy)}</span>
+            </div>
+            <button onClick={onLoadStays} className={`search-btn ${modalType !== '' && modalType !== 'user-nav' ? 'compact' : ''}`} ></button>
         </div>
 
         {modalType === 'map' && <MapFilter setModalType={setModalType} headerFilterBy={headerFilterBy} />}

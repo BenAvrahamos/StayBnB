@@ -170,7 +170,7 @@ function timestampDaysAway(entryTimestamp) {
     return 'in ' + days + ' days'
 }
 
-function timestampToMonthYear(timeStr = "2016-08-14T04:00:00.000Z") { // temp default until connected to new demo data
+function timestampToMonthYear(timeStr) {
     const date = new Date(timeStr)
     const month = date.toLocaleString('en-US', { month: 'long' })
     const year = date.getFullYear()
