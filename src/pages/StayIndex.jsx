@@ -26,7 +26,7 @@ export function StayIndex({ scrolledPage }) {
 		if (scrolledPage) {
 			return 'index-header-condensed'
 		} else {
-			return ''
+			return 'index-header-expanded'
 		}
 	}
 

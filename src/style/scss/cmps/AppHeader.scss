@@ -21,64 +21,63 @@
 
     .compact-header {
         height: 2.875rem;
+        font-size: 0.875em;
         border-radius: 48px;
+        color: $darkGray;
         border: 1px solid #dddddd;
         box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.08);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-size: 0.875em;
-        color: $darkGray;
-        cursor: pointer;
         opacity: 0;
         width: 0;
 
-        .map {
-            width: 10.3rem;
-            text-align: center;
+        cursor: pointer;
 
+        &>div {
+            padding-inline: 0.5rem;
+            width: 10.3rem;
+            width: 10rem;
+            text-align: center;
+        }
+
+        &>div:last-of-type {
+            padding-inline: 0.5rem 0.4rem;
+            width: 3rem;
         }
 
         .calendar {
-            width: 9.8125rem;
-            text-align: center;
             box-shadow: 1px 0 0px 0px rgba(0, 0, 0, 0.1), -1px 0 0px 0px rgba(0, 0, 0, 0.1);
-
         }
 
         .guests {
-            width: 14rem;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
             color: $gray1;
             font-weight: normal;
-            padding-left: 0;
+        }
 
-            .search-btn {
-                border-radius: 50%;
-                width: 2rem;
-                height: 2rem;
-                background-color: $siteColor;
-                margin-right: 0;
-                display: flex;
-                justify-content: center;
-                align-items: center;
+        .search-btn {
+            inset: auto 0.4rem auto auto;
 
-                &:before {
-                    content: '\f002';
-                    font-family: fa-solid;
-                    color: white;
-                    font-size: 11px;
-                }
+            border-radius: 50%;
+            width: 2rem;
+            height: 2rem;
+            background-color: $siteColor;
+            margin-right: 0;
 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            &:before {
+                content: '\f002';
+                font-family: fa-solid;
+                color: white;
+                font-size: 11px;
             }
+
         }
     }
 
     .logo-section {
         width: 22em;
+
         cursor: pointer;
 
         .logo {
@@ -105,7 +104,7 @@
 
             a {
                 margin: 10px 16px;
-               
+
 
                 &.active {
                     color: $darkGray;
@@ -164,7 +163,7 @@
             }
         }
     }
-
+    
     .grayTxt:not(.grayTxt:hover) {
         color: $headerGray;
     }
@@ -178,29 +177,37 @@
 .header-condensed {
     padding-block-end: 0;
     transition: 0.5s;
-
-    .header-filter {
-        transform: translateY(-3.5rem) scale(0.4, 0.65);
-        opacity: 0;
-        transition: 0.3s ease-out;
-        height: 0;
-    }
-
-    .compact-header {
-        display: inline;
-        opacity: 1;
-        transition: opacity 0.3s;
-        display: flex;
-        width: 22rem;
-    }
-
-    & nav {
-        display: none;
-    }
 }
 
-// @media (width < 742px) {
-//     .expanded-header {
-//         display: none;
-//     }
-// }
+@media (width < 742px) {
+    .app-header-container {
+        .expanded-header {
+            
+            .user-section,
+            .logo-section {
+                display: none;
+            }
+        }
+        
+        &.header-expanded {
+            .header-filter {
+                transform: translateY(-3.5rem) scale(0.4, 0.65);
+                opacity: 0;
+                transition: 0.3s ease-out;
+                height: 0;
+            }
+            
+            .compact-header {
+                opacity: 1;
+                transition: opacity 0.3s;
+                display: flex;
+                width: 100%;
+                max-width: calc(100vw - 3rem);
+            }
+
+            nav {
+                display: none;
+            }
+        }
+    }
+}

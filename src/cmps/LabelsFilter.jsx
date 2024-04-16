@@ -22,7 +22,7 @@ export function LabelsFilter({ setStayFilter, filterBy, scrolledPage }) {
 		if (scrolledPage) {
 			return 'labels-header-condensed'
 		} else {
-			return ''
+			return 'labels-header-expanded'
 		}
 	}
 

@@ -1,6 +1,7 @@
 .header-wide,
 .index-section,
 .labels-header-condensed,
+.index-filter-section,
 .user-trips {
     padding-inline: 1.5rem;
     max-width: 2520px;
@@ -23,6 +24,11 @@
     .stay-details,
     .stay-payment {
         padding-inline: 2.5rem;
+    }
+
+    .index-filter-section {
+        padding: 0;
+        margin: 0;
     }
 }
 
