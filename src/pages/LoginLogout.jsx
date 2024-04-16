@@ -1,21 +1,22 @@
 import { login, signup } from "../store/actions/user.actions"
+import { userService } from "../services/user.service"
 import { useNavigate } from "react-router"
 import { useState } from "react"
 
 export function LoginLogout() {
     const navigate = useNavigate()
     const [isSignup, setIsSignup] = useState(true)
-    const [credentials, setCredentials] = useState({
-        username: '', password: '', fullname: '',
-        about: '', location: '', gender: ''
-    })
+    const [credentials, setCredentials] = useState(userService.getEmptyCredentials())
 
     async function onSubmitLoginSignup(ev) {
         ev.preventDefault()
         try {
-            const user = isSignup ? signup(credentials) : login(credentials)
-            if(user) navigate('/')
-        } catch(err) {
+            const user = isSignup ? await signup(credentials) : await login(credentials)
+            if (user) {
+                console.log(user)
+                navigate('/')
+            }
+        } catch (err) {
             console.log(err)
             throw err
         }
@@ -24,7 +25,7 @@ export function LoginLogout() {
     function onChangeField(ev) {
         ev.stopPropagation()
         const { value, id } = ev.target
-        setCredentials(prevCredentials => ( {...prevCredentials, [id]: value }))
+        setCredentials(prevCredentials => ({ ...prevCredentials, [id]: value }))
     }
 
     return <section className="login-signup">
