@@ -1,0 +1,26 @@
+.dashboard {
+    .user-stays-dashboard {
+        h2 {
+            font-family: circular-reg;
+            font-size: em(16px);
+        }
+        .user-stays-container {
+            overflow: scroll;
+
+            .user-stay {
+                img {
+                    object-fit: cover;
+                    max-width: 341px;
+                    padding: 16px;
+                    border-radius: 20px;
+                }
+            }
+        }
+    }
+    .user-orders-dashboard {
+        h2 {
+            font-family: circular-reg;
+            font-size: em(16px);
+        }
+    }
+}
