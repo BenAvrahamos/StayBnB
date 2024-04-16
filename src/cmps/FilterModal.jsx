@@ -31,7 +31,6 @@ export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
     }
 
     function handleChange(field, value) {
-        console.log(field)
         setSelected(prevSelected => {
             if (field === 'bedrooms' || field === 'beds' || field === 'bathrooms' || field === 'placeType') {
                 return { ...prevSelected, [field]: value }

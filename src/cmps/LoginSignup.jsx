@@ -13,7 +13,6 @@ export function LoginSignup({ setIsLoginModal }) {
         try {
             const user = isSignup ? await signup(credentials) : await login(credentials)
             if (user) {
-                console.log(user)
                 onClose()
             }
         } catch (err) {

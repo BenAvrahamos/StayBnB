@@ -16,7 +16,6 @@ export function ImgUploader({ onUploaded = null, placeholder = null, editStay = 
     setImgData({ imgUrl: secure_url, width, height })
     setIsUploading(false)
     onUploaded && onUploaded(secure_url)
-    console.log(secure_url);
 
     if (secure_url) {
       const updatedImgUrls = [...stay.imgUrls]
@@ -26,7 +25,7 @@ export function ImgUploader({ onUploaded = null, placeholder = null, editStay = 
   }
 
   const handleImageClick = () => {
-    fileInputRef.current.click();
+    fileInputRef.current.click()
   };
 
   return (

@@ -15,7 +15,6 @@ export function UserDashboard() {
 
     async function getUserOrdersAndStays() {
         try {
-            console.log(loggedInUser)
             const userOrders = await orderService.getUserOrdersById(loggedInUser._id)
             setUserOrders(userOrders)
             const _userStays = await stayService.getUserStaysById(loggedInUser._id)

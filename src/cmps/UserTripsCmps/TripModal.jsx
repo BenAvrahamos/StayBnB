@@ -1,7 +1,6 @@
 import { utilService } from "../../services/util.service"
 
 export function TripModal({ trip, setOnModal }) {
-    console.log(trip);
 
     function onCloseModal(e) {
         e.stopPropagation()
