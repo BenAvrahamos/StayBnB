@@ -146,7 +146,7 @@ function getDefaultFilter() {
         placeType: 'any',       // any / room / entire home
         priceRange: {
             min: 0,
-            max: Infinity
+            max: 2000
         },
         bedrooms: 'any',
         beds: 'any',
