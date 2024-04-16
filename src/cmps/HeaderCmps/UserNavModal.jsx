@@ -3,11 +3,12 @@ import { NavLink } from 'react-router-dom'
 export function UserNavModal(){
 
     return <section className="user-nav-modal" >
+        <NavLink to="/loginsignup" className="grayTxt">Login / Signup</NavLink>
            <NavLink to="/unActive" className='grayTxt'>Messages</NavLink>
            <NavLink to="/trips" className='grayTxt'>Trips</NavLink>
            <NavLink to="/wishlist" className='grayTxt'>Wishlist</NavLink>
            <NavLink to="/edit" className='grayTxt'>Airbnb your home</NavLink>
-           <NavLink to="/dashboard" className='grayTxt'>Profile</NavLink>
+           <NavLink to="/dashboard" className='grayTxt'>Dashboard</NavLink>
            <NavLink to="/unActive" className='grayTxt'>Log out</NavLink>
     </section>
 
