@@ -20,6 +20,7 @@ export function UserTrips() {
 
         const fetchData = async () => {
             try {
+                // const trips = await orderService.getUserOrdersById(user._id)
                 const trips = await orderService.getUserOrdersById('u101')
                 setUserTrips(trips)
                 console.log(trips);
@@ -52,10 +53,7 @@ export function UserTrips() {
     }
 
     function onUpdateOrderStatus(data){
-        orderService.save(data.order)
-
-        
-        
+        orderService.save(data.order)  
     }
 
     if (!userTrips || !userTrips.length) return <section className='user-trips no-user-trips'>
