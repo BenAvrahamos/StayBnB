@@ -35,16 +35,6 @@ async function getById(orderId) {
     }
 }
 
-async function getUserOrdersById(userId) {
-    try {
-        let orders = await storageService.query(ORDER_DB)
-        orders = orders.filter(order => order.buyer._id === userId)
-        return orders
-    } catch (err) {
-        console.log(err)
-    }
-}
-
 function filterUserOrders(userOrders, filter) {
     if (filter.tense !== 'all') {
         const today = new Date().getTime()
