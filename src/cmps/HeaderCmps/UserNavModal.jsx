@@ -37,13 +37,14 @@ export function UserNavModal({ setIsLoginModal }) {
     }
 
     return <section className="user-nav-modal" >
-        {!isLoggedInUser && <button onClick={onLoginModal} className="grayTxt">Login/signup</button>}
+        {!isLoggedInUser && <button onClick={onLoginModal} className="grayTxt">Login</button>}
         {!isLoggedInUser && <NavLink to="/" onClick={() => onGuestClick()}>Continue as Guest</NavLink>}
+        {isLoggedInUser && <NavLink to="/" className='grayTxt' onClick={(ev) => onLogoutClick(ev)}>Log out</NavLink>}
         <NavLink to="/unActive" className='grayTxt'>Messages</NavLink>
         <NavLink to="/trips" className='grayTxt'>Trips</NavLink>
         <NavLink to="/wishlist" className='grayTxt'>Wishlist</NavLink>
         <NavLink to="/edit" className='grayTxt'>Airbnb your home</NavLink>
         <NavLink to="/dashboard" className='grayTxt'>Dashboard</NavLink>
-        <NavLink to="/" className='grayTxt' onClick={(ev) => onLogoutClick(ev)}>Log out</NavLink>
+        
     </section>
 }
