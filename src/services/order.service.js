@@ -1,44 +1,60 @@
+
+import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
-// import { userService } from './user.service.js'
-import { stays } from '../data/stay.js'
+// import { orders } from '../data/orders.js'
 import { httpService } from './http.service.js'
+
 const BASE_URL = 'order/'
 
 export const orderService = {
     query,
     getById,
+    getHostOrdersById,
     getUserOrdersById,
     filterUserOrders,
     save,
     remove,
     getOrder,
+    createDemoOrder
 }
 
-function query() {
-    return httpService.get(BASE_URL)
+async function query() {
+    try {
+        let orders = await httpService.get(BASE_URL)
+        return orders
+    }
+    catch (err) {
+        console.log(err)
+        throw err
+    }
 }
 
-function getById(orderId) {
-    return httpService.get(BASE_URL + orderId)
+async function getById(orderId) {
+    try {
+        const order = await httpService.get(BASE_URL + orderId)
+        return order
+    } catch (err) {
+        console.log(err)
+    }
 }
 
-function remove(orderId) {
-    return httpService.delete(BASE_URL + orderId)
-}
-
-function save(order) {
-    if (order._id) return httpService.put(BASE_URL, order)
-    else return httpService.post(BASE_URL, order)
+async function getHostOrdersById(userId) {
+    try {
+        let orders = await query()
+        orders = orders.filter(order => order.hostId === userId)
+        return orders
+    } catch (err) {
+        console.log(err)
+    }
 }
 
 async function getUserOrdersById(userId) {
     try {
-        const orders = await httpService.get(BASE_URL + 'user/' + userId)
-        const filteredOrders = orders.filter(order => order.buyer._id === userId)
-        return filteredOrders
+        let orders = await query()
+        orders = orders.filter(order => order.buyer._id === userId)
+        return orders
     } catch (err) {
         console.log(err)
-        throw err
     }
 }
 
@@ -55,12 +71,35 @@ function filterUserOrders(userOrders, filter) {
     return userOrders.sort((a, b) => a.entryDate - b.entryDate)
 }
 
+async function remove(orderId) {
+    try {
+        await storageService.remove(ORDER_DB, orderId)
+    } catch (err) {
+        console.log(err)
+    }
+}
+
+async function save(order) {
+    try {
+        if (order._id) {
+            const updatedOrder = await storageService.put(ORDER_DB, order)
+            return updatedOrder
+        } else {
+            order._id = utilService.makeId()
+            const orderToAdd = await storageService.post(ORDER_DB, order)
+            return orderToAdd
+        }
+    } catch (err) {
+        console.log(err)
+    }
+}
+
 async function getOrder(stay, loggedInUser, params) {
     try {
         return {
             hostId: stay.host.id,
             buyer: {
-                _id: loggedInUser._id || '0000000', 
+                _id: loggedInUser._id || '0000000', // 000000 for guest ID
                 fullname: loggedInUser.fullname || 'Guest'
             },
             totalPrice: utilService.calcSumToPay(params, stay),
@@ -88,3 +127,7 @@ async function getOrder(stay, loggedInUser, params) {
     }
 }
 
+function createDemoOrder() {
+    if (utilService.loadFromStorage(ORDER_DB)) return utilService.loadFromStorage(ORDER_DB)
+    return utilService.saveToStorage(ORDER_DB, orders)
+}
