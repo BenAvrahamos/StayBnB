@@ -73,20 +73,20 @@ function filterUserOrders(userOrders, filter) {
 
 async function remove(orderId) {
     try {
-        await storageService.remove(ORDER_DB, orderId)
+        await httpService.delete(BASE_URL + orderId)
     } catch (err) {
         console.log(err)
     }
 }
 
-async function save(order) {
+async function save(order, user) {
     try {
         if (order._id) {
-            const updatedOrder = await storageService.put(ORDER_DB, order)
+            const updatedOrder = await httpService.put(BASE_URL, order)
             return updatedOrder
         } else {
             order._id = utilService.makeId()
-            const orderToAdd = await storageService.post(ORDER_DB, order)
+            const orderToAdd = await await httpService.post(BASE_URL, order)
             return orderToAdd
         }
     } catch (err) {
