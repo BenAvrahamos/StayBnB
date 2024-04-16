@@ -124,8 +124,8 @@ function timestampToDate(dateTimestamp) {
 }
 
 function timestampsToShortDates(entryTimestamp, exitTimestamp) {
-    const entry = new Date(entryTimestamp)
-    const exit = new Date(exitTimestamp)
+    const entry = new Date(+entryTimestamp)
+    const exit = new Date(+exitTimestamp)
 
     const entryYear = entry.getFullYear()
     const exitYear = exit.getFullYear()
