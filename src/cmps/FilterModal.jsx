@@ -9,7 +9,8 @@ import { ButtonGroup } from "./HelperCmps/ButtonGroup"
 import { CheckboxGroup } from "./HelperCmps/CheckboxGroup"
 import { Accordion } from "./HelperCmps/Accordion"
 import { SwitchCmp } from "./HelperCmps/SwitchCmp"
-import { Slider } from "@material-ui/core"
+import Slider from '@mui/material/Slider';
+import { styled } from '@mui/material/styles';
 
 
 export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
@@ -18,7 +19,6 @@ export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
 
     useEffect(() => {
         setFilteredStays(stayService.query(selected))
-        console.log('selected.priceRange:',selected.priceRange)
     }, [selected])
 
     function clearFilter() {

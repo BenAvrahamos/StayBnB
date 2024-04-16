@@ -201,6 +201,38 @@
             h2 {
                 margin-block-end: 0.5rem;
             }
+
+            .css-188mx6n-MuiSlider-root {
+                color: $darkGray;
+                height: 5px;
+                padding-block: 1rem;
+                margin-block: 1rem;
+
+                cursor: default;
+
+                .css-7o8aqz-MuiSlider-rail,
+                .css-1as9v07-MuiSlider-thumb,
+                .css-7o8aqz-MuiSlider-track {
+                    cursor: pointer;
+                }
+
+                .css-7o8aqz-MuiSlider-rail {
+                    background-color: $gray2;
+                    opacity: 1;
+                }
+
+                .css-1as9v07-MuiSlider-thumb {
+                    width: 32px;
+                    height: 32px;
+                    color: white;
+                    box-shadow: 0 6px 16px $gray4;
+                }
+
+                .css-14gyywz-MuiSlider-valueLabel.MuiSlider-valueLabelOpen {
+                    display: none;
+                }
+
+            }
         }
 
         .rooms-beds {
