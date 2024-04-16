@@ -36,8 +36,8 @@ export function StayReviewsPreview({ stay }) {
                             <h3>{review.by.fullname}</h3>
                             <p>{review.by.id}</p> {/*should be where their from or how long they've been on the site*/}
                         </div>
-                    {console.log('review.rate:',review.rate)}
                     </div>
+                    
                     <div className="not-flip-div flex column">
                         <div className="review-score flex align-center">
                             <p>{'★'.repeat(Math.floor(review.rate))}<span>{'★'.repeat(5 - Math.floor(review.rate))}</span></p>
@@ -69,7 +69,7 @@ export function StayReviewsPreview({ stay }) {
                             </div>
                             <div className="not-flip-div flex column">
                                 <div className="review-score flex align-center">
-                                <p>{'★'.repeat(Math.floor(review.rate))}<span>{'★'.repeat(5 - Math.floor(review.rate))}</span></p>
+                                    <p>{'★'.repeat(Math.floor(review.rate))}<span>{'★'.repeat(5 - Math.floor(review.rate))}</span></p>
                                     •
                                     <h4>{utilService.timestampToMonthYear(review.at)}</h4>
                                 </div>

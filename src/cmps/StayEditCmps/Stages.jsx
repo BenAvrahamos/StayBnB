@@ -31,7 +31,6 @@ export function Stage2({ stay, editStay }) {
 
     function handleSelect(value) {
         const updatedStay = { ...stay, placeType: value }
-        console.log(stay);
         editStay(updatedStay)
     }
 
@@ -260,8 +259,6 @@ export function Stage7({ stay, editStay }) {
 
 export function Stage8({ stay, editStay }) {
 
-console.log(stay);
-
 return (
     <section className="stage-8">
       <section className='text'>
@@ -375,10 +372,9 @@ export function Stage12({ stay, editStay }) {
 export function Stage13({ stay }) {
 
     function formatPrice(price) {
-
         return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
     }
-    console.log(stay);
+
     return <section className="stage-13">
         <section className='text'>
             <span className="question">Review your listing</span>

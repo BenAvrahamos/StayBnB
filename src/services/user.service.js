@@ -34,8 +34,8 @@ async function signup({ username, password, fullname, about, imgUrl, location, g
         // else return Promise.reject('Invalid signup')
         _setLoggedinUser(user)
         return user
-    } catch (error) {
-        console.log(error)
+    } catch (err) {
+        console.log(err)
         throw error
     }
 }

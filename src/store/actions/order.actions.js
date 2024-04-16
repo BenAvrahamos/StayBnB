@@ -7,7 +7,6 @@ export async function addOrder(params, stay) {
     try {
         const user = userService.getLoggedInUser() 
         const order = await orderService.getOrder(stay, user, params)
-        console.log(order);
         const orderToAdd = await orderService.save(order)
         store.dispatch({ type: ADD_ORDER, order: orderToAdd })
         return orderToAdd
