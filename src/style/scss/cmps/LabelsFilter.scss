@@ -1,5 +1,5 @@
 .index-filter-section {
-    padding-block: 0.5rem 1rem;
+    padding-block: 0.5rem;
     z-index: 2;
 
     grid-auto-flow: column;
@@ -8,17 +8,18 @@
     button {
         display: none;
         align-items: center;
-    
+
     }
-}
-
-.labels-header-expanded {
-    position: fixed;
-    inset: 10rem 0 auto 0;
-    transform: translateY(-5rem);
-    background-color: white;
-
-    transition: transform 0.1s;
+    
+    &.labels-header-condensed {
+        position: fixed;
+        inset: 10.55rem 0 auto 0;
+        transform: translateY(-5rem);
+        background-color: white;
+        box-shadow: 0 1px 5px $gray2;
+        
+        transition: transform 0.1s;
+    }
 }
 
 .label-filter-section {

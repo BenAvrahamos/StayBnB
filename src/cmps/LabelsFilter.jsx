@@ -20,7 +20,7 @@ export function LabelsFilter({ setStayFilter, filterBy, scrolledPage }) {
 
 	const scrolledHeader = () => {
 		if (scrolledPage) {
-			return 'labels-header-expanded'
+			return 'labels-header-condensed'
 		} else {
 			return ''
 		}

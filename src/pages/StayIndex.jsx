@@ -22,6 +22,14 @@ export function StayIndex({ scrolledPage }) {
         loadStays()
     }, [filterBy])
 
+    const scrolledHeader = () => {
+		if (scrolledPage) {
+			return 'index-header-condensed'
+		} else {
+			return ''
+		}
+	}
+
     if (!stays || !stays.length) return <section className='index-section'>
         <LabelsFilter
             setStayFilter={setStayFilter}
@@ -35,7 +43,11 @@ export function StayIndex({ scrolledPage }) {
         setStayFilter({ ...filterBy, pagination: filterBy.pagination + 30 });
     }
 
-    return <section className='index-section'>
+    function onIncreasePagination() {
+        setStayFilter({ ...filterBy, pagination: filterBy.pagination + 30 });
+    }
+
+    return <section className={`index-section ${scrolledHeader()}`}>
         <LabelsFilter
             setStayFilter={setStayFilter}
             filterBy={filterBy}

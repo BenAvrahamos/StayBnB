@@ -9,14 +9,16 @@ import { ButtonGroup } from "./HelperCmps/ButtonGroup"
 import { CheckboxGroup } from "./HelperCmps/CheckboxGroup"
 import { Accordion } from "./HelperCmps/Accordion"
 import { SwitchCmp } from "./HelperCmps/SwitchCmp"
+import { Slider } from "@material-ui/core"
 
 
 export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
     const [selected, setSelected] = useState(filterBy)
     const [filteredStays, setFilteredStays] = useState(stayService.query(selected))
-    
+
     useEffect(() => {
         setFilteredStays(stayService.query(selected))
+        console.log('selected.priceRange:',selected.priceRange)
     }, [selected])
 
     function clearFilter() {
@@ -34,19 +36,23 @@ export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
     }
 
     function handleChange(field, value) {
-        setSelected(prevFilterBy => {
+        setSelected(prevSelected => {
             if (field === 'bedrooms' || field === 'beds' || field === 'bathrooms' || field === 'placeType') {
-                return { ...prevFilterBy, [field]: value }
-            } else if (field === 'priceRange') {
-                // doesn't have input.
+                return { ...prevSelected, [field]: value }
             } else if (field === 'bookingOpts') {
                 // return { ...prevFilterBy, [field][value] = !field.value }
             } else {
-                const propTypeArray = prevFilterBy[field] || []
+                const propTypeArray = prevSelected[field] || []
                 const updatedPropTypeArray = propTypeArray.includes(value) ?
-                propTypeArray.filter(item => item !== value) : [...propTypeArray, value]
-                return { ...prevFilterBy, [field]: updatedPropTypeArray }
+                    propTypeArray.filter(item => item !== value) : [...propTypeArray, value]
+                return { ...prevSelected, [field]: updatedPropTypeArray }
             }
+        })
+    }
+
+    function handlePriceChange(ev, value, activeThumb) {
+        setSelected(prevSelected => {
+            return { ...prevSelected, ['priceRange']: { min: value[0], max: value[1] } }
         })
     }
 
@@ -76,7 +82,12 @@ export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
                 <div className="price-range">
                     <h2>Price range</h2>
                     <p>Nightly prices including fees and taxes</p>
-                    <PriceRangeChart />
+                    <Slider
+                        getAriaLabel={() => 'priceRange'}
+                        value={[selected.priceRange.min, selected.priceRange.max]}
+                        onChange={handlePriceChange}
+                        valueLabelDisplay="auto"
+                    />
                 </div>
 
                 <div className="rooms-beds">
