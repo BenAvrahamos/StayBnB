@@ -8,7 +8,7 @@ export function AppFooter() {
         <div className="app-footer">
 
             <div className="options">
-                © 2024 Airbnb, Inc.
+                © 2024 Staybnb, Inc.
                 <div>·</div>
                 <span>TermsSitemap</span>
                 ·
