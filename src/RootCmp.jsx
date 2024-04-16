@@ -13,16 +13,15 @@ import { UserTrips } from './pages/UserTrips'
 import { AppFooter } from './cmps/AppFooter'
 import { StayEdit } from './pages/StayEdit'
 import { UserDashboard } from './pages/UserDashboard'
-import { LoginLogout } from './pages/LoginLogout'
 
 export function RootCmp() {
 
-  const [scrolledPage, setScrolledPage] = useState( false )
+  const [scrolledPage, setScrolledPage] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
       const offset = window.scrollY;
-      const newLayout =  offset > 0
+      const newLayout = offset > 0
 
       if (newLayout !== scrolledPage) setScrolledPage(newLayout)
     }
@@ -44,7 +43,6 @@ export function RootCmp() {
           <Route path='/trips' element={<UserTrips />} />
           <Route path='/dashboard' element={<UserDashboard />}></Route>
           <Route path='/edit' element={<StayEdit />} />
-          <Route path="/loginsignup" element={<LoginLogout />}></Route>
         </Routes>
         <AppFooter />
       </Router>
