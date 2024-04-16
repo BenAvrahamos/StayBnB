@@ -1,6 +1,6 @@
 .index-section {
     color: $darkGray;
-    margin-block-start: 13rem;
+    margin-block-start: 11.5rem;
 
     .stay-list {
         margin: 0.85rem 0.2rem 1rem;
@@ -42,6 +42,8 @@
 
 @media (width > 742px) {
     .index-section {
+        margin-block-start: 16rem;
+
         &.index-header-condensed {
             margin-block-start: 13rem;
         }
