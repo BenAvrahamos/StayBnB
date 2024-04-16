@@ -1,6 +1,5 @@
 .index-filter-section {
     padding-block: 0.5rem;
-    // z-index: 1;
 
     grid-auto-flow: column;
     grid-gap: 0 1rem;
@@ -51,7 +50,7 @@
 
         cursor: pointer;
 
-        img {
+        svg {
             width: 1.5rem;
             height: 1.5rem;
         }
@@ -109,7 +108,7 @@
             transition: 0s;
             column-gap: 0.8em;
 
-            img {
+            svg {
                 height: 1rem;
                 width: 1rem;
             }

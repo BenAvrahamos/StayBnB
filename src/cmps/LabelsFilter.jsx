@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-import { SvgSavedCmp } from "./HelperCmps/SvgSavedCmp"
+import { SvgWithNamesCmp } from "./HelperCmps/SvgWithNamesCmp"
 import { FilterModal } from './FilterModal'
 
 import { filterLists } from "../services/filterLists.service"
@@ -29,8 +29,7 @@ export function LabelsFilter({ setStayFilter, filterBy, scrolledPage }) {
 	return <>
 		<section className={`index-filter-section grid ${scrolledHeader()}`}>
 			<section className="label-filter-section grid ">
-				<SvgSavedCmp
-					folder={'labels'}
+				<SvgWithNamesCmp
 					svgNames={filterLists.filterLabels}
 					handleChange={handleChange}
 					selectedValue={selectedValue}/>
