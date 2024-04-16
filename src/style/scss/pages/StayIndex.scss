@@ -1,6 +1,10 @@
 .index-section {
-    margin-block-start: 10rem;
     color: $darkGray;
+    margin-block-start: 11rem;
+
+    &.index-header-condensed {
+        margin-block-start: 13rem;
+    }
 
     .stay-list {
         margin: 0.85rem 0.2rem 1rem;
@@ -13,7 +17,7 @@
             margin-top: 10em;
         }
 
-        &.list-header-expanded {
+        &.list-header-condensed {
             margin: 0.85rem 0.2rem 1rem;
         }
     }

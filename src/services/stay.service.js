@@ -25,11 +25,13 @@ export const stayService = {
 }
 
 const amenityLabels = ['wifi', 'kitchen', 'washer', 'dryer', 'air_conditioning', 'refrigerator', 'heating', 'dedicated_workspace', 'TV', 'hair_dryer', 'iron', 'pool', 'hot_tub', 'free_parking', 'ev_charger', 'crib', 'king_bed', 'gym', 'BBQ_grill', 'breakfast', 'indoor_fireplace', 'smoking_allowed', 'pets_allowed']
-const filterLabels = ['iconic_cities', 'new', 'off-the-grid', 'rooms', 'creative_spaces', 'boats', 'grand_pianos', 'vineyards', 'historical_homes', 'mansions', 'lake', 'bed_&_breakfasts', 'treehouses', 'farms', 'skiing', 'earth_homes', 'countryside', 'amazing_views', 'beach', 'desert', 'a-frames',
+const filterLabels = ['iconic_cities', 'new', 'off-the-grid', 'rooms', 'creative_spaces',
+    'boats', 'grand_pianos', 'vineyards', 'historical_homes', 'mansions', 'lake', 'bed_&_breakfasts', 'treehouses', 'farms', 'skiing', 'earth_homes', 'countryside', 'amazing_views', 'beach', 'desert', 'a-frames',
     'design', 'beachfront', 'caves', 'national_parks', 'castles', 'lakefront', 'islands', 'trulli', 'tropical', 'cabins', 'campers', 'camping', 'arctic', 'tiny_homes', 'surfing', 'barns', 'cycladic_homes', 'hanoks', 'ryokans', 'domes', 'shepard_huts', 'yurts', 'minsus', 'casas_particulares']
-
 function query(filterBy = getDefaultFilter()) {
+    console.log("🚀 ~ query ~ filterBy:", filterBy)
     return httpService.get(BASE_URL, filterBy)
+
 }
 
 async function getUserStaysById(userId) {
@@ -107,8 +109,8 @@ function getEmptyStay() {
             location: "",
             about: "",
             responseTime: "",
-            experience : {isSuperhost: false}
-           
+            experience: { isSuperhost: false }
+
         },
         imgUrls: [
             "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436975/hx9ravtjop3uqv4giupt.jpg",
@@ -116,7 +118,7 @@ function getEmptyStay() {
             "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436496/ihozxprafjzuhil9qhh4.jpg",
             "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436952/aef9ajipinpjhkley1e3.jpg",
             "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436948/vgfxpvmcpd2q40qxtuv3.jpg",
-          ],
+        ],
         isInstantBooking: false,
         labels: [],
         likedByUsers: [],
@@ -126,7 +128,7 @@ function getEmptyStay() {
             city: "",
             address: "",
             lng: 0,
-        
+
         },
         name: "",
         placeType: "",
@@ -158,7 +160,7 @@ function getDefaultFilter() {
         placeType: 'any',       // any / room / entire home
         priceRange: {
             min: 0,
-            max: Infinity
+            max: 2000
         },
         bedrooms: 'any',
         beds: 'any',
@@ -171,7 +173,8 @@ function getDefaultFilter() {
             allowsPets: false
         },
         accessibility: [],
-        hostLngs: []
+        hostLngs: [],
+        pagination: 30
     }
 }
 

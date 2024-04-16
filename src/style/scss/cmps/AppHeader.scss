@@ -3,7 +3,7 @@
     color: $darkGray;
     background-color: white;
     border-bottom: solid 0.667px $gray2;
-    padding-block-end: 1em;
+    padding-block: 0.5rem 1em;
     margin-block-end: 1em;
     z-index: 1;
 }
@@ -199,8 +199,8 @@
     }
 }
 
-@media (width < 740px) {
-    .expanded-header {
-        display: none;
-    }
-}
+// @media (width < 742px) {
+//     .expanded-header {
+//         display: none;
+//     }
+// }
