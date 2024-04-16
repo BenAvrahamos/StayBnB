@@ -1,13 +1,20 @@
 
-import { setStayHeaderFilter } from '../../store/actions/stay.actions'
+import { useEffect } from 'react'
+import { loadStays, removeStay, saveStay, setStayHeaderFilter } from '../../store/actions/stay.actions'
 
 
-export function MapFilter({ setModalType ,headerFilterBy}) {
+
+
+
+export function MapFilter({ setModalType, headerFilterBy }) {
+
+
 
     function switchToDatesFilter(ev) {
         ev.stopPropagation()
         setModalType('check-in')
     }
+
 
     function onSelectRegion(region) {
         setStayHeaderFilter({ ...headerFilterBy, loc: { ...headerFilterBy.loc, region } })
@@ -18,7 +25,7 @@ export function MapFilter({ setModalType ,headerFilterBy}) {
 
         <section className="regions">
 
-      <article className="region" onClick={(event) => { switchToDatesFilter(event), onSelectRegion('') }}>
+            <article className="region" onClick={(event) => { switchToDatesFilter(event), onSelectRegion('') }}>
                 <img src="src\assets\img\flexible.png" alt="" />
                 <div>
                     I'm flexible

@@ -3,7 +3,7 @@ import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { httpService } from './http.service.js'
 const STAY_DB = 'stay_db'
-const BASE_URL = 'stay/'
+const zBASE_URL = 'stay/'
 
 // createDemoStay(stays)
 export const stayService = {

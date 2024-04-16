@@ -9,11 +9,13 @@ import { stayService } from '../services/stay.service.js'
 import { createNewDemoData } from '../services/data.modification.temp.js'
 
 
-export function StayIndex({scrolledPage}) {
+export function StayIndex({ scrolledPage }) {
     const [searchParams, setSearchParams] = useSearchParams()
     const { stays } = useSelector(storeState => storeState.stayModule)
     const { filterBy } = useSelector(storeState => storeState.stayModule)
     const { headerFilterBy } = store.getState().stayModule
+
+    console.log(filterBy);
 
     useEffect(() => {
         setSearchParams(stayService.mergeFiltersSP(filterBy, headerFilterBy))
@@ -37,6 +39,14 @@ export function StayIndex({scrolledPage}) {
         <p>loading</p>
     </section>
 
+    function onIncreasePagination() {
+        setStayFilter({ ...filterBy, pagination: filterBy.pagination + 30 });
+    }
+
+    function onIncreasePagination() {
+        setStayFilter({ ...filterBy, pagination: filterBy.pagination + 30 });
+    }
+
     return <section className={`index-section ${scrolledHeader()}`}>
         <LabelsFilter
             setStayFilter={setStayFilter}
@@ -50,7 +60,7 @@ export function StayIndex({scrolledPage}) {
         />
         <section className='index-end-section flex column center'>
             <h1>Continue exploring homes</h1>
-            <button>Show more</button>
+            <button onClick={onIncreasePagination}>Show more</button>
         </section>
     </section>
 }

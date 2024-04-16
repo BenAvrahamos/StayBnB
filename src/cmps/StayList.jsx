@@ -22,7 +22,7 @@ export function StayList({ stays, filterBy, scrolledPage }) {
     const condensedSP = objectToQueryString({ ...spreadLoc, ...spreadGuestCount, entryDate, exitDate })
 
     function objectToQueryString(obj) {
-        return Object.keys(obj).map(key => `${encodeURIComponent(key)}=${encodeURIComponent(obj[key])}`).join('&');
+        return Object.keys(obj).map(key => `${encodeURIComponent(key)}=${encodeURIComponent(obj[key])}`).join('&')
     }
 
 	const scrolledHeader = () => {
