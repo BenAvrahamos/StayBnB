@@ -8,17 +8,17 @@
     color: $darkGray;
     background-color: $btnHover;
 
-    & .app-footer {
+    .app-footer {
         display: flex;
         justify-content: space-between;
+        overflow: hidden;
 
-
-        & .options,
+        .options,
         .media {
             display: flex;
             column-gap: 1em;
 
-            & span {
+            span {
                 cursor: pointer;
 
                 &:hover {
