@@ -1,10 +1,10 @@
 import { NavLink } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { userService } from '../../services/user.service'
-import { login } from '../../store/actions/user.actions'
+import { login, logout } from '../../store/actions/user.actions'
 
 export function UserNavModal() {
-    const [isLoggedInUser, checkIsLoggedInUser] = useState()
+    const [isLoggedInUser, checkIsLoggedInUser] = useState(false)
 
     async function onGuestClick() {
         try {
@@ -15,7 +15,18 @@ export function UserNavModal() {
             throw err
         }
     }
-    
+
+    async function onLogoutClick(ev) {
+        ev.stopPropagation()
+        try {
+            await logout()
+            checkIsLoggedInUser(false)
+        } catch (err) {
+            console.log(err)
+            throw err
+        }
+    }
+
     useEffect(() => {
         checkIsLoggedInUser(Boolean(userService.getLoggedInUser()))
     })
@@ -28,7 +39,7 @@ export function UserNavModal() {
         <NavLink to="/wishlist" className='grayTxt'>Wishlist</NavLink>
         <NavLink to="/edit" className='grayTxt'>Airbnb your home</NavLink>
         <NavLink to="/dashboard" className='grayTxt'>Dashboard</NavLink>
-        {isLoggedInUser && <NavLink to="/unActive" className='grayTxt'>Log out</NavLink>}
+        {isLoggedInUser && <NavLink to="/" className='grayTxt' onClick={(ev) => onLogoutClick(ev)}>Log out</NavLink>}
     </section>
 
 }
