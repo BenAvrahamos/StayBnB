@@ -1,6 +1,5 @@
 .header-wide,
 .index-section,
-.labels-header-condensed,
 .user-trips {
     padding-inline: 1.5rem;
     max-width: 2520px;
@@ -18,11 +17,15 @@
 @media (width > 742px) {
     .app-header-container,
     .index-section,
-    .labels-header-condensed,
     .user-trips,
     .stay-details,
     .stay-payment {
         padding-inline: 2.5rem;
+    }
+
+    .index-filter-section {
+        padding: 0;
+        margin: 0;
     }
 }
 

@@ -10,7 +10,7 @@ import { setStayFilter, setStayHeaderFilter } from "../../store/actions/stay.act
 import { UserNavModal } from "./UserNavModal"
 import { useLocation } from 'react-router-dom';
 
-export function AppHeader({scrolledPage}) {
+export function AppHeader({ scrolledPage }) {
     var filterBy = useSelector(storeState => storeState.stayModule.filterBy)
     const [searchParams, setSearchParams] = useSearchParams()
     const [modalType, setModalType] = useState()
@@ -81,10 +81,13 @@ export function AppHeader({scrolledPage}) {
                     {/* <NavLink to="/" className='grayTxt'>Online Experiences</NavLink> */}
                 </nav>
 
-                <div className="compact-header">
+                <div className="compact-header flex align-center">
                     <div onClick={() => { setModalType(modalType === 'map' ? null : 'map'); SetDynamicPageLayOut(false); }} className="map">Anywhere</div>
                     <div onClick={() => setModalType(modalType === 'check-in' ? null : 'check-in')} className="calendar">Any week</div>
-                    <div onClick={() => setModalType(modalType === 'guest' ? null : 'guest')} className="guests">Add guests <div className="search-btn"></div> </div>
+                    <div onClick={() => setModalType(modalType === 'guest' ? null : 'guest')} className="guests">Add guests</div>
+                    <div>
+                        <button className="search-btn"></button>
+                    </div>
                 </div>
 
             </div>
