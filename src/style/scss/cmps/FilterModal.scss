@@ -78,12 +78,12 @@
     ::-webkit-scrollbar-thumb {
         border-radius: 5px;
         background-color: $gray2;
-        border: 0.667px solid $gray4;
+        border: 0.667px solid $gray2;
     }
 
     ::-webkit-scrollbar-track {
         border-radius: 5px;
-        border: 0.667px solid $gray4;
+        border: 0.667px solid $gray2;
     }
 
     main {
@@ -200,6 +200,28 @@
 
             h2 {
                 margin-block-end: 0.5rem;
+            }
+
+            .price-input {
+                margin-inline: 1rem;
+
+                &>div {
+                    gap: 1.5rem;
+
+                    label {
+                        border: 1.5px solid $gray4;
+                        border-radius: $BR2;
+                        padding: 0.75rem;
+                        font-family: circular-thin;
+
+                        flex-grow: 1;
+
+                        input {
+                            border: none;
+                            outline: none;
+                        }
+                    }
+                }
             }
 
             .css-188mx6n-MuiSlider-root {

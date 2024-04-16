@@ -15,11 +15,6 @@ import { styled } from '@mui/material/styles';
 
 export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
     const [selected, setSelected] = useState(filterBy)
-    const [filteredStays, setFilteredStays] = useState(stayService.query(selected))
-
-    useEffect(() => {
-        setFilteredStays(stayService.query(selected))
-    }, [selected])
 
     function clearFilter() {
         const emptyFilterPart = stayService.getEmptyModalFilter()
@@ -36,11 +31,14 @@ export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
     }
 
     function handleChange(field, value) {
+        console.log(field)
         setSelected(prevSelected => {
             if (field === 'bedrooms' || field === 'beds' || field === 'bathrooms' || field === 'placeType') {
                 return { ...prevSelected, [field]: value }
+
             } else if (field === 'bookingOpts') {
                 // return { ...prevFilterBy, [field][value] = !field.value }
+
             } else {
                 const propTypeArray = prevSelected[field] || []
                 const updatedPropTypeArray = propTypeArray.includes(value) ?
@@ -50,9 +48,19 @@ export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
         })
     }
 
-    function handlePriceChange(ev, value, activeThumb) {
+    function handlePriceChangeSlider(ev, val, activeThumb) {
         setSelected(prevSelected => {
-            return { ...prevSelected, ['priceRange']: { min: value[0], max: value[1] } }
+            return { ...prevSelected, ['priceRange']: { min: val[0], max: val[1] } }
+        })
+    }
+
+    function handlePriceChangeInput({ target }) {
+        setSelected(prevSelected => {
+            const { value, name: field } = target
+            const { priceRange } = prevSelected
+            const updatedPriceRange = { ...priceRange, [field === 'priceRangeMin' ? 'min' : 'max']: value }
+
+            return { ...prevSelected, priceRange: updatedPriceRange }
         })
     }
 
@@ -82,12 +90,31 @@ export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
                 <div className="price-range">
                     <h2>Price range</h2>
                     <p>Nightly prices including fees and taxes</p>
-                    <Slider
-                        getAriaLabel={() => 'priceRange'}
-                        value={[selected.priceRange.min, selected.priceRange.max]}
-                        onChange={handlePriceChange}
-                        valueLabelDisplay="auto"
-                    />
+                    <div className="price-input">
+                        <Slider
+                            getAriaLabel={() => 'priceRange'}
+                            value={[+selected.priceRange.min, +selected.priceRange.max]}
+                            onChange={handlePriceChangeSlider}
+                            valueLabelDisplay="auto"
+                            min={0}
+                            max={2000}
+                        />
+                        <div className="flex align-center">
+                            <label htmlFor="min" className="flex column">Minimum
+                                <div>
+                                    <span className="moneySgn">$</span>
+                                    <input type="number" value={selected.priceRange.min} id="min" min={0} max={2000} name="priceRangeMin" onChange={handlePriceChangeInput} />
+                                </div>
+                            </label>
+                            <div>-</div>
+                            <label htmlFor="max" className="flex column">Maximum
+                                <div>
+                                    <span className="moneySgn">$</span>
+                                    <input type="number" value={selected.priceRange.max} id="max" min={0} max={2000} name="priceRangeMax" onChange={handlePriceChangeInput} />
+                                </div>
+                            </label>
+                        </div>
+                    </div>
                 </div>
 
                 <div className="rooms-beds">
@@ -252,7 +279,7 @@ export function FilterModal({ setShowFilter, setStayFilter, filterBy }) {
 
             <footer className="flex align-center space-between">
                 <button className="clear-btn" onClick={clearFilter}>Clear all</button>
-                <button className="submit-btn" onClick={submitFilter}>Show {filteredStays.length ? filteredStays.length : '###'} places</button>
+                <button className="submit-btn" onClick={submitFilter}>Show places</button>
             </footer>
         </section>
     </>
