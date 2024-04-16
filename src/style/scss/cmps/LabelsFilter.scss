@@ -10,11 +10,11 @@
         align-items: center;
     }
 
-    position: fixed;
-    inset: 10.5rem 0 auto 0;
+    position: sticky;
+    top: 10.5rem;
     transform: translateY(-5rem);
     background-color: white;
-    box-shadow: 0 1px 5px $gray2;
+    border-block-end: 1px solid $gray2;
 
     transition: transform 0.1s;
 }
@@ -83,13 +83,14 @@
     .index-filter-section {
         position: static;
         box-shadow: none;
+        border: none;
 
         &.labels-header-condensed {
             position: sticky;
             top: 10.5rem;
             transform: translateY(-5rem);
             background-color: white;
-            box-shadow: 0 1px 1px $gray2;
+            border-block-end: 1px solid $gray2;
         }
 
         button {
