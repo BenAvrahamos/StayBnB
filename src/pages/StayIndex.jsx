@@ -20,6 +20,14 @@ export function StayIndex({scrolledPage}) {
         loadStays()
     }, [filterBy])
 
+    const scrolledHeader = () => {
+		if (scrolledPage) {
+			return 'index-header-condensed'
+		} else {
+			return ''
+		}
+	}
+
     if (!stays || !stays.length) return <section className='index-section'>
         <LabelsFilter
             setStayFilter={setStayFilter}
@@ -29,7 +37,7 @@ export function StayIndex({scrolledPage}) {
         <p>loading</p>
     </section>
 
-    return <section className='index-section'>
+    return <section className={`index-section ${scrolledHeader()}`}>
         <LabelsFilter
             setStayFilter={setStayFilter}
             filterBy={filterBy}

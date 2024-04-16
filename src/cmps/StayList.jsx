@@ -27,7 +27,7 @@ export function StayList({ stays, filterBy, scrolledPage }) {
 
 	const scrolledHeader = () => {
         if (scrolledPage) {
-            return 'list-header-expanded'
+            return 'list-header-condensed'
         } else {
             return ''
         }
