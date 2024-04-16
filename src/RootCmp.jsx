@@ -12,6 +12,8 @@ import { StayPayment } from './pages/StayPayment'
 import { UserTrips } from './pages/UserTrips'
 import { AppFooter } from './cmps/AppFooter'
 import { StayEdit } from './pages/StayEdit'
+import { UserDashboard } from './pages/UserDashboard'
+import { LoginLogout } from './pages/LoginLogout'
 
 export function RootCmp() {
 
@@ -40,7 +42,9 @@ export function RootCmp() {
           <Route path='/:stayId' element={<StayDetails />} />
           <Route path='/:stayId/payment' element={<StayPayment />} />
           <Route path='/trips' element={<UserTrips />} />
+          <Route path='/dashboard' element={<UserDashboard />}></Route>
           <Route path='/edit' element={<StayEdit />} />
+          <Route path="/loginsignup" element={<LoginLogout />}></Route>
         </Routes>
         <AppFooter />
       </Router>

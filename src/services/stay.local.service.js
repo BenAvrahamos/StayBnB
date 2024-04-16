@@ -11,6 +11,7 @@ export const stayService = {
     getById,
     save,
     remove,
+    getLabels,
     getNumberOfNights,
     getFilterFromParams,
     getEmptyOrder,
@@ -24,8 +25,6 @@ export const stayService = {
     createDemoData,
     guestCountStringForReservation
 }
-
-
 
 // async function query(filterBy) {
 
@@ -155,7 +154,6 @@ function query() {
 }
 
 function getById(stayId) {
-
     return httpService.get(BASE_URL + stayId)
 }
 

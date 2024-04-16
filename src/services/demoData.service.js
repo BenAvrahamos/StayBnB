@@ -1,6 +1,6 @@
 import { stayService } from "./stay.service"
 import { utilService } from "./util.service"
-import { orderService } from "../services/order.local.service"
+import { orderService } from "../services/order.service"
 
 const STAY_DB = 'stay_db'
 
@@ -14,7 +14,7 @@ export const DemoDataService = {
 
 // generateRandomStays(170 )
 
-orderService.createDemoOrder()
+// orderService.createDemoOrder()
 
 function getFilterLabels() {
     return ['new', 'off-the-grid', 'iconic_cities', 'rooms', 'creative_spaces', 'boats', 'grand_pianos', 'vineyards', 'historical_homes', 'mansions', 'lake', 'bed_&_breakfasts', 'treehouses', 'farms', 'skiing', 'earth_homes', 'countryside', 'amazing_views', 'beach', 'desert', 'a-frames',

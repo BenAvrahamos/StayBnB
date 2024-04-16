@@ -1,10 +1,9 @@
 import { useSelector } from 'react-redux'
 import { useNavigate } from "react-router-dom"
 import { useEffect, useState } from 'react'
-
-import { orderService } from '../services/order.local.service.js'
+import { orderService } from '../services/order.service.js'
 import { utilService } from '../services/util.service.js'
-
+import { socketService, SOCKET_EVENT_ODER_UPDATE } from '../services/socket.service.js'
 import { TripModal } from '../cmps/UserTripsCmps/TripModal.jsx'
 
 export function UserTrips() {
@@ -17,10 +16,13 @@ export function UserTrips() {
     const navigate = useNavigate()
 
     useEffect(() => {
+        // socketService.on(SOCKET_EVENT_ODER_UPDATE, onUpdateOrderStatus)
+
         const fetchData = async () => {
             try {
                 const trips = await orderService.getUserOrdersById('u101')
                 setUserTrips(trips)
+                console.log(trips);
             }
             catch (err) { console.log(err) }
         }
@@ -47,6 +49,13 @@ export function UserTrips() {
 
     function onLayout(type) {
         setLayout(type)
+    }
+
+    function onUpdateOrderStatus(data){
+        orderService.save(data.order)
+
+        
+        
     }
 
     if (!userTrips || !userTrips.length) return <section className='user-trips no-user-trips'>

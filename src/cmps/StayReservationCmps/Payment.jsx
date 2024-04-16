@@ -112,7 +112,7 @@ export function Payment({ stay, params }) {
                     <h4>Dates</h4>
                     <p>{utilService.timestampToDate(+params.entryDate)}-{utilService.timestampToDate(+params.exitDate)}</p>
                 </div>
-                <button onClick={() => onModal(event, 'dates')}>Edit</button>
+                <button onClick={(event) => onModal(event, 'dates')}>Edit</button>
             </div>
 
             <div className='guests flex space-between'>
@@ -120,7 +120,7 @@ export function Payment({ stay, params }) {
                     <h4>Guests</h4>
                     <p>{stayService.guestCountStringForReservation(params)}</p>
                 </div>
-                <button onClick={() => onModal(event, 'guests')}>Edit</button>
+                <button onClick={(event) => onModal(event, 'guests')}>Edit</button>
             </div>
         </article>
 
@@ -178,21 +178,21 @@ export function Payment({ stay, params }) {
                         <h4>Phone number</h4>
                         <p>Add and confirm your phone number to get trip updates.</p>
                     </div>
-                    <button onClick={() => onModal(event, 'phone')}>Add</button>
+                    <button onClick={(event) => onModal(event, 'phone')}>Add</button>
                 </div>
 
                 {isPhone && <>
-                    <div className='overlay' onClick={() => onModal(event, 'phone')}></div>
+                    <div className='overlay' onClick={(event) => onModal(event, 'phone')}></div>
                     <div className='phone-modal flex column'>
                         <header className='flex center'>
-                            <button onClick={() => onModal(event, 'phone')} className='close-btn'><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false" style={{ display: 'block', fill: 'none', height: '16px', width: '16px', stroke: 'currentcolor', strokeWidth: '3', overflow: 'visible' }}><path d="m6 6 20 20M26 6 6 26"></path></svg></button>
+                            <button onClick={(event) => onModal(event, 'phone')} className='close-btn'><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false" style={{ display: 'block', fill: 'none', height: '16px', width: '16px', stroke: 'currentcolor', strokeWidth: '3', overflow: 'visible' }}><path d="m6 6 20 20M26 6 6 26"></path></svg></button>
                             <h2>Add phone number</h2>
                         </header>
                         <main>
                             <p>We’ll send you trip updates and a text to verify this number.</p>
                             <input type='tel' name="phone" value={userOrderDetails.phone} placeholder="Phone number" pattern="\d{3}-\d{3}-\d{4}" onChange={onUserOrderDetails} />
                             <p>We'll text you a code to confirm your number. Standard message and data rates apply.</p>
-                            <button className='add-btn' onClick={() => onModal(event, 'phone')}>Continue</button>
+                            <button className='add-btn' onClick={(event) => onModal(event, 'phone')}>Continue</button>
                         </main>
                     </div>
                 </>}

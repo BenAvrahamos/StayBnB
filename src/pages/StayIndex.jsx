@@ -7,6 +7,7 @@ import { LabelsFilter } from '../cmps/LabelsFilter.jsx'
 import { store } from '../store/store.js'
 import { stayService } from '../services/stay.service.js'
 import { createNewDemoData } from '../services/data.modification.temp.js'
+import { socketService, SOCKET_EVENT_ODER_UPDATE } from '../services/socket.service.js'
 
 
 export function StayIndex({ scrolledPage }) {
@@ -15,12 +16,18 @@ export function StayIndex({ scrolledPage }) {
     const { filterBy } = useSelector(storeState => storeState.stayModule)
     const { headerFilterBy } = store.getState().stayModule
 
-    console.log(filterBy);
-
     useEffect(() => {
         setSearchParams(stayService.mergeFiltersSP(filterBy, headerFilterBy))
         loadStays()
     }, [filterBy])
+
+    useEffect(() => {
+        setTimeout(()=>{
+            socketService.emit(SOCKET_EVENT_ODER_UPDATE, 'order')
+        },1000)
+        
+
+    }, ['hi'])
 
     const scrolledHeader = () => {
 		if (scrolledPage) {
@@ -40,11 +47,8 @@ export function StayIndex({ scrolledPage }) {
     </section>
 
     function onIncreasePagination() {
-        setStayFilter({ ...filterBy, pagination: filterBy.pagination + 30 });
-    }
-
-    function onIncreasePagination() {
-        setStayFilter({ ...filterBy, pagination: filterBy.pagination + 30 });
+        const newPagination = (filterBy.pagination || 0) + 30
+        setStayFilter({ ...filterBy, pagination: newPagination >= 60 ? newPagination : 60 })
     }
 
     return <section className={`index-section ${scrolledHeader()}`}>
