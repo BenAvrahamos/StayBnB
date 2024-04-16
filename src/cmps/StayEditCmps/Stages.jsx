@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { utilService } from '../../services/util.service'
 import { SvgPathCmp } from '../HelperCmps/SvgPathCmp'
 import { ButtonGroup } from '../HelperCmps/ButtonGroup'
-import { getAmenities } from '../../services/data.modification.temp'
+import { getAmenities } from '../../services/data.modification.service'
 import { ImgUploader } from '../HelperCmps/ImgUploader'
 
 export function Stage1() {

@@ -8,6 +8,8 @@ export const stayService = {
     getById,
     save,
     remove,
+    getUserStaysById,
+    getLabels,
     getNumberOfNights,
     getFilterFromParams,
     getEmptyOrder,
@@ -30,6 +32,18 @@ function query(filterBy = getDefaultFilter()) {
     console.log("🚀 ~ query ~ filterBy:", filterBy)
     return httpService.get(BASE_URL, filterBy)
 
+}
+
+async function getUserStaysById(userId) {
+    try {
+       const stays = await httpService.get(BASE_URL)
+       const userStays = stays.filter(stay => stay.host.id === userId)
+       console.log(userStays)
+       return userStays
+    } catch(err) {
+        console.log(err)
+        throw err
+    }
 }
 
 function getById(stayId) {
@@ -146,7 +160,7 @@ function getDefaultFilter() {
         placeType: 'any',       // any / room / entire home
         priceRange: {
             min: 0,
-            max: Infinity
+            max: 2000
         },
         bedrooms: 'any',
         beds: 'any',
@@ -252,8 +266,6 @@ function guestCountString(headerFilterBy) {
         guests = guestsCount === 1 ? '1 guest' : `${guestsCount} guests`
     }
 
-
-
     const infants = headerFilterBy.guestCount.infants > 0 ? `${headerFilterBy.guestCount.infants} infants` : ''
     const pets = headerFilterBy.guestCount.pets > 0 ? `${headerFilterBy.guestCount.pets} pets` : ''
 
@@ -274,15 +286,11 @@ function guestCountStringForReservation(params) {
         guests = guestsCount === 1 ? '1 guest' : `${guestsCount} guests`
     }
 
-
     const infants = params.infants > 0 ? `${params.infants} infants` : ''
     const pets = params.pets > 0 ? `${params.pets} pets` : ''
-
     const parts = [guests, infants, pets].filter(Boolean)
-
     if (parts.length === 0) {
         return "Add guests"
     }
-
     return parts.join(', ')
 }

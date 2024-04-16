@@ -68,7 +68,7 @@ function _setLoggedinUser(user) {
 }
 
 function addStayToUserFavorites(stayId) {
-    
+
 }
 
 function getEmptyCredentials() {
@@ -85,19 +85,18 @@ function getLoggedInUser() {
 }
 
 async function _createNewUser(userInfo) {
+    let userToAdd = {}
     try {
         if (userInfo.fullname && userInfo.username && userInfo.password) {
-            const userToAdd = {
-                username: userInfo.username,
-                fullname: userInfo.fullname,
-                password: userInfo.password,
-                gender: userInfo.gender,
-                _id: utilService.makeId()
-            }
-            if (userInfo.about) userToAdd.about = userInfo.about
-            if (userInfo.imgUrl) userToAdd.imgUrl = userInfo.imgUrl
-            if (userInfo.location) userToAdd.location = userInfo.location
+            userToAdd.username = userInfo.username,
+                userToAdd.fullname = userInfo.fullname,
+                userToAdd.password = userInfo.password,
+                userToAdd.gender = userInfo.gender,
+                userToAdd._id = utilService.makeId()
         }
+        if (userInfo.about) userToAdd.about = userInfo.about
+        if (userInfo.imgUrl) userToAdd.imgUrl = userInfo.imgUrl
+        if (userInfo.location) userToAdd.location = userInfo.location
         return userToAdd
     } catch (err) {
         console.log(err)
