@@ -55,7 +55,6 @@ export function UserTrips() {
     }
 
     function onUpdateOrderStatus(order) {
-        console.log(trips)
         setTrips(prevTrips => prevTrips.map(trip => {
             if(trip._id === order._id) return order
             return trip
