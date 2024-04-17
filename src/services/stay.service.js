@@ -29,7 +29,6 @@ const filterLabels = ['iconic_cities', 'new', 'off-the-grid', 'rooms', 'creative
     'boats', 'grand_pianos', 'vineyards', 'historical_homes', 'mansions', 'lake', 'bed_&_breakfasts', 'treehouses', 'farms', 'skiing', 'earth_homes', 'countryside', 'amazing_views', 'beach', 'desert', 'a-frames',
     'design', 'beachfront', 'caves', 'national_parks', 'castles', 'lakefront', 'islands', 'trulli', 'tropical', 'cabins', 'campers', 'camping', 'arctic', 'tiny_homes', 'surfing', 'barns', 'cycladic_homes', 'hanoks', 'ryokans', 'domes', 'shepard_huts', 'yurts', 'minsus', 'casas_particulares']
 function query(filterBy = getDefaultFilter()) {
-    console.log("🚀 ~ query ~ filterBy:", filterBy)
     return httpService.get(BASE_URL, filterBy)
 
 }
@@ -38,7 +37,6 @@ async function getUserStaysById(userId) {
     try {
        const stays = await httpService.get(BASE_URL)
        const userStays = stays.filter(stay => stay.host.id === userId)
-       console.log(userStays)
        return userStays
     } catch(err) {
         console.log(err)

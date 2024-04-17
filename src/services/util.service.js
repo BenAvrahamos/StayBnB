@@ -117,7 +117,6 @@ function calcSumToPay(params, stay) {
 function calcSumToPayAtTrips(params, stay) {
     let diff = params.exitDate - params.entryDate
     diff = diff / (1000 * 60 * 60 * 24)
-    console.log(params);
     return (diff * stay.price * (+params.guests.adults + +params.guests.children))
 }
 

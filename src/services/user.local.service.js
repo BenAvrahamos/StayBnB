@@ -42,8 +42,8 @@ async function signup(userInfo) {
         const _user = await storageService.post(USER_DB, user)
         if (_user) return _setLoggedinUser(_user)
         else return Promise.reject('Invalid signup')
-    } catch (error) {
-        console.log(error)
+    } catch (err) {
+        console.log(err)
         throw error
     }
 }

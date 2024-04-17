@@ -13,7 +13,6 @@ export function LoginSignup({ setIsLoginModal}) {
         try {
             const user = isSignup ? await signup(credentials) : await login(credentials)
             if (user) {
-                console.log(user)
                 onClose()
             }
         } catch (err) {
@@ -43,8 +42,8 @@ export function LoginSignup({ setIsLoginModal}) {
             <header className="flex column center">
                 <button className="back-btn" onClick={onClose}></button>
                 <h1>Welcome to Staybnb</h1>
-                {isSignup && <p>Already signed up? <span onClick={onChangeLoginSignup}>click here to login</span></p>}
-                {!isSignup && <p>Don't Have an account <span onClick={onChangeLoginSignup}>click here to sign up</span></p>}
+                {isSignup && <p>Already signed up? <span onClick={onChangeLoginSignup}>Click here to login</span></p>}
+                {!isSignup && <p>Don't Have an account? <span onClick={onChangeLoginSignup}>Click here to sign up</span></p>}
             </header>
 
             <form className="flex column" onSubmit={(ev) => onSubmitLoginSignup(ev)}>
