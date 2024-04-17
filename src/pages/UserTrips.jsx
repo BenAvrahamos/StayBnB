@@ -144,7 +144,6 @@ export function UserTrips() {
                         </div>
 
                         <div className='address flex column'>
-            
                             <p>{trip.stay.location.address}</p>
                             <p>{trip.stay.location.city}</p>
                             <p>{trip.stay.location.country}</p>
@@ -152,8 +151,8 @@ export function UserTrips() {
 
                         <div className='image'>
                             <img src={trip.stay.img} alt={trip.stay.name} />
-                            <p>{utilService.timestampDaysAway(+trip.entryDate)}&nbsp;|&nbsp;
-                                <span className={`status ${trip.status}`}>{trip.status}</span>
+                            <p>{utilService.timestampDaysAway(+trip.entryDate, +trip.exitDate)} |
+                                <span className={`status ${trip.status}`}> {trip.status}</span>
                             </p>
                         </div>
                     </li>

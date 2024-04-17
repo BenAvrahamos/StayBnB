@@ -12,7 +12,7 @@
     }
 
     h1 {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
         margin: 0;
         font-family: circular-bold;
         margin-block-end: 0.2rem;
@@ -20,13 +20,13 @@
     }
 
     p {
+        font-size: 1rem;
         margin-block-end: 0.3rem;
         overflow: hidden;
 
         &.grayTxt,
         .grayTxt {
             color: $gray1;
-            font-family: circular-thin;
         }
 
         .underline {
@@ -34,12 +34,12 @@
         }
 
         .boldTxt {
-            font-family: circular-bold;
+            font-family: circular-reg;
         }
 
         .moneySgn {
             font-size: 1.1rem;
-            font-family: circular-medium;
+            font-family: circular-reg;
             margin-inline-end: rem(1px);
         }
     }

@@ -32,12 +32,15 @@
 
         .text-details {
             justify-content: space-around;
-            & > * {
+
+            &>* {
                 margin-block-end: rem(5px);
             }
+
             h2 {
                 font-size: rem(16px);
             }
+
             p {
                 font-size: rem(14px);
 
@@ -47,12 +50,10 @@
                 }
             }
         }
+
         .price-details {
-            h1 {
-                padding-block: rem(24px);
-            }
             &>*:not(:last-child) {
-                padding-block-end: rem(24px);
+                padding-block-end: 1.5rem;
             }
 
             .fee {
@@ -60,6 +61,14 @@
             }
 
             .total {
+                p {
+                    font-family: circular-medium;
+                    span {
+                        font-family: circular-medium;
+                        text-decoration: underline;
+                    }
+                }
+
                 padding-block-start: rem(24px);
             }
         }

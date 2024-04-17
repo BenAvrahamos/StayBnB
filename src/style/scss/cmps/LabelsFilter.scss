@@ -32,7 +32,6 @@
 
     &>div {
         font-size: 0.85rem;
-        font-family: circular-bold;
         opacity: 0.7;
         position: relative;
 
@@ -52,6 +51,7 @@
 
         p {
             color: black;
+            font-family: circular-reg;
         }
 
         &>div {
@@ -117,6 +117,10 @@
             justify-content: center;
             transition: 0s;
             column-gap: 0.8em;
+
+            span {
+                font-family: circular-medium;
+            }
 
             svg {
                 opacity: 0.8;

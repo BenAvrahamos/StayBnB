@@ -23,6 +23,10 @@
         padding: 1rem 1.5rem;
         border-block-end: 0.667px solid $lightGray;
         border-radius: $BR3 $BR3 0 0;
+
+        h1 {
+            font-family: circular-reg;
+        }
     }
 
     footer {
@@ -126,10 +130,14 @@
                 .checkbox {
                     background-color: transparent;
                     color: $gray2;
-
+                    
                     &:hover {
                         color: $darkGray;
                     }
+                }
+                
+                span {
+                    font-family: circular-thin;
                 }
             }
 
@@ -139,8 +147,8 @@
         }
 
         .accordion-arrow {
+            font-family: circular-medium;
             font-size: 0.9375rem;
-            font-family: circular-bold;
             text-decoration: underline;
 
             cursor: pointer;
@@ -166,7 +174,7 @@
 
             .btn {
                 font-size: 1rem;
-                font-family: circular-bold;
+                font-family: circular-medium;
                 padding: 1rem 0.5rem;
                 height: 4.0625rem;
                 width: 100%;
@@ -212,11 +220,11 @@
                         border: 1.5px solid $gray4;
                         border-radius: $BR2;
                         padding: 0.75rem;
-                        font-family: circular-thin;
 
                         flex-grow: 1;
 
                         input {
+                            font-family: circular-reg;
                             border: none;
                             outline: none;
                         }
@@ -312,6 +320,7 @@
                 width: 100%;
                 padding: 1rem;
                 border-radius: 12px;
+                font-family: circular-medium;
 
                 display: flex;
                 flex-direction: column;
@@ -358,8 +367,10 @@
             }
 
             h4 {
+                font-weight: normal;
+                font-size: 1rem;
+                font-family: circular-reg;
                 margin-block: 0 0.4rem;
-                margin-inline: 0.1rem;
             }
 
             p {
@@ -394,7 +405,7 @@
 
 @media (width > 742px) {
     .filter-modal {
-        margin-block: 2.5rem;
+        margin-block: 0 2.5rem;
         margin-inline: auto;
         max-width: 48.75rem;
 

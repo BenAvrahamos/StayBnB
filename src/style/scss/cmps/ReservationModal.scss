@@ -136,14 +136,14 @@
             
             span {
                 color: white;
-                font-family: circular-bold;
+                font-family: circular-medium;
             }
         }
 
         .charged-p {
             text-align: center;
-            margin-block-end: rem(24px);
-            font-size: 0.825rem;
+            margin-block: 1rem 1.5rem;
+            font-size: 0.875rem;
         }
 
         .price-calc,
@@ -163,7 +163,7 @@
             margin-block-start: 1rem;
             
             span {
-                font-family: circular-bold;
+                font-family: circular-medium;
             }
         }
     }
