@@ -1,26 +1,131 @@
 .dashboard {
-    .user-stays-dashboard {
-        h2 {
-            font-family: circular-reg;
-            font-size: em(16px);
-        }
-        .user-stays-container {
-            overflow: scroll;
+    color: $darkGray;
 
-            .user-stay {
+    h2 {
+        font-family: circular-medium;
+        font-weight: normal;
+        margin: 0;
+    }
+
+    .user-stays {
+        margin-block: 1rem;
+
+        .user-stays-container {
+            border-block-end: 0.667px solid $gray2;
+            padding: 0 0.4rem;
+            color: $darkGray;
+
+            grid-auto-columns: 350px;
+            grid-auto-flow: column;
+            column-gap: 1rem;
+
+            overflow: auto hidden;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+
+            .user-stay-card {
+                position: relative;
+                gap: 0.3rem;
+                padding: 1rem 1.5rem;
+                margin-block: 1rem 2rem;
+                border-radius: 12px;
+                -webkit-box-shadow: 0 0 6px 6px $gray2;
+                -moz-box-shadow: 0 0 6px 6px $gray2;
+                transition: scale 1s;
+
                 img {
                     object-fit: cover;
                     max-width: 341px;
-                    padding: 16px;
-                    border-radius: 20px;
+                    width: 100%;
+                    aspect-ratio: 2/1;
+                    border-radius: 12px;
+                }
+
+                h2 {
+                    margin-block: 1rem 0.5rem;
+                    font-size: 1.25rem;
+                }
+
+                button {
+                    position: absolute;
+                    inset: auto 1.5rem 1rem auto;
+                    padding: 0.5rem 0.75rem;
+                    background-color: transparent;
+                    font-family: circular-medium;
+                    text-decoration: underline;
+
+                    &:hover {
+                        font-family: circular-bold;
+                        background-color: $btnHover;
+                    }
+                }
+
+                &:hover {
+                    scale: 1.05;
                 }
             }
         }
     }
-    .user-orders-dashboard {
-        h2 {
-            font-family: circular-reg;
-            font-size: em(16px);
+
+    .user-orders {
+        margin-block: 1rem;
+        
+        .user-orders-container {
+            gap: 0.75rem;
+
+            li {
+                grid-template-columns: 2fr repeat(6, 1fr);
+
+                h3:last-of-type {
+                    justify-self: center;
+                }
+
+                .selected {
+                    display: flex;
+                    gap: 0.5rem;
+
+                    &::after {
+                        content: '\f077';
+                        font-family: fa-solid;
+                        font-size: 0.8rem;
+                        padding-block-start: 0.4rem;
+                    }
+                }
+
+                div {
+                    button {
+                        color: white;
+                        font-family: circular-medium;
+
+                        transition: scale 0.5s;
+
+                        &:active {
+                            scale: 0.9;
+                        }
+                    }
+
+                    .accept-btn {
+                        background-color: $approved;
+
+                        &:hover {
+                            background-color: darken($approved, 20);
+                        }
+                    }
+
+                    .reject-btn {
+                        background-color: $rejected;
+                        
+                        &:hover {
+                            background-color: darken($rejected, 40);
+                        }
+                    }
+                }
+            }
+
         }
     }
 }
