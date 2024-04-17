@@ -5,8 +5,8 @@ import { utilService } from '../../services/util.service'
 export function OrderConfirmation({ stay, order }) {
     const [isShownModal, setIsShownModal] = useState(true)
     const sumToPay = Math.round(utilService.calcSumToPay({
-        entryDate: order.entryDate,
-        exitDate: order.exitDate,
+        entryDate: +order.entryDate,
+        exitDate: +order.exitDate,
         adults: order.guests.adults,
         children: order.guests.children
     }, stay))
