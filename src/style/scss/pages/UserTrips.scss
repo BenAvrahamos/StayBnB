@@ -152,7 +152,7 @@
                         font-family: circular-bold;
 
                         &.approved {
-                            color: rgb(24, 198, 125);
+                            color: $approved;
                         }
 
                         &.pending {
@@ -160,7 +160,7 @@
                         }
 
                         &.rejected {
-                            color: rgb(253, 122, 122);
+                            color: $rejected;
                         }
                     }
                 }
