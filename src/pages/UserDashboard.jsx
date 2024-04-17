@@ -113,7 +113,7 @@ export function UserDashboard() {
                         return <li key={order._id} className="user-order grid">
                             <p className="title">{order.stay.name}</p>
                             <p>{utilService.timestampsToShortDates(order.entryDate, order.exitDate)}</p>
-                            <p>{order._id}</p>
+                            <p>{order._id.slice(18)}</p>
                             <p>{order.buyer.fullname}</p>
                             <p>{utilService.calcGuestCount(order)}</p>
                             <p>$ {(utilService.calcSumToPay(datesAndGuests, order.stay) + (utilService.calcSumToPay(datesAndGuests, order.stay) * 0.14125)).toLocaleString()}</p>
