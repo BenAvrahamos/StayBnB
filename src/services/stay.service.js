@@ -8,7 +8,7 @@ export const stayService = {
     getById,
     save,
     remove,
-    getUserStaysById,
+    getHostStaysById,
     getLabels,
     getNumberOfNights,
     getFilterFromParams,
@@ -33,7 +33,7 @@ function query(filterBy = getDefaultFilter()) {
 
 }
 
-async function getUserStaysById(userId) {
+async function getHostStaysById(userId) {
     try {
        const stays = await httpService.get(BASE_URL)
        const userStays = stays.filter(stay => stay.host.id === userId)

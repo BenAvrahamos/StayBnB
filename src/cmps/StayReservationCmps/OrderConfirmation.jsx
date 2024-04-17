@@ -9,7 +9,7 @@ export function OrderConfirmation({ stay, order }) {
         exitDate: +order.exitDate,
         adults: order.guests.adults,
         children: order.guests.children
-    }, stay).toFixed(2)
+    }, stay)
     const navigate = useNavigate()
 
     function onCloseModal(e) {
@@ -86,12 +86,14 @@ export function OrderConfirmation({ stay, order }) {
                         <div className='flex space-between'>
                             <p>Price:</p>
                             <p className='flex align-center'>${stay.price} X {utilService.calcSumOfDays({entryDate: order.entryDate, exitDate: order.exitDate})} nights
-                                <span>${sumToPay.toLocaleString()}</span></p>
+                                <span>$ {sumToPay.toLocaleString()}</span></p>
                         </div>
+                        
                         <div className='flex space-between'>
                             <p>Service fee:</p>
                             <p>$ {(sumToPay * 0.14125).toFixed(2).toLocaleString()}</p>
                         </div>
+
                         <div className='flex space-between'>
                             <h4>Total:</h4>
                             <p><span>$ {(sumToPay + (sumToPay * 0.14125)).toLocaleString()}</span></p>

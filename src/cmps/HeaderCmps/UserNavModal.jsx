@@ -3,9 +3,11 @@ import { useState, useEffect } from 'react'
 import { userService } from '../../services/user.service'
 import { login, logout } from '../../store/actions/user.actions'
 import { LoginSignup } from '../LoginSignup'
+import { useNavigate } from 'react-router-dom'
 
 export function UserNavModal({ setIsLoginModal, setModalType }) {
     const [isLoggedInUser, checkIsLoggedInUser] = useState(false)
+    const navigate = useNavigate()
 
     useEffect(() => {
         checkIsLoggedInUser(Boolean(userService.getLoggedInUser()))
@@ -19,6 +21,11 @@ export function UserNavModal({ setIsLoginModal, setModalType }) {
             console.log(err)
             throw err
         }
+    }
+
+    function checkNavigatePath(e, path) {
+        e.preventDefault()
+        isLoggedInUser ? navigate(`${path}`) : onLoginModal()
     }
 
     async function onLogoutClick(ev) {
@@ -41,11 +48,10 @@ export function UserNavModal({ setIsLoginModal, setModalType }) {
         {!isLoggedInUser && <button onClick={onLoginModal} className="grayTxt">Login</button>}
         {!isLoggedInUser && <NavLink to="/" onClick={() => onGuestClick()}>Continue as Guest</NavLink>}
         {isLoggedInUser && <NavLink to="/" className='grayTxt' onClick={(ev) => onLogoutClick(ev)}>Log out</NavLink>}
-        <NavLink to="/unActive" className='grayTxt'>Messages</NavLink>
-        <NavLink to="/trips" className='grayTxt'>Trips</NavLink>
+        {/* TRY TO ADD SOCKETS OF CHAT ON SATURDAY 17.4 SHOVAL <NavLink to="/unActive" className='grayTxt'>Messages</NavLink> */} 
+        <NavLink to={"/trips"}  onClick={(ev) => checkNavigatePath(ev, '/trips')} className='grayTxt'>Trips</NavLink>
         <NavLink to="/wishlist" className='grayTxt'>Wishlist</NavLink>
         <NavLink to="/edit" className='grayTxt'>Airbnb your home</NavLink>
-        <NavLink to="/dashboard" className='grayTxt'>Dashboard</NavLink>
-        
+        <NavLink to="/dashboard"  onClick={(ev) => checkNavigatePath(ev, '/dashboard')} className='grayTxt'>Dashboard</NavLink>
     </section>
 }
