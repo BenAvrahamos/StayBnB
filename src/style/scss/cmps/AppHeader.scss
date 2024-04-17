@@ -96,10 +96,7 @@
     }
 
     .nav-section {
-        width: 25em;
-
         nav {
-            width: 22em;
             font-size: 1em;
 
             a {
@@ -108,7 +105,7 @@
 
                 &.active {
                     color: $darkGray;
-                    font-family: circular-bold;
+                    font-family: circular-medium;
                 }
             }
         }
@@ -122,6 +119,14 @@
 
         a {
             font-size: 0.875rem;
+            border-radius: 40px;;
+            padding: 0.5rem 0.75rem;
+            font-family: circular-medium;
+            text-wrap: nowrap;
+
+            &:hover {
+                background-color: $btnHover;
+            }
         }
 
         button {
@@ -130,7 +135,6 @@
             padding: 8px 8px 8px 14px;
             border: 0.667px solid $gray2;
             border-radius: 32px;
-            font-family: circular-bold;
             background-color: white;
             position: relative;
 

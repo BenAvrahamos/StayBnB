@@ -18,7 +18,6 @@
             height: 2rem;
             width: 2rem;
             background-color: transparent;
-            padding-block-start: 5px;
 
             &::before {
                 content: "\f053";
@@ -30,8 +29,15 @@
             }
         }
 
+        h1 {
+            font-size: 1.5rem;
+            font-family: circular-medium;
+            font-weight: normal;
+        }
+
         span {
             text-decoration: underline;
+            font-family: circular-medium;
 
             cursor: pointer;
 
@@ -58,7 +64,6 @@
 
             input,
             select {
-                font-family: circular-reg;
                 font-size: 0.9rem;
                 border: none;
                 outline: none;

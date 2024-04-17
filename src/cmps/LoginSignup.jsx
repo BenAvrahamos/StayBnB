@@ -38,9 +38,10 @@ export function LoginSignup({ setIsLoginModal}) {
 
     return <>
         <div className="overlay"></div>
+
         <section className="login-signup">
             <header className="flex column center">
-                <button className="back-btn" onClick={onClose}></button>
+                <button className="back-btn flex center" onClick={onClose}></button>
                 <h1>Welcome to Staybnb</h1>
                 {isSignup && <p>Already signed up? <span onClick={onChangeLoginSignup}>Click here to login</span></p>}
                 {!isSignup && <p>Don't Have an account? <span onClick={onChangeLoginSignup}>Click here to sign up</span></p>}

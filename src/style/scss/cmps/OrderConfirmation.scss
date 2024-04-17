@@ -15,7 +15,7 @@
     }
 
     header {
-        height: 3rem;
+        height: 4rem;
         inset: 0 0 auto;
         padding: 1rem 1.5rem;
         border-block-end: 0.667px solid $lightGray;
@@ -23,14 +23,17 @@
 
         .exit-btn {
             position: absolute;
-            inset: 0.5rem auto auto 1rem;
+            inset: 1rem auto auto 1.25rem;
             border-radius: 50%;
             height: 2rem;
             width: 2rem;
             background-color: transparent;
             transition: 0s;
-            letter-spacing: -0.8px;
-            font-family: circular-bold;
+
+            &::before {
+                content: '\58';
+                font-family: fa-solid;
+            }
 
             &:hover {
                 background-color: $btnHover;
@@ -72,9 +75,9 @@
     }
 
     .order-details {
-        height: calc(100% - 6rem);
-        padding-block: 1rem 2rem;
-        margin-block: 3rem 8rem;
+        height: calc(100% - 7rem);
+        padding-block: 1rem 0;
+        margin-block: 4rem 0;
         padding-inline: 1rem;
 
         grid-template-columns: minmax(1px, 100%);
@@ -101,7 +104,7 @@
         .rooms,
         .guests,
         .price {
-            gap: 0.5rem;
+            gap: 0.35rem;
         }
 
         .dates,
@@ -135,18 +138,14 @@
 
             transition: width 1s;
 
-            hr {
-                border: none;
-                width: 100%;
-                height: 5px;
-                margin: 0;
-                border-top: 2px dotted $gray3;
-                line-height: 80%;
+            p {
+                gap: 2rem;
+
+                span {
+                    font-family: circular-bold;
+                }
             }
 
-            span {
-                font-family: circular-bold;
-            }
         }
     }
 }

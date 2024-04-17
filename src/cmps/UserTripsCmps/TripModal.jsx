@@ -13,9 +13,10 @@ export function TripModal({ trip, setOnModal }) {
 
     return <>
         <div className='overlay' onClick={onCloseModal}></div>
+
         <section className={`order-confirmation trip-modal ${trip.status}`}>
             <header className="order-header flex center">
-                <button onClick={onCloseModal} className='exit-btn'>X</button>
+                <button onClick={onCloseModal} className='exit-btn'></button>
                 {trip.status === 'approved' && <h1 className="order-reserved">Reservation confirmed</h1>}
                 {trip.status === 'pending' && <h1 className="order-reserved">Reservation pending</h1>}
                 {trip.status === 'rejected' && <h1 className="order-reserved">Reservation rejected</h1>}
@@ -39,8 +40,6 @@ export function TripModal({ trip, setOnModal }) {
                 <div className='stay-name flex column'>
                     <p>Location:</p>
                     <h5>{trip.stay.location.address}</h5>
-                    <h5>{trip.stay.location.city}</h5>
-                    <h5>{trip.stay.location.country}</h5>
                 </div>
 
                 <div className='dates grid'>
