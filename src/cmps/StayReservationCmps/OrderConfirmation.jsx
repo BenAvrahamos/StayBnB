@@ -4,12 +4,12 @@ import { utilService } from '../../services/util.service'
 
 export function OrderConfirmation({ stay, order }) {
     const [isShownModal, setIsShownModal] = useState(true)
-    const sumToPay = Math.round(utilService.calcSumToPay({
+    const sumToPay = utilService.calcSumToPay({
         entryDate: +order.entryDate,
         exitDate: +order.exitDate,
         adults: order.guests.adults,
         children: order.guests.children
-    }, stay))
+    }, stay).toFixed(2)
     const navigate = useNavigate()
 
     function onCloseModal(e) {
@@ -22,9 +22,10 @@ export function OrderConfirmation({ stay, order }) {
         isShownModal &&
         <>
             <div className='overlay' onClick={onCloseModal}></div>
+
             <section className="order-confirmation">
                 <header className="order-header flex center">
-                    <button onClick={onCloseModal} className='exit-btn'>X</button>
+                    <button onClick={onCloseModal} className='exit-btn flex center'></button>
                     <h1 className="order-reserved">Reservation confirmed</h1>
                 </header>
 
@@ -84,16 +85,16 @@ export function OrderConfirmation({ stay, order }) {
                     <div className='price flex column'>
                         <div className='flex space-between'>
                             <p>Price:</p>
-                            <p>${stay.price} X {utilService.calcSumOfDays({entryDate: order.entryDate, exitDate: order.exitDate})} nights &nbsp;&nbsp;&nbsp;&nbsp;
-                                <span>${Math.round(sumToPay)}</span></p>
+                            <p className='flex align-center'>${stay.price} X {utilService.calcSumOfDays({entryDate: order.entryDate, exitDate: order.exitDate})} nights
+                                <span>${sumToPay.toLocaleString()}</span></p>
                         </div>
                         <div className='flex space-between'>
                             <p>Service fee:</p>
-                            <p>${Math.round(sumToPay * 0.14125)}</p>
+                            <p>$ {(sumToPay * 0.14125).toFixed(2).toLocaleString()}</p>
                         </div>
                         <div className='flex space-between'>
                             <h4>Total:</h4>
-                            <p><span>${Math.round(sumToPay) + Math.round(sumToPay * 0.14125)}</span></p>
+                            <p><span>$ {(sumToPay + (sumToPay * 0.14125)).toLocaleString()}</span></p>
                         </div>
                     </div>
                 </div>

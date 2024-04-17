@@ -18,22 +18,21 @@ export function PaymentModal({ stay, params }) {
         </div>
 
         <div className="price-details">
-            
             <h1>Price details</h1>
 
             <div className="accommodation flex space-between">
-                <p>Accommodation</p>
-                <p>${Math.round(utilService.calcSumToPay(params, stay))}</p>
+                <p>$ {stay.price.toFixed(2).toLocaleString()} X {utilService.calcSumOfDays(params) === 1 ? `${utilService.calcSumOfDays(params)} night` : `${utilService.calcSumOfDays(params)} nights`}</p>
+                <p className='sum'>${(stay.price * utilService.calcSumOfDays(params) * (+params.adults + +params.children)).toFixed(2).toLocaleString()}</p>
             </div>
 
             <div className="fee flex space-between">
                 <p>Staybnb service fee</p>
-                <p>${(Math.round(utilService.calcSumToPay(params, stay) * 0.14125))}</p>
+                <p>$ {(utilService.calcSumToPay(params, stay) * 0.14125).toFixed(2).toLocaleString()}</p>
             </div>
 
             <div className="total flex space-between">
-                <p>Total</p>
-                <p>${Math.round((utilService.calcSumToPay(params, stay)) + Math.round((utilService.calcSumToPay(params, stay) * 0.14125)))}</p>
+                <p>Total <span>(USD)</span></p>
+                <p>$ {(utilService.calcSumToPay(params, stay)) + (utilService.calcSumToPay(params, stay) * 0.14125).toFixed(2).toLocaleString()}</p>
             </div>
         </div>
     </div>

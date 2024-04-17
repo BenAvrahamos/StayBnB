@@ -2,7 +2,6 @@ import { NavLink, useNavigate } from "react-router-dom"
 import { useSelector } from 'react-redux'
 import { useSearchParams, } from 'react-router-dom'
 import { useState, useEffect, useRef } from "react"
-
 import { HeaderFilter } from "./HeaderFilter"
 import { DemoDataService } from "../../services/demoData.service"
 import { stayService } from "../../services/stay.service"

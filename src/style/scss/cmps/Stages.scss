@@ -68,7 +68,8 @@
             position: relative;
 
             & .title {
-                font-family: circular-bold;
+                font-weight: normal;
+                font-family: circular-medium;
                 margin-bottom: 1em;
             }
 
@@ -107,7 +108,8 @@
             border-radius: 10px;
 
             & .title {
-                font-family: circular-bold;
+                font-weight: normal;
+                font-family: circular-medium;
                 // margin-bottom: 1em;
             }
 

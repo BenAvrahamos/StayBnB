@@ -156,17 +156,19 @@ function timestampsToShortDates(entryTimestamp, exitTimestamp) {
     return str
 }
 
-function timestampDaysAway(entryTimestamp) {
+function timestampDaysAway(entryTimestamp, exitTimestamp) {
     const entry = new Date(entryTimestamp)
+    const exit = new Date(exitTimestamp)
     const today = new Date()
     today.setHours(0, 0, 0, 0)
     
-    const days = Math.floor((entry - today) / (1000 * 60 * 60 * 24))
+    const daysEntry = Math.floor((entry - today) / (1000 * 60 * 60 * 24))
+    const daysExit = Math.floor((exit - today) / (1000 * 60 * 60 * 24))
 
-    if (days < 0) return 'already happened'
-    if (days === 0) return 'today'
-
-    return 'in ' + days + ' days'
+    if (daysEntry === 0) return 'today'
+    if (daysExit === 0 || (daysEntry < 0 && daysExit > 0)) return 'current'
+    if (daysExit < 0) return 'already happened'
+    return 'in ' + daysEntry + ' days'
 }
 
 function timestampToMonthYear(timeStr) {

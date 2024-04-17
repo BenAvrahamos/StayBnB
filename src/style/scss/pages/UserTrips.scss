@@ -143,6 +143,7 @@
 
                 p {
                     position: absolute;
+                    font-family: circular-reg;
 
                     background-color: rgba(255, 255, 255, 0.9);
                     padding: 0.25rem 0.5rem;
@@ -255,18 +256,13 @@
         margin: 0;
     }
 
-    header.order-header,
     footer.order-details-footer {
         height: 3.5rem;
-    }
-
-    footer.order-details-footer {
         gap: 5rem;
     }
 
     button:active {
         scale: 0.95;
-
         transition: scale 0.5s;
     }
 }

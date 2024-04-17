@@ -3,9 +3,10 @@ import { useNavigate } from "react-router-dom"
 import { useEffect, useState } from 'react'
 import { orderService } from '../services/order.service.js'
 import { utilService } from '../services/util.service.js'
-import { socketService, SOCKET_EVENT_ODER_UPDATE } from '../services/socket.service.js'
+import { socketService, SOCKET_EVENT_ORDER_UPDATE } from '../services/socket.service.js'
 import { TripModal } from '../cmps/UserTripsCmps/TripModal.jsx'
 import { userService } from '../services/user.service.js'
+import { UserNotification } from '../cmps/UserNotification.jsx'
 
 export function UserTrips() {
     const [userTrips, setUserTrips] = useState([])
@@ -18,7 +19,7 @@ export function UserTrips() {
     const { isLoading } = useSelector(storeState => storeState.stayModule)
 
     useEffect(() => {
-        // socketService.on(SOCKET_EVENT_ODER_UPDATE, onUpdateOrderStatus)
+        socketService.on(SOCKET_EVENT_ORDER_UPDATE, onUpdateOrderStatus)
 
         const fetchData = async () => {
             try {
@@ -53,11 +54,12 @@ export function UserTrips() {
         setLayout(type)
     }
 
-    function onUpdateOrderStatus(data) {
-        orderService.save(data.order)
-
-
-
+    function onUpdateOrderStatus(order) {
+        console.log(trips)
+        setTrips(prevTrips => prevTrips.map(trip => {
+            if(trip._id === order._id) return order
+            return trip
+        }))
     }
 
     if (!userTrips || !userTrips.length) return <section className='user-trips no-user-trips'>
@@ -143,7 +145,6 @@ export function UserTrips() {
                         </div>
 
                         <div className='address flex column'>
-            
                             <p>{trip.stay.location.address}</p>
                             <p>{trip.stay.location.city}</p>
                             <p>{trip.stay.location.country}</p>
@@ -151,8 +152,8 @@ export function UserTrips() {
 
                         <div className='image'>
                             <img src={trip.stay.img} alt={trip.stay.name} />
-                            <p>{utilService.timestampDaysAway(+trip.entryDate)}&nbsp;|&nbsp;
-                                <span className={`status ${trip.status}`}>{trip.status}</span>
+                            <p>{utilService.timestampDaysAway(+trip.entryDate, +trip.exitDate)} |
+                                <span className={`status ${trip.status}`}> {trip.status}</span>
                             </p>
                         </div>
                     </li>
@@ -160,5 +161,6 @@ export function UserTrips() {
             </ul>
         </section>
         {onModal && chosenTrip && <TripModal trip={chosenTrip} setOnModal={setOnModal} />}
+        <UserNotification />
     </>
 }
