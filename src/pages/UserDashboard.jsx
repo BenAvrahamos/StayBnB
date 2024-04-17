@@ -107,7 +107,7 @@ export function UserDashboard() {
                     </li>
 
                     {userOrders && userOrders.map(order => {
-                        const datesAndGuests = { entryDate: order.entryDate, exitDate: order.exitDate, adults: order.guests?.adults, children: order.guests?.children }
+                        const datesAndGuests = { entryDate: order.entryDate, exitDate: order.exitDate, adults: order.guests?.adults, children: order.guests?.children, infants: order.guests?.infants, pets: order.guests?.pets }
                         const isAnswered = (order.status !== 'pending') ? true : false
 
                         return <li key={order._id} className="user-order grid">
@@ -116,7 +116,7 @@ export function UserDashboard() {
                             <p>{order._id.slice(18)}</p>
                             <p>{order.buyer.fullname}</p>
                             <p>{utilService.calcGuestCount(order)}</p>
-                            <p>$ {(utilService.calcSumToPay(datesAndGuests, order.stay) + (utilService.calcSumToPay(datesAndGuests, order.stay) * 0.14125)).toLocaleString()}</p>
+                            <p>$ {Math.round((utilService.calcSumToPay(datesAndGuests, order.stay)) + Math.round((utilService.calcSumToPay(datesAndGuests, order.stay) * 0.14125))).toLocaleString()}</p>
                             <div className={`flex space-evenly ${isAnswered ? 'answered' : ''}`}>
                                 <button onClick={() => onChangeOrderStatus('approved', order)} className={`approve-btn ${(order.status === 'approved') ? 'approved' : ''}`}>Approve</button>
                                 <button onClick={() => onChangeOrderStatus('rejected', order)} className={`reject-btn ${(order.status === 'rejected') ? 'rejected' : ''}`}>Reject</button>
