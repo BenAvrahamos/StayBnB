@@ -217,13 +217,13 @@
     }
 }
 
-@media (width < 550px) {
+@media (width < 450px) {
     .expanded-header {
-        justify-content: space-around;
+
 
         .nav-section .compact-header {
 
-            width: 10em;
+            width: 15em;
 
             & .calendar {
                 display: none;
