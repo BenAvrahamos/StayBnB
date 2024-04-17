@@ -17,14 +17,11 @@ export const SET_GALLERY_OBSERVATION = 'SET_GALLERY_OBSERVATION'
 
 const initialState = {
     stays: [],
-    isLoading: false,
+    isLoading: true,
     filterBy: stayService.getDefaultFilter(),
     headerFilterBy: stayService.getDefaultHeaderFilter(),
     isGalleryVisible: true
 }
-
-
-
 
 export function stayReducer(state = initialState, action = {}) {
     let stays

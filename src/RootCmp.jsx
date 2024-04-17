@@ -41,6 +41,7 @@ export function RootCmp() {
           <Route path='/trips' element={<UserTrips />} />
           <Route path='/dashboard'   element={<UserDashboard />}></Route>
           <Route path='/edit' element={<StayEdit />} />
+          <Route path='/edit/:stayId' element={<StayEdit />} />
         </Routes>
         <AppFooter />
       </Router>
