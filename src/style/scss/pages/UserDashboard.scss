@@ -1,9 +1,10 @@
 .dashboard {
     color: $darkGray;
 
-    h2 {
-        font-family: circular-medium;
+    h1 {
+        font-family: circular-reg;
         font-weight: normal;
+        font-size: 2rem;
         margin: 0;
     }
 
@@ -26,6 +27,21 @@
             &::-webkit-scrollbar {
                 display: none;
             }
+
+            // .user-stay-card {
+            //     p, button {
+            //         display: none;
+            //         //  fow to transition display slowly?
+            //     }
+            // }
+
+            // &:hover {
+            //     .user-stay-card {
+            //         p, button {
+            //             display: block;
+            //         }
+            //     }
+            // }
 
             .user-stay-card {
                 position: relative;
@@ -73,15 +89,29 @@
 
     .user-orders {
         margin-block: 1rem;
-        
+
         .user-orders-container {
             gap: 0.75rem;
 
-            li {
-                grid-template-columns: 2fr repeat(6, 1fr);
+            overflow: auto hidden;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
 
-                h3:last-of-type {
+            &::-webkit-scrollbar {
+                display: none;
+            }
+
+            li {
+                grid-template-columns: minmax(150px, 2fr) repeat(5, minmax(100px, 1fr)) minmax(8.125rem, 1fr);
+
+                h3:not(.title),
+                p:not(.title) {
                     justify-self: center;
+                }
+
+                h3:first-of-type,
+                h3:nth-of-type(2) {
+                    cursor: pointer;
                 }
 
                 .selected {
@@ -97,8 +127,19 @@
                 }
 
                 div {
+                    &:not(.answered) {
+                        .accept-btn {
+                            background-color: $approved;
+                        }
+
+                        .reject-btn {
+                            background-color: $rejected;
+                        }
+                    }
+
                     button {
                         color: white;
+                        background-color: $gray4;
                         font-family: circular-medium;
 
                         transition: scale 0.5s;
@@ -106,26 +147,18 @@
                         &:active {
                             scale: 0.9;
                         }
-                    }
 
-                    .accept-btn {
-                        background-color: $approved;
-
-                        &:hover {
+                        &.accept-btn:hover {
                             background-color: darken($approved, 20);
                         }
-                    }
 
-                    .reject-btn {
-                        background-color: $rejected;
-                        
-                        &:hover {
+                        &.reject-btn:hover {
                             background-color: darken($rejected, 40);
                         }
                     }
                 }
-            }
 
+            }
         }
     }
 }

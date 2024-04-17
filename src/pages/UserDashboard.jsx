@@ -75,7 +75,7 @@ export function UserDashboard() {
     return (
         <section className="dashboard">
             {userStays && <div className="user-stays">
-                <h2>My properties</h2>
+                <h1>My properties</h1>
 
                 <div className="user-stays-container grid">
                     {userStays.map(stay => {
@@ -92,12 +92,12 @@ export function UserDashboard() {
             </div>}
 
             {userOrders && <div className="user-orders flex column">
-                <h2>My orders</h2>
+                <h1>My orders</h1>
 
                 <ul className="user-orders-container flex column">
 
                     <li className="grid">
-                        <h3 onClick={() => onSortBy('name')} className={sortBy === 'name' ? 'selected' : ''}>Property name</h3>
+                        <h3 onClick={() => onSortBy('name')} className={`title ${sortBy === 'name' ? 'selected' : ''}`}>Property name</h3>
                         <h3 onClick={() => onSortBy('date')} className={sortBy === 'date' ? 'selected' : ''}>Dates</h3>
                         <h3>Order number</h3>
                         <h3>Guest</h3>
@@ -108,16 +108,17 @@ export function UserDashboard() {
 
                     {userOrders && userOrders.map(order => {
                         const datesAndGuests = { entryDate: order.entryDate, exitDate: order.exitDate, adults: order.guests?.adults, children: order.guests?.children }
+                        const isAnswered = (order.status !== 'pending') ? true : false
 
                         return <li key={order._id} className="user-order grid">
-                            <p>{order.stay.name}</p>
+                            <p className="title">{order.stay.name}</p>
                             <p>{utilService.timestampsToShortDates(order.entryDate, order.exitDate)}</p>
                             <p>{order._id}</p>
                             <p>{order.buyer.fullname}</p>
                             <p>{utilService.calcGuestCount(order)}</p>
                             <p>$ {(utilService.calcSumToPay(datesAndGuests, order.stay) + (utilService.calcSumToPay(datesAndGuests, order.stay) * 0.14125)).toLocaleString()}</p>
-                            <div className="flex space-evenly">
-                                <button onClick={() => onChangeOrderStatus('accepted', order)} className="accept-btn">Accept</button>
+                            <div className={`flex space-evenly ${isAnswered ? 'answered' : ''}`}>
+                                <button onClick={() => onChangeOrderStatus('approved', order)} className="accept-btn">Approve</button>
                                 <button onClick={() => onChangeOrderStatus('rejected', order)} className="reject-btn">Reject</button>
                             </div>
                         </li>
@@ -127,15 +128,3 @@ export function UserDashboard() {
         </section>
     )
 }
-
-//  {userOrders.map((order, idx) => {
-//             <div className="order-user-details flex" key={order.buyer._id + idx}>
-//                 <p>55555555</p>
-//                 {/* change to id from mongo */}
-//                 <p>{order.stay.name}</p>
-//                 <p>{utilService.calcGuestsCount(order)}</p>
-//                 <p>{order.stay.price}</p>
-//                 <p>{utilService.timestampToShortDates(+order.stay.entryDate)}-{utilService.timestampToShortDates(+order.stay.exitDate)}</p>
-//                 <p>{order.stay.loc}</p>
-//                 </div>
-//         })}
