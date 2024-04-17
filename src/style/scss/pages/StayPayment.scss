@@ -285,15 +285,16 @@
             border-block-end: 0.667px solid $lightGray;
             border-radius: $BR3 $BR3 0 0;
             margin: 0;
-
+            
             h2 {
-                font-size: 1rem;
+                font-family: circular-reg;
+                font-size: 1.2rem;
                 padding: 0;
             }
 
             .close-btn {
                 position: absolute;
-                inset: 0.6rem auto auto 1rem;
+                inset: 1rem auto auto 1rem;
                 width: 2rem;
                 height: 2rem;
                 border: none;
@@ -306,7 +307,7 @@
         }
 
         main {
-            padding: 3rem;
+            padding: 1.5rem 3rem 3rem 3rem;
         }
 
         p {
