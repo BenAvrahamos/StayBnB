@@ -1,6 +1,7 @@
 import { utilService } from './util.service.js'
 import { httpService } from './http.service.js'
-
+import { SET_IS_LOADING } from '../store/reducers/stay.reducer.js'
+import { store } from '../store/store.js'
 const BASE_URL = 'stay/'
 
 export const stayService = {
@@ -35,8 +36,10 @@ function query(filterBy = getDefaultFilter()) {
 
 async function getHostStaysById(userId) {
     try {
+        store.dispatch({ type: SET_IS_LOADING, isLoading: true })
        const stays = await httpService.get(BASE_URL)
        const userStays = stays.filter(stay => stay.host.id === userId)
+       store.dispatch({ type: SET_IS_LOADING, isLoading: false })
        return userStays
     } catch(err) {
         console.log(err)
