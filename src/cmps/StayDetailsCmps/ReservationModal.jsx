@@ -10,19 +10,21 @@ import { GuestCount } from './DetailsGuestCount'
 import { stayService } from '../../services/stay.local.service'
 import { StayDetailsDateModal } from './StayDetailsDateModal'
 import { DynamicModalHeader } from './DynamicHeader/DynamicModalHeader'
+import { userService } from '../../services/user.service'
+import { LoginSignup } from '../LoginSignup'
 
 export function ReservationModal({ stay, params, updateParams }) {
     const navigate = useNavigate()
     const headerFilterBy = useSelector(storeState => storeState.stayModule.headerFilterBy)
     const [numOfDays, setNumOfDays] = useState(0)
     const [fee, setFee] = useState(0)
+    const [isLoginModal, setIsLoginModal] = useState(false)
     const [currArrow, setCurrArrow] = useState('down')
     const [modalType, openModalType] = useState()
     const [isBtnScrolled, setIsBtnScrolled] = useState(false)
     const [btnObserver, setBtnObserver] = useState(null)
     const ref = useRef(null)
     const btn = useRef()
-
 
     useEffect(() => {
         setNumOfDays(utilService.calcSumOfDays(params))
@@ -79,8 +81,7 @@ export function ReservationModal({ stay, params, updateParams }) {
                 children: params.children || '',
                 infants: params.infants || ''
             }).toString()
-
-            navigate(`/${stay._id}/payment?${queryParams}`)
+            userService.getLoggedInUser() ? navigate(`/${stay._id}/payment?${queryParams}`) : setIsLoginModal(true)
         }
     }
 
@@ -149,5 +150,6 @@ export function ReservationModal({ stay, params, updateParams }) {
 
             <button className='flex center' onClick={() => validateAndMoveToPayment()}><span >Reserve</span></button>
         </div>
+        {isLoginModal && <LoginSignup setIsLoginModal={setIsLoginModal} />}
     </>
 }         

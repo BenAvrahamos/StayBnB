@@ -3,7 +3,7 @@ import { userService } from "../services/user.service"
 import { useNavigate } from "react-router"
 import { useState } from "react"
 
-export function LoginSignup({ setIsLoginModal}) {
+export function LoginSignup({ setIsLoginModal }) {
     const navigate = useNavigate()
     const [isSignup, setIsSignup] = useState(false)
     const [credentials, setCredentials] = useState(userService.getEmptyCredentials())
@@ -12,9 +12,7 @@ export function LoginSignup({ setIsLoginModal}) {
         ev.preventDefault()
         try {
             const user = isSignup ? await signup(credentials) : await login(credentials)
-            if (user) {
-                onClose()
-            }
+            if (user) onClose()
         } catch (err) {
             console.log(err)
             throw err
