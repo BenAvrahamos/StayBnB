@@ -4,6 +4,7 @@ import { orderService } from "../services/order.service"
 import { utilService } from "../services/util.service"
 import { stayService } from "../services/stay.service"
 import { updateOrder } from "../store/actions/order.actions"
+import { Loading } from "../cmps/Loading"
 import { socketService, SOCKET_EVENT_ORDER_UPDATE } from "../services/socket.service"
 import { useNavigate } from "react-router"
 
@@ -16,8 +17,8 @@ export function UserDashboard() {
 
     useEffect(() => {
         getUserStays()
-    }, [])
-
+    },[])  
+    
     useEffect(() => {
         getUserOrders()
     }, [sortBy])
@@ -63,7 +64,7 @@ export function UserDashboard() {
     }
 
     function navToEditStay(ev, stayId) {
-        ev.stopPropagation()               // doesn't work adding the nav to details page
+        ev.stopPropagation()
         navigate(`/edit/${stayId}`)
     }
 
@@ -72,29 +73,29 @@ export function UserDashboard() {
         navigate(`/${stayId}`)
     }
 
-    return (
+    return <>
+        {(!userStays || !userOrders) && <Loading />}
         <section className="dashboard">
-            {userStays && <div className="user-stays">
-                <h1>My properties</h1>
-
-                <div className="user-stays-container grid">
-                    {userStays.map(stay => {
-                        return <article key={stay._id} className="user-stay-card flex column" onClick={() => navToDetails(event, stay._id)}>
-                            <img src={stay.imgUrls[0]} />
-                            <h2>{stay.name}</h2>
-                            <p><span>Capacity:</span> {stay.capacity}</p>
-                            <p><span>Price:</span> {stay.price}</p>
-                            <button onClick={() => navToEditStay(event, stay._id)}>Edit</button>
-                        </article>
-                    })}
+            {userStays && (
+                <div className="user-stays">
+                    <h2>My properties</h2>
+                    <div className="user-stays-container grid">
+                        {userStays.map(stay => (
+                            <article key={stay._id} className="user-stay-card flex column" onClick={(ev) => navToDetails(ev, stay._id)}>
+                                <img src={stay.imgUrls[0]} />
+                                <h2>{stay.name}</h2>
+                                <p><span>Capacity:</span> {stay.capacity}</p>
+                                <p><span>Price:</span> {stay.price}</p>
+                                <button onClick={(ev) => navToEditStay(ev, stay._id)}>Edit</button>
+                            </article>
+                        ))}
+                    </div>
                 </div>
-            </div>}
+            )}
 
             {userOrders && <div className="user-orders flex column">
-                <h1>My orders</h1>
-
+                <h2>My orders</h2>
                 <ul className="user-orders-container flex column">
-
                     <li className="grid">
                         <h3 onClick={() => onSortBy('name')} className={`title ${sortBy === 'name' ? 'selected' : ''}`}>Property name</h3>
                         <h3 onClick={() => onSortBy('date')} className={sortBy === 'date' ? 'selected' : ''}>Dates</h3>
@@ -125,5 +126,5 @@ export function UserDashboard() {
                 </ul>
             </div>}
         </section>
-    )
+    </>
 }

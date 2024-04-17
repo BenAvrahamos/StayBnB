@@ -80,3 +80,10 @@
         column-gap: 23em;
     }
 }
+
+
+@media (width < 600px) {
+    .app-footer-container{
+       display: none;
+    }
+}

@@ -119,7 +119,8 @@
 
         a {
             font-size: 0.875rem;
-            border-radius: 40px;;
+            border-radius: 40px;
+            ;
             padding: 0.5rem 0.75rem;
             font-family: circular-medium;
             text-wrap: nowrap;
@@ -167,7 +168,7 @@
             }
         }
     }
-    
+
     .grayTxt:not(.grayTxt:hover) {
         color: $headerGray;
     }
@@ -186,13 +187,13 @@
 @media (width < 742px) {
     .app-header-container {
         .expanded-header {
-            
+
             .user-section a,
             .logo-section {
                 display: none;
             }
         }
-        
+
         &.header-expanded {
             .header-filter {
                 transform: translateY(-3.5rem) scale(0.4, 0.65);
@@ -200,7 +201,7 @@
                 transition: 0.3s ease-out;
                 height: 0;
             }
-            
+
             .compact-header {
                 opacity: 1;
                 transition: opacity 0.3s;
@@ -212,6 +213,26 @@
             nav {
                 display: none;
             }
+        }
+    }
+}
+
+@media (width < 450px) {
+    .expanded-header {
+padding-inline: 5px;
+
+        .nav-section .compact-header {
+
+            width: 15em;
+
+            & .calendar {
+                display: none;
+            }
+
+            & .guests {
+                display: none;
+            }
+
         }
     }
 }

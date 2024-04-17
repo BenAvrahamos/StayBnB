@@ -4,12 +4,14 @@ import { utilService } from '../../services/util.service'
 
 export function OrderConfirmation({ stay, order }) {
     const [isShownModal, setIsShownModal] = useState(true)
-    const sumToPay = utilService.calcSumToPay({
+    const sumToPay = Math.round(utilService.calcSumToPay({
         entryDate: +order.entryDate,
         exitDate: +order.exitDate,
         adults: order.guests.adults,
-        children: order.guests.children
-    }, stay)
+        children: order.guests.children,
+        infants: order.guests.infants,
+        pets: order.guests.pets
+    }, stay))
     const navigate = useNavigate()
 
     function onCloseModal(e) {
@@ -86,17 +88,15 @@ export function OrderConfirmation({ stay, order }) {
                         <div className='flex space-between'>
                             <p>Price:</p>
                             <p className='flex align-center'>${stay.price} X {utilService.calcSumOfDays({entryDate: order.entryDate, exitDate: order.exitDate})} nights
-                                <span>$ {sumToPay.toLocaleString()}</span></p>
+                                <span>${Math.round(sumToPay)}</span></p>
                         </div>
-                        
                         <div className='flex space-between'>
                             <p>Service fee:</p>
-                            <p>$ {(sumToPay * 0.14125).toFixed(2).toLocaleString()}</p>
+                            <p>$ {Math.round(sumToPay * 0.14125)}</p>
                         </div>
-
                         <div className='flex space-between'>
                             <h4>Total:</h4>
-                            <p><span>$ {(sumToPay + (sumToPay * 0.14125)).toLocaleString()}</span></p>
+                            <p><span>$ {Math.round(sumToPay) + Math.round(sumToPay * 0.14125)}</span></p>
                         </div>
                     </div>
                 </div>
