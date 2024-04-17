@@ -5,11 +5,13 @@ export const REMOVE_STAY = 'REMOVE_STAY'
 export const ADD_STAY = 'ADD_STAY'
 export const UPDATE_STAY = 'UPDATE_STAY'
 
+export const SET_IS_LOADING = 'SET_IS_LOADING'
+
 
 export const SET_FILTER = 'SET_FILTER'
 export const SET_HEADER_FILTER = 'SET_HEADER_FILTER'
 export const SET_PAGE_IDX = 'SET_PAGE_IDX'
-export const IS_LOADING = 'IS_LOADING'
+
 
 export const SET_GALLERY_OBSERVATION = 'SET_GALLERY_OBSERVATION'
 
@@ -20,6 +22,7 @@ const initialState = {
     headerFilterBy: stayService.getDefaultHeaderFilter(),
     isGalleryVisible: true
 }
+
 
 
 
@@ -54,11 +57,14 @@ export function stayReducer(state = initialState, action = {}) {
 
         case SET_PAGE_IDX:
             return { ...state, filterBy: { ...state.filterBy, pageIdx: action.pageIdx } }
-        
+
         // Observation
         case SET_GALLERY_OBSERVATION:
-            return { ...state, isGalleryVisible: action.isVisible}
+            return { ...state, isGalleryVisible: action.isVisible }
 
+        case SET_IS_LOADING:
+            return { ...state, isLoading: action.isLoading }
+   
         default:
             return state
     }

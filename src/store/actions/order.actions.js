@@ -5,7 +5,7 @@ import { userService } from '../../services/user.service'
 
 export async function addOrder(params, stay) {
     try {
-        const user = userService.getLoggedInUser() 
+        const user = userService.getLoggedInUser()
         const order = await orderService.getOrder(stay, user, params)
         const orderToAdd = await orderService.save(order)
         store.dispatch({ type: ADD_ORDER, order: orderToAdd })
@@ -18,8 +18,10 @@ export async function addOrder(params, stay) {
 
 export async function loadOrders() {
     try {
+        store.dispatch({ type: SET_IS_LOADING, isLoading: true })
         const orders = await orderService.query()
         store.dispatch({ type: SET_ORDERS, orders })
+        store.dispatch({ type: SET_IS_LOADING, isLoading: false })
     } catch (err) {
         console.log(err)
     }

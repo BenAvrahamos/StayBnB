@@ -15,6 +15,7 @@ export function UserTrips() {
     const [chosenTrip, setChosenTrip] = useState(null)
     const [layoutType, setLayout] = useState('cards')
     const navigate = useNavigate()
+    const { isLoading } = useSelector(storeState => storeState.stayModule)
 
     useEffect(() => {
         // socketService.on(SOCKET_EVENT_ODER_UPDATE, onUpdateOrderStatus)

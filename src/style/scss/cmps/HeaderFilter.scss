@@ -15,7 +15,7 @@
 
     grid-template-columns: minmax(1px, 2fr) 1px minmax(1px, 1fr) 1px minmax(1px, 1fr) 1px minmax(1px, 2.2fr);
     grid-template-rows: 4rem;
-
+    
     &>div {
         height: 4rem;
         border-radius: 48px;
@@ -45,7 +45,7 @@
         }
     }
 
-    .gray {
+    .grey {
         color: $lightGray;
     }
 

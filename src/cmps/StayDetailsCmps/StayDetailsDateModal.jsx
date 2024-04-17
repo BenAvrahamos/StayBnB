@@ -52,7 +52,7 @@ export function StayDetailsDateModal({ updateParams, params, stay }) {
                 inputRanges={[]}
                 enableOutsideDays={true}
                 disabledDates={disabledDatesArray.map(date => date.getTime())}
-                minDate={new Date()}
+                // minDate={new Date()}
                 rangeColors={['#c72d65']
                 }
             />
