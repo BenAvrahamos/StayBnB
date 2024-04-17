@@ -84,7 +84,6 @@ export function UserDashboard() {
                             <h2>{stay.name}</h2>
                             <p><span>Capacity:</span> {stay.capacity}</p>
                             <p><span>Price:</span> {stay.price}</p>
-                            <p><span>Reviews count:</span> {stay.reviews.length}</p>
                             <button onClick={() => navToEditStay(event, stay._id)}>Edit</button>
                         </article>
                     })}
@@ -118,8 +117,8 @@ export function UserDashboard() {
                             <p>{utilService.calcGuestCount(order)}</p>
                             <p>$ {(utilService.calcSumToPay(datesAndGuests, order.stay) + (utilService.calcSumToPay(datesAndGuests, order.stay) * 0.14125)).toLocaleString()}</p>
                             <div className={`flex space-evenly ${isAnswered ? 'answered' : ''}`}>
-                                <button onClick={() => onChangeOrderStatus('approved', order)} className="accept-btn">Approve</button>
-                                <button onClick={() => onChangeOrderStatus('rejected', order)} className="reject-btn">Reject</button>
+                                <button onClick={() => onChangeOrderStatus('approved', order)} className={`approve-btn ${(order.status === 'approved') ? 'approved' : ''}`}>Approve</button>
+                                <button onClick={() => onChangeOrderStatus('rejected', order)} className={`reject-btn ${(order.status === 'rejected') ? 'rejected' : ''}`}>Reject</button>
                             </div>
                         </li>
                     })}

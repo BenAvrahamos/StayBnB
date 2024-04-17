@@ -128,7 +128,7 @@
 
                 div {
                     &:not(.answered) {
-                        .accept-btn {
+                        .approve-btn {
                             background-color: $approved;
                         }
 
@@ -148,11 +148,13 @@
                             scale: 0.9;
                         }
 
-                        &.accept-btn:hover {
+                        &.accept-btn:hover,
+                        &.approved {
                             background-color: darken($approved, 20);
                         }
 
-                        &.reject-btn:hover {
+                        &.reject-btn:hover,
+                        &.rejected {
                             background-color: darken($rejected, 40);
                         }
                     }
