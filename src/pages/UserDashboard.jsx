@@ -50,12 +50,13 @@ export function UserDashboard() {
 
                 <div className="user-stays-container flex">
                     {userStays.map(stay => {
-                        return <article key={stay._id} className="user-stay flex column center">
+                        return <article key={stay._id} className="user-stay-card flex column" onClick={(ev) => navToDetails(ev, stay._id)}>
                             <img src={stay.imgUrls[0]} />
                             <h2>{stay.name}</h2>
-                            <p><span className="boldTxt">Capacity:</span> {stay.capacity}</p>
-                            <p><span className="boldTxt">Price:</span> {stay.price}</p>
-                            <p><span className="boldTxt">Reviews count:</span> {stay.reviews.length}</p>
+                            <p><span>Capacity:</span> {stay.capacity}</p>
+                            <p><span>Price:</span> {stay.price}</p>
+                            <p><span>Reviews count:</span> {stay.reviews.length}</p>
+                            <button onClick={(ev) => navToEditStay(ev, stay._id)}>Edit</button>
                         </article>
                     })}
                 </div>
