@@ -4,6 +4,8 @@ import { orderService } from "../services/order.service"
 import { utilService } from "../services/util.service"
 import { stayService } from "../services/stay.service"
 import { updateOrder } from "../store/actions/order.actions"
+import { useSelector } from "react-redux"
+import { Loading } from "../cmps/Loading"
 import { socketService, SOCKET_EVENT_ORDER_UPDATE } from "../services/socket.service"
 import { useNavigate } from "react-router"
 
@@ -16,9 +18,6 @@ export function UserDashboard() {
 
     useEffect(() => {
         getUserStays()
-    }, [])
-
-    useEffect(() => {
         getUserOrders()
     }, [sortBy])
 
@@ -63,7 +62,7 @@ export function UserDashboard() {
     }
 
     function navToEditStay(ev, stayId) {
-        ev.stopPropagation()               // doesn't work adding the nav to details page
+        ev.stopPropagation()
         navigate(`/edit/${stayId}`)
     }
 
@@ -73,58 +72,64 @@ export function UserDashboard() {
     }
 
     return (
-        <section className="dashboard">
-            {userStays && <div className="user-stays">
-                <h1>My properties</h1>
+        <>
+            {(!userStays || !userOrders) && <Loading />}
+            <section className="dashboard">
+                {userStays && (
+                    <div className="user-stays">
+                        <h2>My properties</h2>
+                        <div className="user-stays-container grid">
+                            {userStays.map(stay => (
+                                <article key={stay._id} className="user-stay-card flex column" onClick={(ev) => navToDetails(ev, stay._id)}>
+                                    <img src={stay.imgUrls[0]} />
+                                    <h2>{stay.name}</h2>
+                                    <p><span>Capacity:</span> {stay.capacity}</p>
+                                    <p><span>Price:</span> {stay.price}</p>
+                                    <p><span>Reviews count:</span> {stay.reviews.length}</p>
+                                    <button onClick={(ev) => navToEditStay(ev, stay._id)}>Edit</button>
+                                </article>
+                            ))}
+                        </div>
+                    </div>
+                )}
 
-                <div className="user-stays-container grid">
-                    {userStays.map(stay => {
-                        return <article key={stay._id} className="user-stay-card flex column" onClick={() => navToDetails(event, stay._id)}>
-                            <img src={stay.imgUrls[0]} />
-                            <h2>{stay.name}</h2>
-                            <p><span>Capacity:</span> {stay.capacity}</p>
-                            <p><span>Price:</span> {stay.price}</p>
-                            <p><span>Reviews count:</span> {stay.reviews.length}</p>
-                            <button onClick={() => navToEditStay(event, stay._id)}>Edit</button>
-                        </article>
-                    })}
-                </div>
-            </div>}
+                {userOrders && (
+                    <div className="user-orders flex column">
+                        <h2>My orders</h2>
+                        <ul className="user-orders-container flex column">
+                            <li className="grid">
+                                <h3 onClick={() => onSortBy('name')} className={`title ${sortBy === 'name' ? 'selected' : ''}`}>Property name</h3>
+                                <h3 onClick={() => onSortBy('date')} className={sortBy === 'date' ? 'selected' : ''}>Dates</h3>
+                                <h3>Order number</h3>
+                                <h3>Guest</h3>
+                                <h3>Guests</h3>
+                                <h3>Price</h3>
+                                <h3 className="actions">Actions</h3>
+                            </li>
 
-            {userOrders && <div className="user-orders flex column">
-                <h1>My orders</h1>
+                            {userOrders.map(order => {
+                                const datesAndGuests = { entryDate: order.entryDate, exitDate: order.exitDate, adults: order.guests?.adults, children: order.guests?.children, infants: order.guests?.infants, pets: order.guests?.pets }
+                                const isAnswered = (order.status !== 'pending')
 
-                <ul className="user-orders-container flex column">
-
-                    <li className="grid">
-                        <h3 onClick={() => onSortBy('name')} className={`title ${sortBy === 'name' ? 'selected' : ''}`}>Property name</h3>
-                        <h3 onClick={() => onSortBy('date')} className={sortBy === 'date' ? 'selected' : ''}>Dates</h3>
-                        <h3>Order number</h3>
-                        <h3>Guest</h3>
-                        <h3>Guests</h3>
-                        <h3>Price</h3>
-                        <h3 className="actions">Actions</h3>
-                    </li>
-
-                    {userOrders && userOrders.map(order => {
-                        const datesAndGuests = { entryDate: order.entryDate, exitDate: order.exitDate, adults: order.guests?.adults, children: order.guests?.children }
-                        const isAnswered = (order.status !== 'pending') ? true : false
-
-                        return <li key={order._id} className="user-order grid">
-                            <p className="title">{order.stay.name}</p>
-                            <p>{utilService.timestampsToShortDates(order.entryDate, order.exitDate)}</p>
-                            <p>{order._id}</p>
-                            <p>{order.buyer.fullname}</p>
-                            <p>{utilService.calcGuestCount(order)}</p>
-                            <p>$ {(utilService.calcSumToPay(datesAndGuests, order.stay) + (utilService.calcSumToPay(datesAndGuests, order.stay) * 0.14125)).toLocaleString()}</p>
-                            <div className={`flex space-evenly ${isAnswered ? 'answered' : ''}`}>
-                                <button onClick={() => onChangeOrderStatus('approved', order)} className="accept-btn">Approve</button>
-                                <button onClick={() => onChangeOrderStatus('rejected', order)} className="reject-btn">Reject</button>
-                            </div>
-                        </li>
-                    })}
-                </ul>
-            </div>}
-        </section>
+                                return (
+                                    <li key={order._id} className={`user-order grid ${isAnswered ? 'answered' : ''}`}>
+                                        <p className="title">{order.stay.name}</p>
+                                        <p>{utilService.timestampsToShortDates(order.entryDate, order.exitDate)}</p>
+                                        <p>{order._id}</p>
+                                        <p>{order.buyer.fullname}</p>
+                                        <p>{utilService.calcGuestCount(order)}</p>
+                                        <p>$ {((Math.round(utilService.calcSumToPay(datesAndGuests, order.stay)) + Math.round((utilService.calcSumToPay(datesAndGuests, order.stay) * 0.14125)))).toLocaleString()}</p>
+                                        <div className="flex space-evenly">
+                                            <button onClick={() => onChangeOrderStatus('approved', order)} className="accept-btn">Approve</button>
+                                            <button onClick={() => onChangeOrderStatus('rejected', order)} className="reject-btn">Reject</button>
+                                        </div>
+                                    </li>
+                                )
+                            })}
+                        </ul>
+                    </div>
+                )}
+            </section>
+        </>
     )
 }
