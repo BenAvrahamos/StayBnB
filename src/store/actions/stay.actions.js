@@ -1,14 +1,16 @@
 import { stayService } from '../../services/stay.service'
-import { ADD_STAY, REMOVE_STAY, SET_FILTER, SET_STAYS, UPDATE_STAY, SET_HEADER_FILTER, SET_GALLERY_OBSERVATION } from "../reducers/stay.reducer"
+import { ADD_STAY, REMOVE_STAY, SET_FILTER, SET_STAYS, UPDATE_STAY, SET_HEADER_FILTER, SET_GALLERY_OBSERVATION,SET_IS_LOADING } from "../reducers/stay.reducer"
 import { store } from "../store"
 
 
 
 export async function loadStays() {
     try {
+        store.dispatch({ type: SET_IS_LOADING, isLoading: true })
         const { filterBy } = store.getState().stayModule
         const stays = await stayService.query(filterBy)
         store.dispatch({ type: SET_STAYS, stays })
+        store.dispatch({ type: SET_IS_LOADING, isLoading: false })
     } catch (err) {
         console.log('stay action -> Cannot load stays', err)
         throw err
@@ -52,5 +54,5 @@ export function setStayHeaderFilter(headerFilterBy = stayService.getDefaultHeade
 }
 
 export function changeGalleryVisibility(visibility) {
-    store.dispatch({type: SET_GALLERY_OBSERVATION, isVisible: visibility})
+    store.dispatch({ type: SET_GALLERY_OBSERVATION, isVisible: visibility })
 }

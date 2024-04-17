@@ -47,6 +47,7 @@ export function UserDashboard() {
         <section className="dashboard">
             {userStays && <div className="user-stays-dashboard">
                 <h2>My properties</h2>
+
                 <div className="user-stays-container flex">
                     {userStays.map(stay => {
                         return <article key={stay._id} className="user-stay flex column center">
@@ -59,36 +60,31 @@ export function UserDashboard() {
                     })}
                 </div>
             </div>}
+
             {userOrders && <div className="user-orders-dashboard flex column">
                 <h2>My orders</h2>
-                <div className="headers grid">
-                    <h3 className="order-number">Order number</h3>
-                    <h3 className="place-name">Place name</h3>
-                    <h3 className="guests">Guests</h3>
-                    <h3 className="price">Price</h3>
-                    <h3 className="dates">Dates</h3>
-                    <h3 className="location">Location</h3>
-                    <nav className="user-orders-details flex column">
+                <div className="user-orders-container">
+                    <ul className="user-orders-details flex column">
+                        <li className="column-header flex">
+                            <h3>Place name</h3>
+                            <h3>Dates</h3>
+                            <h3>Order number</h3>
+                            <h3>Guests</h3>
+                            <h3>Price</h3>
+                            <h3></h3>
+                        </li>
                         {userOrders && userOrders.map(order => {
                             const datesAndGuests = { entryDate: order.entryDate, exitDate: order.exitDate, adults: order.guests?.adults, children: order.guests?.children }
                             return <li key={order._id} className="user-order flex">
-                                <p>{order._id}</p>
                                 <p>{order.stay.name}</p>
-                                <p>{utilService.calcGuestCount(order)}</p>
-                                <p>{Math.round(utilService.calcSumToPay(datesAndGuests, order.stay)) +
-                                    Math.round(utilService.calcSumToPay(datesAndGuests, order.stay) * 0.14125)}</p>
                                 <p>{utilService.timestampsToShortDates(order.entryDate, order.exitDate)}</p>
-                                <p>{order.stay.location.address}</p>
-                                <div className="status-and-btns">
-                                    <p>{order.status}</p>
-                                    <div className="status-btns">
-                                        <button className="status-approved-btn" onClick={() => onChangeOrderStatus('approved', order)}>Approve</button>
-                                        <button className="status-rejected-btn" onClick={() => onChangeOrderStatus('rejected', order)}>Reject</button>
-                                    </div>
-                                </div>
+                                <p>{order._id}</p>
+                                <p>{utilService.calcGuestCount(order)}</p>
+                                <p>{utilService.calcSumToPay(datesAndGuests, order.stay).toFixed(2).toLocaleString() +
+                                    (utilService.calcSumToPay(datesAndGuests, order.stay) * 0.14125).toFixed(2).toLocaleString()}</p>
                             </li>
                         })}
-                    </nav>
+                    </ul>
                 </div>
             </div>}
         </section>
@@ -97,7 +93,7 @@ export function UserDashboard() {
 
 //  {userOrders.map((order, idx) => {
 //             <div className="order-user-details flex" key={order.buyer._id + idx}>
-//                 <p>55555555</p> 
+//                 <p>55555555</p>
 //                 {/* change to id from mongo */}
 //                 <p>{order.stay.name}</p>
 //                 <p>{utilService.calcGuestsCount(order)}</p>
