@@ -9,7 +9,7 @@ export function OrderConfirmation({ stay, order }) {
         exitDate: +order.exitDate,
         adults: order.guests.adults,
         children: order.guests.children
-    }, stay).toFixed(2)
+    }, stay)
     const navigate = useNavigate()
 
     function onCloseModal(e) {
