@@ -23,9 +23,9 @@ export function UserNavModal({ setIsLoginModal, setModalType }) {
         }
     }
 
-    function checkNavigatePath(e) {
+    function checkNavigatePath(e, path) {
         e.preventDefault()
-        isLoggedInUser ? navigate(`${e.target.to}`) : onLoginModal()
+        isLoggedInUser ? navigate(`${path}`) : onLoginModal()
     }
 
     async function onLogoutClick(ev) {
@@ -49,9 +49,9 @@ export function UserNavModal({ setIsLoginModal, setModalType }) {
         {!isLoggedInUser && <NavLink to="/" onClick={() => onGuestClick()}>Continue as Guest</NavLink>}
         {isLoggedInUser && <NavLink to="/" className='grayTxt' onClick={(ev) => onLogoutClick(ev)}>Log out</NavLink>}
         {/* TRY TO ADD SOCKETS OF CHAT ON SATURDAY 17.4 SHOVAL <NavLink to="/unActive" className='grayTxt'>Messages</NavLink> */} 
-        <NavLink to={"/trips"}  onClick={checkNavigatePath} className='grayTxt'>Trips</NavLink>
+        <NavLink to={"/trips"}  onClick={(ev) => checkNavigatePath(ev, '/trips')} className='grayTxt'>Trips</NavLink>
         <NavLink to="/wishlist" className='grayTxt'>Wishlist</NavLink>
         <NavLink to="/edit" className='grayTxt'>Airbnb your home</NavLink>
-        <NavLink to="/dashboard"  onClick={checkNavigatePath} className='grayTxt'>Dashboard</NavLink>
+        <NavLink to="/dashboard"  onClick={(ev) => checkNavigatePath(ev, '/dashboard')} className='grayTxt'>Dashboard</NavLink>
     </section>
 }
