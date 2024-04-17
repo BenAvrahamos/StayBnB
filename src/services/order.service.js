@@ -82,7 +82,7 @@ async function remove(orderId) {
 async function save(order, user) {
     try {
         if (order._id) {
-            const updatedOrder = await httpService.put(BASE_URL, order)
+            const updatedOrder = await httpService.put(BASE_URL + order._id, order)
             return updatedOrder
         } else {
             order._id = utilService.makeId()

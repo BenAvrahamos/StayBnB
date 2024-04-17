@@ -7,7 +7,7 @@ import { LabelsFilter } from '../cmps/LabelsFilter.jsx'
 import { store } from '../store/store.js'
 import { stayService } from '../services/stay.service.js'
 
-import { socketService, SOCKET_EVENT_ODER_UPDATE } from '../services/socket.service.js'
+import { socketService, SOCKET_EVENT_ORDER_UPDATE } from '../services/socket.service.js'
 
 
 export function StayIndex({ scrolledPage }) {
@@ -23,7 +23,7 @@ export function StayIndex({ scrolledPage }) {
 
     useEffect(() => {
         setTimeout(()=>{
-            socketService.emit(SOCKET_EVENT_ODER_UPDATE, 'order')
+            socketService.emit(SOCKET_EVENT_ORDER_UPDATE, 'order')
         },1000)
         
 

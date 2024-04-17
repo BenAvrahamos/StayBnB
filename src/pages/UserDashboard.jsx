@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react'
 import { orderService } from "../services/order.service"
 import { utilService } from "../services/util.service"
 import { stayService } from "../services/stay.service"
+import { updateOrder } from "../store/actions/order.actions"
+import { socketService,  SOCKET_EVENT_ORDER_UPDATE} from "../services/socket.service"
 
 export function UserDashboard() {
     const [loggedInUser, setLoggedInUser] = useState(userService.getLoggedInUser())
@@ -12,6 +14,22 @@ export function UserDashboard() {
     useEffect(() => {
         getUserOrdersAndStays()
     }, [])
+
+    async function onChangeOrderStatus(status, order) {
+        try {
+            const orderToUpdate = { ...order, status }
+            await updateOrder(orderToUpdate)
+            console.log(orderToUpdate)
+            setUserOrders(prevUserOrders => (prevUserOrders.map(_order => {
+                if (_order._id === orderToUpdate._id) return orderToUpdate
+                return _order
+            })))
+            socketService.emit(SOCKET_EVENT_ORDER_UPDATE, orderToUpdate)
+        } catch (err) {
+            console.log(err)
+            throw err
+        }
+    }
 
     async function getUserOrdersAndStays() {
         try {
@@ -56,7 +74,7 @@ export function UserDashboard() {
                             <h3></h3>
                         </li>
                         {userOrders && userOrders.map(order => {
-                            const datesAndGuests = { entryDate: order.entryDate, exitDate: order.exitDate, adults: order.guests.adults, children: order.guests.children }
+                            const datesAndGuests = { entryDate: order.entryDate, exitDate: order.exitDate, adults: order.guests?.adults, children: order.guests?.children }
                             return <li key={order._id} className="user-order flex">
                                 <p>{order.stay.name}</p>
                                 <p>{utilService.timestampsToShortDates(order.entryDate, order.exitDate)}</p>

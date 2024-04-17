@@ -3,9 +3,10 @@ import { useNavigate } from "react-router-dom"
 import { useEffect, useState } from 'react'
 import { orderService } from '../services/order.service.js'
 import { utilService } from '../services/util.service.js'
-import { socketService, SOCKET_EVENT_ODER_UPDATE } from '../services/socket.service.js'
+import { socketService, SOCKET_EVENT_ORDER_UPDATE } from '../services/socket.service.js'
 import { TripModal } from '../cmps/UserTripsCmps/TripModal.jsx'
 import { userService } from '../services/user.service.js'
+import { UserNotification } from '../cmps/UserNotification.jsx'
 
 export function UserTrips() {
     const [userTrips, setUserTrips] = useState([])
@@ -17,7 +18,7 @@ export function UserTrips() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        // socketService.on(SOCKET_EVENT_ODER_UPDATE, onUpdateOrderStatus)
+        socketService.on(SOCKET_EVENT_ORDER_UPDATE, onUpdateOrderStatus)
 
         const fetchData = async () => {
             try {
@@ -52,11 +53,12 @@ export function UserTrips() {
         setLayout(type)
     }
 
-    function onUpdateOrderStatus(data) {
-        orderService.save(data.order)
-
-
-
+    function onUpdateOrderStatus(order) {
+        console.log(trips)
+        setTrips(prevTrips => prevTrips.map(trip => {
+            if(trip._id === order._id) return order
+            return trip
+        }))
     }
 
     if (!userTrips || !userTrips.length) return <section className='user-trips no-user-trips'>
@@ -158,5 +160,6 @@ export function UserTrips() {
             </ul>
         </section>
         {onModal && chosenTrip && <TripModal trip={chosenTrip} setOnModal={setOnModal} />}
+        <UserNotification />
     </>
 }
