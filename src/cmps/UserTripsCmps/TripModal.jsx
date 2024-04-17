@@ -77,16 +77,18 @@ export function TripModal({ trip, setOnModal }) {
                 <div className='price flex column'>
                     <div className='flex space-between'>
                         <p>Price:</p>
-                        <p>${trip.stay.price} X {utilService.calcSumOfDays(trip)} nights &nbsp;&nbsp;&nbsp;&nbsp;
-                            <span>${(utilService.calcSumToPayAtTrips(trip, trip.stay)).toFixed(2)}</span></p>
+                        <p className="flex align-center">$ {trip.stay.price} X {utilService.calcSumOfDays(trip)} nights &nbsp;&nbsp;&nbsp;&nbsp;
+                            <span>$ {(utilService.calcSumToPayAtTrips(trip, trip.stay))}</span></p>
                     </div>
+
                     <div className='flex space-between'>
                         <p>Service fee:</p>
-                        <p>${(utilService.calcSumToPayAtTrips(trip, trip.stay) * 0.14125).toFixed(2)}</p>
+                        <p>$ {(utilService.calcSumToPayAtTrips(trip, trip.stay) * 0.14125).toFixed(2)}</p>
                     </div>
+                    
                     <div className='flex space-between'>
                         <h4>Total:</h4>
-                        <p><span>${(utilService.calcSumToPayAtTrips(trip, trip.stay) + (utilService.calcSumToPayAtTrips(trip, trip.stay) * 0.14125)).toFixed(2)}</span></p>
+                        <p><span>$ {((utilService.calcSumToPayAtTrips(trip, trip.stay) + (utilService.calcSumToPayAtTrips(trip, trip.stay) * 0.14125))).toLocaleString()}</span></p>
                     </div>
                 </div>
             </div>

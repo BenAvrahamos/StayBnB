@@ -14,7 +14,7 @@ export function StayPreview({ stay, filterBy }) {
 
         {!filterBy.entryDate && <p className="grayTxt">Apr 7-9</p>} {/* Make function that fined available dates for each stay and places them here */}
 
-        {!filterBy.entryDate && <p><span className="boldTxt"><span className="moneySgn">$</span>{stay.price.toFixed(2).toLocaleString()}</span> night</p>}
-        {filterBy.entryDate && <p><span className="boldTxt"><span className="moneySgn">$</span>{stay.price.toFixed(2).toLocaleString()}</span> night • <span className="grayTxt underline"><span className="moneySgn">$</span>{(stayService.getNumberOfNights(filterBy) * stay.price).toFixed(2).toLocaleString()} total</span></p>}
+        {!filterBy.entryDate && <p><span className="boldTxt"><span className="moneySgn">$</span>{stay.price.toLocaleString()}</span> night</p>}
+        {filterBy.entryDate && <p><span className="boldTxt"><span className="moneySgn">$</span>{stay.price.toLocaleString()}</span> night • <span className="grayTxt underline"><span className="moneySgn">$</span>{(stayService.getNumberOfNights(filterBy) * stay.price).toLocaleString()} total</span></p>}
     </article>
 }
