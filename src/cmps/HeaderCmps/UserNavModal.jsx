@@ -4,7 +4,7 @@ import { userService } from '../../services/user.service'
 import { login, logout } from '../../store/actions/user.actions'
 import { LoginSignup } from '../LoginSignup'
 
-export function UserNavModal({ setIsLoginModal }) {
+export function UserNavModal({ setIsLoginModal, setModalType }) {
     const [isLoggedInUser, checkIsLoggedInUser] = useState(false)
 
     useEffect(() => {
@@ -26,6 +26,7 @@ export function UserNavModal({ setIsLoginModal }) {
         try {
             await logout()
             checkIsLoggedInUser(false)
+            setModalType('')
         } catch (err) {
             console.log(err)
             throw err

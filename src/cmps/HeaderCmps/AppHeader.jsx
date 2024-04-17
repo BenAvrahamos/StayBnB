@@ -106,7 +106,7 @@ export function AppHeader({ scrolledPage }) {
             </div>
         </section>
 
-        {modalType === 'user-nav' && <UserNavModal setIsLoginModal={setIsLoginModal}/>}
+        {modalType === 'user-nav' && <UserNavModal setIsLoginModal={setIsLoginModal} setModalType={setModalType} />}
         {isLoginModal && <LoginSignup setIsLoginModal={setIsLoginModal} />}
 
         <HeaderFilter modalType={modalType} setModalType={setModalType} />
