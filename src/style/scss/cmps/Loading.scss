@@ -4,8 +4,15 @@
     display: flex;
     justify-content: center;
     align-items: start;
+
     & img{
         width: 7vw;
         border-radius: 20px;
     }
+}
+
+.details-page,
+.dashBoard-page{
+    height: 83vh;
+    align-items: center;
 }

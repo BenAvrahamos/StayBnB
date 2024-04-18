@@ -10,7 +10,7 @@
     }
 
     position: sticky;
-    top: 10.5rem;
+    top: 9.5rem;
     transform: translateY(-5rem);
     background-color: white;
     border-block-end: 1px solid $gray2;
@@ -90,7 +90,6 @@
 
 @media (width > 742px) {
     .index-filter-section {
-        position: static;
         box-shadow: none;
         border: none;
 

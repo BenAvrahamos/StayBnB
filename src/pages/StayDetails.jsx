@@ -11,12 +11,17 @@ import { BedroomDetails } from '../cmps/StayDetailsCmps/BedroomDetails'
 import { StayReviewsPreview } from "../cmps/StayDetailsCmps/StayReviewsPreview"
 import { utilService } from "../services/util.service"
 import { Accordion } from "../cmps/HelperCmps/Accordion"
+import { loadStayById } from "../store/actions/stay.actions"
+import { useSelector } from "react-redux"
+import { Loading } from "../cmps/Loading"
+
 
 export function StayDetails() {
     const [searchParams, setSearchParams] = useSearchParams()
     const location = useLocation()
     const queryParams = new URLSearchParams(location.search)
     const safetyAmenities = ['Carbon monoxide alarm', 'Smoke alarm']
+    const { isLoading } = useSelector(storeState => storeState.stayModule)
     const { stayId } = useParams()
     const [stay, setStay] = useState('')
     const [longestBedsCount, setLongestBedsCount] = useState(1)
@@ -43,7 +48,7 @@ export function StayDetails() {
     // is guest favorite - if truthy - show a cmp of guest fav
     useEffect(() => {
         if (stayId) {
-            loadStay()
+            loadStay(stayId)
         }
     }, [])
 
@@ -57,13 +62,13 @@ export function StayDetails() {
         setSearchParams(params)
     }, [params])
 
-    async function loadStay() {
-        try {
-            const stay = await stayService.getById(stayId)
 
-            setStay(stay)
-        } catch (err) {
-            console.log(err)
+    async function loadStay(stayId) {
+        try {
+            const loadedStay = await loadStayById(stayId)
+            setStay(loadedStay)
+        } catch (error) {
+            console.error("Error loading stay:", error)
         }
     }
 
@@ -74,7 +79,10 @@ export function StayDetails() {
         return hostName
     }
 
+  
+
     return <>
+      {isLoading && <Loading currentPage={'details'} />}
         {stay && <section className="stay-details">
             <header className="flex space-between">
                 <h1>{stay.summary}</h1>
@@ -111,7 +119,7 @@ export function StayDetails() {
                     </article>
 
                     <article className="room-info">
-                        <h2>Where you'll sleep</h2>
+                        <h1>Where you'll sleep</h1>
                         <div className="rooms-container grid">
                             {stay.bedrooms.map(room => {
                                 const bedsLength = room.beds.length

@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   build: {
-    outDir: '../staybnb-backend/public',
+    outDir: '../backend/public',
     emptyOutDir: true,
   }
 })
