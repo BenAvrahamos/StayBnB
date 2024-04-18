@@ -119,6 +119,12 @@
                 border-radius: $BR1;
                 outline: none;
                 padding-inline: 1rem;
+
+                .payment-method-container {
+                    svg {
+                        padding-inline-end: rem(16px);
+                    }
+                }
             }
 
             &>label {
@@ -285,7 +291,7 @@
             border-block-end: 0.667px solid $lightGray;
             border-radius: $BR3 $BR3 0 0;
             margin: 0;
-            
+
             h2 {
                 font-family: circular-reg;
                 font-size: 1.2rem;
