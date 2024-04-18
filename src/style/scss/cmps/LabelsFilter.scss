@@ -21,6 +21,7 @@
 .label-filter-section {
     grid-auto-flow: column;
     column-gap: 2rem;
+    height: fit-content;
 
     overflow: auto hidden;
     -ms-overflow-style: none;
