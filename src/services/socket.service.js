@@ -10,6 +10,7 @@ export const SOCKET_EVENT_REVIEW_ADDED = 'review-added'
 export const SOCKET_EVENT_REVIEW_ABOUT_YOU = 'review-about-you'
 export const SOCKET_EVENT_ORDER_UPDATE = 'order-update'
 export const SOCKET_SERVICE_NOTIFICATION = 'prompt-notification'
+export const SOCKET_SERVICE_ADD_ORDER = 'add-order'
 const SOCKET_EMIT_LOGIN = 'set-user-socket'
 const SOCKET_EMIT_LOGOUT = 'unset-user-socket'
 
