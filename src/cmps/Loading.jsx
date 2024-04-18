@@ -1,7 +1,25 @@
-export function Loading(){
+export function Loading({ currentPage }) {
 
-    return <section className="loading">
-       <img src="..\src\assets\vids\staybnbLoading.gif" alt="" />
-    </section>
+    function determinePage(currentPage) {
 
+        switch (currentPage) {
+            case 'details':
+                return 'details-page';
+            case 'dashBoard':
+                return 'dashBoard-page';
+            case 'trips':
+                return 'trips-page';
+            default:
+                return '';
+        }
+
+    }
+    const pageClass = determinePage(currentPage)
+
+
+    return (
+        <section className={`loading ${pageClass}`}>
+            <img src="https://res.cloudinary.com/db7t5amdv/image/upload/v1713428937/staybnbLoading_mp3gqo.gif" alt="" />
+        </section>
+    );
 }

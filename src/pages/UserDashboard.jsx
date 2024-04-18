@@ -82,7 +82,8 @@ export function UserDashboard() {
     }
 
     return <>
-        {(!userStays || !userOrders) && <Loading />}
+
+        {(!userStays && !userOrders) && <Loading currentPage={"dashBoard"} />}
         <section className="dashboard">
             {userStays && (
                 <div className="user-stays">

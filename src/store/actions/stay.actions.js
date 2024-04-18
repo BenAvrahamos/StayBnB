@@ -1,5 +1,5 @@
 import { stayService } from '../../services/stay.service'
-import { ADD_STAY, REMOVE_STAY, SET_FILTER, SET_STAYS, UPDATE_STAY, SET_HEADER_FILTER, SET_GALLERY_OBSERVATION,SET_IS_LOADING } from "../reducers/stay.reducer"
+import { ADD_STAY, REMOVE_STAY, SET_FILTER, SET_STAYS, UPDATE_STAY, SET_HEADER_FILTER, SET_GALLERY_OBSERVATION,SET_IS_LOADING, SET_STAY } from "../reducers/stay.reducer"
 import { store } from "../store"
 
 
@@ -14,6 +14,18 @@ export async function loadStays() {
     } catch (err) {
         console.log('stay action -> Cannot load stays', err)
         throw err
+    }
+}
+
+export async function loadStayById(stayId) {
+    try {
+        store.dispatch({ type: SET_IS_LOADING, isLoading: true })
+        const stay = await stayService.getById(stayId)
+        store.dispatch({ type: SET_STAY, stay })
+        store.dispatch({ type: SET_IS_LOADING, isLoading: false })
+        return stay
+    } catch (err) {
+        console.log(err)
     }
 }
 
