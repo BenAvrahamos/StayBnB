@@ -8,6 +8,7 @@ import { useParams } from "react-router"
 import { useNavigate } from 'react-router'
 import { addOrder } from '../../store/actions/order.actions'
 import { userService } from '../../services/user.service'
+import { socketService, SOCKET_SERVICE_ADD_ORDER } from '../../services/socket.service'
 
 export function Payment({ stay, params }) {
     const navigate = useNavigate()
@@ -29,7 +30,9 @@ export function Payment({ stay, params }) {
             //     userOrderDetails.card.cvv &&
             //     userOrderDetails.card.zip &&
             //     userOrderDetails.phone) {
-                setOrder(await addOrder(params, stay))
+                const orderToAdd = await addOrder(params, stay)
+                socketService.emit(SOCKET_SERVICE_ADD_ORDER, orderToAdd )
+                setOrder(orderToAdd)
                 setIsOrder(true)
             // }
         } catch (err) {
