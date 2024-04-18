@@ -5,7 +5,7 @@ import { utilService } from "../services/util.service"
 import { stayService } from "../services/stay.service"
 import { updateOrder } from "../store/actions/order.actions"
 import { Loading } from "../cmps/Loading"
-import { socketService, SOCKET_EVENT_ORDER_UPDATE } from "../services/socket.service"
+import { socketService, SOCKET_EVENT_ORDER_UPDATE, SOCKET_SERVICE_ADD_ORDER } from "../services/socket.service"
 import { useNavigate } from "react-router"
 
 export function UserDashboard() {
@@ -17,6 +17,14 @@ export function UserDashboard() {
 
     useEffect(() => {
         getUserStays()
+        socketService.on(SOCKET_SERVICE_ADD_ORDER, orderToAdd => {
+            setUserOrders(prevUserOrders => [orderToAdd, ...prevUserOrders])
+        })
+        return () =>{
+            socketService.off(SOCKET_SERVICE_ADD_ORDER, orderToAdd => {
+                setUserOrders(prevUserOrders => [orderToAdd, ...prevUserOrders])
+            })
+        }
     },[])  
     
     useEffect(() => {
