@@ -7,8 +7,9 @@ export function Loading({ currentPage }) {
                 return 'details-page';
             case 'dashBoard':
                 return 'dashBoard-page';
-            case 'trips':
-                return 'trips-page';
+            case 'payment':
+                return 'payment-page';
+
             default:
                 return '';
         }

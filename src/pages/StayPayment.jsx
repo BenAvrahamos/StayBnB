@@ -34,7 +34,7 @@ export function StayPayment() {
     }
 
     const [params, updateParams] = useState(paramsFromFilter)
-    
+
     useEffect(() => {
         setSearchParams(params)
     }, [params])
@@ -55,12 +55,16 @@ export function StayPayment() {
         }
     }
 
-    return <section className="stay-payment grid">
-        {!stay && <Loading />}
-        {stay &&
+    if (!stay) {
+        return <Loading currentPage={"payment"} />
+    }
+
+    return (
+        <section className="stay-payment grid">
             <>
                 <Payment stay={stay} params={params} />
                 <PaymentModal stay={stay} params={params} />
-            </>}
-    </section>
+            </>
+        </section>
+    )
 }
