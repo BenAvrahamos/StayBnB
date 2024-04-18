@@ -107,7 +107,7 @@ export function UserDashboard() {
                     </li>
 
                     {userOrders && userOrders.map(order => {
-                        const datesAndGuests = { entryDate: order.entryDate, exitDate: order.exitDate, adults: order.guests?.adults, children: order.guests?.children, infants: order.guests?.infants, pets: order.guests?.pets }
+                        const datesAndGuests = { entryDate: order.entryDate, exitDate: order.exitDate, adults: order.guests?.adults, children: order.guests?.children }
                         const isAnswered = (order.status !== 'pending') ? true : false
 
                         return <li key={order._id} className="user-order grid">
