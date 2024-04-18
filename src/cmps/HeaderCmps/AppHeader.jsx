@@ -9,6 +9,8 @@ import { setStayFilter, setStayHeaderFilter } from "../../store/actions/stay.act
 import { UserNavModal } from "./UserNavModal"
 import { useLocation } from 'react-router-dom';
 import { LoginSignup } from "../LoginSignup"
+import { userService } from "../../services/user.service"
+import { utilService } from "../../services/util.service"
 
 export function AppHeader({ scrolledPage }) {
     var filterBy = useSelector(storeState => storeState.stayModule.filterBy)
@@ -84,7 +86,7 @@ export function AppHeader({ scrolledPage }) {
                 </nav>
 
                 <div className="compact-header flex align-center">
-                    <div onClick={() => { setModalType(modalType === 'map' ? null : 'map'); SetDynamicPageLayOut(false); }} className="map">Anywhere</div>
+                    <div onClick={() => { setModalType(modalType === 'map' ? null : 'map'), SetDynamicPageLayOut(false) }} className="map">Anywhere</div>
                     <div onClick={() => setModalType(modalType === 'check-in' ? null : 'check-in')} className="calendar">Any week</div>
                     <div onClick={() => setModalType(modalType === 'guest' ? null : 'guest')} className="guests">Add guests</div>
                     <div>
@@ -99,10 +101,17 @@ export function AppHeader({ scrolledPage }) {
                 <NavLink to="/edit">Staybnb your home</NavLink>
 
                 <button className="flex align-center space-between" onClick={onOpenUserModal}> ☰
-                    <div className="profile"></div>
+
+
+                    {userService.getLoggedInUser() ? (
+                        <img src={userService.getLoggedInUser().imgUrl} alt="User Profile" />
+                    ) : (
+                        <div className="profile"></div>
+                    )}
                 </button>
 
             </div>
+
         </section>
 
         {modalType === 'user-nav' && <UserNavModal setIsLoginModal={setIsLoginModal} setModalType={setModalType} />}
