@@ -96,6 +96,11 @@ export function UserTrips() {
             </div>
         </header>
 
+        {tripFilter.tense === 'all' && <h2>All reservations</h2>}
+            {tripFilter.tense === 'future' && <h2>Upcoming reservations</h2>}
+            {tripFilter.tense === 'current' && <h2>Current reservations</h2>}
+            {tripFilter.tense === 'past' && <h2>Past reservations</h2>}
+
         <div>
             <h2>No trips to Show</h2>
         </div>
@@ -130,6 +135,11 @@ export function UserTrips() {
                 </div>
             </header>
 
+            {tripFilter.tense === 'all' && <h2>All reservations</h2>}
+            {tripFilter.tense === 'future' && <h2>Upcoming reservations</h2>}
+            {tripFilter.tense === 'current' && <h2>Current reservations</h2>}
+            {tripFilter.tense === 'past' && <h2>Past reservations</h2>}
+
             <ul className={`grid ${layoutType}`}>
                 {trips.map(trip => (
                     <li key={trip._orderId} className={`trip-card grid ${trip.status}`} onClick={() => onChoose(trip)} >
@@ -158,7 +168,10 @@ export function UserTrips() {
                     </li>
                 ))}
             </ul>
+
+            <p>Can't find your reservation here? <span>Visit the Help Center</span></p>
         </section>
+
         {onModal && chosenTrip && <TripModal trip={chosenTrip} setOnModal={setOnModal} />}
         <UserNotification />
     </>

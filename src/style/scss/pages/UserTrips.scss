@@ -47,6 +47,26 @@
                     font-family: fa-solid;
                 }
             }
+
+        }
+    }
+
+    &>h2 {
+        font-weight: normal;
+        font-family: circular-reg;
+        font-size: 1.25rem;
+        margin-block: 0.85rem 0;
+    }
+
+    &>p {
+        font-size: 0.9rem;
+        padding-block: 2rem 2.25rem;
+
+        span {
+            font-family: circular-bold;
+            text-decoration: underline;
+
+            cursor: pointer;
         }
     }
 }
@@ -77,30 +97,19 @@
             @include buttons3;
         }
     }
-
-    &>p {
-        font-size: 0.9rem;
-        padding-block: 1.5rem 2.25rem;
-
-        span {
-            font-family: circular-bold;
-            text-decoration: underline;
-
-            cursor: pointer;
-        }
-    }
 }
 
 .user-trips:not(.no-user-trips) {
     margin-block-end: 2rem;
 
     ul {
-        margin-block-start: 1.5rem;
+        padding-block-start: 1.5rem;
         gap: 1rem;
 
         .trip-card {
             border-radius: $BR2;
             box-shadow: $gray4 1px 1px 16px;
+            border-inline-start: 1px solid $gray2;
             overflow: hidden;
 
             cursor: pointer;
@@ -170,8 +179,8 @@
     }
 
     ul.cards {
-        grid-template-columns: repeat(auto-fill, minmax(31.25rem, 1fr));
-                
+        grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+
         overflow: auto;
         -ms-overflow-style: none;
         scrollbar-width: none;
@@ -181,7 +190,7 @@
         }
 
         .trip-card {
-            grid-template-columns: 1fr 2fr 3fr;
+            grid-template-columns: 1fr 2fr 2fr;
             grid-template-rows: 7.5rem 7.1875rem;
         }
 
@@ -247,6 +256,7 @@
         }
 
         .image {
+            flex-shrink: 1;
             display: none;
         }
     }
@@ -290,7 +300,13 @@
         }
 
         ul.cards {
+            grid-template-columns: repeat(auto-fill, minmax(31.25rem, 1fr));
             overflow: visible;
+
+            .trip-card {
+                grid-template-columns: 1fr 2fr 3fr;
+                grid-template-rows: 7.5rem 7.1875rem;
+            }
         }
     }
 }
@@ -304,6 +320,10 @@
                     border-radius: 6px 0 0 6px;
                 }
             }
+        }
+
+        ul.cards {
+            grid-template-columns: repeat(auto-fill, minmax(40rem, 1fr));
         }
     }
 }
