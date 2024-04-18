@@ -4,6 +4,7 @@ import { PaymentModal } from '../cmps/StayReservationCmps/PaymentModal'
 import { useEffect, useState } from 'react'
 import { stayService } from '../services/stay.service'
 import { useLocation, useSearchParams } from 'react-router-dom'
+import { Loading } from '../cmps/Loading'
 
 export function StayPayment() {
     const { stayId } = useParams()
@@ -55,6 +56,7 @@ export function StayPayment() {
     }
 
     return <section className="stay-payment grid">
+        {!stay && <Loading />}
         {stay &&
             <>
                 <Payment stay={stay} params={params} />
