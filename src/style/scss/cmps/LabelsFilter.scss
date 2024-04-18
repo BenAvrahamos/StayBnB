@@ -1,5 +1,5 @@
 .index-filter-section {
-    padding-block: 0.5rem;
+    padding-block: 1rem 0.5rem;
 
     grid-auto-flow: column;
     grid-gap: 0 1rem;
@@ -138,4 +138,10 @@
             }
         }
     }
+}
+
+@media (width > 850px) {
+.index-filter-section {
+    padding-block: 0.5rem;
+}
 }
