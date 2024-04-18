@@ -88,6 +88,12 @@
     }
 }
 
+@media (width > 850px) {
+    .index-filter-section.labels-header-expanded {
+        height: 0;
+    }
+}
+
 @media (width > 742px) {
     .index-filter-section {
         box-shadow: none;
@@ -141,7 +147,7 @@
 }
 
 @media (width > 850px) {
-.index-filter-section {
-    padding-block: 0.5rem;
-}
+    .index-filter-section {
+        padding-block: 0.5rem;
+    }
 }
