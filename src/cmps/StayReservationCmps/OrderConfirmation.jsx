@@ -9,8 +9,6 @@ export function OrderConfirmation({ stay, order }) {
         exitDate: +order.exitDate,
         adults: order.guests.adults,
         children: order.guests.children,
-        infants: order.guests.infants,
-        pets: order.guests.pets
     }, stay))
     const navigate = useNavigate()
 
@@ -71,10 +69,10 @@ export function OrderConfirmation({ stay, order }) {
                                 <h5>{utilService.calcGuestCount(order)}</h5>
                             </div>
                             <ul>
-                                {+order.adults > 0 && <li>{+order.adults === 1 ? `${order.guests.adults} adult` : `${order.guests.adults} adults`}</li>}
-                                {+order.children > 0 && <li>{+order.children === 1 ? `${order.guests.children} child` : `${order.guests.children} children`}</li>}
-                                {+order.infants > 0 && <li>{+order.infants === 1 ? `${order.guests.infants} infant` : `${order.guests.infants} infants`}</li>}
-                                {+order.pets > 0 && <li>{+order.pets === 1 ? `${order.guests.pets} pet` : `${order.guests.pets} pets`}</li>}
+                                {+order.guests.adults > 0 && <li>{+order.adults === 1 ? `${order.guests.adults} adult` : `${order.guests.adults} adults`}</li>}
+                                {+order.guests.children > 0 && <li>{+order.children === 1 ? `${order.guests.children} child` : `${order.guests.children} children`}</li>}
+                                {+order.guests.infants > 0 && <li>{+order.infants === 1 ? `${order.guests.infants} infant` : `${order.guests.infants} infants`}</li>}
+                                {+order.guests.pets > 0 && <li>{+order.pets === 1 ? `${order.guests.pets} pet` : `${order.guests.pets} pets`}</li>}
                             </ul>
                         </div>
 
