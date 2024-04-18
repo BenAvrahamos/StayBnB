@@ -3,7 +3,7 @@
     height: 57vh;
     display: flex;
     justify-content: center;
-    align-items: start;
+    align-items: center;
 
     & img{
         width: 7vw;
@@ -12,7 +12,9 @@
 }
 
 .details-page,
-.dashBoard-page{
-    height: 83vh;
-    align-items: center;
+.dashBoard-page,
+.payment-page{
+    height: 82vh;
+
 }
+
