@@ -1,6 +1,7 @@
 import { stayService } from "../../services/stay.service"
 
 export const SET_STAYS = 'SET_STAYS'
+export const SET_STAY = 'SET_STAY'
 export const REMOVE_STAY = 'REMOVE_STAY'
 export const ADD_STAY = 'ADD_STAY'
 export const UPDATE_STAY = 'UPDATE_STAY'
@@ -17,6 +18,7 @@ export const SET_GALLERY_OBSERVATION = 'SET_GALLERY_OBSERVATION'
 
 const initialState = {
     stays: [],
+    stay: null,
     isLoading: true,
     filterBy: stayService.getDefaultFilter(),
     headerFilterBy: stayService.getDefaultHeaderFilter(),
@@ -31,6 +33,9 @@ export function stayReducer(state = initialState, action = {}) {
         case SET_STAYS:
             lastStays = [...action.stays]
             return { ...state, stays: action.stays, lastStays }
+
+            case SET_STAY:
+                return { ...state, stay: action.stay }
 
         case REMOVE_STAY:
             lastStays = [...state.stays]

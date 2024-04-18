@@ -85,13 +85,12 @@ async function remove(orderId) {
     }
 }
 
-async function save(order, user) {
+async function save(order) {
     try {
         if (order._id) {
             const updatedOrder = await httpService.put(BASE_URL + order._id, order)
             return updatedOrder
         } else {
-            order._id = utilService.makeId()
             const orderToAdd = await await httpService.post(BASE_URL, order)
             return orderToAdd
         }
@@ -109,7 +108,6 @@ async function getOrder(stay, loggedInUser, params) {
                 fullname: loggedInUser.fullname || 'Guest'
             },
             totalPrice: utilService.calcSumToPay(params, stay),
-    
             entryDate: params.entryDate,
             exitDate: params.exitDate,
             guests: {
