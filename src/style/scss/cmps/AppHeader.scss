@@ -184,8 +184,11 @@
     transition: 0.5s;
 }
 
-@media (width < 742px) {
+@media (width < 850px) {
     .app-header-container {
+            padding-block: 0em;
+            margin-block-end: 0em;
+
         .expanded-header {
 
             .user-section a,
@@ -217,7 +220,7 @@
     }
 }
 
-@media (width < 450px) {
+@media (width < 550px) {
     .expanded-header {
 padding-inline: 5px;
 

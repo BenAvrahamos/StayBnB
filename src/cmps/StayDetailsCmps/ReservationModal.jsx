@@ -130,7 +130,7 @@ export function ReservationModal({ stay, params, updateParams }) {
             </div>
             <div className='price-calc flex space-between'>
                 <span>$ {stay.price.toLocaleString()} X {numOfDays === 1 ? `${numOfDays} night` : `${numOfDays} nights`}</span>
-                <span className='sum'>${(stay.price * numOfDays * (+params.adults + +params.children)).toLocaleString()}</span>
+                <span className='sum'>$ {(stay.price * numOfDays * (+params.adults + +params.children)).toLocaleString()}</span>
             </div>
             {fee && <div className='fee-calc flex space-between'>
                 <span>Staybnb service fee</span>

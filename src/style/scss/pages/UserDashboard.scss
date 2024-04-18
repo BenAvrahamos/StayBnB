@@ -91,27 +91,26 @@
         margin-block: 1rem;
 
         .user-orders-container {
-            gap: 0.75rem;
-
-            overflow: auto hidden;
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-
-            &::-webkit-scrollbar {
-                display: none;
-            }
-
             li {
-                grid-template-columns: minmax(150px, 2fr) repeat(5, minmax(100px, 1fr)) minmax(8.125rem, 1fr);
+                grid-template-columns: minmax(90px, 2fr) minmax(60px, 1fr) minmax(80px, 1fr);
+                border-block-end: 1px solid $gray2;
+                padding: 0.5rem;
+                align-items: center;
+                gap: 0.5rem;
 
-                h3:not(.title),
-                p:not(.title) {
+                h3:first-of-type,
+                h3:nth-of-type(2),
+                &:not(:first-of-type) {
+                    cursor: pointer;
+                }
+
+                .num {
                     justify-self: center;
                 }
 
-                h3:first-of-type,
-                h3:nth-of-type(2) {
-                    cursor: pointer;
+                .only-desktop,
+                .also-tablet {
+                    display: none;
                 }
 
                 .selected {
@@ -127,6 +126,10 @@
                 }
 
                 div {
+                    flex-direction: column;
+                    gap: 0.15rem;
+                    align-items: center;
+
                     &:not(.answered) {
                         .approve-btn {
                             background-color: $approved;
@@ -160,6 +163,55 @@
                     }
                 }
 
+            }
+        }
+    }
+}
+
+@media (width > 550px) {
+    .dashboard {
+        .user-orders {
+            .user-orders-container {
+                li {
+                    grid-template-columns: minmax(90px, 2fr) minmax(60px, 1fr) repeat(2, minmax(50px, 1fr)) minmax(80px, 1fr);
+
+                    .also-tablet {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media (width > 742px) {
+    .dashboard {
+        .user-orders {
+            .user-orders-container {
+                li {
+                    grid-template-columns: minmax(90px, 2fr) minmax(60px, 1fr) repeat(4, minmax(50px, 1fr)) minmax(80px, 1fr);
+
+                    .only-desktop {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (width > 950px) {
+    .dashboard {
+        .user-orders {
+            .user-orders-container {
+                li {    
+                    grid-template-columns: minmax(100px, 2fr) repeat(5, minmax(60px, 1fr)) minmax(80px, 1fr);
+                
+                    div {
+                        flex-direction: row;
+                    }
+                }
             }
         }
     }
