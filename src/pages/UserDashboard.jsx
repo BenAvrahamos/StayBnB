@@ -1,18 +1,22 @@
 import { userService } from "../services/user.service"
 import { useEffect, useState } from 'react'
+import { useNavigate } from "react-router"
+
 import { orderService } from "../services/order.service"
 import { utilService } from "../services/util.service"
 import { stayService } from "../services/stay.service"
 import { updateOrder } from "../store/actions/order.actions"
 import { Loading } from "../cmps/Loading"
 import { socketService, SOCKET_EVENT_ORDER_UPDATE, SOCKET_SERVICE_ADD_ORDER } from "../services/socket.service"
-import { useNavigate } from "react-router"
+import { TripModal } from "../cmps/UserTripsCmps/TripModal"
 
 export function UserDashboard() {
     const [loggedInUser, setLoggedInUser] = useState(userService.getLoggedInUser())
     const [userOrders, setUserOrders] = useState()
     const [userStays, setUserStays] = useState()
     const [sortBy, setSortBy] = useState('date')
+    const [onModal, setOnModal] = useState(false)
+    const [chosenOrder, setChosenOrder] = useState(null)
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -55,7 +59,8 @@ export function UserDashboard() {
         setSortBy(val)
     }
 
-    async function onChangeOrderStatus(status, order) {
+    async function onChangeOrderStatus(status, order, ev) {
+        ev.stopPropagation()
         try {
             const orderToUpdate = { ...order, status }
             await updateOrder(orderToUpdate)
@@ -79,6 +84,11 @@ export function UserDashboard() {
     function navToDetails(ev, stayId) {
         ev.stopPropagation()
         navigate(`/${stayId}`)
+    }
+
+    function onChooseOrder(order) {
+        setChosenOrder(order)
+        setOnModal(true)
     }
 
     return <>
@@ -108,10 +118,10 @@ export function UserDashboard() {
                     <li className="grid">
                         <h3 onClick={() => onSortBy('name')} className={`title ${sortBy === 'name' ? 'selected' : ''}`}>Property name</h3>
                         <h3 onClick={() => onSortBy('date')} className={sortBy === 'date' ? 'selected' : ''}>Dates</h3>
-                        <h3>Order number</h3>
-                        <h3>Guest</h3>
-                        <h3>Guests</h3>
-                        <h3>Price</h3>
+                        <h3 className="also-tablet num">Order number</h3>
+                        <h3 className="only-desktop">Guest</h3>
+                        <h3 className="also-tablet num">Guests</h3>
+                        <h3 className="only-desktop num">Price</h3>
                         <h3 className="actions">Actions</h3>
                     </li>
 
@@ -119,21 +129,22 @@ export function UserDashboard() {
                         const datesAndGuests = { entryDate: order.entryDate, exitDate: order.exitDate, adults: order.guests?.adults, children: order.guests?.children }
                         const isAnswered = (order.status !== 'pending') ? true : false
 
-                        return <li key={order._id} className="user-order grid">
+                        return <li key={order._id} className="user-order grid" onClick={() => onChooseOrder(order)}>
                             <p className="title">{order.stay.name}</p>
                             <p>{utilService.timestampsToShortDates(order.entryDate, order.exitDate)}</p>
-                            <p>{order._id.slice(18)}</p>
-                            <p>{order.buyer.fullname}</p>
-                            <p>{utilService.calcGuestCount(order)}</p>
-                            <p>$ {Math.round((utilService.calcSumToPay(datesAndGuests, order.stay)) + Math.round((utilService.calcSumToPay(datesAndGuests, order.stay) * 0.14125))).toLocaleString()}</p>
+                            <p className="also-tablet num">{order._id.slice(18)}</p>
+                            <p className="only-desktop">{order.buyer.fullname}</p>
+                            <p className="also-tablet num">{utilService.calcGuestCount(order)}</p>
+                            <p className="only-desktop num">$ {Math.round((utilService.calcSumToPay(datesAndGuests, order.stay)) + Math.round((utilService.calcSumToPay(datesAndGuests, order.stay) * 0.14125))).toLocaleString()}</p>
                             <div className={`flex space-evenly ${isAnswered ? 'answered' : ''}`}>
-                                <button onClick={() => onChangeOrderStatus('approved', order)} className={`approve-btn ${(order.status === 'approved') ? 'approved' : ''}`}>Approve</button>
-                                <button onClick={() => onChangeOrderStatus('rejected', order)} className={`reject-btn ${(order.status === 'rejected') ? 'rejected' : ''}`}>Reject</button>
+                                <button onClick={(ev) => onChangeOrderStatus('approved', order, ev)} className={`approve-btn ${(order.status === 'approved') ? 'approved' : ''}`}>Approve</button>
+                                <button onClick={(ev) => onChangeOrderStatus('rejected', order, ev)} className={`reject-btn ${(order.status === 'rejected') ? 'rejected' : ''}`}>Reject</button>
                             </div>
                         </li>
                     })}
                 </ul>
             </div>}
         </section>
+        {/* {onModal && chosenOrder && <TripModal trip={chosenOrder} setOnModal={setOnModal} />} */}
     </>
 }

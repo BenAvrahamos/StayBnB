@@ -125,7 +125,11 @@
             padding-block-end: 1rem;
 
             .checkbox-item {
-                cursor: pointer;
+                cursor: pointer; 
+
+                .Mui-checked {
+                    color: $darkGray !important;
+                }
 
                 .checkbox {
                     background-color: transparent;
