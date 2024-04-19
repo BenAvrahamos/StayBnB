@@ -22,7 +22,9 @@ export const stayService = {
     mergeFiltersStore,
     guestCountString,
     createDemoData,
-    guestCountStringForReservation
+    guestCountStringForReservation,
+    generateRandomDate,
+    generateRandomDistance
 }
 
 const amenityLabels = ['wifi', 'kitchen', 'washer', 'dryer', 'air_conditioning', 'refrigerator', 'heating', 'dedicated_workspace', 'TV', 'hair_dryer', 'iron', 'pool', 'hot_tub', 'free_parking', 'ev_charger', 'crib', 'king_bed', 'gym', 'BBQ_grill', 'breakfast', 'indoor_fireplace', 'smoking_allowed', 'pets_allowed']
@@ -37,11 +39,11 @@ function query(filterBy = getDefaultFilter()) {
 async function getHostStaysById(userId) {
     try {
         store.dispatch({ type: SET_IS_LOADING, isLoading: true })
-       const stays = await httpService.get(BASE_URL)
-       const userStays = stays.filter(stay => stay.host.id === userId)
-       store.dispatch({ type: SET_IS_LOADING, isLoading: false })
-       return userStays
-    } catch(err) {
+        const stays = await httpService.get(BASE_URL)
+        const userStays = stays.filter(stay => stay.host.id === userId)
+        store.dispatch({ type: SET_IS_LOADING, isLoading: false })
+        return userStays
+    } catch (err) {
         console.log(err)
         throw err
     }
@@ -294,4 +296,44 @@ function guestCountStringForReservation(params) {
         return "Add guests"
     }
     return parts.join(', ')
+}
+
+
+function generateRandomDate() {
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']
+
+    const today = new Date()
+    const currentMonthIndex = today.getMonth()
+    const currentYear = today.getFullYear()
+
+    const randomMonthIndex = currentMonthIndex + Math.floor(Math.random() * (months.length - currentMonthIndex - 1))
+    const randomMonth = months[randomMonthIndex]
+
+    let maxDaysInMonth = new Date(currentYear, randomMonthIndex + 1, 0).getDate()
+
+    if (randomMonth === 'Feb') {
+        const isLeapYear = (currentYear % 4 === 0 && currentYear % 100 !== 0) || currentYear % 400 === 0
+        if (!isLeapYear) {
+            maxDaysInMonth = 28
+        }
+    }
+
+    let randomStartDay = Math.floor(Math.random() * (maxDaysInMonth - 22)) + 23
+
+    const maxPossibleEndDay = Math.min(maxDaysInMonth, randomStartDay + 5)
+
+    const randomEndDay = randomStartDay + Math.floor(Math.random() * (maxPossibleEndDay - randomStartDay - 2)) + 2
+
+    if (randomStartDay === randomEndDay) {
+        randomStartDay -= 2
+    }
+
+    return `${randomMonth} ${randomStartDay}-${randomEndDay}`
+}
+
+function generateRandomDistance() {
+    const minDistance = 1500;
+    const maxDistance = 3700;
+    const randomNumber = Math.floor(Math.random() * (maxDistance - minDistance + 1)) + minDistance;
+    return randomNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
