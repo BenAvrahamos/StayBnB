@@ -21,7 +21,7 @@ export function Stage1() {
                 <span className="question">Tell us about your place</span>
                 <span className="description">In this step, we'll ask you which type of property you have and if guests will book the entire place or just a room. Then let us know the location and how many guests can stay.</span>
             </section>
-            <video ref={videoRef} src="src\assets\vids\BuildHouseVidIntro.mp4" autoPlay muted></video>
+            <video ref={videoRef} src="https://res.cloudinary.com/db7t5amdv/video/upload/v1713520620/BuildHouseVidIntro_tbrwcf.mp4" autoPlay muted></video>
         </section>
     )
 }
@@ -215,7 +215,7 @@ export function Stage6() {
             <span className="question">Make your place stand out</span>
             <span className="description">In this step, you’ll add some of the amenities your place offers, plus 5 or more photos. Then, you’ll create a title and description.</span>
         </section>
-        <video ref={videoRef} src="src\assets\vids\BuildHouseVidMiddle.mp4" autoPlay muted></video>
+        <video ref={videoRef} src="https://res.cloudinary.com/db7t5amdv/video/upload/v1713520618/BuildHouseVidMiddle_u6k0ep.mp4" autoPlay muted></video>
     </section>
 
 
@@ -340,7 +340,7 @@ export function Stage11({ stay, editStay }) {
             <span className="question">Finish up and publish</span>
             <span className="description">Finally, you’ll choose if you'd like to start with an experienced guest, then you'll set your nightly price. Answer a few quick questions and publish when you're ready.</span>
         </section>
-        <video ref={videoRef} src="src\assets\vids\BuildHouseVidOutro.mp4" autoPlay muted></video>
+        <video ref={videoRef} src="https://res.cloudinary.com/db7t5amdv/video/upload/v1713520620/BuildHouseVidOutro_qiv9vd.mp4" autoPlay muted></video>
     </section>
 
 

@@ -73,7 +73,7 @@ export function AppHeader({ scrolledPage }) {
 
             <div className="logo-section" onClick={goHome}>
                 <div className="logo flex align-center">
-                    <img src="src\assets\img\airbnb-logo.png" alt="" />
+                    <img src="https://res.cloudinary.com/db7t5amdv/image/upload/v1713176792/keig0zr71f8zzeqk1xub.png" alt="" />
                     Staybnb
                 </div>
             </div>
