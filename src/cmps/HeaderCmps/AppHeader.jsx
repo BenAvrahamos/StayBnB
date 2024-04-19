@@ -15,7 +15,7 @@ import { utilService } from "../../services/util.service"
 export function AppHeader({ scrolledPage }) {
     var filterBy = useSelector(storeState => storeState.stayModule.filterBy)
     const [searchParams, setSearchParams] = useSearchParams()
-    const [modalType, setModalType] = useState()
+    const [modalType, setModalType] = useState('')
     const [isLoginModal, setIsLoginModal] = useState(false)
 
     const ref = useRef(null)

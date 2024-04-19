@@ -43,6 +43,8 @@ export function HeaderFilter({ modalType, setModalType }) {
         loadStays()
     }
 
+    console.log(modalType);
+
     function formatDate(timestamp) {
         const date = new Date(timestamp)
         const month = date.toLocaleString('default', { month: 'short' })
@@ -77,7 +79,7 @@ export function HeaderFilter({ modalType, setModalType }) {
                 Who
                 <span className='guest-count'>{stayService.guestCountString(headerFilterBy)}</span>
             </div>
-            <button onClick={onLoadStays} className={`search-btn ${modalType !== '' && modalType !== 'user-nav' ? 'compact' : ''}`} ></button>
+            <button onClick={onLoadStays} className={`search-btn ${modalType !== '' && modalType !== 'user-nav' ? 'compact' : ''}`} ><span>Search</span></button>
         </div>
 
         {modalType === 'map' && <MapFilter setModalType={setModalType} headerFilterBy={headerFilterBy} />}
