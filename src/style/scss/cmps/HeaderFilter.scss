@@ -21,17 +21,16 @@
         padding: 0.875rem 1.5rem;
         font-family: circular-medium;
         overflow: hidden;
-
         cursor: pointer;
 
         &.selected {
             box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.15);
             z-index: 1;
-            background-color: $gray2;
+            background-color: white;
         }
 
-        &:hover {
-            background-color: $gray2;
+        &:not(.selected):hover {
+            background-color: rgba(#71717123, 0.25);
         }
         
         span {
@@ -47,8 +46,9 @@
         }
     }
 
-    .grey {
-        color: $lightGray;
+
+    &.grey {
+        background-color: #ebebeb;
     }
 
     .splitter-1,
