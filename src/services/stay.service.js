@@ -331,9 +331,28 @@ function generateRandomDate() {
     return `${randomMonth} ${randomStartDay}-${randomEndDay}`
 }
 
-function generateRandomDistance() {
-    const minDistance = 1500;
-    const maxDistance = 3700;
-    const randomNumber = Math.floor(Math.random() * (maxDistance - minDistance + 1)) + minDistance;
-    return randomNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+function generateRandomDistance(country) {
+    const lowercaseCountry = country.toLowerCase()
+    const baseDistances = {
+        turkey: 2050,
+        "united states": 9500,
+        france: 2900,
+        portugal: 3600,
+        spain: 2800,
+        brazil: 9400,
+        canada: 7800,
+        "hong kong": 5600,
+        italy: 2100
+    }
+
+    if (lowercaseCountry in baseDistances) {
+        const baseDistance = baseDistances[lowercaseCountry]
+        const minDistance = baseDistance - 150
+        const maxDistance = baseDistance + 150
+        const randomNumber = Math.floor(Math.random() * (maxDistance - minDistance + 1)) + minDistance
+        return randomNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    } else {
+        const unsupportedRandomDistance = Math.floor(Math.random() * (3000 - 1000 + 1)) + 1000
+        return unsupportedRandomDistance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    }
 }
