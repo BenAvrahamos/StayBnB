@@ -38,7 +38,7 @@ export function AppHeader({ scrolledPage }) {
 
     function onOpenUserModal(ev) {
         ev.stopPropagation()
-        setModalType(modalType === 'user-nav' ? null : 'user-nav')
+        setModalType(modalType === 'user-nav' ? '' : 'user-nav')
     }
 
     const getHeaderWidth = () => {
