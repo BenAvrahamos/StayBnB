@@ -43,7 +43,6 @@ export function HeaderFilter({ modalType, setModalType }) {
         loadStays()
     }
 
-    console.log(modalType);
 
     function formatDate(timestamp) {
         const date = new Date(timestamp)

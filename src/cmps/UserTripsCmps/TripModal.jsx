@@ -29,7 +29,7 @@ export function TripModal({ trip, setOnModal }) {
 
                 <div className='booking-number flex column'>
                     <p>Booking number:</p>
-                    <h5>{trip._orderId}</h5>
+                    <h5>{trip._id.slice(18)}</h5>
                 </div>
 
                 <div className='stay-name flex column'>
@@ -56,7 +56,7 @@ export function TripModal({ trip, setOnModal }) {
 
                 <div className='guests-rooms grid'>
                     <div className='guests-container flex column'>
-                        <div className='guests flex'>
+                        <div className='guests flex align-center'>
                             <p>Total guests:</p>
                             <h5>&nbsp;&nbsp;{guestSum()}</h5>
                         </div>
@@ -70,7 +70,8 @@ export function TripModal({ trip, setOnModal }) {
 
                     <div className='rooms flex column'>
                         <p>Total Rooms:</p>
-                        {/* <h5>{stay.bedrooms.length}</h5> FIX!!!!!!!! */}
+                        {<h5>3</h5> }{/* //FIXXXXXXX */}
+                        
                     </div>
                 </div>
 
