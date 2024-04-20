@@ -47,7 +47,7 @@ export function OrderConfirmation({ stay, order }) {
 
                     <div className='booking-number flex column'>
                         <p>Booking number:</p>
-                        <h5>{order._id}</h5>
+                        <h5>{order._id.slice(18)}</h5>
                     </div>
 
                     <div className='dates grid'>
@@ -69,10 +69,10 @@ export function OrderConfirmation({ stay, order }) {
                                 <h5>{utilService.calcGuestCount(order)}</h5>
                             </div>
                             <ul>
-                                {+order.guests.adults > 0 && <li>{+order.adults === 1 ? `${order.guests.adults} adult` : `${order.guests.adults} adults`}</li>}
-                                {+order.guests.children > 0 && <li>{+order.children === 1 ? `${order.guests.children} child` : `${order.guests.children} children`}</li>}
-                                {+order.guests.infants > 0 && <li>{+order.infants === 1 ? `${order.guests.infants} infant` : `${order.guests.infants} infants`}</li>}
-                                {+order.guests.pets > 0 && <li>{+order.pets === 1 ? `${order.guests.pets} pet` : `${order.guests.pets} pets`}</li>}
+                                {+order.guests.adults > 0 && <li>{+order.guests.adults === 1 ? `${order.guests.adults} adult` : `${order.guests.adults} adults`}</li>}
+                                {+order.guests.children > 0 && <li>{+order.guests.children === 1 ? `${order.guests.children} child` : `${order.guests.children} children`}</li>}
+                                {+order.guests.infants > 0 && <li>{+order.guests.infants === 1 ? `${order.guests.infants} infant` : `${order.guests.infants} infants`}</li>}
+                                {+order.guests.pets > 0 && <li>{+order.guests.pets === 1 ? `${order.guests.pets} pet` : `${order.guests.pets} pets`}</li>}
                             </ul>
                         </div>
 
