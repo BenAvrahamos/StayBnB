@@ -146,7 +146,7 @@ export function UserTrips() {
 
                         <div className='title flex column'>
                             <h3>{trip.stay.name}</h3>
-                            <p><span>Booking number:</span>&nbsp;&nbsp;{trip._orderId}</p>
+                            <p><span>Booking number:</span>&nbsp;&nbsp;{trip._id.slice(18)}</p>
                         </div>
 
                         <div className='dates'>

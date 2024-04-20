@@ -13,7 +13,7 @@ export function StayPreview({ stay, filterBy }) {
         {!filterBy.loc.city && <p className="grayTxt">{stayService.generateRandomDistance(stay) + " kilometers away"}</p>}
         {filterBy.loc.city && <p className="grayTxt">{stay.summary.length > 34 ? stay.summary.substring(0, 35) + '...' : stay.summary}</p>}
 
-        <p className="grayTxt">{stayService.generateRandomDate(+stay.price)}</p>
+        {!filterBy.entryDate &&  <p className="grayTxt">{stayService.generateRandomDate(+stay.price)}</p>}
 
         {!filterBy.entryDate && <p><span className="boldTxt"><span className="moneySgn">$</span>{stay.price.toLocaleString()}</span> night</p>}
         {filterBy.entryDate && <p><span className="boldTxt"><span className="moneySgn">$</span>{stay.price.toLocaleString()}</span> night • <span className="grayTxt underline"><span className="moneySgn">$</span>{(stayService.getNumberOfNights(filterBy) * stay.price).toLocaleString()} total</span></p>}
