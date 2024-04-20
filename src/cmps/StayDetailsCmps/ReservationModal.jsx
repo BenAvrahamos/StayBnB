@@ -117,7 +117,7 @@ export function ReservationModal({ stay, params, updateParams }) {
                         <label onClick={() => openModalType(modalType === 'guest' ? null : 'guest')} className='guests'>Guests</label>
                         <div className='guest-container flex space-between' onClick={() => openModalType(modalType === 'guest' ? null : 'guest')}>
                             {stayService.guestCountStringForReservation(params)}
-                             <span className={`arrow-${modalType === 'guest' ? 'down' : 'up'}`}></span>
+                             <span className={`arrow-${modalType === 'guest' ? 'up' : 'down'}`}></span>
                         </div>
 
                         {modalType === 'guest' && <GuestCount stay={stay} params={params} updateParams={updateParams} headerFilterBy={headerFilterBy} openModalType={openModalType} />}
