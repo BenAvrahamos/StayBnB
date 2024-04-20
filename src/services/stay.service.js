@@ -299,58 +299,94 @@ function guestCountStringForReservation(params) {
 }
 
 
-function generateRandomDate() {
-    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']
 
-    const today = new Date()
-    const currentMonthIndex = today.getMonth()
-    const currentYear = today.getFullYear()
+function generateRandomDate(stayPrice) {
+    const demoDates = [
+        "Apr 27-29",
+        "Apr 30-31",
+        "May 1-3",
+        "May 6-9",
+        "May 14-17",
+        "May 22-24",
+        "May 26-29",
+        "June 3-5",
+        "June 10-13",
+        "June 17-19",
+        "June 23-26",
+        "July 1-3",
+        "July 7-10",
+        "July 14-16",
+        "July 21-23",
+        "July 27-29",
+        "June 2-5"
+    ];
 
-    const randomMonthIndex = currentMonthIndex + Math.floor(Math.random() * (months.length - currentMonthIndex - 1))
-    const randomMonth = months[randomMonthIndex]
+    let selectedDate;
 
-    let maxDaysInMonth = new Date(currentYear, randomMonthIndex + 1, 0).getDate()
-
-    if (randomMonth === 'Feb') {
-        const isLeapYear = (currentYear % 4 === 0 && currentYear % 100 !== 0) || currentYear % 400 === 0
-        if (!isLeapYear) {
-            maxDaysInMonth = 28
-        }
+    if (stayPrice >= 0 && stayPrice <= 30) {
+        selectedDate = demoDates[0];
+    } else if (stayPrice > 30 && stayPrice <= 50) {
+        selectedDate = demoDates[1];
+    } else if (stayPrice > 50 && stayPrice <= 70) {
+        selectedDate = demoDates[2];
+    } else if (stayPrice > 70 && stayPrice <= 90) {
+        selectedDate = demoDates[3];
+    } else if (stayPrice > 90 && stayPrice <= 110) {
+        selectedDate = demoDates[4];
+    } else if (stayPrice > 110 && stayPrice <= 130) {
+        selectedDate = demoDates[5];
+    } else if (stayPrice > 130 && stayPrice <= 150) {
+        selectedDate = demoDates[6];
+    } else if (stayPrice > 150 && stayPrice <= 170) {
+        selectedDate = demoDates[7];
+    } else if (stayPrice > 170 && stayPrice <= 190) {
+        selectedDate = demoDates[8];
+    } else if (stayPrice > 190 && stayPrice <= 210) {
+        selectedDate = demoDates[9];
+    } else if (stayPrice > 210 && stayPrice <= 230) {
+        selectedDate = demoDates[10];
+    } else if (stayPrice > 230 && stayPrice <= 250) {
+        selectedDate = demoDates[11];
+    } else if (stayPrice > 250 && stayPrice <= 270) {
+        selectedDate = demoDates[12];
+    } else if (stayPrice > 270 && stayPrice <= 290) {
+        selectedDate = demoDates[13];
+    } else if (stayPrice > 290 && stayPrice <= 310) {
+        selectedDate = demoDates[14];
+    } else if (stayPrice > 310 && stayPrice <= 330) {
+        selectedDate = demoDates[15];
+    } else if (stayPrice > 330 && stayPrice <= 350) {
+        selectedDate = demoDates[16];
+    } else if (stayPrice > 350 && stayPrice <= 370) {
+        selectedDate = demoDates[17];
+    } else if (stayPrice > 370 && stayPrice <= 390) {
+        selectedDate = demoDates[18];
+    } else {
+        selectedDate = demoDates[19];
     }
 
-    let randomStartDay = Math.floor(Math.random() * (maxDaysInMonth - 22)) + 23
-
-    const maxPossibleEndDay = Math.min(maxDaysInMonth, randomStartDay + 5)
-
-    const randomEndDay = randomStartDay + Math.floor(Math.random() * (maxPossibleEndDay - randomStartDay - 2)) + 2
-
-    if (randomStartDay === randomEndDay) {
-        randomStartDay -= 2
-    }
-
-    return `${randomMonth} ${randomStartDay}-${randomEndDay}`
+    return selectedDate;
 }
+    
 
-function generateRandomDistance(country) {
-    const lowercaseCountry = country.toLowerCase()
+
+function generateRandomDistance(stay) {
+    const lowercaseCountry = stay.loc.country.toLowerCase()
     const baseDistances = {
-        turkey: 2050,
-        "united states": 9500,
-        france: 2900,
-        portugal: 3600,
-        spain: 2800,
-        brazil: 9400,
-        canada: 7800,
-        "hong kong": 5600,
-        italy: 2100
+        turkey: Math.floor(2050 + stay.loc.lng),
+        "united states": Math.floor(9500 + stay.loc.lng),
+        france: Math.floor(2900 + stay.loc.lng),
+        portugal: Math.floor(3600 + stay.loc.lng),
+        spain: Math.floor(2800 + stay.loc.lng),
+        brazil: Math.floor(9400 + stay.loc.lng),
+        canada: Math.floor(7800 + stay.loc.lng),
+        "hong kong": Math.floor(5600 + stay.loc.lng),
+        italy: Math.floor(2100 + stay.loc.lng),
     }
 
     if (lowercaseCountry in baseDistances) {
         const baseDistance = baseDistances[lowercaseCountry]
-        const minDistance = baseDistance - 150
-        const maxDistance = baseDistance + 150
-        const randomNumber = Math.floor(Math.random() * (maxDistance - minDistance + 1)) + minDistance
-        return randomNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+        return baseDistance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
     } else {
         const unsupportedRandomDistance = Math.floor(Math.random() * (3000 - 1000 + 1)) + 1000
         return unsupportedRandomDistance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
