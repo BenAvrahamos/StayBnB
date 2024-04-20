@@ -4,16 +4,16 @@ export function UserNotification() {
     // const [isNotification, setIsNotification] = useState(false)
     const [msg, SetMsg] = useState('')
     
-    useEffect(() => {
-        socketService.on(SOCKET_SERVICE_NOTIFICATION, promptNotification)
-    }, [])
+    // useEffect(() => {
+    //     socketService.on(SOCKET_SERVICE_NOTIFICATION, promptNotification)
+    // }, [])
 
-    function promptNotification(data) {
-        // setIsNotification(true)
-        console.log(data)
-        SetMsg(`The order status of your Staybnb place: ${data.stay.name} has been updated.`)
-        setTimeout(() => { SetMsg('')},1000)
-    }
+    // function promptNotification(data) {
+    //     // setIsNotification(true)
+    //     console.log(data)
+    //     SetMsg(`The order status of your Staybnb place: ${data.stay.name} has been updated.`)
+    //     setTimeout(() => { SetMsg('')},1000)
+    // }
 
     if(!msg) return <span></span>
     return <div className='notification-msg'>

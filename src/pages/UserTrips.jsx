@@ -6,7 +6,7 @@ import { utilService } from '../services/util.service.js'
 import { socketService, SOCKET_EVENT_ORDER_UPDATE } from '../services/socket.service.js'
 import { TripModal } from '../cmps/UserTripsCmps/TripModal.jsx'
 import { userService } from '../services/user.service.js'
-import { UserNotification } from '../cmps/UserNotification.jsx'
+// import { UserNotification } from '../cmps/UserNotification.jsx'
 
 export function UserTrips() {
     const [userTrips, setUserTrips] = useState([])
@@ -173,6 +173,6 @@ export function UserTrips() {
         </section>
 
         {onModal && chosenTrip && <TripModal trip={chosenTrip} setOnModal={setOnModal} />}
-        <UserNotification />
+        {/* <UserNotification /> */}
     </>
 }
