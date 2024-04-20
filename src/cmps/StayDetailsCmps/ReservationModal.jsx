@@ -72,14 +72,14 @@ export function ReservationModal({ stay, params, updateParams }) {
     }
 
     function validateAndMoveToPayment() {
-        if (params.entryDate && params.exitDate &&
-            (params.adults || params.children || params.infants)) {
+        if (params.entryDate && params.exitDate && params.adults) {
             const queryParams = new URLSearchParams({
                 entryDate: params.entryDate,
                 exitDate: params.exitDate,
                 adults: params.adults || '',
                 children: params.children || '',
-                infants: params.infants || ''
+                infants: params.infants || '',
+                pets: params.pets || ''
             }).toString()
             userService.getLoggedInUser() ? navigate(`/${stay._id}/payment?${queryParams}`) : setIsLoginModal(true)
         }
