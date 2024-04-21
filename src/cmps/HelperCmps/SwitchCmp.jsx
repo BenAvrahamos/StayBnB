@@ -1,6 +1,6 @@
-import { styled } from "@mui/material/styles";
-import Switch, { switchClasses } from "@mui/material/Switch";
-import { useState } from "react";
+import { styled } from "@mui/material/styles"
+import Switch, { switchClasses } from "@mui/material/Switch"
+import { useState } from "react"
 
 function pxToRem(num) {
     const px = num
