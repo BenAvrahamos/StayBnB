@@ -18,7 +18,7 @@ export function RootCmp() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const offset = window.scrollY;
+      const offset = window.scrollY
       const newLayout = offset > 0
 
       if (newLayout !== scrolledPage) setScrolledPage(newLayout)

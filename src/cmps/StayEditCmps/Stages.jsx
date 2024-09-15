@@ -133,21 +133,21 @@ export function Stage4({ stay, editStay }) {
                 </label>
             </section>
         </section>
-    );
+    )
 }
 
 export function Stage5({ stay, editStay }) {
-    const isCapacityZero = stay.capacity === 0;
-    const isCapacityMax = stay.capacity === 16;
+    const isCapacityZero = stay.capacity === 0
+    const isCapacityMax = stay.capacity === 16
 
-    const isBedroomsZero = stay.sumOfBeds === 0;
-    const isBedroomsMax = stay.sumOfBeds === 16;
+    const isBedroomsZero = stay.sumOfBeds === 0
+    const isBedroomsMax = stay.sumOfBeds === 16
 
-    const isBathroomsZero = stay.bathrooms === 0;
-    const isBathroomsMax = stay.bathrooms === 16;
+    const isBathroomsZero = stay.bathrooms === 0
+    const isBathroomsMax = stay.bathrooms === 16
 
-    const isBathsZero = stay.baths === 0;
-    const isBathsMax = stay.baths === 16;
+    const isBathsZero = stay.baths === 0
+    const isBathsMax = stay.baths === 16
 
     return (
         <section className="stage-5">
@@ -194,7 +194,7 @@ export function Stage5({ stay, editStay }) {
                 </div>
             </section>
         </section>
-    );
+    )
 }
 
 
@@ -229,7 +229,7 @@ export function Stage7({ stay, editStay }) {
             const updatedAmenities = [...stay.amenities, value]
             editStay({ ...stay, amenities: updatedAmenities })
         } else {
-            const updatedAmenities = [...stay.amenities.slice(0, index), ...stay.amenities.slice(index + 1)];
+            const updatedAmenities = [...stay.amenities.slice(0, index), ...stay.amenities.slice(index + 1)]
             editStay({ ...stay, amenities: updatedAmenities })
         }
     }
@@ -300,13 +300,13 @@ export function Stage9({ stay, editStay }) {
 
 
 export function Stage10({ stay, editStay }) {
-    const [inputValue, setInputValue] = useState(stay.desc);
+    const [inputValue, setInputValue] = useState(stay.desc)
 
     const handleInputChange = (event) => {
         const newValue = event.target.value
 
         if (newValue.length <= 500) {
-            setInputValue(newValue);
+            setInputValue(newValue)
             editStay({ ...stay, desc: newValue })
         } else {
             setInputValue(newValue.slice(0, 500))
@@ -352,7 +352,7 @@ export function Stage12({ stay, editStay }) {
         const newPrice = event.target.value
         setPrice(newPrice)
         editStay({ ...stay, price: newPrice })
-    };
+    }
 
     return (
         <section className="stage-12">

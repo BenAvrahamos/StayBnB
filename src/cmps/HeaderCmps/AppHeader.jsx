@@ -7,7 +7,7 @@ import { DemoDataService } from "../../services/demoData.service"
 import { stayService } from "../../services/stay.service"
 import { setStayFilter, setStayHeaderFilter } from "../../store/actions/stay.actions"
 import { UserNavModal } from "./UserNavModal"
-import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom'
 import { LoginSignup } from "../LoginSignup"
 import { userService } from "../../services/user.service"
 import { utilService } from "../../services/util.service"
