@@ -9,9 +9,8 @@ import { stayService } from '../services/stay.service.js'
 import { socketService, SOCKET_EVENT_ORDER_UPDATE } from '../services/socket.service.js'
 import { Loading } from '../cmps/Loading.jsx'
 
-
 export function StayIndex({ scrolledPage }) {
-    const [searchParams, setSearchParams] = useSearchParams()
+    const [_searchParams, setSearchParams] = useSearchParams()
     const { stays } = useSelector(storeState => storeState.stayModule)
     const { filterBy } = useSelector(storeState => storeState.stayModule)
     const { isLoading } = useSelector(storeState => storeState.stayModule)
