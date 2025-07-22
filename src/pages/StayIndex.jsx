@@ -53,6 +53,7 @@ export function StayIndex({ scrolledPage }) {
     // </section>
 
         return <section className={`index-section ${scrolledHeader()}`}>
+            
             <LabelsFilter
                 setStayFilter={setStayFilter}
                 filterBy={filterBy}

@@ -6,13 +6,13 @@ export function ImgUploader({ onUploaded = null, placeholder = null, editStay = 
     imgUrl: placeholder, // Initially set to placeholder
     height: 500,
     width: 500,
-  });
-  const [isUploading, setIsUploading] = useState(false);
+  })
+  const [isUploading, setIsUploading] = useState(false)
   const fileInputRef = useRef(null)
 
   async function uploadImg(ev) {
     setIsUploading(true)
-    const { secure_url, height, width } = await uploadService.uploadImg(ev);
+    const { secure_url, height, width } = await uploadService.uploadImg(ev)
     setImgData({ imgUrl: secure_url, width, height })
     setIsUploading(false)
     onUploaded && onUploaded(secure_url)
@@ -26,7 +26,7 @@ export function ImgUploader({ onUploaded = null, placeholder = null, editStay = 
 
   const handleImageClick = () => {
     fileInputRef.current.click()
-  };
+  }
 
   return (
     <div className="upload-preview">
@@ -47,5 +47,5 @@ export function ImgUploader({ onUploaded = null, placeholder = null, editStay = 
         style={{ display: 'none' }}
       />
     </div>
-  );
+  )
 }

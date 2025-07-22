@@ -51,7 +51,7 @@ export function UserNavModal({ setIsLoginModal, setModalType }) {
         {/* TRY TO ADD SOCKETS OF CHAT ON SATURDAY 17.4 SHOVAL <NavLink to="/unActive" className='grayTxt'>Messages</NavLink> */} 
         <NavLink to={"/trips"}  onClick={(ev) => checkNavigatePath(ev, '/trips')} className='grayTxt'>Trips</NavLink>
         <NavLink to="/wishlist" className='grayTxt'>Wishlist</NavLink>
-        <NavLink to="/edit" className='grayTxt'>Airbnb your home</NavLink>
+        {/* <NavLink to="/edit" className='grayTxt'>Airbnb your home</NavLink> */}
         <NavLink to="/dashboard"  onClick={(ev) => checkNavigatePath(ev, '/dashboard')} className='grayTxt'>Dashboard</NavLink>
     </section>
 }

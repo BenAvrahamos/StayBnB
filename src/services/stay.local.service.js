@@ -30,8 +30,8 @@ export const stayService = {
 
 //     try {
 //         let stays = await storageService.query(STAY_DB)
-//         console.log(stays[0]);
-//         //     console.log(stays);
+//         console.log(stays[0])
+//         //     console.log(stays)
 //         // if (filterBy.loc.region) {
 //         //     stays = stays.filter(stay => stay.loc.region === filterBy.loc.region)
 //         // }
@@ -83,8 +83,8 @@ export const stayService = {
 //         //     stays = stays.filter(stay => filterBy.amenities.every(amenity => stay.amenities.includes(amenity)))
 //         // }
 //         // // if (filterBy.placeType !== 'any') {
-//         // //     console.log(stays[0].type);
-//         // //     console.log(filterBy.placeType);
+//         // //     console.log(stays[0].type)
+//         // //     console.log(filterBy.placeType)
 //         // //     stays = stays.filter(stay => stay.type === filterBy.placeType)
 //         // // }
 
@@ -140,7 +140,7 @@ export const stayService = {
 //             return updatedStay
 //         } else {
 //             stay._id = utilService.makeId()
-//             console.log( stay._id);
+//             console.log( stay._id)
 //             const stayToAdd = await storageService.post(STAY_DB, stay)
 //             return stayToAdd
 //         }

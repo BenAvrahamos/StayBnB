@@ -12,7 +12,7 @@ import { stayService } from '../../services/stay.service'
 import { store } from '../../store/store'
 
 
-export function HeaderFilter({ modalType, setModalType }) {
+export function HeaderFilter({ modalType, setModalType,handleBackdropClick }) {
     const header = useRef(null)
     const navigate = useNavigate()
     const headerFilterBy = useSelector(storeState => storeState.stayModule.headerFilterBy)
@@ -38,6 +38,7 @@ export function HeaderFilter({ modalType, setModalType }) {
 
         navigate('/')
         setModalType('')
+        handleBackdropClick(false)
 
         setStayFilter(filterByStore)
         loadStays()
