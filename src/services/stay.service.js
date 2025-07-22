@@ -157,10 +157,10 @@ function getDefaultFilter() {
             // lng: 0
         },
         entryDate: '',
-        exitDate: '',            // dates
-        guestCount: { adults: 0, children: 0, infants: 0, pets: 0 },                // number of guests
+        exitDate: '',
+        guestCount: { adults: 0, children: 0, infants: 0, pets: 0 },
         label: '',
-        placeType: 'any',       // any / room / entire home
+        placeType: 'any',
         priceRange: {
             min: 0,
             max: 2000
@@ -168,7 +168,7 @@ function getDefaultFilter() {
         bedrooms: 'any',
         beds: 'any',
         bathrooms: 'any',
-        propType: [],                // house / apartment / guesthouse / hotel
+        propType: [], 
         amenities: [],
         bookingOpts: {
             instant: false,
@@ -185,13 +185,13 @@ function getDefaultHeaderFilter() {
     return {
         loc: {},
         entryDate: '',
-        exitDate: '',            // dates
-        guestCount: { adults: 0, children: 0, infants: 0, pets: 0 },                // number of guests
+        exitDate: '', 
+        guestCount: { adults: 0, children: 0, infants: 0, pets: 0 }, 
     }
 }
 
 function getEmptyOrder() {
-    return {              // add _id on save
+    return { 
         hostId: '',
         buyer: {
             _id: '',
@@ -212,13 +212,13 @@ function getEmptyOrder() {
             price: 0
         },
         msgs: [],
-        status: "pending"           // approved / rejected
+        status: "pending"
     }
 }
 
 function getEmptyModalFilter() {
     return {
-        placeType: 'any',       // any / room / entire home
+        placeType: 'any',
         priceRange: {
             min: 0,
             max: Infinity
@@ -226,7 +226,7 @@ function getEmptyModalFilter() {
         bedrooms: 'any',
         beds: 'any',
         bathrooms: 'any',
-        propType: [],                // house / apartment / guesthouse / hotel
+        propType: [], 
         amenities: [],
         bookingOpts: {
             instant: false,
